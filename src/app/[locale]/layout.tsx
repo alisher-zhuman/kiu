@@ -1,12 +1,14 @@
 import "../globals.css";
 
-import { METADATA } from "@shared/constants";
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale,NextIntlClientProvider } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
+
+import { METADATA } from "@shared/constants";
 
 export const metadata: Metadata = METADATA;
 
@@ -15,7 +17,7 @@ export const generateStaticParams = () => {
 };
 
 type Props = Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
   params: Promise<{ locale: string }>;
 }>;
 
