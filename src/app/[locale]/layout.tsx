@@ -8,9 +8,9 @@ import "../globals.css";
 
 export const metadata: Metadata = METADATA;
 
-export function generateStaticParams() {
+export const generateStaticParams = () => {
   return routing.locales.map((locale) => ({ locale }));
-}
+};
 
 type Props = Readonly<{
   children: React.ReactNode;

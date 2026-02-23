@@ -6,6 +6,7 @@ type Props = Readonly<{
 
 const HomePage = async ({ params }: Props) => {
   const { locale } = await params;
+
   setRequestLocale(locale);
 
   const t = await getTranslations("HomePage");
