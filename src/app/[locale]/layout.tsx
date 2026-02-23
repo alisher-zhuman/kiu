@@ -2,6 +2,7 @@ import "../globals.css";
 
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -11,6 +12,12 @@ import { routing } from "@/i18n/routing";
 import { METADATA } from "@shared/constants";
 
 export const metadata: Metadata = METADATA;
+
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
+  variable: "--font-montserrat",
+});
 
 export const generateStaticParams = () => {
   return routing.locales.map((locale) => ({ locale }));
@@ -32,7 +39,7 @@ const LocaleLayout = async ({ children, params }: Props) => {
 
   return (
     <html lang={locale}>
-      <body>
+      <body className={montserrat.variable}>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
