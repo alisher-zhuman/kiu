@@ -1,6 +1,7 @@
-import { Link } from "@/i18n/navigation";
-import { routing, type AppLocale } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+
+import { Link } from "@/i18n/navigation";
+import { type AppLocale,routing } from "@/i18n/routing";
 
 type Props = Readonly<{
   params: Promise<{ locale: string }>;
