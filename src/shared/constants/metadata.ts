@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const METADATA: Metadata = {
-  title: "Кыргызстан Ислам Университети",
+  title: "КИУ",
   description:
     "Кыргызстан Ислам Университетинин расмий сайты — жаңылыктар, кафедралар, билим берүү программалары жана студенттер үчүн маалымат.",
   icons: {
