@@ -1,5 +1,10 @@
 {
   "HomePage": {
     "title": "Hello, Kyrgyzstan Islamic University!"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "description": "The page may have been removed, moved, or the URL is incorrect.",
+    "action": "Back to homepage"
   }
 }
