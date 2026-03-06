@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Header = () => {
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between py-2 px-10">
       <div />
 
       <div className="flex items-center gap-4">
