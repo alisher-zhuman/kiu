@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { LangSwitcher } from "@/shared/ui/lang-switcher";
+
 export const Header = () => {
   return (
     <header className="flex items-center justify-between py-2 px-10">
@@ -20,7 +22,7 @@ export const Header = () => {
         </p>
       </div>
 
-      <div>Switcher</div>
+      <LangSwitcher />
     </header>
   );
 };
