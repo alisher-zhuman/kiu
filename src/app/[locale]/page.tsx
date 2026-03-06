@@ -2,7 +2,7 @@ import { Header } from "@/widgets/layout/header";
 
 const Home = () => {
   return (
-    <main>
+    <main className="max-w-400 m-auto">
       <Header />
     </main>
   );
