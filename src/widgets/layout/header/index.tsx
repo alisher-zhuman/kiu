@@ -5,7 +5,7 @@ export const Header = () => {
     <header className="flex items-center justify-between">
       <div />
 
-      <div className="flex items-center">
+      <div className="flex items-center gap-4">
         <Image
           src="/icons/logo.svg"
           alt="Сделай локализацию в alt"
@@ -13,7 +13,9 @@ export const Header = () => {
           height={92}
         />
 
-        <p className="text-lg font-light w-30">
+        <div className="h-18 w-px bg-black" />
+
+        <p className="w-30 text-lg leading-tight font-light">
           Кыргызский Исламский Университет
         </p>
       </div>
