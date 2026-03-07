@@ -26,7 +26,7 @@ export const LangSwitcher = () => {
   const pathname = usePathname();
 
   const router = useRouter();
-  
+
   const rootRef = useRef<HTMLDivElement>(null);
 
   const localeLabels: Record<AppLocale, { label: string; shortLabel: string }> =
@@ -88,7 +88,7 @@ export const LangSwitcher = () => {
         aria-controls="language-switcher-panel"
         aria-label={t("triggerLabel")}
         onClick={() => setIsOpen((current) => !current)}
-        className="flex cursor-pointer items-center gap-2 rounded-full border border-transparent px-4 py-2 text-xl font-light text-black transition-all duration-200 hover:border-black/20"
+        className="flex cursor-pointer items-center gap-2 text-xl font-light text-black"
       >
         <span>{currentOption.shortLabel}</span>
 
@@ -117,9 +117,7 @@ export const LangSwitcher = () => {
               onClick={() => handleLocaleChange(locale)}
               className={cn(
                 "w-full cursor-pointer text-left text-xl leading-none font-light transition-colors",
-                isActive
-                  ? "text-[#ffea00]"
-                  : "text-white hover:text-[#ffea00]",
+                isActive ? "text-[#ffea00]" : "text-white hover:text-[#ffea00]",
                 !isLast && "border-b border-white/80 pb-2",
               )}
             >
