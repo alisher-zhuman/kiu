@@ -22,8 +22,11 @@ export const LangSwitcher = () => {
   const t = useTranslations("LangSwitcher");
 
   const currentLocale = useLocale() as AppLocale;
+
   const pathname = usePathname();
+
   const router = useRouter();
+  
   const rootRef = useRef<HTMLDivElement>(null);
 
   const localeLabels: Record<AppLocale, { label: string; shortLabel: string }> =
@@ -52,23 +55,15 @@ export const LangSwitcher = () => {
     setIsOpen(false);
   });
 
-  const closeOnEscape = useEffectEvent((event: KeyboardEvent) => {
-    if (event.key === "Escape") {
-      setIsOpen(false);
-    }
-  });
-
   useEffect(() => {
     if (!isOpen) {
       return;
     }
 
     document.addEventListener("mousedown", closeDropdown);
-    document.addEventListener("keydown", closeOnEscape);
 
     return () => {
       document.removeEventListener("mousedown", closeDropdown);
-      document.removeEventListener("keydown", closeOnEscape);
     };
   }, [isOpen]);
 
@@ -90,7 +85,7 @@ export const LangSwitcher = () => {
       <button
         type="button"
         aria-expanded={isOpen}
-        aria-haspopup="menu"
+        aria-controls="language-switcher-panel"
         aria-label={t("triggerLabel")}
         onClick={() => setIsOpen((current) => !current)}
         className="flex cursor-pointer items-center gap-2 rounded-full border border-transparent px-4 py-2 text-xl font-light text-black transition-all duration-200 hover:border-black/20"
@@ -101,9 +96,8 @@ export const LangSwitcher = () => {
       </button>
 
       <div
-        role="menu"
+        id="language-switcher-panel"
         aria-hidden={!isOpen}
-        aria-label={t("menuLabel")}
         className={cn(
           "absolute right-0 top-full z-20 mt-3 flex origin-top-right flex-col gap-2 overflow-hidden rounded-4xl bg-[#0c56a5] p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-200 ease-out",
           isOpen
@@ -120,9 +114,6 @@ export const LangSwitcher = () => {
             <button
               key={locale}
               type="button"
-              role="menuitemradio"
-              tabIndex={isOpen ? 0 : -1}
-              aria-checked={isActive}
               onClick={() => handleLocaleChange(locale)}
               className={cn(
                 "w-full cursor-pointer text-left text-xl leading-none font-light transition-colors",
