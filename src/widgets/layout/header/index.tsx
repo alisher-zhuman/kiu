@@ -11,6 +11,7 @@ export const Header = () => {
         <Image
           src="/icons/logo.svg"
           alt="Сделай локализацию в alt"
+          loading="eager"
           width={92}
           height={92}
         />

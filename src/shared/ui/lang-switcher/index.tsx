@@ -13,15 +13,8 @@ import { Globe } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { type AppLocale } from "@/i18n/routing";
 
-const LOCALE_OPTIONS: ReadonlyArray<{
-  locale: AppLocale;
-  label: string;
-  shortLabel: string;
-}> = [
-  { locale: "ru", label: "Русский", shortLabel: "РУ" },
-  { locale: "kg", label: "Кыргызча", shortLabel: "КР" },
-  { locale: "en", label: "English", shortLabel: "EN" },
-] as const;
+import { LOCALE_OPTIONS } from "@/shared/constants";
+import { cn } from "@/shared/helpers";
 
 export const LangSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -111,11 +104,13 @@ export const LangSwitcher = () => {
                 role="menuitemradio"
                 aria-checked={isActive}
                 onClick={() => handleLocaleChange(locale)}
-                className={`flex w-full cursor-pointer items-center text-left text-2xl pb-2 leading-none font-light transition-colors ${
+                className={cn(
+                  "flex w-full cursor-pointer items-center text-left text-xl leading-none font-light transition-colors",
                   isActive
                     ? "text-[#ffea00]"
-                    : "text-white hover:text-[#ffea00]"
-                } ${isLast ? "" : "border-b border-white/80"}`}
+                    : "text-white hover:text-[#ffea00]",
+                  !isLast && "border-b pb-2 border-white/80",
+                )}
               >
                 {label}
               </button>
