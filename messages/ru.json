@@ -1,4 +1,26 @@
 {
+  "Header": {
+    "title": "Кыргызский Исламский Университет",
+    "logoAlt": "Логотип Кыргызского Исламского Университета"
+  },
+  "LangSwitcher": {
+    "triggerLabel": "Изменить язык",
+    "menuLabel": "Выбор языка",
+    "locales": {
+      "ru": {
+        "label": "Русский",
+        "shortLabel": "РУ"
+      },
+      "kg": {
+        "label": "Кыргызча",
+        "shortLabel": "КР"
+      },
+      "en": {
+        "label": "English",
+        "shortLabel": "EN"
+      }
+    }
+  },
   "HomePage": {
     "title": "Здравствуйте, Кыргызстан Ислам Университет!"
   },

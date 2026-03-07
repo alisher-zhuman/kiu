@@ -1,4 +1,26 @@
 {
+  "Header": {
+    "title": "Kyrgyzstan Islamic University",
+    "logoAlt": "Kyrgyzstan Islamic University logo"
+  },
+  "LangSwitcher": {
+    "triggerLabel": "Change language",
+    "menuLabel": "Language options",
+    "locales": {
+      "ru": {
+        "label": "Русский",
+        "shortLabel": "RU"
+      },
+      "kg": {
+        "label": "Кыргызча",
+        "shortLabel": "KG"
+      },
+      "en": {
+        "label": "English",
+        "shortLabel": "EN"
+      }
+    }
+  },
   "HomePage": {
     "title": "Hello, Kyrgyzstan Islamic University!"
   },
