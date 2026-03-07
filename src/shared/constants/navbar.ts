@@ -1,10 +1,10 @@
-import { type NavbarItem } from "@/shared/types";
+import { type NavbarLink } from "@/shared/types";
 
-export const NAVBAR_ITEMS: ReadonlyArray<NavbarItem> = [
+export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
   {
     href: "/applicants",
     label: "Абитуриенттерге",
-    items: [
+    links: [
       {
         href: "/applicants/for-applicants",
         label: "Для абитуриентов",
@@ -22,7 +22,7 @@ export const NAVBAR_ITEMS: ReadonlyArray<NavbarItem> = [
   {
     href: "/students",
     label: "Студенттерге",
-    items: [
+    links: [
       {
         href: "/students/bachelor",
         label: "Учебное (бакалавр)",
@@ -48,7 +48,7 @@ export const NAVBAR_ITEMS: ReadonlyArray<NavbarItem> = [
   {
     href: "/structure",
     label: "Структура",
-    items: [
+    links: [
       {
         href: "/structure/rector",
         label: "Ректор",

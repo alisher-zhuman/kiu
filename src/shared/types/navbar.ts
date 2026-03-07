@@ -1,10 +1,10 @@
-export interface NavbarSubItem {
+export interface NavbarSubLink {
   href: string;
   label: string;
 }
 
-export interface NavbarItem {
+export interface NavbarLink {
   href: string;
   label: string;
-  items?: ReadonlyArray<NavbarSubItem>;
+  links?: ReadonlyArray<NavbarSubLink>;
 }
