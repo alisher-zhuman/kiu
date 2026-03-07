@@ -13,7 +13,7 @@ import { Globe } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { type AppLocale } from "@/i18n/routing";
 
-import { LOCALE_OPTIONS } from "@/shared/constants";
+import { getLocaleLabels, LOCALE_OPTIONS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 
 export const LangSwitcher = () => {
@@ -29,21 +29,7 @@ export const LangSwitcher = () => {
 
   const rootRef = useRef<HTMLDivElement>(null);
 
-  const localeLabels: Record<AppLocale, { label: string; shortLabel: string }> =
-    {
-      ru: {
-        label: t("locales.ru.label"),
-        shortLabel: t("locales.ru.shortLabel"),
-      },
-      kg: {
-        label: t("locales.kg.label"),
-        shortLabel: t("locales.kg.shortLabel"),
-      },
-      en: {
-        label: t("locales.en.label"),
-        shortLabel: t("locales.en.shortLabel"),
-      },
-    };
+  const localeLabels = getLocaleLabels(t);
 
   const currentOption = localeLabels[currentLocale];
 
