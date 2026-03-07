@@ -1,11 +1,6 @@
 import { type AppLocale } from "@/i18n/routing";
 
-type LocaleOptionLabels = {
-  label: string;
-  shortLabel: string;
-};
-
-type LocaleLabelsMap = Record<AppLocale, LocaleOptionLabels>;
+import { type LocaleLabelsMap } from "@/shared/types";
 
 export const LOCALE_OPTIONS: ReadonlyArray<AppLocale> = [
   "kg",

@@ -5,7 +5,7 @@ import { cn } from "@/shared/helpers";
 
 export const Navbar = () => {
   return (
-    <nav className="bg-[#004C97] p-5 sticky top-0 z-10">
+    <nav className="bg-[#004C97] sticky top-0 z-10">
       <ul className="max-w-400 m-auto flex items-center justify-evenly gap-5 px-10 text-white font-semibold text-lg">
         {NAVBAR_ITEMS.map((item) => (
           <li key={item.href} className="group relative">
@@ -19,7 +19,7 @@ export const Navbar = () => {
             {item.items && (
               <div
                 className={cn(
-                  "pointer-events-none invisible absolute left-1/2 top-full z-20 mt-4 w-72 -translate-x-1/2 translate-y-2 scale-95 rounded-[1.75rem] border border-white/15 bg-[#0a3f79]/96 p-3 opacity-0 shadow-[0_20px_45px_rgba(0,0,0,0.24)] backdrop-blur-sm transition-all duration-200 ease-out",
+                  "pointer-events-none invisible absolute left-1/2 top-full z-20 w-72 -translate-x-1/2 translate-y-2 scale-95 rounded-[1.75rem] border border-white/15 bg-[#0a3f79]/96 p-3 opacity-0 shadow-[0_20px_45px_rgba(0,0,0,0.24)] backdrop-blur-sm transition-all duration-200 ease-out",
                   "group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100",
                 )}
               >

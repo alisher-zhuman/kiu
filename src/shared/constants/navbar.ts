@@ -1,13 +1,4 @@
-export type NavbarSubItem = {
-  href: string;
-  label: string;
-};
-
-export type NavbarItem = {
-  href: string;
-  label: string;
-  items?: ReadonlyArray<NavbarSubItem>;
-};
+import { type NavbarItem } from "@/shared/types";
 
 export const NAVBAR_ITEMS: ReadonlyArray<NavbarItem> = [
   {
