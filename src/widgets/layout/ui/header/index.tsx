@@ -9,7 +9,7 @@ export const Header = async () => {
   const t = await getTranslations("Header");
 
   return (
-    <header className="flex items-center justify-between py-2 px-10">
+    <header className="max-w-400 m-auto flex items-center justify-between py-2 px-10">
       <div />
 
       <Link href="/" className="flex items-center gap-4">

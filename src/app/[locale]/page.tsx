@@ -3,7 +3,7 @@ import { Navbar } from "@/widgets/layout/ui/navbar";
 
 const Home = () => {
   return (
-    <main className="max-w-400 m-auto">
+    <main>
       <Header />
       <Navbar />
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores laborum
