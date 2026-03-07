@@ -1,9 +1,11 @@
 import { Header } from "@/widgets/layout/ui/header";
+import { Navbar } from "@/widgets/layout/ui/navbar";
 
 const Home = () => {
   return (
     <main className="max-w-400 m-auto">
       <Header />
+      <Navbar />
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores laborum
       explicabo blanditiis maxime magni sapiente, beatae alias perspiciatis
       ratione quo reprehenderit numquam, saepe repudiandae porro nam? Unde

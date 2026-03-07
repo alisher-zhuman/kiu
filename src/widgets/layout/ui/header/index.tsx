@@ -3,34 +3,28 @@ import { getTranslations } from "next-intl/server";
 
 import { LangSwitcher } from "@/shared/ui/lang-switcher";
 
-import { Navbar } from "../navbar";
-
 export const Header = async () => {
   const t = await getTranslations("Header");
 
   return (
-    <header>
-      <div className="flex items-center justify-between py-2 px-10">
-        <div />
+    <header className="flex items-center justify-between py-2 px-10">
+      <div />
 
-        <div className="flex items-center gap-4">
-          <Image
-            src="/icons/logo.svg"
-            alt={t("logoAlt")}
-            loading="eager"
-            width={92}
-            height={92}
-          />
+      <div className="flex items-center gap-4">
+        <Image
+          src="/icons/logo.svg"
+          alt={t("logoAlt")}
+          loading="eager"
+          width={92}
+          height={92}
+        />
 
-          <div className="h-18 w-px bg-black" />
+        <div className="h-18 w-px bg-black" />
 
-          <p className="w-30 text-lg leading-tight font-light">{t("title")}</p>
-        </div>
-
-        <LangSwitcher />
+        <p className="w-30 text-lg leading-tight font-light">{t("title")}</p>
       </div>
 
-      <Navbar />
+      <LangSwitcher />
     </header>
   );
 };
