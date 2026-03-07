@@ -100,38 +100,43 @@ export const LangSwitcher = () => {
         <Globe size={28} strokeWidth={1.75} />
       </button>
 
-      {isOpen && (
-        <div
-          role="menu"
-          aria-label={t("menuLabel")}
-          className="absolute right-0 top-full z-20 p-4 overflow-hidden flex flex-col gap-2 rounded-4xl  bg-[#0c56a5] text-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
-        >
-          {LOCALE_OPTIONS.map((locale, index) => {
-            const isActive = locale === currentLocale;
-            const isLast = index === LOCALE_OPTIONS.length - 1;
-            const option = localeLabels[locale];
+      <div
+        role="menu"
+        aria-hidden={!isOpen}
+        aria-label={t("menuLabel")}
+        className={cn(
+          "absolute right-0 top-full z-20 mt-3 flex origin-top-right flex-col gap-2 overflow-hidden rounded-4xl bg-[#0c56a5] p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-200 ease-out",
+          isOpen
+            ? "translate-y-0 scale-100 opacity-100"
+            : "pointer-events-none invisible translate-y-2 scale-95 opacity-0",
+        )}
+      >
+        {LOCALE_OPTIONS.map((locale, index) => {
+          const isActive = locale === currentLocale;
+          const isLast = index === LOCALE_OPTIONS.length - 1;
+          const option = localeLabels[locale];
 
-            return (
-              <button
-                key={locale}
-                type="button"
-                role="menuitemradio"
-                aria-checked={isActive}
-                onClick={() => handleLocaleChange(locale)}
-                className={cn(
-                  "w-full text-left cursor-pointer text-xl leading-none font-light transition-colors",
-                  isActive
-                    ? "text-[#ffea00]"
-                    : "text-white hover:text-[#ffea00]",
-                  !isLast && "border-b pb-2 border-white/80",
-                )}
-              >
-                {option.label}
-              </button>
-            );
-          })}
-        </div>
-      )}
+          return (
+            <button
+              key={locale}
+              type="button"
+              role="menuitemradio"
+              tabIndex={isOpen ? 0 : -1}
+              aria-checked={isActive}
+              onClick={() => handleLocaleChange(locale)}
+              className={cn(
+                "w-full cursor-pointer text-left text-xl leading-none font-light transition-colors",
+                isActive
+                  ? "text-[#ffea00]"
+                  : "text-white hover:text-[#ffea00]",
+                !isLast && "border-b border-white/80 pb-2",
+              )}
+            >
+              {option.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };
