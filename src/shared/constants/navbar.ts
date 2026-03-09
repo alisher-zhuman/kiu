@@ -2,6 +2,10 @@ import { type NavbarLink } from "@/shared/types";
 
 export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
   {
+    href: "/research",
+    label: "Илим изилдоо",
+  },
+  {
     href: "/applicants",
     label: "Абитуриенттерге",
     links: [
@@ -40,10 +44,6 @@ export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
         label: "Оплата за обучение",
       },
     ],
-  },
-  {
-    href: "/research",
-    label: "Илим изилдоо",
   },
   {
     href: "/structure",
