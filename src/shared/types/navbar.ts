@@ -1,10 +1,10 @@
 export interface NavbarSubLink {
   href: string;
-  label: string;
+  labelKey: string;
 }
 
 export interface NavbarLink {
   href: string;
-  label: string;
+  labelKey: string;
   links?: ReadonlyArray<NavbarSubLink>;
 }

@@ -3,72 +3,72 @@ import { type NavbarLink } from "@/shared/types";
 export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
   {
     href: "/research",
-    label: "Илим изилдоо",
+    labelKey: "research",
   },
   {
     href: "/applicants",
-    label: "Абитуриенттерге",
+    labelKey: "applicants.label",
     links: [
       {
         href: "/applicants/for-applicants",
-        label: "Для абитуриентов",
+        labelKey: "applicants.links.forApplicants",
       },
       {
         href: "/applicants/tuition",
-        label: "Информация об оплате",
+        labelKey: "applicants.links.tuition",
       },
       {
         href: "/applicants/required-documents",
-        label: "Перечень необходимых документов",
+        labelKey: "applicants.links.requiredDocuments",
       },
     ],
   },
   {
     href: "/students",
-    label: "Студенттерге",
+    labelKey: "students.label",
     links: [
       {
         href: "/students/bachelor",
-        label: "Учебное (бакалавр)",
+        labelKey: "students.links.bachelor",
       },
       {
         href: "/students/avn-portal",
-        label: "Образовательный портал AVN",
+        labelKey: "students.links.avnPortal",
       },
       {
         href: "/students/schedule",
-        label: "Расписание",
+        labelKey: "students.links.schedule",
       },
       {
         href: "/students/tuition",
-        label: "Оплата за обучение",
+        labelKey: "students.links.tuition",
       },
     ],
   },
   {
     href: "/structure",
-    label: "Структура",
+    labelKey: "structure.label",
     links: [
       {
         href: "/structure/rector",
-        label: "Ректор",
+        labelKey: "structure.links.rector",
       },
       {
         href: "/structure/administration",
-        label: "Администрация",
+        labelKey: "structure.links.administration",
       },
       {
         href: "/structure/documents",
-        label: "Документы",
+        labelKey: "structure.links.documents",
       },
     ],
   },
   {
     href: "/courses",
-    label: "Курстар",
+    labelKey: "courses",
   },
   {
     href: "/news",
-    label: "Жанылыктар",
+    labelKey: "news",
   },
 ] as const;

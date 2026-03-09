@@ -22,7 +22,71 @@
     }
   },
   "HomePage": {
-    "title": "Hello, Kyrgyzstan Islamic University!"
+    "eyebrow": "Official website",
+    "title": "Welcome to Kyrgyzstan Islamic University",
+    "description": "This website will publish university news, admissions details, academic programs, and practical information for students."
+  },
+  "Navbar": {
+    "research": "Research",
+    "applicants": {
+      "label": "Applicants",
+      "links": {
+        "forApplicants": "For applicants",
+        "tuition": "Tuition information",
+        "requiredDocuments": "Required documents"
+      }
+    },
+    "students": {
+      "label": "Students",
+      "links": {
+        "bachelor": "Academic program (Bachelor's)",
+        "avnPortal": "AVN education portal",
+        "schedule": "Schedule",
+        "tuition": "Tuition payment"
+      }
+    },
+    "structure": {
+      "label": "Structure",
+      "links": {
+        "rector": "Rector",
+        "administration": "Administration",
+        "documents": "Documents"
+      }
+    },
+    "courses": "Courses",
+    "news": "News"
+  },
+  "Metadata": {
+    "title": "KIU",
+    "description": "Official website of Kyrgyzstan Islamic University - news, departments, academic programs, and information for students.",
+    "publisher": "Kyrgyzstan Islamic University",
+    "keywords": [
+      "Kyrgyzstan Islamic University",
+      "Kyrgyz Islamic University",
+      "KIU",
+      "Islam University Kyrgyzstan",
+      "Kyrgyzstan",
+      "university",
+      "higher education",
+      "Islamic education",
+      "theology",
+      "sharia",
+      "departments",
+      "applicants",
+      "students",
+      "news",
+      "Bishkek"
+    ],
+    "openGraph": {
+      "title": "Kyrgyzstan Islamic University - official website",
+      "description": "News, admissions, faculties, and information about academic programs.",
+      "siteName": "Kyrgyzstan Islamic University",
+      "imageAlt": "Kyrgyzstan Islamic University - official website"
+    },
+    "twitter": {
+      "title": "Kyrgyzstan Islamic University",
+      "description": "Official website of Kyrgyzstan Islamic University - news, admissions, and faculties."
+    }
   },
   "NotFoundPage": {
     "title": "Page not found",
