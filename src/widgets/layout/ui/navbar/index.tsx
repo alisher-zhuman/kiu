@@ -4,7 +4,7 @@ import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 
 export const Navbar = () => (
-  <nav className="bg-[#004C97] sticky top-0 z-10">
+  <nav className="bg-[#004C97] sticky top-0 z-10 hidden md:block">
     <ul className="max-w-400 m-auto flex items-center justify-evenly gap-5 px-10 text-white font-semibold text-lg">
       {NAVBAR_LINKS.map(({ href, label, links }) => (
         <li
