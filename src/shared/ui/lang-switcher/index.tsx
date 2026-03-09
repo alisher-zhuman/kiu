@@ -27,18 +27,29 @@ export const LangSwitcher = () => {
 
   const router = useRouter();
 
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
   const rootRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const localeLabels = getLocaleLabels(t);
 
   const currentOption = localeLabels[currentLocale];
+
+  const closeMenu = () => {
+    if (panelRef.current?.contains(document.activeElement)) {
+      triggerRef.current?.focus();
+    }
+
+    setIsOpen(false);
+  };
 
   const closeDropdown = useEffectEvent((event: MouseEvent) => {
     if (rootRef.current?.contains(event.target as Node)) {
       return;
     }
 
-    setIsOpen(false);
+    closeMenu();
   });
 
   useEffect(() => {
@@ -55,11 +66,11 @@ export const LangSwitcher = () => {
 
   const handleLocaleChange = (nextLocale: AppLocale) => {
     if (nextLocale === currentLocale) {
-      setIsOpen(false);
+      closeMenu();
       return;
     }
 
-    setIsOpen(false);
+    closeMenu();
 
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
@@ -69,6 +80,7 @@ export const LangSwitcher = () => {
   return (
     <div ref={rootRef} className="relative">
       <button
+        ref={triggerRef}
         type="button"
         aria-expanded={isOpen}
         aria-controls="language-switcher-panel"
@@ -86,6 +98,7 @@ export const LangSwitcher = () => {
       </button>
 
       <div
+        ref={panelRef}
         id="language-switcher-panel"
         aria-hidden={!isOpen}
         className={cn(
