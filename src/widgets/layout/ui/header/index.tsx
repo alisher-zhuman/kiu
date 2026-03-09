@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Menu, X } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
 import { LangSwitcher } from "@/shared/ui/lang-switcher";
 
-import { MobileNavbar } from "../navbar/mobile";
+import { Menu } from "../menu";
+import { Navbar } from "../navbar";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,24 +36,18 @@ export const Header = () => {
   return (
     <>
       <header className="relative z-30 max-w-400 m-auto flex items-center justify-between px-5 py-3 md:px-10 md:py-2">
-        <div className="size-10 shrink-0 md:size-12">
-          <button
-            type="button"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-navbar"
-            aria-label={isMenuOpen ? t("closeMenuLabel") : t("menuLabel")}
-            onClick={() => setIsMenuOpen((current) => !current)}
-            className="flex size-10 items-center justify-center text-black md:hidden"
-          >
-            {isMenuOpen ? (
-              <X size={28} strokeWidth={1.75} />
-            ) : (
-              <Menu size={28} strokeWidth={1.75} />
-            )}
-          </button>
-        </div>
+        <Menu
+          isOpen={isMenuOpen}
+          menuLabel={t("menuLabel")}
+          closeMenuLabel={t("closeMenuLabel")}
+          onToggle={() => setIsMenuOpen((current) => !current)}
+        />
 
-        <Link href="/" onClick={closeMenu} className="flex items-center gap-2 md:gap-4">
+        <Link
+          href="/"
+          onClick={closeMenu}
+          className="flex items-center gap-2 md:gap-4"
+        >
           <Image
             src="/icons/logo.svg"
             alt={t("logoAlt")}
@@ -73,7 +67,7 @@ export const Header = () => {
         <LangSwitcher />
       </header>
 
-      {isMenuOpen && <MobileNavbar onNavigate={closeMenu} />}
+      {isMenuOpen && <Navbar isMobile onNavigate={closeMenu} />}
     </>
   );
 };
