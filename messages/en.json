@@ -2,7 +2,8 @@
   "Header": {
     "title": "Kyrgyzstan Islamic University",
     "logoAlt": "Kyrgyzstan Islamic University logo",
-    "menuLabel": "Open menu"
+    "menuLabel": "Open menu",
+    "closeMenuLabel": "Close menu"
   },
   "LangSwitcher": {
     "triggerLabel": "Change language",
