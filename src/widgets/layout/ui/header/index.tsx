@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { Menu } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
@@ -10,7 +11,15 @@ export const Header = async () => {
 
   return (
     <header className="max-w-400 m-auto flex items-center justify-between px-5 py-3 md:py-2 md:px-10">
-      <div />
+      <div className="size-10 shrink-0 md:size-12">
+        <button
+          type="button"
+          aria-label={t("menuLabel")}
+          className="flex size-10 items-center justify-center text-black md:hidden"
+        >
+          <Menu size={28} strokeWidth={1.75} />
+        </button>
+      </div>
 
       <Link href="/" className="flex items-center gap-2 md:gap-4">
         <Image
