@@ -9,7 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { LangSwitcher } from "@/shared/ui/lang-switcher";
 
 import { Menu } from "../menu";
-import { Navbar } from "../navbar";
+import { MobileNavbar } from "../mobile-navbar";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,7 +67,7 @@ export const Header = () => {
         <LangSwitcher />
       </header>
 
-      {isMenuOpen && <Navbar isMobile onNavigate={closeMenu} />}
+      {isMenuOpen && <MobileNavbar onNavigate={closeMenu} />}
     </>
   );
 };
