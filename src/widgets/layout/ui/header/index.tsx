@@ -67,7 +67,7 @@ export const Header = () => {
         <LangSwitcher />
       </header>
 
-      {isMenuOpen && <MobileNavbar onNavigate={closeMenu} />}
+      <MobileNavbar isOpen={isMenuOpen} onNavigate={closeMenu} />
     </>
   );
 };

@@ -10,10 +10,11 @@ import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 
 interface Props {
+  isOpen: boolean;
   onNavigate: () => void;
 }
 
-export const MobileNavbar = ({ onNavigate }: Props) => {
+export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   const t = useTranslations("Navbar");
@@ -21,9 +22,19 @@ export const MobileNavbar = ({ onNavigate }: Props) => {
   return (
     <div
       id="mobile-navbar"
-      className="fixed inset-x-0 top-16 bottom-0 z-20 overflow-y-auto bg-[#004C97] px-5 py-6 text-white md:hidden"
+      className={cn(
+        "fixed inset-x-0 top-16 bottom-0 z-20 overflow-y-auto bg-[#004C97] px-5 py-6 text-white transition-all duration-300 ease-out md:hidden",
+        isOpen
+          ? "visible translate-y-0 opacity-100"
+          : "pointer-events-none invisible translate-y-3 opacity-0",
+      )}
     >
-      <nav className="mx-auto flex max-w-md flex-col gap-6">
+      <nav
+        className={cn(
+          "mx-auto flex max-w-md flex-col gap-6 transition-all duration-300 ease-out",
+          isOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
+        )}
+      >
         {NAVBAR_LINKS.map(({ href, labelKey, links }) =>
           links ? (
             <div key={href} className="border-b border-white/15 pb-6">
