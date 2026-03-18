@@ -1,5 +1,7 @@
-import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+
+import { Link } from "@/i18n/navigation";
 
 export const AboutUs = () => {
   const t = useTranslations("AboutUs");
@@ -9,24 +11,32 @@ export const AboutUs = () => {
       aria-labelledby="about-us-title"
       className="max-w-400 m-auto px-5 mt-10 md:mt-30 md:px-10"
     >
-      <h1 className="text-5xl md:text-6xl font-bold text-center">О нас</h1>
+      <header>
+        <h2 id="about-us-title" className="text-5xl md:text-6xl font-bold text-center">
+          {t("title")}
+        </h2>
+      </header>
 
       <p className="md:text-3xl mt-5">
-        Кыргызстан Ислам университети — Кыргызстан мусулмандарынын дин
-        башкармасынын (КМДБ) алдында Ислам дининин баалуулуктарын жана шарият
-        өкүмдөрүн илимий негизде үйрөткөн жогорку окуу жай. 1990-жылдардын
-        башында Кыргызстандын диний башкармалыктын башчысы Кимсанбай ажы
-        Абдрахманов Бишкек шаарында Ислам медресесин ачуу демилгесин көтөрүп
-        чыккан. бардыгын окуу.....
+        {t.rich("body", {
+          readMore: (chunks) => (
+            <Link href="/history" className="font-semibold text-inherit">
+              {chunks}
+            </Link>
+          ),
+        })}
       </p>
 
-      <Image
-        src="/images/about-us.webp"
-        alt="О нас"
-        className="w-full h-auto mt-8"
-        width={400}
-        height={300}
-      />
+      <figure className="mt-8">
+        <Image
+          src="/images/about-us.webp"
+          alt={t("imageAlt")}
+          className="w-full h-auto"
+          width={400}
+          height={300}
+          sizes="(min-width: 1024px) 1280px, 100vw"
+        />
+      </figure>
     </section>
   );
 };

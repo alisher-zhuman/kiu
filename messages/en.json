@@ -34,23 +34,22 @@
     "mute": "Mute sound"
   },
   "AboutUs": {
-    "eyebrow": "About the university",
-    "title": "Kyrgyzstan Islamic University brings together academic learning, moral formation, and an open educational environment.",
-    "descriptionPrimary": "The university approaches religious and secular disciplines not as isolated tracks, but as connected fields shaped by responsibility, research culture, and service to society.",
-    "descriptionSecondary": "This website will gradually bring together key information about the university structure, academic tracks, admissions, news, and opportunities for students.",
-    "cards": {
-      "education": {
-        "title": "Academic direction",
-        "description": "Programs are built to connect classroom theory with practical life, professional responsibility, and long-term intellectual growth."
-      },
-      "environment": {
-        "title": "Open environment",
-        "description": "Clear and accessible communication for applicants, students, and faculty is treated as part of the university's core approach."
-      },
-      "values": {
-        "title": "Values and focus",
-        "description": "The university culture is grounded in discipline, ethics, respect for knowledge, and responsibility to society."
-      }
+    "title": "About us",
+    "body": "Kyrgyzstan Islamic University is a higher educational institution under the Spiritual Administration of Muslims of Kyrgyzstan, where Islamic values and Sharia principles are taught on an academic basis. In the early 1990s, the head of Kyrgyzstan's religious administration, Kimsanbay Azhy Abdrakhmanov, proposed opening an Islamic madrasa in Bishkek. <readMore>Read more...</readMore>",
+    "imageAlt": "Image about Kyrgyzstan Islamic University"
+  },
+  "HistoryPage": {
+    "title": "History of Kyrgyzstan Islamic University",
+    "lead": "Kyrgyzstan Islamic University is a higher educational institution under the Spiritual Administration of Muslims of Kyrgyzstan, where Islamic values and Sharia principles are taught on an academic basis.",
+    "imageAlt": "Image related to the history of Kyrgyzstan Islamic University",
+    "paragraphs": {
+      "foundation": "In the early 1990s, the head of Kyrgyzstan's religious administration, Kimsanbay Azhy Abdrakhmanov, proposed opening an Islamic madrasa in Bishkek. This step reflected the need to build a structured and sustainable foundation for religious education in the country.",
+      "development": "Later, that initiative expanded and became the basis for an educational institution where religious knowledge is combined with academic discipline. The university seeks to approach Islamic sciences together with moral formation, responsibility, and modern educational standards.",
+      "today": "Today, Kyrgyzstan Islamic University continues to grow as a space that brings together education, research, and spiritual formation, aiming to create a learning environment grounded in values and respect for knowledge."
+    },
+    "meta": {
+      "title": "History of Kyrgyzstan Islamic University",
+      "description": "Information about the foundation, development, and current path of Kyrgyzstan Islamic University."
     }
   },
   "Navbar": {
