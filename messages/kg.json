@@ -81,8 +81,8 @@
     },
     "contact": {
       "title": "Кабылдама",
-      "phone": "Тел: +(996) 312-48-61-71, +(996) 312-48-62-72",
-      "fax": "Fax: +(996) 312-48-61-79"
+      "phoneLabel": "Тел:",
+      "faxLabel": "Fax:"
     },
     "menuTitle": "Меню",
     "copyright": "© {year} KIU"

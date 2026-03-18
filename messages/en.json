@@ -81,8 +81,8 @@
     },
     "contact": {
       "title": "Admissions office",
-      "phone": "Tel: +(996) 312-48-61-71, +(996) 312-48-62-72",
-      "fax": "Fax: +(996) 312-48-61-79"
+      "phoneLabel": "Tel:",
+      "faxLabel": "Fax:"
     },
     "menuTitle": "Menu",
     "copyright": "© {year} KIU"

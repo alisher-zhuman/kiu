@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ChevronDown, Facebook, Instagram, Youtube } from "lucide-react";
@@ -5,14 +8,29 @@ import { ChevronDown, Facebook, Instagram, Youtube } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
 import { NAVBAR_LINKS } from "@/shared/constants";
+import { cn } from "@/shared/helpers";
 
 const SOCIAL_ICONS = [Instagram, Facebook, Youtube] as const;
 const FOOTER_NAVBAR_LINKS = [
   ...NAVBAR_LINKS.filter(({ href }) => href !== "/research"),
   ...NAVBAR_LINKS.filter(({ href }) => href === "/research"),
 ] as const;
+const MAPS_URL = "https://go.2gis.com/UPwUS";
+const PHONE_LINKS = [
+  {
+    href: "tel:+996312486171",
+    label: "+(996) 312-48-61-71",
+  },
+  {
+    href: "tel:+996312486272",
+    label: "+(996) 312-48-62-72",
+  },
+] as const;
+const FAX_LABEL = "+(996) 312-48-61-79";
 
 export const Footer = () => {
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
   const footerT = useTranslations("Footer");
   const headerT = useTranslations("Header");
   const navbarT = useTranslations("Navbar");
@@ -32,7 +50,7 @@ export const Footer = () => {
         />
       </div>
 
-      <div className="relative max-w-400 m-auto grid gap-14 px-5 py-10 md:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)] md:items-start md:px-10 md:py-14">
+      <div className="relative max-w-400 m-auto flex flex-col gap-14 px-5 py-10 md:grid md:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)] md:items-start md:px-10 md:py-14">
         <div className="max-w-md">
           <Link href="/" className="inline-block">
             <Image
@@ -44,16 +62,42 @@ export const Footer = () => {
             />
           </Link>
 
-          <address className="mt-12 space-y-8 not-italic text-xl leading-9 md:text-2xl md:leading-[1.4]">
+          <address className="mt-12 flex flex-col gap-8 not-italic text-xl leading-9 md:text-2xl md:leading-[1.4]">
             <div>
-              <p>{footerT("address.line1")}</p>
-              <p>{footerT("address.line2")}</p>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex flex-col transition-opacity hover:opacity-80"
+              >
+                <span>{footerT("address.line1")}</span>
+                <span>{footerT("address.line2")}</span>
+              </a>
             </div>
 
-            <div>
+            <div className="flex flex-col gap-1">
               <p>{footerT("contact.title")}</p>
-              <p>{footerT("contact.phone")}</p>
-              <p>{footerT("contact.fax")}</p>
+
+              <div className="flex flex-wrap gap-x-2 gap-y-1">
+                <span>{footerT("contact.phoneLabel")}</span>
+
+                {PHONE_LINKS.map(({ href, label }, index) => (
+                  <span key={href}>
+                    <a
+                      href={href}
+                      className="transition-opacity hover:opacity-80"
+                    >
+                      {label}
+                    </a>
+
+                    {index < PHONE_LINKS.length - 1 && ","}
+                  </span>
+                ))}
+              </div>
+
+              <p>
+                {footerT("contact.faxLabel")} {FAX_LABEL}
+              </p>
             </div>
           </address>
 
@@ -69,23 +113,44 @@ export const Footer = () => {
         </div>
 
         <nav aria-label={footerT("menuTitle")} className="md:pt-12">
-          <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-10 md:text-center">
+          <ul className="mt-6 flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-10 md:text-center">
             {FOOTER_NAVBAR_LINKS.map(({ href, labelKey, links }) => (
               <li key={href}>
                 {links ? (
                   <div>
-                    <details className="group border-b border-white/15 pb-4 md:hidden">
-                      <summary className="flex list-none items-center justify-between gap-4 text-xl font-medium text-white [&::-webkit-details-marker]:hidden">
-                        <span>{navbarT(labelKey)}</span>
+                    <button
+                      type="button"
+                      aria-expanded={openSection === href}
+                      aria-controls={`footer-${href}-links`}
+                      onClick={() =>
+                        setOpenSection((current) =>
+                          current === href ? null : href,
+                        )
+                      }
+                      className="flex w-full items-center justify-between gap-4 border-b border-white/15 pb-4 text-left text-xl font-medium text-white md:hidden"
+                    >
+                      <span>{navbarT(labelKey)}</span>
 
-                        <ChevronDown
-                          size={20}
-                          strokeWidth={1.75}
-                          className="shrink-0 transition-transform duration-200 group-open:rotate-180"
-                        />
-                      </summary>
+                      <ChevronDown
+                        size={20}
+                        strokeWidth={1.75}
+                        className={cn(
+                          "shrink-0 transition-transform duration-300 ease-out",
+                          openSection === href && "rotate-180",
+                        )}
+                      />
+                    </button>
 
-                      <ul className="mt-3 space-y-2 pl-4 text-base text-white/80">
+                    <div
+                      id={`footer-${href}-links`}
+                      className={cn(
+                        "grid transition-all duration-300 ease-out md:hidden",
+                        openSection === href
+                          ? "grid-rows-[1fr] pt-3 opacity-100"
+                          : "grid-rows-[0fr] pt-0 opacity-0",
+                      )}
+                    >
+                      <ul className="min-h-0 space-y-2 overflow-hidden pl-4 text-base text-white/80">
                         {links.map(
                           ({ href: nestedHref, labelKey: nestedLabelKey }) => (
                             <li key={nestedHref}>
@@ -99,11 +164,11 @@ export const Footer = () => {
                           ),
                         )}
                       </ul>
-                    </details>
+                    </div>
 
                     <div className="hidden md:block">
                       <p className="text-xl font-medium text-white md:text-2xl">
-                        {navbarT(labelKey)}
+                        <span>{navbarT(labelKey)}</span>
                       </p>
 
                       <ul className="mt-3 space-y-2 text-base text-white/80 md:text-lg">
