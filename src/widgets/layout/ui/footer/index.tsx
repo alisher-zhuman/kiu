@@ -10,7 +10,23 @@ import { Link } from "@/i18n/navigation";
 import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 
-const SOCIAL_ICONS = [Instagram, Facebook, Youtube] as const;
+const SOCIAL_LINKS = [
+  {
+    href: "https://www.instagram.com/kyrgyzstan_islam_universiteti/",
+    label: "Instagram",
+    Icon: Instagram,
+  },
+  {
+    href: "https://www.facebook.com/kiuniver?_rdr",
+    label: "Facebook",
+    Icon: Facebook,
+  },
+  {
+    href: "https://www.youtube.com/channel/UC1qlOEbXXoVXoNZmQLEfkyA",
+    label: "YouTube",
+    Icon: Youtube,
+  },
+] as const;
 const FOOTER_NAVBAR_LINKS = [
   ...NAVBAR_LINKS.filter(({ href }) => href !== "/research"),
   ...NAVBAR_LINKS.filter(({ href }) => href === "/research"),
@@ -50,7 +66,7 @@ export const Footer = () => {
         />
       </div>
 
-      <div className="relative max-w-400 m-auto flex flex-col gap-14 px-5 py-10 md:grid md:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)] md:items-start md:px-10 md:py-14">
+      <div className="relative max-w-400 mt-10 m-auto flex flex-col gap-14 px-5 py-10 md:grid md:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)] md:items-start md:px-10 md:py-14">
         <div className="max-w-md">
           <Link href="/" className="inline-block">
             <Image
@@ -101,18 +117,24 @@ export const Footer = () => {
             </div>
           </address>
 
-          <ul className="mt-12 flex items-center gap-4" aria-hidden="true">
-            {SOCIAL_ICONS.map((Icon) => (
-              <li key={Icon.displayName ?? Icon.name}>
-                <div className="flex size-12 items-center justify-center rounded-xl bg-white text-[#004C97] md:size-14">
+          <ul className="mt-10 flex items-center gap-4">
+            {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="flex size-12 p-3 items-center justify-center rounded-xl bg-white text-[#004C97] transition-transform duration-200 hover:-translate-y-px hover:opacity-90 md:size-14"
+                >
                   <Icon size={26} strokeWidth={2} />
-                </div>
+                </a>
               </li>
             ))}
           </ul>
         </div>
 
-        <nav aria-label={footerT("menuTitle")} className="md:pt-12">
+        <nav aria-label={footerT("menuTitle")} className="md:pt-12 mt-10">
           <ul className="mt-6 flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-10 md:text-center">
             {FOOTER_NAVBAR_LINKS.map(({ href, labelKey, links }) => (
               <li key={href}>
@@ -201,7 +223,7 @@ export const Footer = () => {
         </nav>
       </div>
 
-      <div className="relative max-w-400 m-auto px-5 pb-6 md:px-10 md:pb-8">
+      <div className="relative max-w-400 m-auto px-5 pb-6 md:px-10 md:pb-8 mt-10">
         <p className="text-sm text-white/90 md:text-lg">
           {footerT("copyright", { year: new Date().getFullYear() })}
         </p>
