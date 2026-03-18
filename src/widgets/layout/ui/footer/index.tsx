@@ -1,25 +1,16 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { ChevronDown, Facebook, Instagram, Youtube } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
-const FOOTER_MENU_LINKS = [
-  {
-    href: "/applicants",
-    labelKey: "applicants.label",
-  },
-  {
-    href: "/news",
-    labelKey: "news",
-  },
-  {
-    href: "/courses",
-    labelKey: "courses",
-  },
-] as const;
+import { NAVBAR_LINKS } from "@/shared/constants";
 
 const SOCIAL_ICONS = [Instagram, Facebook, Youtube] as const;
+const FOOTER_NAVBAR_LINKS = [
+  ...NAVBAR_LINKS.filter(({ href }) => href !== "/research"),
+  ...NAVBAR_LINKS.filter(({ href }) => href === "/research"),
+] as const;
 
 export const Footer = () => {
   const footerT = useTranslations("Footer");
@@ -37,11 +28,11 @@ export const Footer = () => {
           alt=""
           width={620}
           height={620}
-          className="h-auto w-90 opacity-15 sm:w-110 md:w-160"
+          className="h-auto w-90 opacity-15 sm:w-110 md:w-170"
         />
       </div>
 
-      <div className="relative max-w-400 m-auto grid gap-14 px-5 py-10 md:grid-cols-[1fr_auto] md:px-10 md:py-14">
+      <div className="relative max-w-400 m-auto grid gap-14 px-5 py-10 md:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)] md:items-start md:px-10 md:py-14">
         <div className="max-w-md">
           <Link href="/" className="inline-block">
             <Image
@@ -79,21 +70,69 @@ export const Footer = () => {
 
         <nav
           aria-label={footerT("menuTitle")}
-          className="text-left md:justify-self-end md:text-right"
+          className="md:pt-12"
         >
-          <p className="text-2xl font-semibold md:text-3xl">
+          <p className="text-2xl font-semibold md:text-center md:text-3xl">
             {footerT("menuTitle")}
           </p>
 
-          <ul className="mt-6 space-y-4 text-xl md:space-y-6 md:text-3xl">
-            {FOOTER_MENU_LINKS.map(({ href, labelKey }) => (
+          <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-10 md:text-center">
+            {FOOTER_NAVBAR_LINKS.map(({ href, labelKey, links }) => (
               <li key={href}>
-                <Link
-                  href={href}
-                  className="transition-colors hover:text-white/75"
-                >
-                  {navbarT(labelKey)}
-                </Link>
+                {links ? (
+                  <div>
+                    <details className="group border-b border-white/15 pb-4 md:hidden">
+                      <summary className="flex list-none items-center justify-between gap-4 text-xl font-medium text-white [&::-webkit-details-marker]:hidden">
+                        <span>{navbarT(labelKey)}</span>
+
+                        <ChevronDown
+                          size={20}
+                          strokeWidth={1.75}
+                          className="shrink-0 transition-transform duration-200 group-open:rotate-180"
+                        />
+                      </summary>
+
+                      <ul className="mt-3 space-y-2 pl-4 text-base text-white/80">
+                        {links.map(({ href: nestedHref, labelKey: nestedLabelKey }) => (
+                          <li key={nestedHref}>
+                            <Link
+                              href={nestedHref}
+                              className="transition-colors hover:text-white"
+                            >
+                              {navbarT(nestedLabelKey)}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+
+                    <div className="hidden md:block">
+                      <p className="text-xl font-medium text-white md:text-2xl">
+                        {navbarT(labelKey)}
+                      </p>
+
+                      <ul className="mt-3 space-y-2 text-base text-white/80 md:text-lg">
+                        {links.map(({ href: nestedHref, labelKey: nestedLabelKey }) => (
+                          <li key={nestedHref}>
+                            <Link
+                              href={nestedHref}
+                              className="transition-colors hover:text-white"
+                            >
+                              {navbarT(nestedLabelKey)}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    href={href}
+                    className="block border-b border-white/15 pb-4 text-xl font-medium transition-colors hover:text-white/75 md:border-0 md:pb-0 md:text-2xl"
+                  >
+                    {navbarT(labelKey)}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

@@ -14,6 +14,11 @@ interface Props {
   onNavigate: () => void;
 }
 
+const MOBILE_NAVBAR_LINKS = [
+  ...NAVBAR_LINKS.filter(({ href }) => href !== "/research"),
+  ...NAVBAR_LINKS.filter(({ href }) => href === "/research"),
+] as const;
+
 export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
@@ -35,7 +40,7 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
           isOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
         )}
       >
-        {NAVBAR_LINKS.map(({ href, labelKey, links }) =>
+        {MOBILE_NAVBAR_LINKS.map(({ href, labelKey, links }) =>
           links ? (
             <div key={href} className="border-b border-white/15 pb-6">
               <button
