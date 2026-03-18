@@ -35,7 +35,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className="relative z-30 max-w-400 m-auto flex items-center justify-between px-5 py-3 md:px-10 md:py-2">
+      <header className="relative z-40 max-w-400 m-auto flex items-center justify-between px-5 py-3 md:px-10 md:py-2">
         <Menu
           isOpen={isMenuOpen}
           menuLabel={t("menuLabel")}

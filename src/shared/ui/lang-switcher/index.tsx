@@ -102,7 +102,7 @@ export const LangSwitcher = () => {
         id="language-switcher-panel"
         aria-hidden={!isOpen}
         className={cn(
-          "absolute right-1 md:right-20 md:-bottom-20 z-20 flex md:origin-top flex-col gap-2 overflow-hidden rounded-4xl bg-[#0c56a5] p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-200 ease-out",
+          "absolute right-1 md:right-20 md:-bottom-20 z-50 flex md:origin-top flex-col gap-2 overflow-hidden rounded-4xl bg-[#0c56a5] p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-200 ease-out",
           isOpen
             ? "translate-y-0 scale-100 opacity-100"
             : "pointer-events-none invisible translate-y-2 scale-95 opacity-0",
