@@ -28,10 +28,6 @@ export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
     labelKey: "students.label",
     links: [
       {
-        href: "/students/bachelor",
-        labelKey: "students.links.bachelor",
-      },
-      {
         href: "/students/avn-portal",
         labelKey: "students.links.avnPortal",
       },
@@ -50,16 +46,20 @@ export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
     labelKey: "structure.label",
     links: [
       {
-        href: "/structure/rector",
-        labelKey: "structure.links.rector",
+        href: "/structure/rectorate",
+        labelKey: "structure.links.rectorate",
       },
       {
-        href: "/structure/administration",
-        labelKey: "structure.links.administration",
+        href: "/structure/departments",
+        labelKey: "structure.links.departments",
       },
       {
         href: "/structure/documents",
         labelKey: "structure.links.documents",
+      },
+      {
+        href: "/structure/certificates-and-licenses",
+        labelKey: "structure.links.certificatesAndLicenses",
       },
     ],
   },

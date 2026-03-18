@@ -114,7 +114,6 @@
     "students": {
       "label": "Студенттерге",
       "links": {
-        "bachelor": "Окуу бөлүмү (бакалавр)",
         "avnPortal": "AVN билим берүү порталы",
         "schedule": "Жадыбал",
         "tuition": "Окуу акысы"
@@ -123,9 +122,10 @@
     "structure": {
       "label": "Структура",
       "links": {
-        "rector": "Ректор",
-        "administration": "Администрация",
-        "documents": "Документтер"
+        "rectorate": "Ректорат",
+        "departments": "Бөлүмдөр",
+        "documents": "Документтер",
+        "certificatesAndLicenses": "Сертификаттар жана лицензиялар"
       }
     },
     "courses": "Курстар",

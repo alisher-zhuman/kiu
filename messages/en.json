@@ -104,7 +104,7 @@
   "Navbar": {
     "research": "Research",
     "applicants": {
-      "label": "Applicants",
+      "label": "For Applicants",
       "links": {
         "forApplicants": "For applicants",
         "tuition": "Tuition information",
@@ -114,7 +114,6 @@
     "students": {
       "label": "Students",
       "links": {
-        "bachelor": "Academic program (Bachelor's)",
         "avnPortal": "AVN education portal",
         "schedule": "Schedule",
         "tuition": "Tuition payment"
@@ -123,9 +122,10 @@
     "structure": {
       "label": "Structure",
       "links": {
-        "rector": "Rector",
-        "administration": "Administration",
-        "documents": "Documents"
+        "rectorate": "Rectorate",
+        "departments": "Departments",
+        "documents": "Documents",
+        "certificatesAndLicenses": "Certificates and licenses"
       }
     },
     "courses": "Courses",

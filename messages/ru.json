@@ -104,7 +104,7 @@
   "Navbar": {
     "research": "Научные исследования",
     "applicants": {
-      "label": "Абитуриентам",
+      "label": "Для абитуриентов",
       "links": {
         "forApplicants": "Для абитуриентов",
         "tuition": "Информация об оплате",
@@ -112,9 +112,8 @@
       }
     },
     "students": {
-      "label": "Студентам",
+      "label": "Студенту",
       "links": {
-        "bachelor": "Учебное (бакалавр)",
         "avnPortal": "Образовательный портал AVN",
         "schedule": "Расписание",
         "tuition": "Оплата за обучение"
@@ -123,9 +122,10 @@
     "structure": {
       "label": "Структура",
       "links": {
-        "rector": "Ректор",
-        "administration": "Администрация",
-        "documents": "Документы"
+        "rectorate": "Ректорат",
+        "departments": "Отделы",
+        "documents": "Документы",
+        "certificatesAndLicenses": "Сертификаты и лицензии"
       }
     },
     "courses": "Курсы",
