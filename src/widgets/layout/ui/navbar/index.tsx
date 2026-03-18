@@ -9,7 +9,7 @@ export const Navbar = () => {
   const t = useTranslations("Navbar");
 
   return (
-    <nav className="sticky top-0 z-10 hidden bg-[#004C97] md:block">
+    <nav className="sticky top-0 z-20 hidden bg-[#004C97] md:block">
       <ul className="max-w-400 m-auto flex items-center justify-evenly gap-5 px-10 text-xs font-semibold text-white lg:text-lg">
         {NAVBAR_LINKS.map(({ href, labelKey, links }) => (
           <li
