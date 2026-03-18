@@ -1,12 +1,12 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 
 import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 
-export const Navbar = async () => {
-  const t = await getTranslations("Navbar");
+export const Navbar = () => {
+  const t = useTranslations("Navbar");
 
   return (
     <nav className="sticky top-0 z-10 hidden bg-[#004C97] md:block">

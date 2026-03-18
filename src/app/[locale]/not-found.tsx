@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 
-const NotFoundPage = async () => {
-  const t = await getTranslations("NotFoundPage");
-  const headerT = await getTranslations("Header");
+const NotFoundPage = () => {
+  const t = useTranslations("NotFoundPage");
+  const headerT = useTranslations("Header");
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#004C97] text-white">
