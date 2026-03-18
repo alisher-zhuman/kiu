@@ -68,13 +68,13 @@ export const Intro = () => {
         </button>
       </div>
 
-      <div className="max-w-400 m-auto px-5 py-5 md:hidden">
-        <div className="relative inline-flex bg-[#004C97] px-5 py-5">
-          <p className="text-3xl leading-tight font-bold text-white">
+      <div className="pr-16 md:hidden">
+        <div className="relative inline-flex bg-[#004C97] pl-5 py-5">
+          <p className="text-3xl relative z-20 leading-tight font-bold text-white">
             {t("quote")}
           </p>
 
-          <div className="absolute top-0 -right-6 h-full w-10 origin-left -skew-x-12 bg-[#004C97]" />
+          <div className="absolute z-10 top-0 -right-6 h-full w-16 origin-left -skew-x-12 bg-[#004C97]" />
         </div>
       </div>
     </section>
