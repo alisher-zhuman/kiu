@@ -74,6 +74,19 @@
     "message": "In the Quran, Almighty Allah says: “Allah will raise in درجات those among you who believe and those who have been given knowledge...”. Our Prophet (peace and blessings be upon him) said: “The scholars are the heirs of the prophets.” The high rank of scholars is tied to their role in uniting the Muslim community, keeping it from straying from the right path, and guiding it toward the path to Paradise. The primary duty of scholars is to preserve harmony among people and strengthen their unity. Throughout human history, no matter how many prophets came, their mission was always to unite people. May Almighty Allah make us steadfast in His religion and among those who guide others to the right path.",
     "imageAlt": "Abdushukur Narmatov, rector of Kyrgyzstan Islamic University"
   },
+  "Footer": {
+    "address": {
+      "line1": "Kyrgyz Republic,",
+      "line2": "57 Gogol Street, Bishkek"
+    },
+    "contact": {
+      "title": "Admissions office",
+      "phone": "Tel: +(996) 312-48-61-71, 312-48-62-72",
+      "fax": "Fax: +(996) 312-48-61-79"
+    },
+    "menuTitle": "Menu",
+    "copyright": "© {year} KIU"
+  },
   "HistoryPage": {
     "title": "History of Kyrgyzstan Islamic University",
     "lead": "Kyrgyzstan Islamic University is a higher educational institution under the Spiritual Administration of Muslims of Kyrgyzstan, where Islamic values and Sharia principles are taught on an academic basis.",
