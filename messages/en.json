@@ -28,6 +28,10 @@
     "title": "Welcome to Kyrgyzstan Islamic University",
     "description": "This website will publish university news, admissions details, academic programs, and practical information for students."
   },
+  "Intro": {
+    "unmute": "Enable sound",
+    "mute": "Mute sound"
+  },
   "Navbar": {
     "research": "Research",
     "applicants": {
