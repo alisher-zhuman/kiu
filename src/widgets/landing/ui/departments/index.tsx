@@ -14,7 +14,7 @@ export const Departments = () => {
     >
       <h2
         id="departments-title"
-        className="text-5xl md:text-6xl font-bold text-center"
+        className="text-5xl md:text-6xl font-bold text-center mb-15"
       >
         {t("title")}
       </h2>
