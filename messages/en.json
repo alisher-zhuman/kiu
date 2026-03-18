@@ -47,6 +47,27 @@
       "sharia": "Sharia"
     }
   },
+  "Statistics": {
+    "title": "Statistics",
+    "items": {
+      "books": {
+        "value": "2650",
+        "label": "books in the library"
+      },
+      "teachers": {
+        "value": "47",
+        "label": "teachers"
+      },
+      "employment": {
+        "value": "96%",
+        "label": "employed in their profession"
+      },
+      "students": {
+        "value": "12 000",
+        "label": "students in one academic year"
+      }
+    }
+  },
   "HistoryPage": {
     "title": "History of Kyrgyzstan Islamic University",
     "lead": "Kyrgyzstan Islamic University is a higher educational institution under the Spiritual Administration of Muslims of Kyrgyzstan, where Islamic values and Sharia principles are taught on an academic basis.",

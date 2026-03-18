@@ -13,12 +13,12 @@ export const AboutUs = () => {
     >
       <h2
         id="about-us-title"
-        className="text-5xl md:text-6xl font-bold text-center"
+        className="text-4xl md:text-6xl font-bold text-center"
       >
         {t("title")}
       </h2>
 
-      <p className="md:text-3xl mt-5">
+      <p className="md:text-3xl mt-10">
         {t.rich("body", {
           readMore: (chunks) => (
             <Link href="/history" className="font-semibold text-inherit">

@@ -21,20 +21,20 @@ export const Departments = () => {
           src="/icons/logo.svg"
           alt=""
           width={220}
-          height={220}
-          className="h-auto w-full p-5"
+          height={315}
+          className="h-100 w-full p-5"
         />
       </div>
 
       <h2
         id="departments-title"
-        className="relative z-10 text-5xl md:text-6xl font-bold text-center"
+        className="relative z-10 text-4xl md:text-6xl font-bold text-center"
       >
         {t("title")}
       </h2>
 
       <nav aria-label={t("navLabel")} className="relative z-10">
-        <ul className="flex flex-col md:flex-row justify-center items-center gap-5 mt-5 md:mt-10 md:gap-10">
+        <ul className="flex flex-col md:flex-row justify-center flex-wrap items-center gap-5 mt-5 md:mt-10 md:gap-10">
           {DEPARTMENT_LINKS.map(({ href, labelKey }) => (
             <li key={href}>
               <Link
