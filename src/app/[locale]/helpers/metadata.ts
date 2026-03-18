@@ -3,13 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { type AppLocale } from "@/i18n/routing";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-
-const OPEN_GRAPH_LOCALES: Record<AppLocale, string> = {
-  kg: "ky_KG",
-  ru: "ru_RU",
-  en: "en_US",
-};
+import { OPEN_GRAPH_LOCALES, SITE_URL } from "../constants";
 
 export const getMetadata = async (locale: AppLocale): Promise<Metadata> => {
   const t = await getTranslations({ locale, namespace: "Metadata" });

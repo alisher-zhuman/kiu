@@ -9,7 +9,7 @@ import { setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 
-import { getMetadata } from "@shared/constants";
+import { getMetadata } from "./helpers/metadata";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],

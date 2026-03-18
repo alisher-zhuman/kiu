@@ -1,4 +1,4 @@
-import { type DepartmentLink } from "@/shared/types";
+import { type DepartmentLink } from "../types";
 
 export const DEPARTMENT_LINKS: ReadonlyArray<DepartmentLink> = [
   {

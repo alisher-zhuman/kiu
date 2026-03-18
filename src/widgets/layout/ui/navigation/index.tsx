@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 
 import { cn } from "@/shared/helpers";
 
-import { FOOTER_NAVBAR_LINKS } from "../footer/constants";
+import { FOOTER_NAVBAR_LINKS } from "../../constants";
 
 interface Props {
   getLabel: (key: string) => string;

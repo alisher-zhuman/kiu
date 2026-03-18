@@ -6,8 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 
-import { LangSwitcher } from "@/shared/ui/lang-switcher";
-
+import { LangSwitcher } from "../lang-switcher";
 import { Menu } from "../menu";
 import { MobileNavbar } from "../mobile-navbar";
 

@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 
-import { DEPARTMENT_LINKS } from "@/shared/constants";
+import { DEPARTMENT_LINKS } from "../../constants";
 
 export const Departments = () => {
   const t = useTranslations("Departments");
