@@ -48,7 +48,7 @@ export const Intro = () => {
               {t("quote")}
             </p>
 
-            <div className="absolute top-0 -right-10 h-full w-16 origin-left -skew-x-12 bg-[#004C97]" />
+            <div className="absolute top-0 -right-8.5 h-full w-16 origin-left -skew-x-12 bg-[#004C97]" />
           </div>
         </div>
 
