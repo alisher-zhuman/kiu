@@ -44,7 +44,7 @@ export const Footer = () => {
             />
           </Link>
 
-          <address className="mt-12 space-y-8 not-italic text-xl leading-9 md:text-3xl md:leading-[1.4]">
+          <address className="mt-12 space-y-8 not-italic text-xl leading-9 md:text-2xl md:leading-[1.4]">
             <div>
               <p>{footerT("address.line1")}</p>
               <p>{footerT("address.line2")}</p>
@@ -68,14 +68,7 @@ export const Footer = () => {
           </ul>
         </div>
 
-        <nav
-          aria-label={footerT("menuTitle")}
-          className="md:pt-12"
-        >
-          <p className="text-2xl font-semibold md:text-center md:text-3xl">
-            {footerT("menuTitle")}
-          </p>
-
+        <nav aria-label={footerT("menuTitle")} className="md:pt-12">
           <ul className="mt-6 grid gap-4 md:grid-cols-3 md:gap-10 md:text-center">
             {FOOTER_NAVBAR_LINKS.map(({ href, labelKey, links }) => (
               <li key={href}>
@@ -93,16 +86,18 @@ export const Footer = () => {
                       </summary>
 
                       <ul className="mt-3 space-y-2 pl-4 text-base text-white/80">
-                        {links.map(({ href: nestedHref, labelKey: nestedLabelKey }) => (
-                          <li key={nestedHref}>
-                            <Link
-                              href={nestedHref}
-                              className="transition-colors hover:text-white"
-                            >
-                              {navbarT(nestedLabelKey)}
-                            </Link>
-                          </li>
-                        ))}
+                        {links.map(
+                          ({ href: nestedHref, labelKey: nestedLabelKey }) => (
+                            <li key={nestedHref}>
+                              <Link
+                                href={nestedHref}
+                                className="transition-colors hover:text-white"
+                              >
+                                {navbarT(nestedLabelKey)}
+                              </Link>
+                            </li>
+                          ),
+                        )}
                       </ul>
                     </details>
 
@@ -112,16 +107,18 @@ export const Footer = () => {
                       </p>
 
                       <ul className="mt-3 space-y-2 text-base text-white/80 md:text-lg">
-                        {links.map(({ href: nestedHref, labelKey: nestedLabelKey }) => (
-                          <li key={nestedHref}>
-                            <Link
-                              href={nestedHref}
-                              className="transition-colors hover:text-white"
-                            >
-                              {navbarT(nestedLabelKey)}
-                            </Link>
-                          </li>
-                        ))}
+                        {links.map(
+                          ({ href: nestedHref, labelKey: nestedLabelKey }) => (
+                            <li key={nestedHref}>
+                              <Link
+                                href={nestedHref}
+                                className="transition-colors hover:text-white"
+                              >
+                                {navbarT(nestedLabelKey)}
+                              </Link>
+                            </li>
+                          ),
+                        )}
                       </ul>
                     </div>
                   </div>
