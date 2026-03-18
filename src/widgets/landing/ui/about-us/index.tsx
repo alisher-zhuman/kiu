@@ -11,11 +11,12 @@ export const AboutUs = () => {
       aria-labelledby="about-us-title"
       className="max-w-400 m-auto px-5 mt-10 md:mt-30 md:px-10"
     >
-      <header>
-        <h2 id="about-us-title" className="text-5xl md:text-6xl font-bold text-center">
-          {t("title")}
-        </h2>
-      </header>
+      <h2
+        id="about-us-title"
+        className="text-5xl md:text-6xl font-bold text-center"
+      >
+        {t("title")}
+      </h2>
 
       <p className="md:text-3xl mt-5">
         {t.rich("body", {
@@ -27,16 +28,14 @@ export const AboutUs = () => {
         })}
       </p>
 
-      <figure className="mt-8">
-        <Image
-          src="/images/about-us.webp"
-          alt={t("imageAlt")}
-          className="w-full h-auto"
-          width={400}
-          height={300}
-          sizes="(min-width: 1024px) 1280px, 100vw"
-        />
-      </figure>
+      <Image
+        src="/images/about-us.webp"
+        alt={t("imageAlt")}
+        className="mt-8 w-full h-auto"
+        width={400}
+        height={300}
+        sizes="(min-width: 1024px) 1280px, 100vw"
+      />
     </section>
   );
 };
