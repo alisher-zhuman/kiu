@@ -23,7 +23,7 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
     <div
       id="mobile-navbar"
       className={cn(
-        "fixed inset-x-0 top-16 bottom-0 z-20 overflow-y-auto bg-[#004C97] px-5 py-6 text-white transition-all duration-300 ease-out md:hidden",
+        "fixed inset-x-0 top-16 bottom-0 z-30 overflow-y-auto bg-[#004C97] px-5 py-6 text-white transition-all duration-300 ease-out md:hidden",
         isOpen
           ? "visible translate-y-0 opacity-100"
           : "pointer-events-none invisible translate-y-3 opacity-0",
