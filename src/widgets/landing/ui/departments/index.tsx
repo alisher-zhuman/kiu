@@ -14,18 +14,18 @@ export const Departments = () => {
     >
       <h2
         id="departments-title"
-        className="text-5xl md:text-6xl font-bold text-center mb-15"
+        className="text-5xl md:text-6xl font-bold text-center"
       >
         {t("title")}
       </h2>
 
       <nav aria-label={t("navLabel")}>
-        <ul className="flex justify-center items-center gap-10">
+        <ul className="flex flex-col md:flex-row justify-center items-center gap-5 mt-5 md:gap-10">
           {DEPARTMENT_LINKS.map(({ href, labelKey }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="bg-[#004C97] py-5 px-20 rounded-xl text-white text-3xl font-medium"
+                className="bg-[#004C97] py-4 inline-block text-center w-50 md:w-auto md:py-5 md:px-20 rounded-xl text-white md:text-3xl font-medium"
               >
                 {t(labelKey)}
               </Link>
