@@ -1,3 +1,4 @@
+import { Intro } from "@/widgets/landing/ui/intro";
 import { Header } from "@/widgets/layout/ui/header";
 import { Navbar } from "@/widgets/layout/ui/navbar";
 
@@ -6,6 +7,7 @@ const Home = () => {
     <main>
       <Header />
       <Navbar />
+      <Intro />
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores laborum
       explicabo blanditiis maxime magni sapiente, beatae alias perspiciatis
       ratione quo reprehenderit numquam, saepe repudiandae porro nam? Unde
