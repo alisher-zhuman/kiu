@@ -12,7 +12,7 @@ export const Rector = () => {
       <Image
         src="/images/rector.webp"
         alt={t("imageAlt")}
-        className="h-auto w-full md:h-170 md:w-138.75"
+        className="h-auto w-full md:h-140 md:w-138.75"
         width={555}
         height={680}
         sizes="555px"
