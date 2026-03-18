@@ -33,6 +33,26 @@
     "unmute": "Enable sound",
     "mute": "Mute sound"
   },
+  "AboutUs": {
+    "eyebrow": "About the university",
+    "title": "Kyrgyzstan Islamic University brings together academic learning, moral formation, and an open educational environment.",
+    "descriptionPrimary": "The university approaches religious and secular disciplines not as isolated tracks, but as connected fields shaped by responsibility, research culture, and service to society.",
+    "descriptionSecondary": "This website will gradually bring together key information about the university structure, academic tracks, admissions, news, and opportunities for students.",
+    "cards": {
+      "education": {
+        "title": "Academic direction",
+        "description": "Programs are built to connect classroom theory with practical life, professional responsibility, and long-term intellectual growth."
+      },
+      "environment": {
+        "title": "Open environment",
+        "description": "Clear and accessible communication for applicants, students, and faculty is treated as part of the university's core approach."
+      },
+      "values": {
+        "title": "Values and focus",
+        "description": "The university culture is grounded in discipline, ethics, respect for knowledge, and responsibility to society."
+      }
+    }
+  },
   "Navbar": {
     "research": "Research",
     "applicants": {
