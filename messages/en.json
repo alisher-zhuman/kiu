@@ -39,7 +39,13 @@
     "imageAlt": "Image about Kyrgyzstan Islamic University"
   },
   "Departments": {
-    "title": "Departments"
+    "title": "Departments",
+    "navLabel": "Departments list",
+    "items": {
+      "theology": "Theology",
+      "philology": "Philology",
+      "sharia": "Sharia"
+    }
   },
   "HistoryPage": {
     "title": "History of Kyrgyzstan Islamic University",
