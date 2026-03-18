@@ -42,9 +42,9 @@ export const Intro = () => {
           <source src="/videos/intro.mp4" type="video/mp4" />
         </video>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden px-6 pb-8 md:block lg:px-8 lg:pb-10">
-          <div className="relative inline-flex bg-[#004C97] px-8 py-6">
-            <p className="max-w-5xl text-5xl leading-tight font-bold text-white lg:text-6xl">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden pr-14 pb-14 md:block">
+          <div className="relative inline-flex bg-[#004C97] px-6 py-4 lg:px-8 lg:py-6">
+            <p className="max-w-5xl text-4xl leading-tight font-bold text-white lg:text-6xl">
               {t("quote")}
             </p>
 
