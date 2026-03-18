@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
@@ -10,17 +11,30 @@ export const Departments = () => {
   return (
     <section
       aria-labelledby="departments-title"
-      className="max-w-400 m-auto px-5 mt-10 md:mt-30 md:px-10"
+      className="relative max-w-400 m-auto px-5 mt-30 md:px-10"
     >
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 -top-14 flex justify-center opacity-15 md:hidden"
+      >
+        <Image
+          src="/icons/logo.svg"
+          alt=""
+          width={220}
+          height={220}
+          className="h-auto w-full p-5"
+        />
+      </div>
+
       <h2
         id="departments-title"
-        className="text-5xl md:text-6xl font-bold text-center"
+        className="relative z-10 text-5xl md:text-6xl font-bold text-center"
       >
         {t("title")}
       </h2>
 
-      <nav aria-label={t("navLabel")}>
-        <ul className="flex flex-col md:flex-row justify-center items-center gap-5 mt-5 md:gap-10">
+      <nav aria-label={t("navLabel")} className="relative z-10">
+        <ul className="flex flex-col md:flex-row justify-center items-center gap-5 mt-5 md:mt-10 md:gap-10">
           {DEPARTMENT_LINKS.map(({ href, labelKey }) => (
             <li key={href}>
               <Link
