@@ -278,5 +278,46 @@
     "title": "Page not found",
     "description": "The page may have been removed, moved, or the URL is incorrect.",
     "action": "Back to homepage"
+  },
+  "ApplicantsPage": {
+    "title": "Kyrgyzstan Islamic University",
+    "sections": [
+      {
+        "title": "General information for applicants",
+        "description": "Kyrgyzstan Islamic University invites applicants to study in higher education programs that combine classical university education with the spiritual and moral values of Islam.\n\nEducation at the university is aimed at developing professional competencies, academic culture, responsibility, and respect for the traditional values of society."
+      },
+      {
+        "title": "Educational programs",
+        "description": "Kyrgyzstan Islamic University offers the following educational programs:",
+        "items": [
+          "Theology;",
+          "Arabic Philology;",
+          "Sharia."
+        ],
+        "note": "Each program specifies the level of education, mode and duration of study, as well as the qualification awarded."
+      },
+      {
+        "title": "Admission rules",
+        "description": "Admission to Kyrgyzstan Islamic University is carried out in accordance with the admission rules approved annually.",
+        "note": "The admission rules are published in open access and include the document submission procedure, enrollment conditions, and requirements for applicants."
+      },
+      {
+        "title": "Entrance examinations",
+        "description": "To enter the university, applicants take entrance examinations in the form of testing and/or an interview according to the selected educational program."
+      },
+      {
+        "title": "Admission timeline",
+        "description": "The deadlines for document submission, entrance examinations, and enrollment are approved annually and published on the university's official website."
+      },
+      {
+        "title": "Tuition fees",
+        "description": "Tuition fees are determined for each educational program separately and approved by the rector's order."
+      },
+      {
+        "title": "Admissions office contacts",
+        "description": "The admissions office of Kyrgyzstan Islamic University provides consultations on enrollment matters.",
+        "note": "The address, phone numbers, email, and office hours of the admissions office are published on the university's website."
+      }
+    ]
   }
 }

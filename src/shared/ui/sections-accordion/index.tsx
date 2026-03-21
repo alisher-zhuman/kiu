@@ -4,14 +4,13 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/shared/helpers";
-
-import { type ScienceSection } from "../../types";
+import { type Section } from "@/shared/types";
 
 interface Props {
-  sections: ReadonlyArray<ScienceSection>;
+  sections: ReadonlyArray<Section>;
 }
 
-export const Sections = ({ sections }: Props) => {
+export const SectionsAccordion = ({ sections }: Props) => {
   const [openSection, setOpenSection] = useState<number | null>(0);
 
   return (
@@ -19,7 +18,7 @@ export const Sections = ({ sections }: Props) => {
       {sections.map(({ title, description, items, note }, index) => {
         const isOpen = openSection === index;
         const isLast = index === sections.length - 1;
-        const panelId = `science-section-${index}`;
+        const panelId = `section-${index}`;
 
         return (
           <section
