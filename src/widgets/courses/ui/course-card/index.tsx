@@ -1,3 +1,5 @@
+import { isExternalHref } from "@/shared/helpers";
+
 import { type Course, type CourseLabels } from "../../types";
 
 interface Props {
@@ -62,17 +64,23 @@ export const CourseCard = ({ course, labels }: Props) => {
           <div className="space-y-2 md:space-y-3">
             <p>{labels.contacts}:</p>
             <div className="flex flex-wrap gap-y-1">
-              {contacts.map(({ href, label }, index) => (
-                <span key={href}>
-                  <a
-                    href={href}
-                    className="transition-colors hover:text-[#004C97]"
-                  >
-                    {label}
-                  </a>
-                  {index < contacts.length - 1 ? ", " : null}
-                </span>
-              ))}
+              {contacts.map(({ href, label }, index) => {
+                const isExternal = isExternalHref(href);
+
+                return (
+                  <span key={href}>
+                    <a
+                      href={href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noreferrer" : undefined}
+                      className="transition-colors hover:text-[#004C97]"
+                    >
+                      {label}
+                    </a>
+                    {index < contacts.length - 1 ? ", " : null}
+                  </span>
+                );
+              })}
             </div>
           </div>
         ) : null}

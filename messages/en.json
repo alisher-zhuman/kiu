@@ -319,5 +319,49 @@
         "note": "The address, phone numbers, email, and office hours of the admissions office are published on the university's website."
       }
     ]
+  },
+  "RequiredDocumentsPage": {
+    "title": "Required documents",
+    "sections": [
+      {
+        "items": [
+          "Passport;",
+          "Original school certificate;",
+          "Military ID (copy);",
+          "Six 3x4 photos;",
+          "Certificate of residence;",
+          "Medical certificate form 086;",
+          "Military ID or registration certificate (for men);",
+          "Original ORT certificate;",
+          "500 KGS for document processing."
+        ],
+        "contactsLabel": "Contact phone",
+        "contacts": [
+          {
+            "href": "tel:0501425656",
+            "label": "0501425656"
+          },
+          {
+            "href": "tel:0222425656",
+            "label": "0222425656"
+          }
+        ]
+      },
+      {
+        "title": "For citizens of other countries",
+        "items": [
+          "Passport with notarized certification;",
+          "School certificate with notarized certification;",
+          "Certificate of residence;",
+          "Medical certificate No. 086;",
+          "Certificate confirming absence of HIV/AIDS;",
+          "Police clearance certificate;",
+          "Six 3x4 photos;",
+          "Military ID or registration certificate;",
+          "500 KGS for document processing."
+        ]
+      }
+    ],
+    "support": "We provide special support and tuition discounts for students who have been left without parental care or who have lost one of their parents."
   }
 }
