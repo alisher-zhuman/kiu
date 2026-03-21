@@ -20,7 +20,7 @@ const SciencePage = () => (
             </h2>
 
             {description ? (
-              <p className="max-w-6xl whitespace-pre-line text-base leading-7 text-black/85 sm:text-lg sm:leading-8 md:text-[1.7rem] md:leading-[1.55]">
+              <p className="whitespace-pre-line text-base leading-7 text-black/85 sm:text-lg sm:leading-8 md:text-[1.7rem] md:leading-[1.55]">
                 {description}
               </p>
             ) : null}
@@ -34,7 +34,7 @@ const SciencePage = () => (
             ) : null}
 
             {note ? (
-              <p className="max-w-6xl text-base leading-7 text-black/85 sm:text-lg sm:leading-8 md:text-[1.7rem] md:leading-[1.55]">
+              <p className="text-base leading-7 text-black/85 sm:text-lg sm:leading-8 md:text-[1.7rem] md:leading-[1.55]">
                 {note}
               </p>
             ) : null}
