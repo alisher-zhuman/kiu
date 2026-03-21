@@ -5,6 +5,6 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-export const isExternalHref = (href: string) => {
+export const checkExternalHref = (href: string) => {
   return href.startsWith("http://") || href.startsWith("https://");
 };

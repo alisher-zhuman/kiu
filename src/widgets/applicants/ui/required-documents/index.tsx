@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { isExternalHref } from "@/shared/helpers";
+import { checkExternalHref } from "@/shared/helpers";
 
 import { type RequiredDocumentsSection } from "../../types";
 import { SupportCard } from "../support-card";
@@ -42,7 +42,7 @@ export const RequiredDocuments = () => {
                     <li>
                       {contactsLabel}:{" "}
                       {contacts.map(({ href, label }, contactIndex) => {
-                        const isExternal = isExternalHref(href);
+                        const isExternal = checkExternalHref(href);
 
                         return (
                           <span key={href}>

@@ -1,4 +1,4 @@
-import { isExternalHref } from "@/shared/helpers";
+import { checkExternalHref } from "@/shared/helpers";
 
 import { type Course, type CourseLabels } from "../../types";
 
@@ -65,7 +65,7 @@ export const CourseCard = ({ course, labels }: Props) => {
             <p>{labels.contacts}:</p>
             <div className="flex flex-wrap gap-y-1">
               {contacts.map(({ href, label }, index) => {
-                const isExternal = isExternalHref(href);
+                const isExternal = checkExternalHref(href);
 
                 return (
                   <span key={href}>
