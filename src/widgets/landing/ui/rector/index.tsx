@@ -7,7 +7,7 @@ export const Rector = () => {
   return (
     <section
       aria-labelledby="rector-title"
-      className="max-w-400 m-auto mt-30 px-5 md:flex md:justify-between md:gap-10 md:px-10"
+      className="max-w-400 m-auto mb-30 mt-30 px-5 md:flex md:justify-between md:gap-10 md:px-10"
     >
       <Image
         src="/images/rector.webp"

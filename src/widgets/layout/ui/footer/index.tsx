@@ -16,7 +16,7 @@ export const Footer = () => {
   const navbarT = useTranslations("Navbar");
 
   return (
-    <footer className="relative mt-30 overflow-hidden bg-[#004C97] text-white">
+    <footer className="relative overflow-hidden bg-[#004C97] text-white">
       <BgLogo />
 
       <div className="relative max-w-400 m-auto flex flex-col gap-14 px-5 py-10 md:grid md:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)] md:items-start md:px-10 md:py-14">
