@@ -10,7 +10,7 @@ export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
     labelKey: "applicants.label",
     links: [
       {
-        href: "/applicants/for-applicants",
+        href: "/applicants",
         labelKey: "applicants.links.forApplicants",
       },
       {
