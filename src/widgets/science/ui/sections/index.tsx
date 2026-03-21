@@ -15,13 +15,17 @@ export const Sections = ({ sections }: Props) => {
   const [openSection, setOpenSection] = useState<number | null>(0);
 
   return (
-    <div className="mt-10 border-t border-black/15 md:mt-16">
+    <div className="mt-10 md:mt-16">
       {sections.map(({ title, description, items, note }, index) => {
         const isOpen = openSection === index;
+        const isLast = index === sections.length - 1;
         const panelId = `science-section-${index}`;
 
         return (
-          <section key={title} className="border-b border-black/15">
+          <section
+            key={title}
+            className={cn(!isLast && "border-b border-black/10")}
+          >
             <button
               type="button"
               aria-expanded={isOpen}
@@ -29,7 +33,7 @@ export const Sections = ({ sections }: Props) => {
               onClick={() =>
                 setOpenSection((current) => (current === index ? null : index))
               }
-              className="flex w-full items-center justify-between gap-4 py-5 text-left md:py-7"
+              className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left md:py-7"
             >
               <h2 className="text-xl font-bold sm:text-2xl md:text-4xl">
                 {title}
