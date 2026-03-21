@@ -39,7 +39,7 @@ export const Departments = () => {
             <li key={href}>
               <Link
                 href={href}
-                className="bg-[#004C97] py-4 inline-block text-center w-50 md:w-auto md:py-5 md:px-20 rounded-xl text-white md:text-3xl font-medium"
+                className="inline-block w-50 rounded-xl bg-[#004C97] py-4 text-center font-medium text-white transition-colors duration-200 hover:bg-[#002E5C] md:w-auto md:px-20 md:py-5 md:text-3xl"
               >
                 {t(labelKey)}
               </Link>
