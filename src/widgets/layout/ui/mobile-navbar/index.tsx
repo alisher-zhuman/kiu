@@ -24,7 +24,7 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
   const t = useTranslations("Navbar");
 
   return (
-    <div
+    <nav
       id="mobile-navbar"
       className={cn(
         "fixed inset-x-0 top-16 bottom-0 z-30 overflow-y-auto bg-[#004C97] px-5 py-6 text-white transition-all duration-300 ease-out md:hidden",
@@ -100,6 +100,6 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
           ),
         )}
       </nav>
-    </div>
+    </nav>
   );
 };
