@@ -102,7 +102,7 @@
     }
   },
   "Navbar": {
-    "research": "Научные исследования",
+    "science": "Наука",
     "applicants": {
       "label": "Абитуриентам",
       "links": {

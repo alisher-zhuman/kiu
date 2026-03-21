@@ -1,6 +1,6 @@
 import { NAVBAR_LINKS } from "@/shared/constants";
 
-import { moveResearchToEnd } from "../helpers";
+import { moveScienceToEnd } from "../helpers";
 import { type PhoneLink, type SocialLink } from "../types";
 
 export const SOCIAL_LINKS: ReadonlyArray<SocialLink> = [
@@ -21,7 +21,7 @@ export const SOCIAL_LINKS: ReadonlyArray<SocialLink> = [
   },
 ] as const;
 
-export const FOOTER_NAVBAR_LINKS = moveResearchToEnd(NAVBAR_LINKS);
+export const FOOTER_NAVBAR_LINKS = moveScienceToEnd(NAVBAR_LINKS);
 
 export const MAPS_URL = "https://go.2gis.com/UPwUS";
 

@@ -102,7 +102,7 @@
     }
   },
   "Navbar": {
-    "research": "Research",
+    "science": "Science",
     "applicants": {
       "label": "Applicants",
       "links": {

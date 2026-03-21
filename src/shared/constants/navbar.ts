@@ -2,8 +2,8 @@ import { type NavbarLink } from "@/shared/types";
 
 export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
   {
-    href: "/research",
-    labelKey: "research",
+    href: "/science",
+    labelKey: "science",
   },
   {
     href: "/applicants",

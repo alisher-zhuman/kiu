@@ -102,7 +102,7 @@
     }
   },
   "Navbar": {
-    "research": "Илим изилдөө",
+    "science": "Илим",
     "applicants": {
       "label": "Абитуриенттерге",
       "links": {

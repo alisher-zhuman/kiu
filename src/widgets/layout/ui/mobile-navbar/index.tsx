@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
-import { moveResearchToEnd } from "@/widgets/layout/helpers";
+import { moveScienceToEnd } from "@/widgets/layout/helpers";
 
 import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
@@ -16,7 +16,7 @@ interface Props {
   onNavigate: () => void;
 }
 
-const MOBILE_NAVBAR_LINKS = moveResearchToEnd(NAVBAR_LINKS);
+const MOBILE_NAVBAR_LINKS = moveScienceToEnd(NAVBAR_LINKS);
 
 export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
   const [openSection, setOpenSection] = useState<string | null>(null);
