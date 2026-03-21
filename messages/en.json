@@ -101,6 +101,78 @@
       "description": "Information about the foundation, development, and current path of Kyrgyzstan Islamic University."
     }
   },
+  "SciencePage": {
+    "title": "SCIENCE SECTION",
+    "sections": [
+      {
+        "title": "General information about scientific activity",
+        "description": "The scientific activity of Kyrgyzstan Islamic University is an integral part of the educational process and is aimed at developing Islamic and humanities scholarship, as well as training highly qualified specialists.\n\nAt KIU, research is conducted on the principles of academic integrity, scientific objectivity, Islamic ethics, and service to society. The university creates conditions for the active involvement of faculty and students in research activities."
+      },
+      {
+        "title": "Main research areas",
+        "description": "Research at Kyrgyzstan Islamic University is carried out in the following priority areas:",
+        "items": [
+          "Islamic theology and Aqeedah;",
+          "Arabic philology and linguistics;",
+          "Islamic law (fiqh) and comparative legal studies;",
+          "Islamic history and Muslim culture;",
+          "religious studies and interfaith dialogue;",
+          "pedagogy and methodology of religious education;",
+          "spiritual and moral development of youth."
+        ]
+      },
+      {
+        "title": "Research work",
+        "description": "Kyrgyzstan Islamic University carries out planned and initiative-based research conducted by faculty members and students.\n\nResearch is aimed at developing Islamic sciences, addressing urgent issues of modern society, and integrating research results into the educational process."
+      },
+      {
+        "title": "Scientific publications (publication activity)",
+        "description": "The KIU faculty publishes academic works in the following formats:",
+        "items": [
+          "research articles;",
+          "monographs;",
+          "textbooks and teaching guides;",
+          "scientific conference proceedings."
+        ],
+        "note": "Scientific publications are an important indicator for assessing the effectiveness of the university's research activity."
+      },
+      {
+        "title": "Scientific events",
+        "description": "Kyrgyzstan Islamic University organizes and holds the following events aimed at developing research potential and exchanging experience:",
+        "items": [
+          "scientific and practical conferences;",
+          "seminars;",
+          "round tables;",
+          "academic discussions."
+        ],
+        "note": "The outcomes of these events are published in the form of reports and collected materials."
+      },
+      {
+        "title": "Student research activity",
+        "description": "Student research work is an important part of the educational process at Kyrgyzstan Islamic University.\n\nStudents are involved in scientific activity through the following formats:",
+        "items": [
+          "participation in research clubs;",
+          "completion of research projects;",
+          "participation in conferences and competitions;",
+          "publication of research articles."
+        ]
+      },
+      {
+        "title": "Scientific cooperation",
+        "description": "Kyrgyzstan Islamic University develops scientific cooperation with educational, research, and religious organizations.\n\nCooperation is carried out in the following areas:",
+        "items": [
+          "joint research projects;",
+          "participation in scientific events;",
+          "exchange of experience and academic information;",
+          "implementation of joint projects."
+        ]
+      },
+      {
+        "title": "Science news",
+        "description": "This section publishes information about the university's scientific achievements, publications by faculty and students, participation in conferences, and other science-related news."
+      }
+    ]
+  },
   "Navbar": {
     "science": "Science",
     "applicants": {
