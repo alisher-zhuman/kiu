@@ -5,13 +5,13 @@ import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/shared/helpers";
 
-import { type ScienceSection } from "../types";
+import { type ScienceSection } from "../../types";
 
 interface Props {
   sections: ReadonlyArray<ScienceSection>;
 }
 
-export const ScienceContent = ({ sections }: Props) => {
+export const Sections = ({ sections }: Props) => {
   const [openSection, setOpenSection] = useState<number | null>(0);
 
   return (
