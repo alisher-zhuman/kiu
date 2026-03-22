@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 
+import { Gallery } from "../gallery";
 import { MissionBlock } from "../mission-block";
 
 export const History = () => {
@@ -14,12 +15,31 @@ export const History = () => {
           </h1>
         </div>
 
-        <div className="relative mt-10 space-y-10 text-base leading-8 text-black/80 md:mt-14 md:space-y-12 md:text-2xl md:leading-[1.6]">
-          <p>{t("introduction")}</p>
+        <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-[minmax(0,1fr)_16rem] md:items-start md:gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
+          <div className="space-y-10 text-base leading-8 text-black/80 md:space-y-12 md:text-2xl md:leading-[1.6]">
+            <p>{t("introduction")}</p>
 
-          <MissionBlock mission={t("mission")} missionTitle={t("missionTitle")} />
+            <div className="md:hidden">
+              <Gallery
+                firstImageAlt={t("gallery.firstImageAlt")}
+                secondImageAlt={t("gallery.secondImageAlt")}
+              />
+            </div>
 
-          <p className="whitespace-pre-line">{t("history")}</p>
+            <MissionBlock
+              mission={t("mission")}
+              missionTitle={t("missionTitle")}
+            />
+
+            <p className="whitespace-pre-line">{t("history")}</p>
+          </div>
+
+          <div className="hidden md:block">
+            <Gallery
+              firstImageAlt={t("gallery.firstImageAlt")}
+              secondImageAlt={t("gallery.secondImageAlt")}
+            />
+          </div>
         </div>
       </article>
     </main>
