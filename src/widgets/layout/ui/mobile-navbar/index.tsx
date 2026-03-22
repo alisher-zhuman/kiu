@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { ChevronDown } from "lucide-react";
 
-import { Link } from "@/i18n/navigation";
-
 import { moveScienceToEnd } from "@/widgets/layout/helpers";
 
 import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
+
+import { NavigationLink } from "../navigation-link";
 
 interface Props {
   isOpen: boolean;
@@ -75,28 +75,28 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
                 <div className="flex min-h-0 flex-col gap-2 overflow-hidden pl-4">
                   {links.map(
                     ({ href: nestedHref, labelKey: nestedLabelKey }) => (
-                      <Link
+                      <NavigationLink
                         key={nestedHref}
                         href={nestedHref}
                         onClick={onNavigate}
                         className="text-sm font-medium text-white/80 transition-colors hover:text-white"
                       >
                         {t(nestedLabelKey)}
-                      </Link>
+                      </NavigationLink>
                     ),
                   )}
                 </div>
               </div>
             </div>
           ) : (
-            <Link
+            <NavigationLink
               key={href}
               href={href}
               onClick={onNavigate}
               className="border-b border-white/15 pb-4 text-lg font-semibold text-white transition-colors hover:text-white/80"
             >
               {t(labelKey)}
-            </Link>
+            </NavigationLink>
           ),
         )}
       </nav>

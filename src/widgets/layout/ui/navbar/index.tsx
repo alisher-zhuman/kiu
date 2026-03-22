@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 
-import { Link } from "@/i18n/navigation";
-
 import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
+
+import { NavigationLink } from "../navigation-link";
 
 export const Navbar = () => {
   const t = useTranslations("Navbar");
@@ -23,11 +23,11 @@ export const Navbar = () => {
                 </span>
               </span>
             ) : (
-              <Link href={href} className="-mx-2 block px-2 py-6">
+              <NavigationLink href={href} className="-mx-2 block px-2 py-6">
                 <span className="relative block text-white/92 transition-all duration-200 group-hover:-translate-y-px group-hover:text-[#ffea00] after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-0 after:-translate-x-1/2 after:bg-[#ffea00] after:transition-all after:duration-200 group-hover:after:w-full">
                   {t(labelKey)}
                 </span>
-              </Link>
+              </NavigationLink>
             )}
 
             {links && (
@@ -40,13 +40,13 @@ export const Navbar = () => {
                 <div className="flex flex-col gap-1">
                   {links.map(
                     ({ href: nestedHref, labelKey: nestedLabelKey }) => (
-                      <Link
+                      <NavigationLink
                         key={nestedHref}
                         href={nestedHref}
                         className="rounded-2xl px-4 py-3 text-sm font-medium text-white/92 transition-colors duration-200 hover:bg-white/8 hover:text-[#ffea00]"
                       >
                         {t(nestedLabelKey)}
-                      </Link>
+                      </NavigationLink>
                     ),
                   )}
                 </div>

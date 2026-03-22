@@ -28,7 +28,7 @@ export const NAVBAR_LINKS: ReadonlyArray<NavbarLink> = [
     labelKey: "students.label",
     links: [
       {
-        href: "/students/avn-portal",
+        href: "http://avn.kiu.kg/lms",
         labelKey: "students.links.avnPortal",
       },
       {

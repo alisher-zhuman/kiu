@@ -1,10 +1,9 @@
 import { ChevronDown } from "lucide-react";
 
-import { Link } from "@/i18n/navigation";
-
 import { cn } from "@/shared/helpers";
 
 import { FOOTER_NAVBAR_LINKS } from "../../constants";
+import { NavigationLink } from "../navigation-link";
 
 interface Props {
   getLabel: (key: string) => string;
@@ -57,12 +56,12 @@ export const Navigation = ({
                   {links.map(
                     ({ href: nestedHref, labelKey: nestedLabelKey }) => (
                       <li key={nestedHref}>
-                        <Link
+                        <NavigationLink
                           href={nestedHref}
                           className="transition-colors hover:text-white"
                         >
                           {getLabel(nestedLabelKey)}
-                        </Link>
+                        </NavigationLink>
                       </li>
                     ),
                   )}
@@ -78,12 +77,12 @@ export const Navigation = ({
                   {links.map(
                     ({ href: nestedHref, labelKey: nestedLabelKey }) => (
                       <li key={nestedHref}>
-                        <Link
+                        <NavigationLink
                           href={nestedHref}
                           className="transition-colors hover:text-white"
                         >
                           {getLabel(nestedLabelKey)}
-                        </Link>
+                        </NavigationLink>
                       </li>
                     ),
                   )}
@@ -91,12 +90,12 @@ export const Navigation = ({
               </div>
             </div>
           ) : (
-            <Link
+            <NavigationLink
               href={href}
               className="block border-b border-white/15 pb-4 text-xl font-medium transition-colors hover:text-white/75 md:border-0 md:pb-0 md:text-2xl"
             >
               {getLabel(labelKey)}
-            </Link>
+            </NavigationLink>
           )}
         </li>
       ))}
