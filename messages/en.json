@@ -82,6 +82,9 @@
     "menuTitle": "Menu",
     "copyright": "© {year} KIU"
   },
+  "Layout": {
+    "back": "Back"
+  },
   "SciencePage": {
     "title": "SCIENCE SECTION",
     "sections": [

@@ -82,6 +82,9 @@
     "menuTitle": "Меню",
     "copyright": "© {year} KIU"
   },
+  "Layout": {
+    "back": "Назад"
+  },
   "SciencePage": {
     "title": "РАЗДЕЛ «НАУКА»",
     "sections": [
