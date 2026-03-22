@@ -7,33 +7,39 @@ interface Props {
 }
 
 export const Content = ({ action, description, title }: Props) => (
-  <div className="grid gap-10 md:grid-cols-[auto_1fr] md:items-end md:gap-16">
-    <div className="space-y-4">
-      <p className="text-sm font-semibold uppercase tracking-widest text-[#ffea00]">
+  <div className="space-y-10 md:space-y-12">
+    <div className="space-y-4 md:space-y-5">
+      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#004C97]">
         404
       </p>
-      <p className="text-8xl leading-none font-light text-white/15 sm:text-9xl">
-        404
-      </p>
+
+      <div className="border-l-2 border-black pl-3 md:pl-4">
+        <h1
+          id="not-found-title"
+          className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+        >
+          {title}
+        </h1>
+      </div>
     </div>
 
-    <div className="max-w-2xl space-y-6">
-      <div className="h-px w-24 bg-[#ffea00]" />
+    <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end md:gap-12">
+      <div className="max-w-3xl space-y-6">
+        <p className="text-base leading-8 text-black/70 sm:text-lg">
+          {description}
+        </p>
 
-      <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-        {title}
-      </h1>
+        <Link
+          href="/"
+          className="inline-flex items-center rounded-full border border-[#004C97] px-6 py-3 text-sm font-semibold text-[#004C97] transition-colors hover:bg-[#004C97] hover:text-white"
+        >
+          {action}
+        </Link>
+      </div>
 
-      <p className="max-w-xl text-base leading-8 text-white/80 sm:text-lg">
-        {description}
+      <p className="select-none text-8xl font-semibold leading-none text-[#004C97]/10 sm:text-9xl md:text-[12rem]">
+        404
       </p>
-
-      <Link
-        href="/"
-        className="inline-flex items-center rounded-full bg-[#ffea00] px-6 py-3 text-sm font-semibold text-[#004C97] transition-colors hover:bg-white"
-      >
-        {action}
-      </Link>
     </div>
   </div>
 );
