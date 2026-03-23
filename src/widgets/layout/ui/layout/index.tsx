@@ -1,5 +1,7 @@
 import { type ReactNode } from "react";
 
+import { PageReveal } from "@/shared/ui/page-reveal";
+
 import { BackButton } from "../back-button";
 import { Footer } from "../footer";
 import { Header } from "../header";
@@ -14,7 +16,7 @@ export const Layout = ({ children }: Props) => (
     <Header />
     <Navbar />
     <BackButton />
-    {children}
+    <PageReveal>{children}</PageReveal>
     <Footer />
   </>
 );
