@@ -31,7 +31,7 @@ export const Content = ({ action, description, title }: Props) => (
 
         <Link
           href="/"
-          className="inline-flex items-center rounded-full border border-[#004C97] px-6 py-3 text-sm font-semibold text-[#004C97] transition-colors hover:bg-[#004C97] hover:text-white"
+          className="inline-flex items-center rounded-full border border-[#004C97] px-6 py-3 text-sm font-semibold text-[#004C97] transition-all duration-200 hover:-translate-y-px hover:bg-[#004C97] hover:text-white"
         >
           {action}
         </Link>
