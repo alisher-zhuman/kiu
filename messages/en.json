@@ -313,7 +313,13 @@
       {
         "title": "Admission rules",
         "description": "Admission to Kyrgyzstan Islamic University is carried out in accordance with the admission rules approved annually.",
-        "note": "The admission rules are published in open access and include the document submission procedure, enrollment conditions, and requirements for applicants."
+        "note": "The admission rules are published in open access and include the document submission procedure, enrollment conditions, and requirements for applicants.",
+        "action": {
+          "label": "View",
+          "href": "/pdfs/admission-rules.pdf",
+          "openInNewTab": true,
+          "downloadFileName": "admission-rules.pdf"
+        }
       },
       {
         "title": "Entrance examinations",

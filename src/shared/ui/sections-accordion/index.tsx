@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/shared/helpers";
-import { type Section } from "@/shared/types";
+import { type Section, type SectionAction } from "@/shared/types";
 
 interface Props {
   sections: ReadonlyArray<Section>;
@@ -13,9 +13,34 @@ interface Props {
 export const SectionsAccordion = ({ sections }: Props) => {
   const [openSection, setOpenSection] = useState<number | null>(0);
 
+  const handleActionClick = ({
+    downloadFileName,
+    href,
+    openInNewTab,
+  }: SectionAction) => {
+    if (openInNewTab) {
+      window.open(href, "_blank", "noopener,noreferrer");
+    }
+
+    if (!downloadFileName) {
+      return;
+    }
+
+    const downloadLink = document.createElement("a");
+
+    downloadLink.href = href;
+    downloadLink.download = downloadFileName;
+    downloadLink.rel = "noreferrer";
+    downloadLink.style.display = "none";
+
+    document.body.append(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+  };
+
   return (
     <div className="mt-10 md:mt-16">
-      {sections.map(({ title, description, items, note }, index) => {
+      {sections.map(({ action, title, description, items, note }, index) => {
         const isOpen = openSection === index;
         const isLast = index === sections.length - 1;
         const panelId = `section-${index}`;
@@ -77,6 +102,16 @@ export const SectionsAccordion = ({ sections }: Props) => {
                     <p className="text-base leading-7 text-black/85 sm:text-lg sm:leading-8 md:text-[1.7rem] md:leading-[1.55]">
                       {note}
                     </p>
+                  ) : null}
+
+                  {action ? (
+                    <button
+                      type="button"
+                      onClick={() => handleActionClick(action)}
+                      className="inline-flex cursor-pointer items-center text-base font-semibold text-[#004C97] transition-colors duration-200 hover:text-[#002E5C] sm:text-lg md:text-[1.7rem]"
+                    >
+                      {action.label}
+                    </button>
                   ) : null}
                 </div>
               </div>
