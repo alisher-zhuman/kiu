@@ -289,6 +289,9 @@
     "title": "Section in development",
     "description": "This page is still being prepared. Content and materials will appear here shortly."
   },
+  "LogInPage": {
+    "title": "Log in"
+  },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",
     "sections": [
