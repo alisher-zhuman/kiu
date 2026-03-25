@@ -180,15 +180,9 @@
     "courses": [
       {
         "title": "Arabic Language",
-        "duration": [
-          "6-month program",
-          "3 times a week, 1.5 hours"
-        ],
+        "duration": ["6-month program", "3 times a week, 1.5 hours"],
         "books": "Silsila, Bayna Yadayk",
-        "teachers": [
-          "Teachers for women",
-          "Teachers for men"
-        ],
+        "teachers": ["Teachers for women", "Teachers for men"],
         "supervisor": "Mukhtar uulu A.",
         "contacts": [
           {
@@ -203,10 +197,7 @@
       },
       {
         "title": "Quran",
-        "duration": [
-          "2-month program",
-          "3 times a week, 1.5 hours"
-        ],
+        "duration": ["2-month program", "3 times a week, 1.5 hours"],
         "books": "Miftahul Quran, Quran",
         "program": [
           "Month 1 - Miftahul Quran (Alippe)",
@@ -293,6 +284,11 @@
     "description": "The page may have been removed, moved, or the URL is incorrect.",
     "action": "Back to homepage"
   },
+  "InDevelopment": {
+    "eyebrow": "Soon",
+    "title": "Section in development",
+    "description": "This page is still being prepared. Content and materials will appear here shortly."
+  },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",
     "sections": [
@@ -303,11 +299,7 @@
       {
         "title": "Educational programs",
         "description": "Kyrgyzstan Islamic University offers the following educational programs:",
-        "items": [
-          "Theology;",
-          "Arabic Philology;",
-          "Sharia."
-        ],
+        "items": ["Theology;", "Arabic Philology;", "Sharia."],
         "note": "Each program specifies the level of education, mode and duration of study, as well as the qualification awarded."
       },
       {
