@@ -1,12 +1,8 @@
-export interface SectionAction {
-  downloadFileName?: string;
-  href: string;
-  label: string;
-  openInNewTab?: boolean;
-}
+
+import { type LinkAction } from "./link-action";
 
 export interface Section {
-  action?: SectionAction;
+  action?: LinkAction;
   title: string;
   description?: string;
   items?: ReadonlyArray<string>;

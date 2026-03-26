@@ -1,6 +1,6 @@
 import { type AppLocale } from "@/i18n/routing";
 
-import { type LocaleLabelsMap } from "./types";
+import { type LocaleLabelsMap } from "@/shared/types";
 
 export const LOCALE_OPTIONS: ReadonlyArray<AppLocale> = [
   "kg",

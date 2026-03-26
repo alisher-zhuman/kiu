@@ -13,9 +13,8 @@ import { Globe } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { type AppLocale } from "@/i18n/routing";
 
+import { getLocaleLabels, LOCALE_OPTIONS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
-
-import { getLocaleLabels, LOCALE_OPTIONS } from "./constants";
 
 interface Props {
   className?: string;

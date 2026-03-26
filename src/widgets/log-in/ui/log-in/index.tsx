@@ -45,7 +45,7 @@ export const LogIn = () => {
         </div>
 
         <div className="flex flex-1 items-center justify-center py-10">
-          <section className="w-full max-w-2xl rounded-[2rem] bg-white px-6 py-8 shadow-[0_24px_60px_rgba(0,0,0,0.14)] sm:px-10 sm:py-10">
+          <section className="w-full max-w-2xl rounded-4xl bg-white px-6 py-8 shadow-[0_24px_60px_rgba(0,0,0,0.14)] sm:px-10 sm:py-10">
             <h1 className="text-center text-2xl font-semibold text-black md:text-4xl">
               {t("title")}
             </h1>

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-import { cn } from "@/shared/helpers";
-import { type Section, type SectionAction } from "@/shared/types";
+import { cn, handleLinkAction } from "@/shared/helpers";
+import { type Section } from "@/shared/types";
 
 interface Props {
   sections: ReadonlyArray<Section>;
@@ -12,31 +12,6 @@ interface Props {
 
 export const SectionsAccordion = ({ sections }: Props) => {
   const [openSection, setOpenSection] = useState<number | null>(0);
-
-  const handleActionClick = ({
-    downloadFileName,
-    href,
-    openInNewTab,
-  }: SectionAction) => {
-    if (openInNewTab) {
-      window.open(href, "_blank", "noopener,noreferrer");
-    }
-
-    if (!downloadFileName) {
-      return;
-    }
-
-    const downloadLink = document.createElement("a");
-
-    downloadLink.href = href;
-    downloadLink.download = downloadFileName;
-    downloadLink.rel = "noreferrer";
-    downloadLink.style.display = "none";
-
-    document.body.append(downloadLink);
-    downloadLink.click();
-    downloadLink.remove();
-  };
 
   return (
     <div className="mt-10 md:mt-16">
@@ -107,7 +82,7 @@ export const SectionsAccordion = ({ sections }: Props) => {
                   {action ? (
                     <button
                       type="button"
-                      onClick={() => handleActionClick(action)}
+                      onClick={() => handleLinkAction(action)}
                       className="inline-flex cursor-pointer items-center text-base font-semibold text-[#004C97] transition-colors duration-200 hover:text-[#002E5C] sm:text-lg md:text-[1.7rem]"
                     >
                       {action.label}
