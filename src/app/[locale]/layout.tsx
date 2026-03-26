@@ -9,6 +9,8 @@ import { setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 
+import { ToastProvider } from "@/shared/providers";
+
 import { getMetadata } from "./helpers/metadata";
 
 const montserrat = Montserrat({
@@ -49,7 +51,11 @@ const LocaleLayout = async ({ children, params }: Props) => {
   return (
     <html lang={locale}>
       <body className={montserrat.variable}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <ToastProvider />
+          
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

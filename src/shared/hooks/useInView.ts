@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { usePrefersReducedMotion } from "./use-prefers-reduced-motion";
+import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
 interface Options {
   once?: boolean;

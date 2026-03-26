@@ -297,6 +297,7 @@
     "showPassword": "Сырсөздү көрсөтүү",
     "hidePassword": "Сырсөздү жашыруу",
     "submit": "Кирүү",
+    "submitPending": "Кирүү...",
     "errors": {
       "email": {
         "required": "Email киргизиңиз",
@@ -304,7 +305,8 @@
       },
       "password": {
         "required": "Сырсөздү киргизиңиз"
-      }
+      },
+      "submit": "Кирүү катасы"
     }
   },
   "ApplicantsPage": {

@@ -297,6 +297,7 @@
     "showPassword": "Показать пароль",
     "hidePassword": "Скрыть пароль",
     "submit": "Войти",
+    "submitPending": "Вход...",
     "errors": {
       "email": {
         "required": "Введите email",
@@ -304,7 +305,8 @@
       },
       "password": {
         "required": "Введите пароль"
-      }
+      },
+      "submit": "Ошибка входа"
     }
   },
   "ApplicantsPage": {

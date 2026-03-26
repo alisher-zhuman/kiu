@@ -10,7 +10,7 @@ import { useLogInForm } from "../../hooks/useLogInForm";
 export const LogInForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const { errors, onSubmit, register, t } = useLogInForm();
+  const { errors, isPending, onSubmit, register, t } = useLogInForm();
 
   return (
     <form
@@ -29,6 +29,7 @@ export const LogInForm = () => {
           autoComplete="email"
           aria-invalid={Boolean(errors.email)}
           placeholder={t("emailPlaceholder")}
+          disabled={isPending}
           {...register("email")}
           className={cn(
             "w-full rounded-2xl border border-black/20 px-5 py-4 text-base text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#004C97] md:text-lg",
@@ -55,6 +56,7 @@ export const LogInForm = () => {
             autoComplete="current-password"
             aria-invalid={Boolean(errors.password)}
             placeholder={t("passwordPlaceholder")}
+            disabled={isPending}
             {...register("password")}
             className={cn(
               "w-full rounded-2xl border border-black/20 px-5 py-4 pr-14 text-base text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#004C97] md:text-lg",
@@ -64,6 +66,7 @@ export const LogInForm = () => {
 
           <button
             type="button"
+            disabled={isPending}
             onClick={() => setIsPasswordVisible((current) => !current)}
             aria-label={
               isPasswordVisible ? t("hidePassword") : t("showPassword")
@@ -87,9 +90,10 @@ export const LogInForm = () => {
 
       <button
         type="submit"
+        disabled={isPending}
         className="w-full cursor-pointer rounded-2xl bg-[#004C97] px-5 py-4 text-lg font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#003f80]"
       >
-        {t("submit")}
+        {isPending ? t("submitPending") : t("submit")}
       </button>
     </form>
   );

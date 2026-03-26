@@ -297,6 +297,7 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "submit": "Log in",
+    "submitPending": "Logging in...",
     "errors": {
       "email": {
         "required": "Enter email",
@@ -304,7 +305,8 @@
       },
       "password": {
         "required": "Enter password"
-      }
+      },
+      "submit": "Log in failed"
     }
   },
   "ApplicantsPage": {
