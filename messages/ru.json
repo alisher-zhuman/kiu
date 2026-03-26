@@ -292,11 +292,20 @@
   "LogInPage": {
     "title": "Войти",
     "home": "На главную",
-    "loginPlaceholder": "Логин",
+    "emailPlaceholder": "Email",
     "passwordPlaceholder": "Пароль",
     "showPassword": "Показать пароль",
     "hidePassword": "Скрыть пароль",
-    "submit": "Войти"
+    "submit": "Войти",
+    "errors": {
+      "email": {
+        "required": "Введите email",
+        "invalid": "Введите корректный email"
+      },
+      "password": {
+        "required": "Введите пароль"
+      }
+    }
   },
   "ApplicantsPage": {
     "title": "Кыргызстан Ислам Университет",

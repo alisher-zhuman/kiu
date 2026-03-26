@@ -292,11 +292,20 @@
   "LogInPage": {
     "title": "Log in",
     "home": "Home",
-    "loginPlaceholder": "Login",
+    "emailPlaceholder": "Email",
     "passwordPlaceholder": "Password",
     "showPassword": "Show password",
     "hidePassword": "Hide password",
-    "submit": "Log in"
+    "submit": "Log in",
+    "errors": {
+      "email": {
+        "required": "Enter email",
+        "invalid": "Enter a valid email"
+      },
+      "password": {
+        "required": "Enter password"
+      }
+    }
   },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",

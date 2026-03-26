@@ -292,11 +292,20 @@
   "LogInPage": {
     "title": "Кирүү",
     "home": "Башкы бетке",
-    "loginPlaceholder": "Логин",
+    "emailPlaceholder": "Email",
     "passwordPlaceholder": "Сырсөз",
     "showPassword": "Сырсөздү көрсөтүү",
     "hidePassword": "Сырсөздү жашыруу",
-    "submit": "Кирүү"
+    "submit": "Кирүү",
+    "errors": {
+      "email": {
+        "required": "Email киргизиңиз",
+        "invalid": "Туура email киргизиңиз"
+      },
+      "password": {
+        "required": "Сырсөздү киргизиңиз"
+      }
+    }
   },
   "ApplicantsPage": {
     "title": "Кыргызстан Ислам Университети",
