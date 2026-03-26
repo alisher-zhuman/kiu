@@ -290,7 +290,13 @@
     "description": "This page is still being prepared. Content and materials will appear here shortly."
   },
   "LogInPage": {
-    "title": "Log in"
+    "title": "Log in",
+    "home": "Home",
+    "loginPlaceholder": "Login",
+    "passwordPlaceholder": "Password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "submit": "Log in"
   },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",

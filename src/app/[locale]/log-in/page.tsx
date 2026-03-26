@@ -1,5 +1,5 @@
-import { LogInPage } from "@/widgets/log-in";
+import { LogIn } from "@/widgets/log-in";
 
-const LogIn = () => <LogInPage />;
+const LogInPage = () => <LogIn />;
 
-export default LogIn;
+export default LogInPage;

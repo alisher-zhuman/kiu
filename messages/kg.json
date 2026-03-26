@@ -290,7 +290,13 @@
     "description": "Бул барак азырынча даярдалып жатат. Контент жана материалдар бул жерге жакын арада жайгаштырылат."
   },
   "LogInPage": {
-    "title": "Кирүү"
+    "title": "Кирүү",
+    "home": "Башкы бетке",
+    "loginPlaceholder": "Логин",
+    "passwordPlaceholder": "Сырсөз",
+    "showPassword": "Сырсөздү көрсөтүү",
+    "hidePassword": "Сырсөздү жашыруу",
+    "submit": "Кирүү"
   },
   "ApplicantsPage": {
     "title": "Кыргызстан Ислам Университети",

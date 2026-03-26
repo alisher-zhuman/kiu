@@ -13,11 +13,15 @@ import { Globe } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { type AppLocale } from "@/i18n/routing";
 
-import { getLocaleLabels, LOCALE_OPTIONS } from "@/widgets/layout/constants";
-
 import { cn } from "@/shared/helpers";
 
-export const LangSwitcher = () => {
+import { getLocaleLabels, LOCALE_OPTIONS } from "./constants";
+
+interface Props {
+  className?: string;
+}
+
+export const LangSwitcher = ({ className }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const t = useTranslations("LangSwitcher");
@@ -83,7 +87,10 @@ export const LangSwitcher = () => {
         aria-controls="language-switcher-panel"
         aria-label={t("triggerLabel")}
         onClick={() => setIsOpen((current) => !current)}
-        className="flex cursor-pointer items-center gap-1 text-xs font-light text-black md:gap-2 md:text-xl"
+        className={cn(
+          "flex cursor-pointer items-center gap-1 text-xs font-light text-black md:gap-2 md:text-xl",
+          className,
+        )}
       >
         <span>{currentOption.shortLabel}</span>
 

@@ -290,7 +290,13 @@
     "description": "Эта страница еще готовится. Контент и материалы появятся здесь немного позже."
   },
   "LogInPage": {
-    "title": "Вход"
+    "title": "Войти",
+    "home": "На главную",
+    "loginPlaceholder": "Логин",
+    "passwordPlaceholder": "Пароль",
+    "showPassword": "Показать пароль",
+    "hidePassword": "Скрыть пароль",
+    "submit": "Войти"
   },
   "ApplicantsPage": {
     "title": "Кыргызстан Ислам Университет",
