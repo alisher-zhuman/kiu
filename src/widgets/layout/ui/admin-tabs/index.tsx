@@ -16,9 +16,9 @@ export const AdminTabs = () => {
   return (
     <nav
       aria-label={t("label")}
-      className="mx-auto w-full max-w-400 px-5 py-4 md:px-10 md:py-5"
+      className="mx-auto w-full max-w-400 px-5 py-3 md:px-10 md:py-4"
     >
-      <div className="flex gap-4 overflow-x-auto md:grid md:grid-cols-3 md:overflow-visible">
+      <div className="grid grid-cols-3 gap-2 md:flex md:flex-wrap md:gap-3">
         {ADMIN_TABS.map(({ href, key }) => {
           const isActive = pathname === href;
 
@@ -27,7 +27,7 @@ export const AdminTabs = () => {
               key={href}
               href={href}
               className={cn(
-                "flex min-w-52 items-center justify-center rounded-[1.35rem] px-6 py-4 text-center text-xl font-medium whitespace-nowrap transition-colors duration-200 md:min-w-0 md:text-[1.05rem]",
+                "flex min-w-0 items-center justify-center rounded-xl px-2 py-2 text-center text-[0.78rem] leading-tight font-medium tracking-tight transition-colors duration-200 md:min-w-40 md:rounded-2xl md:px-5 md:py-3 md:text-base md:tracking-normal",
                 isActive
                   ? "bg-[#004C97] text-white"
                   : "bg-black/6 text-black hover:bg-black/8",
