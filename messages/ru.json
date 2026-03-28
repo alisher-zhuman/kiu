@@ -314,6 +314,7 @@
   },
   "AdminLayout": {
     "navigation": {
+      "label": "Навигация по админке",
       "news": "Новости",
       "professors": "Профессора",
       "documents": "Документы"

@@ -314,6 +314,7 @@
   },
   "AdminLayout": {
     "navigation": {
+      "label": "Admin navigation",
       "news": "News",
       "professors": "Professors",
       "documents": "Documents"

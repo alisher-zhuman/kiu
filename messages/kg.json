@@ -314,6 +314,7 @@
   },
   "AdminLayout": {
     "navigation": {
+      "label": "Админ панелиндеги навигация",
       "news": "Жаңылыктар",
       "professors": "Профессорлор",
       "documents": "Документтер"
