@@ -11,7 +11,7 @@ interface Props {
   children: ReactNode;
 }
 
-export const Layout = ({ children }: Props) => (
+export const UserLayout = ({ children }: Props) => (
   <>
     <Header />
     <Navbar />

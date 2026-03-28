@@ -42,7 +42,7 @@ export const useLogInForm = () => {
       logIn(email, password),
     onSuccess: (data) => {
       setAuthSession(data);
-      router.replace("/");
+      router.replace("/admin/news");
     },
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, t("errors.submit")),

@@ -309,6 +309,13 @@
       "submit": "Ошибка входа"
     }
   },
+  "AdminLayout": {
+    "navigation": {
+      "news": "Новости",
+      "professors": "Профессора",
+      "documents": "Документы"
+    }
+  },
   "ApplicantsPage": {
     "title": "Кыргызстан Ислам Университет",
     "sections": [

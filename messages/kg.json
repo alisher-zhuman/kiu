@@ -309,6 +309,13 @@
       "submit": "Кирүү катасы"
     }
   },
+  "AdminLayout": {
+    "navigation": {
+      "news": "Жаңылыктар",
+      "professors": "Профессорлор",
+      "documents": "Документтер"
+    }
+  },
   "ApplicantsPage": {
     "title": "Кыргызстан Ислам Университети",
     "sections": [

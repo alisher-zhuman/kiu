@@ -309,6 +309,13 @@
       "submit": "Log in failed"
     }
   },
+  "AdminLayout": {
+    "navigation": {
+      "news": "News",
+      "professors": "Professors",
+      "documents": "Documents"
+    }
+  },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",
     "sections": [
