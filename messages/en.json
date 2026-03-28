@@ -320,6 +320,13 @@
       "documents": "Documents"
     }
   },
+  "AdminNewsPage": {
+    "eyebrow": "Admin",
+    "title": "News",
+    "loading": "Loading news...",
+    "empty": "No news yet.",
+    "error": "Could not load news"
+  },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",
     "sections": [

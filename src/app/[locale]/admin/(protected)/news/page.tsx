@@ -1,20 +1,5 @@
-import { getTranslations } from "next-intl/server";
+import { AdminNews } from "@/widgets/admin-news";
 
-import { InDevelopment } from "@/widgets/in-development";
-
-interface Props {
-  params: Promise<{ locale: string }>;
-}
-
-const NewsPage = async ({ params }: Props) => {
-  const { locale } = await params;
-
-  const t = await getTranslations({
-    locale,
-    namespace: "AdminLayout.navigation",
-  });
-
-  return <InDevelopment title={t("news")} />;
-};
+const NewsPage = () => <AdminNews />;
 
 export default NewsPage;
