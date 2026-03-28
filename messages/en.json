@@ -298,6 +298,7 @@
     "hidePassword": "Hide password",
     "submit": "Log in",
     "submitPending": "Logging in...",
+    "success": "You have successfully signed in",
     "errors": {
       "email": {
         "required": "Enter email",

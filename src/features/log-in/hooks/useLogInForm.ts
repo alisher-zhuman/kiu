@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -42,6 +43,7 @@ export const useLogInForm = () => {
       logIn(email, password),
     onSuccess: (data) => {
       setAuthSession(data);
+      toast.success(t("success"));
       router.replace("/admin/news");
     },
     errorMessage: (error: unknown) =>

@@ -298,6 +298,7 @@
     "hidePassword": "Сырсөздү жашыруу",
     "submit": "Кирүү",
     "submitPending": "Кирүү...",
+    "success": "Сиз ийгиликтүү кирдиңиз",
     "errors": {
       "email": {
         "required": "Email киргизиңиз",

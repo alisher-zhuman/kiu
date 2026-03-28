@@ -298,6 +298,7 @@
     "hidePassword": "Скрыть пароль",
     "submit": "Войти",
     "submitPending": "Вход...",
+    "success": "Вы успешно вошли",
     "errors": {
       "email": {
         "required": "Введите email",
