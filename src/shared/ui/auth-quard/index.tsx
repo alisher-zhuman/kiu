@@ -24,7 +24,7 @@ export const AuthGuard = ({ children }: Props) => {
       return;
     }
 
-    router.replace("/log-in");
+    router.replace("/admin/log-in");
   }, [isAuthorized, isHydrated, router]);
 
   if (!isHydrated || !isAuthorized) {

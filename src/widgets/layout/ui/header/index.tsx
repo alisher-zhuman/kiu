@@ -34,7 +34,7 @@ export const Header = ({ mode = "site" }: Props) => {
 
   const handleLogOut = () => {
     logOut();
-    router.replace("/log-in");
+    router.replace("/admin/log-in");
   };
 
   useEffect(() => {
