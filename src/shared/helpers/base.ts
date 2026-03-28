@@ -35,3 +35,15 @@ export const handleLinkAction = ({
   downloadLink.click();
   downloadLink.remove();
 };
+
+export const formatDate = (
+  date: string | Date,
+  locale: string,
+  options: Intl.DateTimeFormatOptions = {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  },
+) => {
+  return new Intl.DateTimeFormat(locale, options).format(new Date(date));
+};

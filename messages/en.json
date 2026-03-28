@@ -321,8 +321,7 @@
     }
   },
   "AdminNewsPage": {
-    "eyebrow": "Admin",
-    "title": "News",
+    "sectionLabel": "News list",
     "loading": "Loading news...",
     "empty": "No news yet.",
     "error": "Could not load news"

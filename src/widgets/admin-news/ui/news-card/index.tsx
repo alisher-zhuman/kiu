@@ -2,17 +2,15 @@ import Image from "next/image";
 
 import { type NewsItem } from "@/entities/news";
 
+import { formatDate } from "@/shared/helpers";
+
 interface Props {
   item: NewsItem;
   locale: string;
 }
 
 export const NewsCard = ({ item, locale }: Props) => {
-  const formattedDate = new Intl.DateTimeFormat(locale, {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(item.dateOfPublication));
+  const formattedDate = formatDate(item.dateOfPublication, locale);
 
   const previewImage = item.images[0];
 
