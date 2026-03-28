@@ -3,7 +3,9 @@
     "title": "Кыргызский Исламский Университет",
     "logoAlt": "Логотип Кыргызского Исламского Университета",
     "menuLabel": "Открыть меню",
-    "closeMenuLabel": "Закрыть меню"
+    "closeMenuLabel": "Закрыть меню",
+    "logout": "Выйти",
+    "logoutLabel": "Выйти из аккаунта"
   },
   "LangSwitcher": {
     "triggerLabel": "Изменить язык",

@@ -3,25 +3,42 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { LogOut } from "lucide-react";
 
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 
+import { useAuthStore } from "@/shared/stores";
 import { LangSwitcher } from "@/shared/ui/lang-switcher";
 
 import { Menu } from "../menu";
 import { MobileNavbar } from "../mobile-navbar";
 
-export const Header = () => {
+interface Props {
+  mode?: "site" | "admin";
+}
+
+export const Header = ({ mode = "site" }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const router = useRouter();
+
+  const logOut = useAuthStore((state) => state.logOut);
+
   const t = useTranslations("Header");
+
+  const isAdmin = mode === "admin";
 
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
+  const handleLogOut = () => {
+    logOut();
+    router.replace("/log-in");
+  };
+
   useEffect(() => {
-    if (!isMenuOpen) {
+    if (!isMenuOpen || isAdmin) {
       document.body.style.overflow = "";
       return;
     }
@@ -31,20 +48,34 @@ export const Header = () => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isMenuOpen]);
+  }, [isAdmin, isMenuOpen]);
 
   return (
     <>
       <header className="relative z-40 max-w-400 m-auto flex items-center justify-between px-5 py-3 md:px-10 md:py-2">
-        <Menu
-          isOpen={isMenuOpen}
-          menuLabel={t("menuLabel")}
-          closeMenuLabel={t("closeMenuLabel")}
-          onToggle={() => setIsMenuOpen((current) => !current)}
-        />
+        {isAdmin ? (
+          <div className="flex size-10 shrink-0 items-center md:size-12 md:min-w-28">
+            <button
+              type="button"
+              onClick={handleLogOut}
+              aria-label={t("logoutLabel")}
+              className="inline-flex size-10 cursor-pointer items-center justify-center text-black transition-colors hover:text-[#004C97] md:size-auto md:gap-2 md:text-sm md:font-medium"
+            >
+              <LogOut size={22} strokeWidth={1.75} />
+              <span className="hidden md:inline">{t("logout")}</span>
+            </button>
+          </div>
+        ) : (
+          <Menu
+            isOpen={isMenuOpen}
+            menuLabel={t("menuLabel")}
+            closeMenuLabel={t("closeMenuLabel")}
+            onToggle={() => setIsMenuOpen((current) => !current)}
+          />
+        )}
 
         <Link
-          href="/"
+          href={isAdmin ? "/admin/news" : "/"}
           onClick={closeMenu}
           className="flex items-center gap-2 md:gap-4"
         >
@@ -67,7 +98,7 @@ export const Header = () => {
         <LangSwitcher />
       </header>
 
-      <MobileNavbar isOpen={isMenuOpen} onNavigate={closeMenu} />
+      {!isAdmin ? <MobileNavbar isOpen={isMenuOpen} onNavigate={closeMenu} /> : null}
     </>
   );
 };

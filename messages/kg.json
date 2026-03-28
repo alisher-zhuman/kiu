@@ -3,7 +3,9 @@
     "title": "Кыргызстан Ислам Университети",
     "logoAlt": "Кыргызстан Ислам Университетинин логотиби",
     "menuLabel": "Менюну ачуу",
-    "closeMenuLabel": "Менюну жабуу"
+    "closeMenuLabel": "Менюну жабуу",
+    "logout": "Чыгуу",
+    "logoutLabel": "Аккаунттан чыгуу"
   },
   "LangSwitcher": {
     "triggerLabel": "Тилди өзгөртүү",

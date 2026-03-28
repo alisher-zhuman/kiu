@@ -3,7 +3,9 @@
     "title": "Kyrgyzstan Islamic University",
     "logoAlt": "Kyrgyzstan Islamic University logo",
     "menuLabel": "Open menu",
-    "closeMenuLabel": "Close menu"
+    "closeMenuLabel": "Close menu",
+    "logout": "Log out",
+    "logoutLabel": "Log out of your account"
   },
   "LangSwitcher": {
     "triggerLabel": "Change language",

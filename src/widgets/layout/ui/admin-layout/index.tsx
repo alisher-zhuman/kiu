@@ -10,7 +10,7 @@ interface Props {
 
 export const AdminLayout = ({ children }: Props) => (
   <>
-    <Header />
+    <Header mode="admin" />
     <PageReveal>{children}</PageReveal>
   </>
 );
