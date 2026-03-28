@@ -6,8 +6,6 @@ interface Props {
   children: ReactNode;
 }
 
-const SiteLayout = ({ children }: Props) => {
-  return <UserLayout>{children}</UserLayout>;
-};
+const SiteLayout = ({ children }: Props) => <UserLayout>{children}</UserLayout>;
 
 export default SiteLayout;

@@ -1,4 +1,5 @@
 import { type ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 
 import { AdminLayout } from "@/widgets/layout/ui/admin-layout";
 
@@ -8,12 +9,12 @@ interface Props {
   children: ReactNode;
 }
 
-const Layout = ({ children }: Props) => {
-  return (
-    <ReactQueryProvider>
-      <AdminLayout>{children}</AdminLayout>
-    </ReactQueryProvider>
-  );
-};
+const Layout = ({ children }: Props) => (
+  <ReactQueryProvider>
+    <Toaster />
+
+    <AdminLayout>{children}</AdminLayout>
+  </ReactQueryProvider>
+);
 
 export default Layout;
