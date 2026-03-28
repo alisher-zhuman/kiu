@@ -1,8 +1,13 @@
 import axios from "axios";
 
+import {
+  getCurrentApiLocale,
+  getLocalizedApiBaseUrl,
+  normalizeApiPath,
+} from "@/shared/helpers";
 import { useAuthStore } from "@/shared/stores";
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -10,10 +15,17 @@ export const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const { token } = useAuthStore.getState();
+  const locale = getCurrentApiLocale();
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+
+  if (config.url) {
+    config.url = normalizeApiPath(config.url);
+  }
+
+  config.baseURL = getLocalizedApiBaseUrl(config.baseURL || API_URL, locale);
 
   return config;
 });

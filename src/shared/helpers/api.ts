@@ -1,4 +1,50 @@
+import { type AppLocale, routing } from "@/i18n/routing";
+
 import { type ApiErrorLike } from "@/shared/types";
+
+import { checkExternalHref } from "./base";
+
+export const getCurrentApiLocale = (): AppLocale => {
+  if (typeof window === "undefined") {
+    return routing.defaultLocale;
+  }
+
+  const currentSegment = window.location.pathname.split("/").filter(Boolean)[0];
+
+  return routing.locales.includes(currentSegment as AppLocale)
+    ? (currentSegment as AppLocale)
+    : routing.defaultLocale;
+};
+
+export const getLocalizedApiBaseUrl = (apiUrl: string, locale: AppLocale) => {
+  const normalizedApiUrl = apiUrl.endsWith("/") ? apiUrl.slice(0, -1) : apiUrl;
+
+  if (!normalizedApiUrl) {
+    return `/${locale}`;
+  }
+
+  return normalizedApiUrl.endsWith(`/${locale}`)
+    ? normalizedApiUrl
+    : `${normalizedApiUrl}/${locale}`;
+};
+
+export const normalizeApiPath = (url: string) => {
+  if (checkExternalHref(url)) {
+    return url;
+  }
+
+  const normalizedUrl = url.startsWith("/") ? url : `/${url}`;
+  const localePrefix = routing.locales.find(
+    (locale) =>
+      normalizedUrl === `/${locale}` || normalizedUrl.startsWith(`/${locale}/`),
+  );
+
+  if (!localePrefix) {
+    return normalizedUrl;
+  }
+
+  return normalizedUrl.replace(`/${localePrefix}`, "") || "/";
+};
 
 export const getApiErrorMessage = (
   error: unknown,
