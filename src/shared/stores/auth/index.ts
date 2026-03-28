@@ -23,6 +23,8 @@ export const useAuthStore = create<AuthStore>()(
   persist(
     (set) => ({
       ...AUTH_INITIAL_STATE,
+      isHydrated: false,
+      setHydrated: (isHydrated) => set({ isHydrated }),
       setToken: (token) => set({ token }),
       setAuthSession: (payload) => set(setAuthSession(payload)),
       setUser: (user) => set({ user }),
@@ -35,6 +37,9 @@ export const useAuthStore = create<AuthStore>()(
         token,
         user,
       }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHydrated(true);
+      },
     },
   ),
 );

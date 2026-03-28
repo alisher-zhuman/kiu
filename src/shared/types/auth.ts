@@ -17,6 +17,8 @@ export interface AuthResponse {
 }
 
 export interface AuthStore extends AuthSession {
+  isHydrated: boolean;
+  setHydrated: (isHydrated: boolean) => void;
   setToken: (token: string | null) => void;
   setAuthSession: (payload: AuthResponse) => void;
   setUser: (user: AuthUser | null) => void;

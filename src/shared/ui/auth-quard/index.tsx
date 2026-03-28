@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect } from "react";
 
 import { useRouter } from "@/i18n/navigation";
 
@@ -11,22 +11,13 @@ interface Props {
 }
 
 export const AuthGuard = ({ children }: Props) => {
-  const [isHydrated, setIsHydrated] = useState(useAuthStore.persist.hasHydrated());
-
   const router = useRouter();
 
+  const isHydrated = useAuthStore((state) => state.isHydrated);
   const token = useAuthStore((state) => state.token);
   const user = useAuthStore((state) => state.user);
 
   const isAuthorized = Boolean(token && user?.role === "ADMIN");
-
-  useEffect(() => {
-    const unsubscribe = useAuthStore.persist.onFinishHydration(() => {
-      setIsHydrated(true);
-    });
-
-    return unsubscribe;
-  }, []);
 
   useEffect(() => {
     if (!isHydrated || isAuthorized) {
