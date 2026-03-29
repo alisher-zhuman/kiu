@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
+import { X } from "lucide-react";
 
 interface Props {
   description: string;
@@ -31,14 +32,14 @@ export const NewsDescriptionModal = ({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-60 flex items-center justify-center bg-black/45 px-4 py-6"
+      className="fixed inset-0 z-60 overflow-y-auto bg-black/45 p-3 md:p-6"
       onClick={onClose}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-label={t("modal.label")}
-        className="relative z-[61] w-full max-w-3xl rounded-3xl bg-white p-5 shadow-[0_24px_60px_rgba(0,0,0,0.18)] md:p-7"
+        className="relative z-61 my-4 flex max-h-[calc(100dvh-1.5rem)] w-full max-w-3xl flex-col rounded-3xl bg-white p-5 shadow-[0_24px_60px_rgba(0,0,0,0.18)] md:my-8 md:max-h-[calc(100dvh-3rem)] md:p-7"
         onClick={(event) => {
           event.stopPropagation();
         }}
@@ -57,14 +58,14 @@ export const NewsDescriptionModal = ({
           <button
             type="button"
             aria-label={t("modal.close")}
-            className="shrink-0 rounded-full border border-black/10 px-3 py-1.5 text-sm font-medium text-black/70 transition-colors hover:border-black/20 hover:text-black"
+            className="shrink-0 rounded-full border border-black/10 p-2 text-black/70 transition-colors hover:border-black/20 hover:text-black"
             onClick={onClose}
           >
-            {t("modal.close")}
+            <X className="size-4" />
           </button>
         </div>
 
-        <div className="mt-5 max-h-[70vh] overflow-y-auto pr-1">
+        <div className="mt-5 min-h-0 overflow-y-auto pr-1">
           <p className="whitespace-pre-line text-sm leading-7 text-black/75 md:text-base md:leading-8">
             {description}
           </p>

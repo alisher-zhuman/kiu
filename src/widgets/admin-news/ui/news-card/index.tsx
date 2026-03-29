@@ -43,23 +43,13 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
             ? "cursor-pointer transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]"
             : "",
         )}
-        role={hasExpandableText ? "button" : undefined}
-        tabIndex={hasExpandableText ? 0 : undefined}
-        onClick={() => {
-          if (hasExpandableText) {
-            setIsTextModalOpen(true);
-          }
-        }}
-        onKeyDown={(event) => {
-          if (!hasExpandableText) {
-            return;
-          }
-
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            setIsTextModalOpen(true);
-          }
-        }}
+        onClick={
+          hasExpandableText
+            ? () => {
+                setIsTextModalOpen(true);
+              }
+            : undefined
+        }
       >
         {previewImages.length ? (
           <div
