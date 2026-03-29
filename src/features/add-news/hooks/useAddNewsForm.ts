@@ -7,9 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { LOCALE_OPTIONS } from "@/shared/constants";
 
-import {
-  createAddNewsFormSchema,
-} from "../schemas";
+import { createAddNewsFormSchema } from "../schemas";
 import { type AddNewsFormValues } from "../types";
 
 import { useAddNewsImages } from "./useAddNewsImages";
@@ -32,7 +30,7 @@ export const useAddNewsForm = () => {
     resolver: zodResolver(schema),
     defaultValues: {
       images: [],
-        title: {
+      title: {
         en: "",
         kg: "",
         ru: "",
@@ -42,7 +40,6 @@ export const useAddNewsForm = () => {
         kg: "",
         ru: "",
       },
-    
     },
     mode: "onChange",
   });
