@@ -1,13 +1,10 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+
+import { Link } from "@/i18n/navigation";
 
 import { type NewsItem } from "@/entities/news";
 
 import { cn, formatDate } from "@/shared/helpers";
-
-import { NewsDescriptionModal } from "../news-description-modal";
 
 const TITLE_PREVIEW_LIMIT = 80;
 const DESCRIPTION_PREVIEW_LIMIT = 160;
@@ -19,11 +16,6 @@ interface Props {
 }
 
 export const NewsCard = ({ cardIndex, item, locale }: Props) => {
-  const [isTextModalMounted, setIsTextModalMounted] = useState(false);
-  const [isTextModalOpen, setIsTextModalOpen] = useState(false);
-
-  const animationFrameRef = useRef<number | null>(null);
-
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewImages = item.images.slice(0, 2);
   const isLongTitle = item.title.trim().length > TITLE_PREVIEW_LIMIT;
@@ -35,41 +27,13 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
   const previewDescription = isLongDescription
     ? `${item.description.slice(0, DESCRIPTION_PREVIEW_LIMIT).trimEnd()}...`
     : item.description;
-  const hasExpandableText = isLongTitle || isLongDescription;
-
-  useEffect(() => {
-    return () => {
-      if (animationFrameRef.current !== null) {
-        window.cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, []);
-
-  const openModal = () => {
-    setIsTextModalMounted(true);
-
-    animationFrameRef.current = window.requestAnimationFrame(() => {
-      setIsTextModalOpen(true);
-    });
-  };
 
   return (
-    <>
-      <article
-        className={cn(
-          "overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)]",
-          hasExpandableText
-            ? "cursor-pointer transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]"
-            : "",
-        )}
-        onClick={
-          hasExpandableText
-            ? () => {
-                openModal();
-              }
-            : undefined
-        }
-      >
+    <Link
+      href={`/admin/news/${item.id}`}
+      className="block rounded-2xl transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]"
+    >
+      <article className="overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)]">
         {previewImages.length ? (
           <div
             className={cn(
@@ -109,21 +73,6 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
           </div>
         </div>
       </article>
-
-      {isTextModalMounted ? (
-        <NewsDescriptionModal
-          description={item.description}
-          formattedDate={formattedDate}
-          isOpen={isTextModalOpen}
-          title={item.title}
-          onClose={() => {
-            setIsTextModalOpen(false);
-          }}
-          onExited={() => {
-            setIsTextModalMounted(false);
-          }}
-        />
-      ) : null}
-    </>
+    </Link>
   );
 };

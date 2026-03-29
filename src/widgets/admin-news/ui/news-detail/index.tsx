@@ -1,0 +1,100 @@
+"use client";
+
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
+
+import { Link } from "@/i18n/navigation";
+
+import { getNewsById } from "@/entities/news";
+
+import { QUERY_KEYS } from "@/shared/constants";
+import { formatDate,getApiErrorMessage } from "@/shared/helpers";
+
+interface Props {
+  id: number;
+}
+
+export const AdminNewsDetail = ({ id }: Props) => {
+  const locale = useLocale();
+
+  const t = useTranslations("AdminNewsPage");
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: QUERY_KEYS.adminNewsById(locale, id),
+    queryFn: () => getNewsById(id),
+  });
+
+  if (isLoading) {
+    return (
+      <main className="mx-auto max-w-400 px-5 py-8 text-black md:px-10 md:py-10">
+        <p className="text-base text-black/60 md:text-lg">{t("loading")}</p>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="mx-auto max-w-400 px-5 py-8 text-black md:px-10 md:py-10">
+        <p className="text-base text-red-600 md:text-lg">
+          {getApiErrorMessage(error, t("error"))}
+        </p>
+      </main>
+    );
+  }
+
+  if (!data) {
+    return (
+      <main className="mx-auto max-w-400 px-5 py-8 text-black md:px-10 md:py-10">
+        <p className="text-base text-black/60 md:text-lg">{t("empty")}</p>
+      </main>
+    );
+  }
+
+  const formattedDate = formatDate(data.dateOfPublication, locale);
+
+  return (
+    <main className="mx-auto max-w-400 px-5 py-8 text-black md:px-10 md:py-10">
+      <section className="space-y-6 md:space-y-8">
+        <Link
+          href="/admin/news"
+          className="inline-flex text-sm font-medium text-[#004C97] transition-colors hover:text-[#002E5C] md:text-base"
+        >
+          {t("detail.back")}
+        </Link>
+
+        <div className="space-y-3">
+          <p className="text-sm font-medium text-[#004C97] md:text-base">
+            {formattedDate}
+          </p>
+
+          <h1 className="text-2xl font-semibold tracking-tight text-black md:text-4xl">
+            {data.title}
+          </h1>
+        </div>
+
+        {data.images.length ? (
+          <div className="grid gap-3 md:grid-cols-2 md:gap-4">
+            {data.images.map((image, index) => (
+              <Image
+                key={`${data.id}-${index}`}
+                src={image}
+                alt={data.title}
+                width={1600}
+                height={1200}
+                loading={index === 0 ? "eager" : "lazy"}
+                className="aspect-4/3 w-full rounded-2xl object-cover"
+              />
+            ))}
+          </div>
+        ) : null}
+
+        <div className="rounded-3xl border border-black/10 bg-white p-5 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:p-7">
+          <p className="whitespace-pre-line text-sm leading-7 text-black/75 md:text-base md:leading-8">
+            {data.description}
+          </p>
+        </div>
+      </section>
+    </main>
+  );
+};
