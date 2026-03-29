@@ -1,20 +1,25 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { ArrowLeft } from "lucide-react";
+
+import { Link } from "@/i18n/navigation";
 
 import { AddNewsForm } from "@/features/add-news";
 
 export const AddNews = () => {
-  const t = useTranslations("AdminLayout.pages");
+  const tLayout = useTranslations("Layout");
 
   return (
     <main className="mx-auto max-w-400 px-5 py-8 text-black md:px-10 md:py-10">
-      <section className="space-y-8">
-        <div className="border-l-2 border-black pl-3 md:pl-4">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            {t("addNews")}
-          </h1>
-        </div>
+      <section className="space-y-6 md:space-y-8">
+        <Link
+          href="/admin/news"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#004C97] transition-colors hover:text-[#002E5C] md:text-base"
+        >
+          <ArrowLeft className="size-4" strokeWidth={1.75} />
+          {tLayout("back")}
+        </Link>
 
         <AddNewsForm />
       </section>

@@ -19,6 +19,7 @@ export const AdminTabs = () => {
     ADMIN_TABS.find(
       ({ href }) => pathname === href || pathname.startsWith(`${href}/`),
     ) ?? ADMIN_TABS[0];
+  const shouldShowAddButton = pathname !== activeTab.addHref;
 
   const addButtonClass =
     "inline-flex items-center justify-center rounded-full bg-[#004C97] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C]";
@@ -50,20 +51,24 @@ export const AdminTabs = () => {
           })}
         </div>
 
-        <div className="hidden md:flex md:shrink-0">
-          <Link href={activeTab.addHref} className={addButtonClass}>
-            {tActions("add")}
-          </Link>
-        </div>
+        {shouldShowAddButton ? (
+          <div className="hidden md:flex md:shrink-0">
+            <Link href={activeTab.addHref} className={addButtonClass}>
+              {tActions("add")}
+            </Link>
+          </div>
+        ) : null}
       </div>
 
-      <Link
-        href={activeTab.addHref}
-        aria-label={tActions("add")}
-        className="fixed right-5 bottom-5 z-40 inline-flex size-14 items-center justify-center rounded-full bg-[#004C97] text-white shadow-lg transition-colors hover:bg-[#002E5C] md:hidden"
-      >
-        <Plus className="size-6" />
-      </Link>
+      {shouldShowAddButton ? (
+        <Link
+          href={activeTab.addHref}
+          aria-label={tActions("add")}
+          className="fixed right-5 bottom-5 z-40 inline-flex size-14 items-center justify-center rounded-full bg-[#004C97] text-white shadow-lg transition-colors hover:bg-[#002E5C] md:hidden"
+        >
+          <Plus className="size-6" />
+        </Link>
+      ) : null}
     </nav>
   );
 };
