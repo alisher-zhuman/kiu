@@ -22,21 +22,21 @@ export const AddNewsForm = () => {
   } = useAddNewsForm();
 
   return (
-    <form className="space-y-4" noValidate>
-      <div className="space-y-5">
-        <h2 className="text-2xl font-medium tracking-tight text-black md:text-3xl">
+    <form className="mx-auto w-full space-y-4 md:max-w-lg" noValidate>
+      <div className="space-y-4">
+        <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
           {t("photosTitle")}
         </h2>
 
-        <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6">
-          <div className="grid grid-cols-2 gap-3 md:max-w-[28rem] md:gap-4">
+        <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-4">
+          <div className="grid max-w-60 grid-cols-2 gap-2.5 md:max-w-68 md:gap-3">
             {Array.from({ length: MAX_NEWS_IMAGES_COUNT }).map((_, index) => {
               const imageUrl = images[index];
 
               return (
                 <div
                   key={`slot-${index}`}
-                  className="relative aspect-square overflow-hidden rounded-[1.35rem] bg-black/6"
+                  className="relative aspect-square overflow-hidden rounded-[0.95rem] bg-black/6"
                 >
                   {imageUrl ? (
                     <>
@@ -52,14 +52,14 @@ export const AddNewsForm = () => {
                         onClick={() => removeImage(imageUrl)}
                         disabled={isDeletePending}
                         aria-label={t("removePhoto")}
-                        className="absolute top-2.5 right-2.5 inline-flex size-8 items-center justify-center rounded-full bg-black/70 text-white transition-colors hover:bg-black"
+                        className="absolute top-1.5 right-1.5 cursor-pointer inline-flex size-6 items-center justify-center rounded-full bg-black/70 text-white transition-colors hover:bg-black"
                       >
-                        <X className="size-4" />
+                        <X className="size-3" />
                       </button>
                     </>
                   ) : (
                     <div className="flex h-full items-center justify-center text-black/20">
-                      <Camera className="size-16 stroke-[1.5]" />
+                      <Camera className="size-10 stroke-[1.5] md:size-11" />
                     </div>
                   )}
                 </div>
@@ -68,18 +68,18 @@ export const AddNewsForm = () => {
           </div>
 
           {images.length < MAX_NEWS_IMAGES_COUNT ? (
-            <div className="md:min-w-56">
+            <div className="w-full max-w-44 md:min-w-40">
               <button
                 type="button"
                 onClick={openFileDialog}
                 disabled={isUploadDisabled}
                 className={cn(
-                  "inline-flex w-full items-center justify-center gap-2 rounded-[1.35rem] bg-black/6 px-5 py-4 text-lg font-medium text-black transition-colors hover:bg-black/8",
+                  "inline-flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-[0.95rem] bg-black/6 px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-black/8 md:px-4.5 md:py-3",
                   isUploadDisabled &&
                     "cursor-not-allowed opacity-55 hover:bg-black/6",
                 )}
               >
-                <Plus className="size-5" />
+                <Plus className="size-4" />
                 {t("addPhoto")}
               </button>
             </div>

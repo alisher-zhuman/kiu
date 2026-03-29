@@ -1,5 +1,5 @@
 import { InDevelopment } from "@/widgets/in-development";
 
-const DocumentsPage = () => <InDevelopment hideHeader />;
+const DocumentsPage = () => <InDevelopment compactTopPadding hideHeader />;
 
 export default DocumentsPage;

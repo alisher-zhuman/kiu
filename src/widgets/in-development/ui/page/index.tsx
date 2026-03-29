@@ -1,15 +1,29 @@
 import { useTranslations } from "next-intl";
 
+import { cn } from "@/shared/helpers";
+
 interface Props {
+  compactTopPadding?: boolean;
   hideHeader?: boolean;
   title?: string;
 }
 
-export const InDevelopment = ({ hideHeader = false, title }: Props) => {
+export const InDevelopment = ({
+  compactTopPadding = false,
+  hideHeader = false,
+  title,
+}: Props) => {
   const t = useTranslations("InDevelopment");
 
   return (
-    <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
+    <main
+      className={cn(
+        "mx-auto max-w-400 px-5 text-black md:px-10",
+        compactTopPadding
+          ? "pt-3 pb-10 md:pt-4 md:pb-16"
+          : "py-10 md:py-16",
+      )}
+    >
       <section
         aria-label={hideHeader ? t("title") : undefined}
         aria-labelledby={!hideHeader ? "in-development-title" : undefined}

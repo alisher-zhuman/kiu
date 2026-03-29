@@ -21,7 +21,7 @@ export const AdminNews = () => {
   });
 
   return (
-    <main className="mx-auto max-w-400 px-5 py-8 text-black md:px-10 md:py-10">
+    <main className="mx-auto max-w-400 px-5 pt-3 pb-8 text-black md:px-10 md:pt-4 md:pb-10">
       <section aria-label={t("sectionLabel")} className="space-y-8">
         {isLoading ? (
           <p className="text-base text-black/60 md:text-lg">{t("loading")}</p>

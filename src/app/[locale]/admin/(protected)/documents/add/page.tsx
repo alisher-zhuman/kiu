@@ -5,7 +5,7 @@ import { InDevelopment } from "@/widgets/in-development";
 const AddDocumentPage = async () => {
   const t = await getTranslations("AdminLayout.pages");
 
-  return <InDevelopment title={t("addDocuments")} />;
+  return <InDevelopment compactTopPadding title={t("addDocuments")} />;
 };
 
 export default AddDocumentPage;

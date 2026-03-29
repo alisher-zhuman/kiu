@@ -11,7 +11,7 @@ export const AddNews = () => {
   const tLayout = useTranslations("Layout");
 
   return (
-    <main className="mx-auto max-w-400 px-5 py-8 text-black md:px-10 md:py-10">
+    <main className="mx-auto max-w-400 px-5 pt-3 pb-8 text-black md:px-10 md:pt-4 md:pb-10">
       <section className="space-y-6 md:space-y-8">
         <Link
           href="/admin/news"
