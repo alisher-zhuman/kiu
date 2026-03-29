@@ -38,7 +38,7 @@ export const AdminNews = () => {
         ) : null}
 
         {data?.length ? (
-          <div className="grid gap-5 md:gap-6 xl:grid-cols-2">
+          <div className="grid items-stretch gap-5 md:gap-6 xl:grid-cols-2">
             {data.map((item, index) => (
               <NewsCard
                 key={item.id}

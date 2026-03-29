@@ -20,7 +20,7 @@ export const AdminTabs = () => {
     >
       <div className="grid grid-cols-3 gap-2 md:flex md:flex-wrap md:gap-3">
         {ADMIN_TABS.map(({ href, key }) => {
-          const isActive = pathname === href;
+          const isActive = pathname === href || pathname.startsWith(`${href}/`);
 
           return (
             <Link

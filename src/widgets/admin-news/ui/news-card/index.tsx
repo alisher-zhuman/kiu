@@ -31,9 +31,9 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
   return (
     <Link
       href={`/admin/news/${item.id}`}
-      className="block rounded-2xl transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]"
+      className="block h-full rounded-2xl transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]"
     >
-      <article className="overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)]">
+      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)]">
         {previewImages.length ? (
           <div
             className={cn(
@@ -55,7 +55,7 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
           </div>
         ) : null}
 
-        <div className="space-y-3 p-4 md:p-5">
+        <div className="flex flex-1 flex-col space-y-3 p-4 md:p-5">
           <p className="text-xs font-medium text-[#004C97] md:text-sm">
             {formattedDate}
           </p>

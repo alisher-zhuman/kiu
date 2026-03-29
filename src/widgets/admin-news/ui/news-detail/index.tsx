@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
+import { ArrowLeft } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
 import { getNewsById } from "@/entities/news";
 
 import { QUERY_KEYS } from "@/shared/constants";
-import { formatDate,getApiErrorMessage } from "@/shared/helpers";
+import { formatDate, getApiErrorMessage } from "@/shared/helpers";
 
 interface Props {
   id: number;
@@ -19,6 +20,7 @@ export const AdminNewsDetail = ({ id }: Props) => {
   const locale = useLocale();
 
   const t = useTranslations("AdminNewsPage");
+  const tLayout = useTranslations("Layout");
 
   const { data, error, isLoading } = useQuery({
     queryKey: QUERY_KEYS.adminNewsById(locale, id),
@@ -58,9 +60,10 @@ export const AdminNewsDetail = ({ id }: Props) => {
       <section className="space-y-6 md:space-y-8">
         <Link
           href="/admin/news"
-          className="inline-flex text-sm font-medium text-[#004C97] transition-colors hover:text-[#002E5C] md:text-base"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#004C97] transition-colors hover:text-[#002E5C] md:text-base"
         >
-          {t("detail.back")}
+          <ArrowLeft className="size-4" strokeWidth={1.75} />
+          {tLayout("back")}
         </Link>
 
         <div className="space-y-3">
