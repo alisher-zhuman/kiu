@@ -324,7 +324,12 @@
     "sectionLabel": "News list",
     "loading": "Loading news...",
     "empty": "No news yet.",
-    "error": "Could not load news"
+    "error": "Could not load news",
+    "openFullText": "Open full text",
+    "modal": {
+      "label": "Full news text",
+      "close": "Close"
+    }
   },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",
