@@ -340,6 +340,12 @@
       "unarchivePending": "Restoring...",
       "unarchiveSuccess": "The news item was restored from the archive"
     },
+    "delete": {
+      "action": "Delete",
+      "error": "Could not delete the news item",
+      "pending": "Deleting...",
+      "success": "The news item was deleted successfully"
+    },
     "addForm": {
       "photosTitle": "Photos",
       "titleSectionTitle": "Title",

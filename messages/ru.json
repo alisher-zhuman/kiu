@@ -340,6 +340,12 @@
       "unarchivePending": "Разархивирование...",
       "unarchiveSuccess": "Новость возвращена из архива"
     },
+    "delete": {
+      "action": "Удалить",
+      "error": "Не удалось удалить новость",
+      "pending": "Удаление...",
+      "success": "Новость успешно удалена"
+    },
     "addForm": {
       "photosTitle": "Фото",
       "titleSectionTitle": "Заголовок",

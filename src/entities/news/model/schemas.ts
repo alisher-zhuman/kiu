@@ -9,7 +9,7 @@ export const NewsItemSchema = z.object({
   archived: z.boolean(),
 });
 
-export const ToggleNewsArchiveResponseSchema = z.object({
+export const NewsActionResponseSchema = z.object({
   message: z.string(),
 });
 

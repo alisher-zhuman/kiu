@@ -2,9 +2,9 @@ import { api } from "@/shared/configs";
 import { API_ROUTES } from "@/shared/constants";
 
 import {
+  NewsActionResponseSchema,
   NewsItemSchema,
   NewsResponseSchema,
-  ToggleNewsArchiveResponseSchema,
 } from "../model/schemas";
 
 export const getNews = async () => {
@@ -22,5 +22,11 @@ export const getNewsById = async (id: number) => {
 export const toggleNewsArchive = async (id: number) => {
   const { data } = await api.patch(`${API_ROUTES.NEWS}/${id}/archive`);
 
-  return ToggleNewsArchiveResponseSchema.parse(data);
+  return NewsActionResponseSchema.parse(data);
+};
+
+export const deleteNews = async (id: number) => {
+  const { data } = await api.delete(`${API_ROUTES.NEWS}/${id}`);
+
+  return NewsActionResponseSchema.parse(data);
 };

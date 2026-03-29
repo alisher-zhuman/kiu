@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 import { ArchiveNewsButton } from "@/features/archive-news";
+import { DeleteNewsButton } from "@/features/delete-news";
 
 import { type NewsItem } from "@/entities/news";
 
@@ -84,8 +85,9 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
         </div>
       </Link>
 
-      <div className="px-4 pb-4 md:px-5 md:pb-5">
+      <div className="flex flex-wrap items-center gap-2 px-4 pb-4 md:px-5 md:pb-5">
         <ArchiveNewsButton archived={item.archived} id={item.id} />
+        <DeleteNewsButton id={item.id} />
       </div>
     </article>
   );

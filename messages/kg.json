@@ -340,6 +340,12 @@
       "unarchivePending": "Архивден чыгарылууда...",
       "unarchiveSuccess": "Жаңылык архивден чыгарылды"
     },
+    "delete": {
+      "action": "Өчүрүү",
+      "error": "Жаңылыкты өчүрүү мүмкүн болгон жок",
+      "pending": "Өчүрүлүүдө...",
+      "success": "Жаңылык ийгиликтүү өчүрүлдү"
+    },
     "addForm": {
       "photosTitle": "Сүрөттөр",
       "titleSectionTitle": "Аталышы",

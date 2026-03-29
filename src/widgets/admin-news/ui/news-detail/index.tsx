@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
 import { ArchiveNewsButton } from "@/features/archive-news";
+import { DeleteNewsButton } from "@/features/delete-news";
 
 import { getNewsById } from "@/entities/news";
 
@@ -86,7 +87,10 @@ export const AdminNewsDetail = ({ id }: Props) => {
           </h1>
         </div>
 
-        <ArchiveNewsButton archived={data.archived} id={data.id} />
+        <div className="flex flex-wrap items-center gap-2">
+          <ArchiveNewsButton archived={data.archived} id={data.id} />
+          <DeleteNewsButton id={data.id} redirectOnSuccess="/admin/news" />
+        </div>
 
         {data.images.length ? (
           <div className="grid gap-3 md:grid-cols-2 md:gap-4">
