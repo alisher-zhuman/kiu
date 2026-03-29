@@ -329,6 +329,24 @@
     }
   },
   "AdminNewsPage": {
+    "addForm": {
+      "photosTitle": "Photos",
+      "addPhoto": "Add photo",
+      "photosHint": "Maximum 2 photos",
+      "maxPhotosHint": "maximum 2 photos!",
+      "photoPreviewAlt": "Uploaded photo",
+      "removePhoto": "Remove photo",
+      "errors": {
+        "images": {
+          "required": "Add at least one photo",
+          "max": "You can upload a maximum of 2 photos",
+          "invalidType": "Only image files are allowed",
+          "maxSize": "Each photo must not exceed 30 MB",
+          "upload": "Could not upload photo",
+          "delete": "Could not delete photo"
+        }
+      }
+    },
     "sectionLabel": "News list",
     "loading": "Loading news...",
     "empty": "No news yet.",
