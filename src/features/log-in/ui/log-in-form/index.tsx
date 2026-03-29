@@ -74,9 +74,9 @@ export const LogInForm = () => {
             className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-black/35 transition-colors hover:text-black/60"
           >
             {isPasswordVisible ? (
-              <EyeOff size={20} strokeWidth={1.75} />
-            ) : (
               <Eye size={20} strokeWidth={1.75} />
+            ) : (
+              <EyeOff size={20} strokeWidth={1.75} />
             )}
           </button>
         </div>

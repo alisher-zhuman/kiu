@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import { type NewsItem } from "@/entities/news";
@@ -19,7 +19,10 @@ interface Props {
 }
 
 export const NewsCard = ({ cardIndex, item, locale }: Props) => {
+  const [isTextModalMounted, setIsTextModalMounted] = useState(false);
   const [isTextModalOpen, setIsTextModalOpen] = useState(false);
+
+  const animationFrameRef = useRef<number | null>(null);
 
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewImages = item.images.slice(0, 2);
@@ -34,6 +37,22 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
     : item.description;
   const hasExpandableText = isLongTitle || isLongDescription;
 
+  useEffect(() => {
+    return () => {
+      if (animationFrameRef.current !== null) {
+        window.cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
+  const openModal = () => {
+    setIsTextModalMounted(true);
+
+    animationFrameRef.current = window.requestAnimationFrame(() => {
+      setIsTextModalOpen(true);
+    });
+  };
+
   return (
     <>
       <article
@@ -46,7 +65,7 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
         onClick={
           hasExpandableText
             ? () => {
-                setIsTextModalOpen(true);
+                openModal();
               }
             : undefined
         }
@@ -91,13 +110,17 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
         </div>
       </article>
 
-      {isTextModalOpen ? (
+      {isTextModalMounted ? (
         <NewsDescriptionModal
           description={item.description}
           formattedDate={formattedDate}
+          isOpen={isTextModalOpen}
           title={item.title}
           onClose={() => {
             setIsTextModalOpen(false);
+          }}
+          onExited={() => {
+            setIsTextModalMounted(false);
           }}
         />
       ) : null}

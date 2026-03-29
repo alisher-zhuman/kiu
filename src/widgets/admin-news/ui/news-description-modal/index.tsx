@@ -5,17 +5,23 @@ import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 
+const ANIMATION_DURATION_MS = 200;
+
 interface Props {
   description: string;
   formattedDate: string;
+  isOpen: boolean;
   onClose: () => void;
+  onExited: () => void;
   title: string;
 }
 
 export const NewsDescriptionModal = ({
   description,
   formattedDate,
+  isOpen,
   onClose,
+  onExited,
   title,
 }: Props) => {
   const t = useTranslations("AdminNewsPage");
@@ -30,16 +36,40 @@ export const NewsDescriptionModal = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(onExited, ANIMATION_DURATION_MS);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [isOpen, onExited]);
+
   return createPortal(
     <div
-      className="fixed inset-0 z-60 flex items-center justify-center bg-black/45 p-3 md:p-6"
-      onClick={onClose}
+      className={`fixed inset-0 z-60 flex items-center justify-center bg-black/45 p-3 transition-opacity duration-200 md:p-6 ${
+        isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+      }`}
+      onClick={
+        isOpen
+          ? () => {
+              onClose();
+            }
+          : undefined
+      }
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-label={t("modal.label")}
-        className="relative z-61 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(0,0,0,0.18)]"
+        className={`relative z-61 w-full max-w-3xl transform-gpu overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(0,0,0,0.18)] transition-all duration-200 ${
+          isOpen
+            ? "translate-y-0 scale-100 opacity-100"
+            : "translate-y-2 scale-[0.985] opacity-0"
+        }`}
         onClick={(event) => {
           event.stopPropagation();
         }}
