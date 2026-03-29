@@ -39,8 +39,13 @@ export const AdminNews = () => {
 
         {data?.length ? (
           <div className="grid gap-5 md:gap-6 xl:grid-cols-2">
-            {data.map((item) => (
-              <NewsCard key={item.id} item={item} locale={locale} />
+            {data.map((item, index) => (
+              <NewsCard
+                key={item.id}
+                cardIndex={index}
+                item={item}
+                locale={locale}
+              />
             ))}
           </div>
         ) : null}

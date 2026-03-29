@@ -14,11 +14,12 @@ const TITLE_PREVIEW_LIMIT = 80;
 const DESCRIPTION_PREVIEW_LIMIT = 160;
 
 interface Props {
+  cardIndex: number;
   item: NewsItem;
   locale: string;
 }
 
-export const NewsCard = ({ item, locale }: Props) => {
+export const NewsCard = ({ cardIndex, item, locale }: Props) => {
   const [isTextModalOpen, setIsTextModalOpen] = useState(false);
 
   const t = useTranslations("AdminNewsPage");
@@ -53,6 +54,7 @@ export const NewsCard = ({ item, locale }: Props) => {
                 alt={item.title}
                 width={1200}
                 height={900}
+                loading={cardIndex === 0 && index === 0 ? "eager" : "lazy"}
                 className="aspect-4/3 w-full rounded-xl object-cover"
               />
             ))}
