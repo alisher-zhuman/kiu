@@ -332,8 +332,6 @@
     "addForm": {
       "photosTitle": "Сүрөттөр",
       "addPhoto": "Сүрөт кошуу",
-      "photosHint": "Максимум 2 сүрөт",
-      "maxPhotosHint": "максимум 2 сүрөт!",
       "photoPreviewAlt": "Жүктөлгөн сүрөт",
       "removePhoto": "Сүрөттү өчүрүү",
       "errors": {

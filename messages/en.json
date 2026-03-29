@@ -332,8 +332,6 @@
     "addForm": {
       "photosTitle": "Photos",
       "addPhoto": "Add photo",
-      "photosHint": "Maximum 2 photos",
-      "maxPhotosHint": "maximum 2 photos!",
       "photoPreviewAlt": "Uploaded photo",
       "removePhoto": "Remove photo",
       "errors": {
