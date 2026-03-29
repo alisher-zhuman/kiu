@@ -5,6 +5,8 @@ import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 
+import { cn } from "@/shared/helpers";
+
 const ANIMATION_DURATION_MS = 200;
 
 interface Props {
@@ -50,9 +52,10 @@ export const NewsDescriptionModal = ({
 
   return createPortal(
     <div
-      className={`fixed inset-0 z-60 flex items-center justify-center bg-black/45 p-3 transition-opacity duration-200 md:p-6 ${
-        isOpen ? "opacity-100" : "pointer-events-none opacity-0"
-      }`}
+      className={cn(
+        "fixed inset-0 z-60 flex items-center justify-center bg-black/45 p-3 transition-opacity duration-200 md:p-6",
+        isOpen ? "opacity-100" : "pointer-events-none opacity-0",
+      )}
       onClick={
         isOpen
           ? () => {
@@ -65,11 +68,12 @@ export const NewsDescriptionModal = ({
         role="dialog"
         aria-modal="true"
         aria-label={t("modal.label")}
-        className={`relative z-61 w-full max-w-3xl transform-gpu overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(0,0,0,0.18)] transition-all duration-200 ${
+        className={cn(
+          "relative z-61 w-full max-w-3xl transform-gpu overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(0,0,0,0.18)] transition-all duration-200",
           isOpen
             ? "translate-y-0 scale-100 opacity-100"
-            : "translate-y-2 scale-[0.985] opacity-0"
-        }`}
+            : "translate-y-2 scale-[0.985] opacity-0",
+        )}
         onClick={(event) => {
           event.stopPropagation();
         }}
