@@ -313,11 +313,19 @@
     }
   },
   "AdminLayout": {
+    "actions": {
+      "add": "Добавить"
+    },
     "navigation": {
       "label": "Навигация по админке",
       "news": "Новости",
       "professors": "Профессора",
       "documents": "Документы"
+    },
+    "pages": {
+      "addNews": "Добавить новость",
+      "addDocuments": "Добавить документ",
+      "addProfessors": "Добавить профессора"
     }
   },
   "AdminNewsPage": {

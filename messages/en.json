@@ -313,11 +313,19 @@
     }
   },
   "AdminLayout": {
+    "actions": {
+      "add": "Add"
+    },
     "navigation": {
       "label": "Admin navigation",
       "news": "News",
       "professors": "Professors",
       "documents": "Documents"
+    },
+    "pages": {
+      "addNews": "Add news",
+      "addDocuments": "Add document",
+      "addProfessors": "Add professor"
     }
   },
   "AdminNewsPage": {

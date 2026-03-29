@@ -313,11 +313,19 @@
     }
   },
   "AdminLayout": {
+    "actions": {
+      "add": "Кошуу"
+    },
     "navigation": {
       "label": "Админ панелиндеги навигация",
       "news": "Жаңылыктар",
       "professors": "Профессорлор",
       "documents": "Документтер"
+    },
+    "pages": {
+      "addNews": "Жаңылык кошуу",
+      "addDocuments": "Документ кошуу",
+      "addProfessors": "Профессор кошуу"
     }
   },
   "AdminNewsPage": {
