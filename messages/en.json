@@ -332,11 +332,12 @@
     "archive": {
       "archive": "Archive",
       "archiveError": "Could not archive the news item",
+      "archivePending": "Archiving...",
       "archiveSuccess": "The news item was archived",
       "archived": "Archived",
-      "pending": "Saving...",
       "unarchive": "Unarchive",
       "unarchiveError": "Could not unarchive the news item",
+      "unarchivePending": "Restoring...",
       "unarchiveSuccess": "The news item was restored from the archive"
     },
     "addForm": {
@@ -347,6 +348,10 @@
       "submit": "Add",
       "photoPreviewAlt": "Uploaded photo",
       "removePhoto": "Remove photo",
+      "pending": {
+        "upload": "Uploading photo...",
+        "delete": "Deleting photo..."
+      },
       "locales": {
         "kg": "Kyrgyz",
         "ru": "Russian",

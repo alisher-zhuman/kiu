@@ -33,7 +33,13 @@ export const ArchiveNewsButton = ({ archived, className, id }: Props) => {
         className,
       )}
     >
-      {isPending ? t("pending") : archived ? t("unarchive") : t("archive")}
+      {isPending
+        ? archived
+          ? t("unarchivePending")
+          : t("archivePending")
+        : archived
+          ? t("unarchive")
+          : t("archive")}
     </button>
   );
 };

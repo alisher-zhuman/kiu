@@ -24,6 +24,7 @@ export const useArchiveNews = ({ archived, id }: Params) => {
       QUERY_KEYS.adminNews(locale),
       QUERY_KEYS.adminNewsById(locale, id),
     ],
+    pendingMessage: archived ? t("unarchivePending") : t("archivePending"),
     successMessage: (data) =>
       data.message ||
       (archived ? t("unarchiveSuccess") : t("archiveSuccess")),

@@ -41,6 +41,7 @@ export const useLogInForm = () => {
   const mutation = useToastMutation({
     mutationFn: ({ email, password }: LogInFormValues) =>
       logIn(email, password),
+    pendingMessage: t("submitPending"),
     onSuccess: (data) => {
       setAuthSession(data);
       toast.success(t("success"));

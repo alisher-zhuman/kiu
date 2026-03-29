@@ -332,11 +332,12 @@
     "archive": {
       "archive": "Архивировать",
       "archiveError": "Не удалось архивировать новость",
+      "archivePending": "Архивирование...",
       "archiveSuccess": "Новость отправлена в архив",
       "archived": "В архиве",
-      "pending": "Сохранение...",
       "unarchive": "Разархивировать",
       "unarchiveError": "Не удалось разархивировать новость",
+      "unarchivePending": "Разархивирование...",
       "unarchiveSuccess": "Новость возвращена из архива"
     },
     "addForm": {
@@ -347,6 +348,10 @@
       "submit": "Добавить",
       "photoPreviewAlt": "Загруженное фото",
       "removePhoto": "Удалить фото",
+      "pending": {
+        "upload": "Загрузка фото...",
+        "delete": "Удаление фото..."
+      },
       "locales": {
         "kg": "Кыргызча",
         "ru": "Русский",

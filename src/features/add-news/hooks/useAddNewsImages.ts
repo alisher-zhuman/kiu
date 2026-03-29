@@ -40,12 +40,14 @@ export const useAddNewsImages = ({
 
   const uploadMutation = useToastMutation({
     mutationFn: (file: File) => uploadImage(file),
+    pendingMessage: t("pending.upload"),
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, t("errors.images.upload")),
   });
 
   const deleteMutation = useToastMutation({
     mutationFn: (fileUrl: string) => deleteImage(fileUrl),
+    pendingMessage: t("pending.delete"),
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, t("errors.images.delete")),
   });
