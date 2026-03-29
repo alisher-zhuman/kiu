@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 
 import { type NewsItem } from "@/entities/news";
 
@@ -22,8 +21,6 @@ interface Props {
 export const NewsCard = ({ cardIndex, item, locale }: Props) => {
   const [isTextModalOpen, setIsTextModalOpen] = useState(false);
 
-  const t = useTranslations("AdminNewsPage");
-
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewImages = item.images.slice(0, 2);
   const isLongTitle = item.title.trim().length > TITLE_PREVIEW_LIMIT;
@@ -39,7 +36,31 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
 
   return (
     <>
-      <article className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_32px_rgba(0,0,0,0.04)]">
+      <article
+        className={cn(
+          "overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)]",
+          hasExpandableText
+            ? "cursor-pointer transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]"
+            : "",
+        )}
+        role={hasExpandableText ? "button" : undefined}
+        tabIndex={hasExpandableText ? 0 : undefined}
+        onClick={() => {
+          if (hasExpandableText) {
+            setIsTextModalOpen(true);
+          }
+        }}
+        onKeyDown={(event) => {
+          if (!hasExpandableText) {
+            return;
+          }
+
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setIsTextModalOpen(true);
+          }
+        }}
+      >
         {previewImages.length ? (
           <div
             className={cn(
@@ -75,19 +96,6 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
               <p className="text-sm leading-6 text-black/70 md:text-[0.95rem]">
                 {previewDescription}
               </p>
-
-              {hasExpandableText ? (
-                <button
-                  type="button"
-                  aria-label={t("openFullText")}
-                  className="inline-flex text-sm font-semibold text-[#004C97] transition-colors hover:text-[#002E5C]"
-                  onClick={() => {
-                    setIsTextModalOpen(true);
-                  }}
-                >
-                  ...
-                </button>
-              ) : null}
             </div>
           </div>
         </div>

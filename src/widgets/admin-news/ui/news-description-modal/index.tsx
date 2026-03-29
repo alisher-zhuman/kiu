@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 
 interface Props {
@@ -28,16 +29,16 @@ export const NewsDescriptionModal = ({
     };
   }, []);
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6"
+      className="fixed inset-0 z-60 flex items-center justify-center bg-black/45 px-4 py-6"
       onClick={onClose}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-label={t("modal.label")}
-        className="w-full max-w-3xl rounded-3xl bg-white p-5 shadow-[0_24px_60px_rgba(0,0,0,0.18)] md:p-7"
+        className="relative z-[61] w-full max-w-3xl rounded-3xl bg-white p-5 shadow-[0_24px_60px_rgba(0,0,0,0.18)] md:p-7"
         onClick={(event) => {
           event.stopPropagation();
         }}
@@ -69,6 +70,7 @@ export const NewsDescriptionModal = ({
           </p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };
