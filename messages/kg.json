@@ -331,10 +331,24 @@
   "AdminNewsPage": {
     "addForm": {
       "photosTitle": "Сүрөттөр",
+      "titleSectionTitle": "Аталышы",
+      "descriptionSectionTitle": "Сыпаттамасы",
       "addPhoto": "Сүрөт кошуу",
+      "submit": "Кошуу",
       "photoPreviewAlt": "Жүктөлгөн сүрөт",
       "removePhoto": "Сүрөттү өчүрүү",
+      "locales": {
+        "kg": "Кыргызча",
+        "ru": "Русский",
+        "en": "English"
+      },
       "errors": {
+        "title": {
+          "required": "Аталышты толтуруңуз"
+        },
+        "description": {
+          "required": "Сыпаттаманы толтуруңуз"
+        },
         "images": {
           "required": "Кеминде бир сүрөт кошуңуз",
           "max": "Эң көп дегенде 2 сүрөт жүктөөгө болот",

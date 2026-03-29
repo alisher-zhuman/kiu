@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { deleteImage, uploadImage } from "@/entities/images";
 
+import { LOCALE_OPTIONS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
@@ -29,12 +30,25 @@ export const useAddNewsForm = () => {
     control,
     formState: { errors },
     getValues,
+    handleSubmit,
+    register,
     setError,
     setValue,
   } = useForm<AddNewsFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
       images: [],
+        title: {
+        en: "",
+        kg: "",
+        ru: "",
+      },
+      description: {
+        en: "",
+        kg: "",
+        ru: "",
+      },
+    
     },
     mode: "onChange",
   });
@@ -134,16 +148,24 @@ export const useAddNewsForm = () => {
     setImagesValue(nextImages);
   };
 
+  const onSubmit = handleSubmit((values) => {
+    console.warn("add news payload", values);
+  });
+
   return {
     errors,
     fileInputRef,
     handleFilesSelect,
     images,
     isDeletePending: deleteMutation.isPending,
+    isSubmitDisabled: uploadMutation.isPending || deleteMutation.isPending,
     isUploadDisabled:
       uploadMutation.isPending || images.length >= MAX_NEWS_IMAGES_COUNT,
+    localeOptions: LOCALE_OPTIONS,
+    onSubmit,
     openFileDialog,
     removeImage,
+    register,
     t,
   };
 };

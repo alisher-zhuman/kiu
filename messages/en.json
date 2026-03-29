@@ -331,10 +331,24 @@
   "AdminNewsPage": {
     "addForm": {
       "photosTitle": "Photos",
+      "titleSectionTitle": "Title",
+      "descriptionSectionTitle": "Description",
       "addPhoto": "Add photo",
+      "submit": "Add",
       "photoPreviewAlt": "Uploaded photo",
       "removePhoto": "Remove photo",
+      "locales": {
+        "kg": "Kyrgyz",
+        "ru": "Russian",
+        "en": "English"
+      },
       "errors": {
+        "title": {
+          "required": "Fill in the title"
+        },
+        "description": {
+          "required": "Fill in the description"
+        },
         "images": {
           "required": "Add at least one photo",
           "max": "You can upload a maximum of 2 photos",

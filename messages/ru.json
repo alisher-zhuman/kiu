@@ -331,10 +331,24 @@
   "AdminNewsPage": {
     "addForm": {
       "photosTitle": "Фото",
+      "titleSectionTitle": "Заголовок",
+      "descriptionSectionTitle": "Описание",
       "addPhoto": "Добавить фото",
+      "submit": "Добавить",
       "photoPreviewAlt": "Загруженное фото",
       "removePhoto": "Удалить фото",
+      "locales": {
+        "kg": "Кыргызча",
+        "ru": "Русский",
+        "en": "English"
+      },
       "errors": {
+        "title": {
+          "required": "Заполните заголовок"
+        },
+        "description": {
+          "required": "Заполните описание"
+        },
         "images": {
           "required": "Добавьте хотя бы одно фото",
           "max": "Можно загрузить максимум 2 фото",

@@ -15,14 +15,22 @@ export const AddNewsForm = () => {
     handleFilesSelect,
     images,
     isDeletePending,
+    isSubmitDisabled,
     isUploadDisabled,
+    localeOptions,
+    onSubmit,
     openFileDialog,
     removeImage,
+    register,
     t,
   } = useAddNewsForm();
 
   return (
-    <form className="mx-auto w-full space-y-4 md:max-w-lg" noValidate>
+    <form
+      className="mx-auto w-full space-y-6 md:max-w-lg"
+      noValidate
+      onSubmit={onSubmit}
+    >
       <div className="space-y-4">
         <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
           {t("photosTitle")}
@@ -91,6 +99,90 @@ export const AddNewsForm = () => {
             {errors.images.message}
           </p>
         ) : null}
+      </div>
+
+      <div className="space-y-3">
+        <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
+          {t("titleSectionTitle")}
+        </h2>
+
+        <div className="space-y-3">
+          {localeOptions.map((locale) => (
+            <div key={`title-${locale}`} className="space-y-1.5">
+              <label
+                htmlFor={`title-${locale}`}
+                className="text-sm font-medium text-black/65"
+              >
+                {t(`locales.${locale}`)}
+              </label>
+
+              <input
+                id={`title-${locale}`}
+                type="text"
+                {...register(`title.${locale}`)}
+                className={cn(
+                  "w-full rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors placeholder:text-black/30 focus:border-[#004C97] md:text-base",
+                  errors.title?.[locale] && "border-red-500 focus:border-red-500",
+                )}
+              />
+
+              {errors.title?.[locale]?.message ? (
+                <p className="text-sm text-red-500">
+                  {errors.title[locale]?.message}
+                </p>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
+          {t("descriptionSectionTitle")}
+        </h2>
+
+        <div className="space-y-3">
+          {localeOptions.map((locale) => (
+            <div key={`description-${locale}`} className="space-y-1.5">
+              <label
+                htmlFor={`description-${locale}`}
+                className="text-sm font-medium text-black/65"
+              >
+                {t(`locales.${locale}`)}
+              </label>
+
+              <textarea
+                id={`description-${locale}`}
+                rows={5}
+                {...register(`description.${locale}`)}
+                className={cn(
+                  "w-full resize-y rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors placeholder:text-black/30 focus:border-[#004C97] md:text-base",
+                  errors.description?.[locale] &&
+                    "border-red-500 focus:border-red-500",
+                )}
+              />
+
+              {errors.description?.[locale]?.message ? (
+                <p className="text-sm text-red-500">
+                  {errors.description[locale]?.message}
+                </p>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          disabled={isSubmitDisabled}
+          className={cn(
+            "inline-flex min-w-36 items-center justify-center rounded-[0.95rem] bg-[#004C97] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C] md:min-w-40 md:text-base",
+            isSubmitDisabled && "cursor-not-allowed opacity-55 hover:bg-[#004C97]",
+          )}
+        >
+          {t("submit")}
+        </button>
       </div>
 
       <input
