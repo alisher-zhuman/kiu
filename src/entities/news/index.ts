@@ -1,2 +1,2 @@
-export { getNews, getNewsById } from "./api";
+export { getNews, getNewsById, toggleNewsArchive } from "./api";
 export type { NewsItem } from "./model/types";

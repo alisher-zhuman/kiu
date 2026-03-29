@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
+
+import { ArchiveNewsButton } from "@/features/archive-news";
 
 import { type NewsItem } from "@/entities/news";
 
@@ -16,6 +19,8 @@ interface Props {
 }
 
 export const NewsCard = ({ cardIndex, item, locale }: Props) => {
+  const t = useTranslations("AdminNewsPage.archive");
+
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewImages = item.images.slice(0, 2);
   const isLongTitle = item.title.trim().length > TITLE_PREVIEW_LIMIT;
@@ -29,11 +34,8 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
     : item.description;
 
   return (
-    <Link
-      href={`/admin/news/${item.id}`}
-      className="block h-full rounded-2xl transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]"
-    >
-      <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)]">
+    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]">
+      <Link href={`/admin/news/${item.id}`} className="block">
         {previewImages.length ? (
           <div
             className={cn(
@@ -56,9 +58,17 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
         ) : null}
 
         <div className="flex flex-1 flex-col space-y-3 p-4 md:p-5">
-          <p className="text-xs font-medium text-[#004C97] md:text-sm">
-            {formattedDate}
-          </p>
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="text-xs font-medium text-[#004C97] md:text-sm">
+              {formattedDate}
+            </p>
+
+            {item.archived ? (
+              <span className="inline-flex items-center rounded-full bg-[#004C97]/8 px-2 py-0.5 text-[10px] font-medium text-[#004C97] md:text-xs">
+                {t("archived")}
+              </span>
+            ) : null}
+          </div>
 
           <div className="space-y-2.5">
             <h2 className="text-lg font-semibold tracking-tight text-black md:text-xl">
@@ -72,7 +82,11 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
             </div>
           </div>
         </div>
-      </article>
-    </Link>
+      </Link>
+
+      <div className="px-4 pb-4 md:px-5 md:pb-5">
+        <ArchiveNewsButton archived={item.archived} id={item.id} />
+      </div>
+    </article>
   );
 };

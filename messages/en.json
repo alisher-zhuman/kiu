@@ -329,6 +329,16 @@
     }
   },
   "AdminNewsPage": {
+    "archive": {
+      "archive": "Archive",
+      "archiveError": "Could not archive the news item",
+      "archiveSuccess": "The news item was archived",
+      "archived": "Archived",
+      "pending": "Saving...",
+      "unarchive": "Unarchive",
+      "unarchiveError": "Could not unarchive the news item",
+      "unarchiveSuccess": "The news item was restored from the archive"
+    },
     "addForm": {
       "photosTitle": "Photos",
       "titleSectionTitle": "Title",

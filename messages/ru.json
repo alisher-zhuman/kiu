@@ -329,6 +329,16 @@
     }
   },
   "AdminNewsPage": {
+    "archive": {
+      "archive": "Архивировать",
+      "archiveError": "Не удалось архивировать новость",
+      "archiveSuccess": "Новость отправлена в архив",
+      "archived": "В архиве",
+      "pending": "Сохранение...",
+      "unarchive": "Разархивировать",
+      "unarchiveError": "Не удалось разархивировать новость",
+      "unarchiveSuccess": "Новость возвращена из архива"
+    },
     "addForm": {
       "photosTitle": "Фото",
       "titleSectionTitle": "Заголовок",

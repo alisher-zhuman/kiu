@@ -329,6 +329,16 @@
     }
   },
   "AdminNewsPage": {
+    "archive": {
+      "archive": "Архивге жөнөтүү",
+      "archiveError": "Жаңылыкты архивге жөнөтүү мүмкүн болгон жок",
+      "archiveSuccess": "Жаңылык архивге жөнөтүлдү",
+      "archived": "Архивде",
+      "pending": "Сакталууда...",
+      "unarchive": "Архивден чыгаруу",
+      "unarchiveError": "Жаңылыкты архивден чыгаруу мүмкүн болгон жок",
+      "unarchiveSuccess": "Жаңылык архивден чыгарылды"
+    },
     "addForm": {
       "photosTitle": "Сүрөттөр",
       "titleSectionTitle": "Аталышы",

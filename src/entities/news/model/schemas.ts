@@ -6,7 +6,11 @@ export const NewsItemSchema = z.object({
   title: z.string(),
   description: z.string(),
   dateOfPublication: z.string(),
+  archived: z.boolean(),
+});
+
+export const ToggleNewsArchiveResponseSchema = z.object({
+  message: z.string(),
 });
 
 export const NewsResponseSchema = z.array(NewsItemSchema);
-

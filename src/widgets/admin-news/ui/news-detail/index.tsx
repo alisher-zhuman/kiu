@@ -7,6 +7,8 @@ import { ArrowLeft } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
+import { ArchiveNewsButton } from "@/features/archive-news";
+
 import { getNewsById } from "@/entities/news";
 
 import { QUERY_KEYS } from "@/shared/constants";
@@ -67,14 +69,24 @@ export const AdminNewsDetail = ({ id }: Props) => {
         </Link>
 
         <div className="space-y-3">
-          <p className="text-sm font-medium text-[#004C97] md:text-base">
-            {formattedDate}
-          </p>
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="text-sm font-medium text-[#004C97] md:text-base">
+              {formattedDate}
+            </p>
+
+            {data.archived ? (
+              <span className="inline-flex items-center rounded-full bg-[#004C97]/8 px-2.5 py-1 text-xs font-medium text-[#004C97]">
+                {t("archive.archived")}
+              </span>
+            ) : null}
+          </div>
 
           <h1 className="text-2xl font-semibold tracking-tight text-black md:text-4xl">
             {data.title}
           </h1>
         </div>
+
+        <ArchiveNewsButton archived={data.archived} id={data.id} />
 
         {data.images.length ? (
           <div className="grid gap-3 md:grid-cols-2 md:gap-4">
