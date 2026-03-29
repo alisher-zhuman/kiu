@@ -10,6 +10,7 @@ import { cn, formatDate } from "@/shared/helpers";
 
 import { NewsDescriptionModal } from "../news-description-modal";
 
+const TITLE_PREVIEW_LIMIT = 80;
 const DESCRIPTION_PREVIEW_LIMIT = 160;
 
 interface Props {
@@ -18,17 +19,22 @@ interface Props {
 }
 
 export const NewsCard = ({ item, locale }: Props) => {
-  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+  const [isTextModalOpen, setIsTextModalOpen] = useState(false);
 
   const t = useTranslations("AdminNewsPage");
 
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewImages = item.images.slice(0, 2);
+  const isLongTitle = item.title.trim().length > TITLE_PREVIEW_LIMIT;
   const isLongDescription =
     item.description.trim().length > DESCRIPTION_PREVIEW_LIMIT;
+  const previewTitle = isLongTitle
+    ? `${item.title.slice(0, TITLE_PREVIEW_LIMIT).trimEnd()}...`
+    : item.title;
   const previewDescription = isLongDescription
     ? `${item.description.slice(0, DESCRIPTION_PREVIEW_LIMIT).trimEnd()}...`
     : item.description;
+  const hasExpandableText = isLongTitle || isLongDescription;
 
   return (
     <>
@@ -60,7 +66,7 @@ export const NewsCard = ({ item, locale }: Props) => {
 
           <div className="space-y-2.5">
             <h2 className="text-lg font-semibold tracking-tight text-black md:text-xl">
-              {item.title}
+              {previewTitle}
             </h2>
 
             <div className="space-y-1.5">
@@ -68,13 +74,13 @@ export const NewsCard = ({ item, locale }: Props) => {
                 {previewDescription}
               </p>
 
-              {isLongDescription ? (
+              {hasExpandableText ? (
                 <button
                   type="button"
                   aria-label={t("openFullText")}
                   className="inline-flex text-sm font-semibold text-[#004C97] transition-colors hover:text-[#002E5C]"
                   onClick={() => {
-                    setIsDescriptionOpen(true);
+                    setIsTextModalOpen(true);
                   }}
                 >
                   ...
@@ -85,13 +91,13 @@ export const NewsCard = ({ item, locale }: Props) => {
         </div>
       </article>
 
-      {isDescriptionOpen ? (
+      {isTextModalOpen ? (
         <NewsDescriptionModal
           description={item.description}
           formattedDate={formattedDate}
           title={item.title}
           onClose={() => {
-            setIsDescriptionOpen(false);
+            setIsTextModalOpen(false);
           }}
         />
       ) : null}
