@@ -352,9 +352,11 @@
       "descriptionSectionTitle": "Description",
       "addPhoto": "Add photo",
       "submit": "Add",
+      "success": "The news item was added successfully",
       "photoPreviewAlt": "Uploaded photo",
       "removePhoto": "Remove photo",
       "pending": {
+        "submit": "Adding news...",
         "upload": "Uploading photo...",
         "delete": "Deleting photo..."
       },
@@ -377,7 +379,8 @@
           "maxSize": "Each photo must not exceed 30 MB",
           "upload": "Could not upload photo",
           "delete": "Could not delete photo"
-        }
+        },
+        "submit": "Could not add the news item"
       }
     },
     "sectionLabel": "News list",

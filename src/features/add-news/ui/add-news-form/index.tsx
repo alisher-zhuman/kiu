@@ -81,8 +81,9 @@ export const AddNewsForm = () => {
           type="submit"
           disabled={isSubmitDisabled}
           className={cn(
-            "inline-flex w-full items-center justify-center rounded-[0.95rem] bg-[#004C97] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C] md:ml-auto md:w-auto md:min-w-40 md:text-base",
-            isSubmitDisabled && "cursor-not-allowed opacity-55 hover:bg-[#004C97]",
+            "inline-flex cursor-pointer w-full items-center justify-center rounded-[0.95rem] bg-[#004C97] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C] md:ml-auto md:w-auto md:min-w-40 md:text-base",
+            isSubmitDisabled &&
+              "cursor-not-allowed opacity-55 hover:bg-[#004C97]",
           )}
         >
           {t("submit")}

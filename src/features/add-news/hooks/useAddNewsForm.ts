@@ -2,10 +2,16 @@
 
 import { useMemo } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { LOCALE_OPTIONS } from "@/shared/constants";
+import { useRouter } from "@/i18n/navigation";
+
+import { createNews } from "@/entities/news";
+
+import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
+import { getApiErrorMessage } from "@/shared/helpers";
+import { useToastMutation } from "@/shared/hooks";
 
 import { createAddNewsFormSchema } from "../schemas";
 import { type AddNewsFormValues } from "../types";
@@ -13,6 +19,9 @@ import { type AddNewsFormValues } from "../types";
 import { useAddNewsImages } from "./useAddNewsImages";
 
 export const useAddNewsForm = () => {
+  const locale = useLocale();
+  const router = useRouter();
+
   const t = useTranslations("AdminNewsPage.addForm");
 
   const schema = useMemo(() => createAddNewsFormSchema(t), [t]);
@@ -20,7 +29,7 @@ export const useAddNewsForm = () => {
   const {
     clearErrors,
     control,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     getValues,
     handleSubmit,
     register,
@@ -67,8 +76,20 @@ export const useAddNewsForm = () => {
     t,
   });
 
+  const mutation = useToastMutation({
+    mutationFn: (values: AddNewsFormValues) => createNews(values),
+    invalidateKeys: [QUERY_KEYS.adminNews(locale)],
+    pendingMessage: t("pending.submit"),
+    successMessage: (data) => data.message || t("success"),
+    errorMessage: (error: unknown) =>
+      getApiErrorMessage(error, t("errors.submit")),
+    onSuccess: () => {
+      router.replace("/admin/news");
+    },
+  });
+
   const onSubmit = handleSubmit((values) => {
-    console.warn("add news payload", values);
+    mutation.mutate(values);
   });
 
   return {
@@ -77,7 +98,7 @@ export const useAddNewsForm = () => {
     handleFilesSelect,
     images,
     isDeletePending,
-    isSubmitDisabled: isUploadingImages,
+    isSubmitDisabled: isUploadingImages || mutation.isPending || isSubmitting,
     isUploadDisabled,
     localeOptions: LOCALE_OPTIONS,
     onSubmit,

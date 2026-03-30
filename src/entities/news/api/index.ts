@@ -6,6 +6,13 @@ import {
   NewsItemSchema,
   NewsResponseSchema,
 } from "../model/schemas";
+import { type CreateNewsPayload } from "../model/types";
+
+export const createNews = async (payload: CreateNewsPayload) => {
+  const { data } = await api.post(API_ROUTES.NEWS, payload);
+
+  return NewsActionResponseSchema.parse(data);
+};
 
 export const getNews = async () => {
   const { data } = await api.get(API_ROUTES.NEWS);
