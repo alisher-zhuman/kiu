@@ -430,6 +430,45 @@
     "loading": "Loading professors...",
     "empty": "No professors yet.",
     "error": "Could not load professors",
+    "addForm": {
+      "photoTitle": "Photo",
+      "photoPreviewAlt": "Uploaded photo",
+      "removePhoto": "Remove photo",
+      "fullNameTitle": "Full name",
+      "positionLabel": "Position",
+      "sectionLabel": "Section",
+      "submit": "Add",
+      "success": "The professor was added successfully",
+      "locales": {
+        "kg": "Kyrgyz",
+        "ru": "Russian",
+        "en": "English"
+      },
+      "pending": {
+        "upload": "Uploading photo...",
+        "delete": "Deleting photo...",
+        "submit": "Adding professor..."
+      },
+      "errors": {
+        "fullName": {
+          "required": "Fill in the full name"
+        },
+        "photo": {
+          "required": "Add a photo",
+          "invalidType": "Only image files are allowed",
+          "maxSize": "The photo must not exceed 5 MB",
+          "upload": "Could not upload the photo",
+          "delete": "Could not delete the photo"
+        },
+        "position": {
+          "required": "Fill in the position"
+        },
+        "section": {
+          "required": "Select a section"
+        },
+        "submit": "Could not add the professor"
+      }
+    },
     "sections": {
       "ADMINISTRATION": "Administration",
       "THEOLOGY": "Theology",

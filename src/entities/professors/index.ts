@@ -1,2 +1,7 @@
-export { getProfessors } from "./api";
-export type { ProfessorItem } from "./model/types";
+export { createProfessor, getProfessors } from "./api";
+export { PROFESSOR_SECTION_OPTIONS } from "./model/constants";
+export type {
+  CreateProfessorPayload,
+  LocalizedProfessorName,
+  ProfessorItem,
+} from "./model/types";

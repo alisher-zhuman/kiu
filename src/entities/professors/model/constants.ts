@@ -1,0 +1,6 @@
+export const PROFESSOR_SECTION_OPTIONS = [
+  "ADMINISTRATION",
+  "THEOLOGY",
+  "PHILOLOGY",
+  "SHARIAT",
+] as const;

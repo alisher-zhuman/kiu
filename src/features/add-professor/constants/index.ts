@@ -1,0 +1,1 @@
+export const MAX_PROFESSOR_PHOTO_SIZE_BYTES = 5 * 1024 * 1024;

@@ -1,11 +1,5 @@
-import { getTranslations } from "next-intl/server";
+import { AddProfessor } from "@/widgets/admin-professors";
 
-import { InDevelopment } from "@/widgets/in-development";
-
-const AddProfessorPage = async () => {
-  const t = await getTranslations("AdminLayout.pages");
-
-  return <InDevelopment compactTopPadding title={t("addProfessors")} />;
-};
+const AddProfessorPage = () => <AddProfessor />;
 
 export default AddProfessorPage;
