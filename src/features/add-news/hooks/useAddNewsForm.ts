@@ -80,7 +80,7 @@ export const useAddNewsForm = () => {
     mutationFn: (values: AddNewsFormValues) => createNews(values),
     invalidateKeys: [QUERY_KEYS.adminNews(locale)],
     pendingMessage: t("pending.submit"),
-    successMessage: (data) => data.message || t("success"),
+    successMessage: t("success"),
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, t("errors.submit")),
     onSuccess: () => {

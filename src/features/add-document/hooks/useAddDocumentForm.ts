@@ -66,7 +66,7 @@ export const useAddDocumentForm = () => {
     mutationFn: (values: AddDocumentFormValues) => createDocument(values),
     invalidateKeys: [QUERY_KEYS.adminDocuments(locale)],
     pendingMessage: t("pending.submit"),
-    successMessage: (data) => data.message || t("success"),
+    successMessage: t("success"),
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, t("errors.submit")),
     onSuccess: () => {

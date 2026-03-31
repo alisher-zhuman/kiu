@@ -71,7 +71,7 @@ export const FileFieldset = ({
           )}
         >
           <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-black/8 text-black/40">
-            <Plus className="size-5 stroke-[2]" />
+            <Plus className="size-5 stroke-2" />
           </div>
 
           <div className="min-w-0">

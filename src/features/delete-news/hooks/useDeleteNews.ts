@@ -28,7 +28,7 @@ export const useDeleteNews = ({ id, redirectOnSuccess }: Params) => {
       QUERY_KEYS.adminNewsById(locale, id),
     ],
     pendingMessage: t("pending"),
-    successMessage: (data) => data.message || t("success"),
+    successMessage: t("success"),
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, t("error")),
     onSuccess: () => {
