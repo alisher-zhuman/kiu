@@ -2,7 +2,6 @@ import { z } from "zod";
 
 import { PROFESSOR_SECTION_OPTIONS } from "@/entities/professors";
 
-import { MAX_PROFESSOR_PHOTO_SIZE_BYTES } from "../constants";
 
 export const createAddProfessorFormSchema = (
   t: (key: string) => string,
@@ -21,4 +20,3 @@ export const createAddProfessorFormSchema = (
   });
 };
 
-export { MAX_PROFESSOR_PHOTO_SIZE_BYTES };

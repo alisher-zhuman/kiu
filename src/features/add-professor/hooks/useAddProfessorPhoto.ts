@@ -13,7 +13,7 @@ import { deleteFile, uploadFile } from "@/entities/files";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
-import { MAX_PROFESSOR_PHOTO_SIZE_BYTES } from "../schemas";
+import { MAX_PROFESSOR_PHOTO_SIZE_BYTES } from "../constants";
 import { type AddProfessorFormValues } from "../types";
 
 interface Params {
@@ -114,7 +114,8 @@ export const useAddProfessorPhoto = ({
     fileInputRef,
     handlePhotoSelect,
     isPhotoDeletePending: deleteMutation.isPending,
-    isPhotoUploadDisabled: Boolean(getValues("photo")) || uploadMutation.isPending,
+    isPhotoUploadDisabled:
+      Boolean(getValues("photo")) || uploadMutation.isPending,
     isSubmittingPhoto: uploadMutation.isPending || deleteMutation.isPending,
     openFileDialog,
     removePhoto,
