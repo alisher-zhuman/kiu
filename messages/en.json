@@ -376,7 +376,7 @@
           "required": "Add at least one photo",
           "max": "You can upload a maximum of 2 photos",
           "invalidType": "Only image files are allowed",
-          "maxSize": "Each photo must not exceed 30 MB",
+          "maxSize": "Each photo must not exceed 5 MB",
           "upload": "Could not upload photo",
           "delete": "Could not delete photo"
         },
