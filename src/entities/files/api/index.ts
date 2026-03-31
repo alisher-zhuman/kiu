@@ -1,9 +1,9 @@
 import { api } from "@/shared/configs";
 import { API_ROUTES } from "@/shared/constants";
 
-import { UploadImageResponseSchema } from "../model/schemas";
+import { UploadFileResponseSchema } from "../model/schemas";
 
-export const uploadImage = async (file: File) => {
+export const uploadFile = async (file: File) => {
   const formData = new FormData();
 
   formData.append("file", file);
@@ -14,10 +14,10 @@ export const uploadImage = async (file: File) => {
     },
   });
 
-  return UploadImageResponseSchema.parse(data);
+  return UploadFileResponseSchema.parse(data);
 };
 
-export const deleteImage = async (fileUrl: string) => {
+export const deleteFile = async (fileUrl: string) => {
   await api.delete(API_ROUTES.IMAGES_DELETE, {
     params: {
       fileUrl,

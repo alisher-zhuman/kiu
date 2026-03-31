@@ -1,0 +1,96 @@
+"use client";
+
+import { type ChangeEvent, type RefObject } from "react";
+import { FileText, Plus, X } from "lucide-react";
+
+import { cn } from "@/shared/helpers";
+
+interface Props {
+  errorMessage: string | undefined;
+  fileInputRef: RefObject<HTMLInputElement | null>;
+  fileName: string;
+  handleFileSelect: (event: ChangeEvent<HTMLInputElement>) => void;
+  isDeletePending: boolean;
+  isUploadDisabled: boolean;
+  openFileDialog: () => void;
+  removeFile: () => Promise<void>;
+  t: (key: string) => string;
+}
+
+export const FileFieldset = ({
+  errorMessage,
+  fileInputRef,
+  fileName,
+  handleFileSelect,
+  isDeletePending,
+  isUploadDisabled,
+  openFileDialog,
+  removeFile,
+  t,
+}: Props) => (
+  <div className="space-y-4">
+    <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
+      {t("fileTitle")}
+    </h2>
+
+    <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-4">
+      <div className="max-w-80">
+        <div className="relative flex min-h-24 items-center gap-3 overflow-hidden rounded-[0.95rem] bg-black/6 px-4 py-4">
+          <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-black/8 text-black/40">
+            <FileText className="size-6 stroke-[1.8]" />
+          </div>
+
+          <div className="min-w-0">
+            <p className="truncate text-sm font-medium text-black">
+              {fileName || t("emptyFile")}
+            </p>
+
+            <p className="text-xs text-black/45">PDF</p>
+          </div>
+
+          {fileName ? (
+            <button
+              type="button"
+              onClick={removeFile}
+              disabled={isDeletePending}
+              aria-label={t("removeFile")}
+              className="absolute top-2 right-2 inline-flex size-6 cursor-pointer items-center justify-center rounded-full bg-black/70 text-white transition-colors hover:bg-black"
+            >
+              <X className="size-3" />
+            </button>
+          ) : null}
+        </div>
+      </div>
+
+      {!fileName ? (
+        <div className="w-full max-w-44 md:min-w-40">
+          <button
+            type="button"
+            onClick={openFileDialog}
+            disabled={isUploadDisabled}
+            className={cn(
+              "inline-flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-[0.95rem] bg-black/6 px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-black/8 md:px-4.5 md:py-3",
+              isUploadDisabled &&
+                "cursor-not-allowed opacity-55 hover:bg-black/6",
+            )}
+          >
+            <Plus className="size-4" />
+            {t("addFile")}
+          </button>
+        </div>
+      ) : null}
+    </div>
+
+    {errorMessage ? (
+      <p className="text-sm text-red-500 md:text-base">{errorMessage}</p>
+    ) : null}
+
+    <input
+      ref={fileInputRef}
+      type="file"
+      accept="application/pdf,.pdf"
+      className="sr-only"
+      onChange={handleFileSelect}
+    />
+  </div>
+);

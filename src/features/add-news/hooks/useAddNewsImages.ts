@@ -8,7 +8,7 @@ import {
   type UseFormSetValue,
 } from "react-hook-form";
 
-import { deleteImage, uploadImage } from "@/entities/images";
+import { deleteFile, uploadFile } from "@/entities/files";
 
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
@@ -39,14 +39,14 @@ export const useAddNewsImages = ({
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const uploadMutation = useToastMutation({
-    mutationFn: (file: File) => uploadImage(file),
+    mutationFn: (file: File) => uploadFile(file),
     pendingMessage: t("pending.upload"),
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, t("errors.images.upload")),
   });
 
   const deleteMutation = useToastMutation({
-    mutationFn: (fileUrl: string) => deleteImage(fileUrl),
+    mutationFn: (fileUrl: string) => deleteFile(fileUrl),
     pendingMessage: t("pending.delete"),
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, t("errors.images.delete")),

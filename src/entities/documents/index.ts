@@ -1,2 +1,2 @@
-export { getDocuments } from "./api";
-export type { DocumentItem } from "./model/types";
+export { createDocument, getDocuments } from "./api";
+export type { CreateDocumentPayload, DocumentItem } from "./model/types";

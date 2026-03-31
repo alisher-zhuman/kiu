@@ -388,6 +388,35 @@
     "empty": "No news yet.",
     "error": "Could not load news"
   },
+  "AdminDocumentsPage": {
+    "addForm": {
+      "fileTitle": "File",
+      "emptyFile": "No PDF selected",
+      "addFile": "Add PDF",
+      "removeFile": "Remove file",
+      "titleLabel": "Document title",
+      "submit": "Add",
+      "success": "The document was added successfully",
+      "pending": {
+        "upload": "Uploading file...",
+        "delete": "Deleting file...",
+        "submit": "Adding document..."
+      },
+      "errors": {
+        "title": {
+          "required": "Fill in the document title"
+        },
+        "file": {
+          "required": "Add a PDF file",
+          "invalidType": "Only PDF files are allowed",
+          "maxSize": "The PDF must not exceed 10 MB",
+          "upload": "Could not upload the file",
+          "delete": "Could not delete the file"
+        },
+        "submit": "Could not add the document"
+      }
+    }
+  },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",
     "sections": [

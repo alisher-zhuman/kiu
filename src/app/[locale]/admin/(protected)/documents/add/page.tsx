@@ -1,11 +1,5 @@
-import { getTranslations } from "next-intl/server";
+import { AddDocument } from "@/widgets/admin-documents";
 
-import { InDevelopment } from "@/widgets/in-development";
-
-const AddDocumentPage = async () => {
-  const t = await getTranslations("AdminLayout.pages");
-
-  return <InDevelopment compactTopPadding title={t("addDocuments")} />;
-};
+const AddDocumentPage = () => <AddDocument />;
 
 export default AddDocumentPage;

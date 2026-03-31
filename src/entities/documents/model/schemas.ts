@@ -7,4 +7,8 @@ export const DocumentItemSchema = z.object({
   type: z.string(),
 });
 
+export const DocumentActionResponseSchema = z.object({
+  message: z.string(),
+});
+
 export const DocumentsResponseSchema = z.array(DocumentItemSchema);
