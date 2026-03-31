@@ -432,6 +432,7 @@
     "error": "Не удалось загрузить профессоров",
     "addForm": {
       "photoTitle": "Фото",
+      "photoHint": "Нажмите, чтобы выбрать фото",
       "photoPreviewAlt": "Загруженное фото",
       "removePhoto": "Удалить фото",
       "fullNameTitle": "ФИО",
@@ -439,6 +440,14 @@
       "sectionLabel": "Раздел",
       "submit": "Добавить",
       "success": "Профессор успешно добавлен",
+      "placeholders": {
+        "fullName": {
+          "kg": "Введите ФИО на кыргызском",
+          "ru": "Введите ФИО на русском",
+          "en": "Enter the full name in English"
+        },
+        "position": "Введите должность"
+      },
       "locales": {
         "kg": "Кыргызча",
         "ru": "Русский",

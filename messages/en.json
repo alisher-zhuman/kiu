@@ -432,6 +432,7 @@
     "error": "Could not load professors",
     "addForm": {
       "photoTitle": "Photo",
+      "photoHint": "Click to choose a photo",
       "photoPreviewAlt": "Uploaded photo",
       "removePhoto": "Remove photo",
       "fullNameTitle": "Full name",
@@ -439,6 +440,14 @@
       "sectionLabel": "Section",
       "submit": "Add",
       "success": "The professor was added successfully",
+      "placeholders": {
+        "fullName": {
+          "kg": "Enter the full name in Kyrgyz",
+          "ru": "Enter the full name in Russian",
+          "en": "Enter the full name in English"
+        },
+        "position": "Enter the position"
+      },
       "locales": {
         "kg": "Kyrgyz",
         "ru": "Russian",

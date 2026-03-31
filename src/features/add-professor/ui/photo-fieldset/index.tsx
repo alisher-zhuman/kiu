@@ -34,7 +34,7 @@ export const PhotoFieldset = ({
       {t("photoTitle")}
     </h2>
 
-    <div className="max-w-56">
+    <div className="max-w-36 md:max-w-40">
       <button
         type="button"
         onClick={photo ? undefined : openFileDialog}
@@ -75,8 +75,11 @@ export const PhotoFieldset = ({
             </span>
           </>
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-black/20">
-            <Camera className="size-12 stroke-[1.5]" />
+          <div className="flex h-full w-full flex-col items-center justify-center gap-8 px-3 text-center text-black/35">
+            <Camera className="size-9 stroke-[1.5] md:size-10" />
+            <span className="text-[11px] font-medium leading-4 md:text-xs">
+              {t("photoHint")}
+            </span>
           </div>
         )}
       </button>
