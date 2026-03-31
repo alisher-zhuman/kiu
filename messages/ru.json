@@ -394,6 +394,11 @@
       "emptyFile": "PDF не выбран",
       "addFile": "Добавить PDF",
       "removeFile": "Удалить файл",
+      "docTypeLabel": "Раздел",
+      "docTypes": {
+        "LOCAL_KIU_DOCUMENTS": "Локальные документы КИУ",
+        "MINISTRY_DOCUMENTS": "Документы Министерства"
+      },
       "titleLabel": "Название документа",
       "submit": "Добавить",
       "success": "Документ успешно добавлен",
@@ -403,6 +408,9 @@
         "submit": "Добавление документа..."
       },
       "errors": {
+        "docType": {
+          "required": "Выберите раздел"
+        },
         "title": {
           "required": "Заполните название документа"
         },

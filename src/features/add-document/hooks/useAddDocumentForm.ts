@@ -13,6 +13,7 @@ import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
+import { DOCUMENT_TYPE_OPTIONS } from "../constants";
 import { createAddDocumentFormSchema } from "../schemas";
 import { type AddDocumentFormValues } from "../types";
 
@@ -38,6 +39,7 @@ export const useAddDocumentForm = () => {
     resolver: zodResolver(schema),
     defaultValues: {
       content: "",
+      docType: DOCUMENT_TYPE_OPTIONS[0],
       title: "",
     },
     mode: "onChange",
@@ -84,6 +86,7 @@ export const useAddDocumentForm = () => {
     isFileDeletePending,
     isFileUploadDisabled,
     isSubmitDisabled: isSubmittingFile || mutation.isPending || isSubmitting,
+    documentTypeOptions: DOCUMENT_TYPE_OPTIONS,
     onSubmit,
     openFileDialog,
     register,

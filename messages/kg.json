@@ -394,6 +394,11 @@
       "emptyFile": "PDF тандала элек",
       "addFile": "PDF кошуу",
       "removeFile": "Файлды өчүрүү",
+      "docTypeLabel": "Бөлүм",
+      "docTypes": {
+        "LOCAL_KIU_DOCUMENTS": "КИУнун жергиликтүү документтери",
+        "MINISTRY_DOCUMENTS": "Министрликтин документтери"
+      },
       "titleLabel": "Документтин аталышы",
       "submit": "Кошуу",
       "success": "Документ ийгиликтүү кошулду",
@@ -403,6 +408,9 @@
         "submit": "Документ кошулууда..."
       },
       "errors": {
+        "docType": {
+          "required": "Бөлүмдү тандаңыз"
+        },
         "title": {
           "required": "Документтин аталышын толтуруңуз"
         },

@@ -4,6 +4,7 @@ import { type DocumentItemSchema } from "./schemas";
 
 export interface CreateDocumentPayload {
   content: string;
+  docType: string;
   title: string;
 }
 

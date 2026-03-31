@@ -394,6 +394,11 @@
       "emptyFile": "No PDF selected",
       "addFile": "Add PDF",
       "removeFile": "Remove file",
+      "docTypeLabel": "Section",
+      "docTypes": {
+        "LOCAL_KIU_DOCUMENTS": "Local KIU documents",
+        "MINISTRY_DOCUMENTS": "Ministry documents"
+      },
       "titleLabel": "Document title",
       "submit": "Add",
       "success": "The document was added successfully",
@@ -403,6 +408,9 @@
         "submit": "Adding document..."
       },
       "errors": {
+        "docType": {
+          "required": "Select a section"
+        },
         "title": {
           "required": "Fill in the document title"
         },
