@@ -1,5 +1,5 @@
-import { InDevelopment } from "@/widgets/in-development";
+import { AdminDocuments } from "@/widgets/admin-documents";
 
-const DocumentsPage = () => <InDevelopment compactTopPadding hideHeader />;
+const DocumentsPage = () => <AdminDocuments />;
 
 export default DocumentsPage;
