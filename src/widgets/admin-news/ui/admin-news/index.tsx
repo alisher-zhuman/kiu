@@ -15,7 +15,7 @@ export const AdminNews = () => {
 
   const t = useTranslations("AdminNewsPage");
 
-  const { data, error, isLoading } = useQuery({
+  const { data: news, error, isLoading } = useQuery({
     queryKey: QUERY_KEYS.adminNews(locale),
     queryFn: getNews,
   });
@@ -33,13 +33,13 @@ export const AdminNews = () => {
           </p>
         ) : null}
 
-        {!isLoading && !error && !data?.length ? (
+        {!isLoading && !error && !news?.length ? (
           <p className="text-base text-black/60 md:text-lg">{t("empty")}</p>
         ) : null}
 
-        {data?.length ? (
+        {news?.length ? (
           <div className="grid items-stretch gap-5 md:gap-6 xl:grid-cols-2">
-            {data.map((item, index) => (
+            {news.map((item, index) => (
               <NewsCard
                 key={item.id}
                 cardIndex={index}

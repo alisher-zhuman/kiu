@@ -13,18 +13,18 @@ import { QUERY_KEYS } from "@/shared/constants";
 export const AdminDocuments = () => {
   const locale = useLocale();
 
-  const { data } = useQuery({
+  const { data: documents } = useQuery({
     queryKey: QUERY_KEYS.adminDocuments(locale),
     queryFn: getDocuments,
   });
 
   useEffect(() => {
-    if (!data) {
+    if (!documents) {
       return;
     }
 
-    console.warn("admin documents", data);
-  }, [data]);
+    console.warn("admin documents", documents);
+  }, [documents]);
 
   return <InDevelopment compactTopPadding hideHeader />;
 };

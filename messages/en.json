@@ -425,6 +425,18 @@
       }
     }
   },
+  "AdminProfessorsPage": {
+    "sectionLabel": "Professors list",
+    "loading": "Loading professors...",
+    "empty": "No professors yet.",
+    "error": "Could not load professors",
+    "sections": {
+      "ADMINISTRATION": "Administration",
+      "THEOLOGY": "Theology",
+      "PHILOLOGY": "Philology",
+      "SHARIAT": "Shariat"
+    }
+  },
   "ApplicantsPage": {
     "title": "Kyrgyzstan Islamic University",
     "sections": [

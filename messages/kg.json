@@ -425,6 +425,18 @@
       }
     }
   },
+  "AdminProfessorsPage": {
+    "sectionLabel": "Профессорлордун тизмеси",
+    "loading": "Профессорлор жүктөлүүдө...",
+    "empty": "Азырынча профессорлор жок.",
+    "error": "Профессорлорду жүктөө мүмкүн болгон жок",
+    "sections": {
+      "ADMINISTRATION": "Администрация",
+      "THEOLOGY": "Теология",
+      "PHILOLOGY": "Филология",
+      "SHARIAT": "Шариат"
+    }
+  },
   "ApplicantsPage": {
     "title": "Кыргызстан Ислам Университети",
     "sections": [

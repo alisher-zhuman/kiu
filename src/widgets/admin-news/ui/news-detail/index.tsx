@@ -25,7 +25,7 @@ export const AdminNewsDetail = ({ id }: Props) => {
   const t = useTranslations("AdminNewsPage");
   const tLayout = useTranslations("Layout");
 
-  const { data, error, isLoading } = useQuery({
+  const { data: newsItem, error, isLoading } = useQuery({
     queryKey: QUERY_KEYS.adminNewsById(locale, id),
     queryFn: () => getNewsById(id),
   });
@@ -48,7 +48,7 @@ export const AdminNewsDetail = ({ id }: Props) => {
     );
   }
 
-  if (!data) {
+  if (!newsItem) {
     return (
       <main className="mx-auto max-w-400 px-5 pt-3 pb-8 text-black md:px-10 md:pt-4 md:pb-10">
         <p className="text-base text-black/60 md:text-lg">{t("empty")}</p>
@@ -56,7 +56,7 @@ export const AdminNewsDetail = ({ id }: Props) => {
     );
   }
 
-  const formattedDate = formatDate(data.dateOfPublication, locale);
+  const formattedDate = formatDate(newsItem.dateOfPublication, locale);
 
   return (
     <main className="mx-auto max-w-400 px-5 pt-3 pb-8 text-black md:px-10 md:pt-4 md:pb-10">
@@ -75,7 +75,7 @@ export const AdminNewsDetail = ({ id }: Props) => {
               {formattedDate}
             </p>
 
-            {data.archived ? (
+            {newsItem.archived ? (
               <span className="inline-flex items-center rounded-full bg-[#004C97]/8 px-2.5 py-1 text-xs font-medium text-[#004C97]">
                 {t("archive.archived")}
               </span>
@@ -83,22 +83,22 @@ export const AdminNewsDetail = ({ id }: Props) => {
           </div>
 
           <h1 className="text-2xl font-semibold tracking-tight text-black md:text-4xl">
-            {data.title}
+            {newsItem.title}
           </h1>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <ArchiveNewsButton archived={data.archived} id={data.id} />
-          <DeleteNewsButton id={data.id} redirectOnSuccess="/admin/news" />
+          <ArchiveNewsButton archived={newsItem.archived} id={newsItem.id} />
+          <DeleteNewsButton id={newsItem.id} redirectOnSuccess="/admin/news" />
         </div>
 
-        {data.images.length ? (
+        {newsItem.images.length ? (
           <div className="grid gap-3 md:grid-cols-2 md:gap-4">
-            {data.images.map((image, index) => (
+            {newsItem.images.map((image, index) => (
               <Image
-                key={`${data.id}-${index}`}
+                key={`${newsItem.id}-${index}`}
                 src={image}
-                alt={data.title}
+                alt={newsItem.title}
                 width={1600}
                 height={1200}
                 loading={index === 0 ? "eager" : "lazy"}
@@ -110,7 +110,7 @@ export const AdminNewsDetail = ({ id }: Props) => {
 
         <div className="rounded-3xl border border-black/10 bg-white p-5 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:p-7">
           <p className="whitespace-pre-line text-sm leading-7 text-black/75 md:text-base md:leading-8">
-            {data.description}
+            {newsItem.description}
           </p>
         </div>
       </section>
