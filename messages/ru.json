@@ -350,11 +350,23 @@
       "photosTitle": "Фото",
       "titleSectionTitle": "Заголовок",
       "descriptionSectionTitle": "Описание",
-      "addPhoto": "Добавить фото",
+      "photoHint": "Нажмите, чтобы выбрать фото",
       "submit": "Добавить",
       "success": "Новость успешно добавлена",
       "photoPreviewAlt": "Загруженное фото",
       "removePhoto": "Удалить фото",
+      "placeholders": {
+        "title": {
+          "kg": "Введите заголовок на кыргызском",
+          "ru": "Введите заголовок на русском",
+          "en": "Enter the title in English"
+        },
+        "description": {
+          "kg": "Введите описание на кыргызском",
+          "ru": "Введите описание на русском",
+          "en": "Enter the description in English"
+        }
+      },
       "pending": {
         "submit": "Добавление новости...",
         "upload": "Загрузка фото...",
@@ -400,6 +412,9 @@
         "MINISTRY_DOCUMENTS": "Документы Министерства"
       },
       "titleLabel": "Название документа",
+      "placeholders": {
+        "title": "Введите название документа"
+      },
       "submit": "Добавить",
       "success": "Документ успешно добавлен",
       "pending": {

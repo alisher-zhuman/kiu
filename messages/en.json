@@ -350,11 +350,23 @@
       "photosTitle": "Photos",
       "titleSectionTitle": "Title",
       "descriptionSectionTitle": "Description",
-      "addPhoto": "Add photo",
+      "photoHint": "Click to choose a photo",
       "submit": "Add",
       "success": "The news item was added successfully",
       "photoPreviewAlt": "Uploaded photo",
       "removePhoto": "Remove photo",
+      "placeholders": {
+        "title": {
+          "kg": "Enter the title in Kyrgyz",
+          "ru": "Enter the title in Russian",
+          "en": "Enter the title in English"
+        },
+        "description": {
+          "kg": "Enter the description in Kyrgyz",
+          "ru": "Enter the description in Russian",
+          "en": "Enter the description in English"
+        }
+      },
       "pending": {
         "submit": "Adding news...",
         "upload": "Uploading photo...",
@@ -400,6 +412,9 @@
         "MINISTRY_DOCUMENTS": "Ministry documents"
       },
       "titleLabel": "Document title",
+      "placeholders": {
+        "title": "Enter the document title"
+      },
       "submit": "Add",
       "success": "The document was added successfully",
       "pending": {

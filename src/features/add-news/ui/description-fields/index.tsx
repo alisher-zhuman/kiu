@@ -40,6 +40,7 @@ export const DescriptionFields = ({
             id={`description-${locale}`}
             rows={5}
             {...register(`description.${locale}`)}
+            placeholder={t(`placeholders.description.${locale}`)}
             className={cn(
               "w-full resize-y rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors placeholder:text-black/30 focus:border-[#004C97] md:text-base",
               errors?.[locale] && "border-red-500 focus:border-red-500",

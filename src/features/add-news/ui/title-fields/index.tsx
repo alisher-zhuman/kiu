@@ -40,6 +40,7 @@ export const TitleFields = ({
             id={`title-${locale}`}
             type="text"
             {...register(`title.${locale}`)}
+            placeholder={t(`placeholders.title.${locale}`)}
             className={cn(
               "w-full rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors placeholder:text-black/30 focus:border-[#004C97] md:text-base",
               errors?.[locale] && "border-red-500 focus:border-red-500",
