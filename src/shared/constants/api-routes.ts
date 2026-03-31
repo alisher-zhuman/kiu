@@ -4,4 +4,5 @@ export const API_ROUTES = {
   IMAGES_DELETE: "/images/delete",
   IMAGES_UPLOAD: "/images/upload",
   NEWS: "/news",
+  PROFESSORS: "/professors",
 } as const;

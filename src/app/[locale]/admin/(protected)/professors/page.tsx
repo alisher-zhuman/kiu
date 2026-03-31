@@ -1,5 +1,5 @@
-import { InDevelopment } from "@/widgets/in-development";
+import { AdminProfessors } from "@/widgets/admin-professors";
 
-const ProfessorsPage = () => <InDevelopment compactTopPadding hideHeader />;
+const ProfessorsPage = () => <AdminProfessors />;
 
 export default ProfessorsPage;
