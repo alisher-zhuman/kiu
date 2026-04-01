@@ -445,6 +445,12 @@
     "loading": "Loading professors...",
     "empty": "No professors yet.",
     "error": "Could not load professors",
+    "delete": {
+      "action": "Delete",
+      "pending": "Deleting...",
+      "success": "The professor was deleted successfully",
+      "error": "Could not delete the professor"
+    },
     "addForm": {
       "photoTitle": "Photo",
       "photoHint": "Click to choose a photo",

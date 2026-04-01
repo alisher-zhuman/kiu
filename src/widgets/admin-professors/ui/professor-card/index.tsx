@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
+import { DeleteProfessorButton } from "@/features/delete-professor";
+
 import { type ProfessorItem } from "@/entities/professors";
 
 interface Props {
@@ -51,6 +53,10 @@ export const ProfessorCard = ({ item, priority = false }: Props) => {
               </p>
             ))}
           </div>
+        </div>
+
+        <div className="pt-1">
+          <DeleteProfessorButton id={item.id} />
         </div>
       </div>
     </article>

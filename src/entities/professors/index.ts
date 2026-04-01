@@ -1,4 +1,4 @@
-export { createProfessor, getProfessors } from "./api";
+export { createProfessor, deleteProfessor, getProfessors } from "./api";
 export { PROFESSOR_SECTION_OPTIONS } from "./model/constants";
 export type {
   CreateProfessorPayload,

@@ -13,6 +13,12 @@ export const createProfessor = async (payload: CreateProfessorPayload) => {
   return ProfessorActionResponseSchema.parse(data);
 };
 
+export const deleteProfessor = async (id: number) => {
+  const { data } = await api.delete(`${API_ROUTES.PROFESSORS}/${id}`);
+
+  return ProfessorActionResponseSchema.parse(data);
+};
+
 export const getProfessors = async () => {
   const { data } = await api.get(API_ROUTES.PROFESSORS);
 
