@@ -3,6 +3,8 @@ import { type z } from "zod";
 import { type PROFESSOR_SECTION_OPTIONS } from "./constants";
 import { type ProfessorItemSchema } from "./schemas";
 
+export type ProfessorSection = (typeof PROFESSOR_SECTION_OPTIONS)[number];
+
 export interface LocalizedProfessorName {
   en: string;
   kg: string;
@@ -21,7 +23,7 @@ export interface CreateProfessorPayload {
   positionsEn: string[];
   positionsKg: string[];
   positionsRu: string[];
-  sections: ((typeof PROFESSOR_SECTION_OPTIONS)[number])[];
+  sections: ProfessorSection[];
 }
 
 export interface ProfessorDetail {
@@ -30,7 +32,7 @@ export interface ProfessorDetail {
   positionsEn: string[];
   positionsKg: string[];
   positionsRu: string[];
-  sections: ((typeof PROFESSOR_SECTION_OPTIONS)[number])[];
+  sections: ProfessorSection[];
 }
 
 export type ProfessorItem = z.infer<typeof ProfessorItemSchema>;

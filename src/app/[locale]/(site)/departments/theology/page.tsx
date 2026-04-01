@@ -1,7 +1,35 @@
+import { type AppLocale } from "@/i18n/routing";
+
 import { DepartmentPage } from "@/widgets/departments";
 
-export const TheologyDepartmentPage = () => (
-  <DepartmentPage namespace="TheologyDepartmentPage" />
-);
+import { type ProfessorItem } from "@/entities/professors";
+import { getPublicProfessorsBySection } from "@/entities/professors/api/server";
+
+interface Props {
+  params: Promise<{
+    locale: AppLocale;
+  }>;
+}
+
+export const TheologyDepartmentPage = async ({ params }: Props) => {
+  const { locale } = await params;
+  
+  let hasProfessorsError = false;
+  let professors: ProfessorItem[] = [];
+
+  try {
+    professors = await getPublicProfessorsBySection(locale, "THEOLOGY");
+  } catch {
+    hasProfessorsError = true;
+  }
+
+  return (
+    <DepartmentPage
+      hasProfessorsError={hasProfessorsError}
+      namespace="TheologyDepartmentPage"
+      professors={professors}
+    />
+  );
+};
 
 export default TheologyDepartmentPage;

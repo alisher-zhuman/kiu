@@ -673,6 +673,8 @@
   },
   "TheologyDepartmentPage": {
     "title": "Теология кафедрасы",
+    "professorsTitle": "Кафедранын окутуучулары",
+    "professorsError": "Кафедранын окутуучуларын жүктөө мүмкүн болгон жок.",
     "sections": [
       {
         "title": "Жалпы маалымат",
@@ -746,6 +748,8 @@
   },
   "PhilologyDepartmentPage": {
     "title": "Араб филология кафедрасы",
+    "professorsTitle": "Кафедранын окутуучулары",
+    "professorsError": "Кафедранын окутуучуларын жүктөө мүмкүн болгон жок.",
     "sections": [
       {
         "title": "Жалпы маалымат",
@@ -818,6 +822,8 @@
   },
   "ShariaDepartmentPage": {
     "title": "Шариат кафедрасы",
+    "professorsTitle": "Кафедранын окутуучулары",
+    "professorsError": "Кафедранын окутуучуларын жүктөө мүмкүн болгон жок.",
     "sections": [
       {
         "title": "Жалпы маалымат",

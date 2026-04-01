@@ -673,6 +673,8 @@
   },
   "TheologyDepartmentPage": {
     "title": "Кафедра теологии",
+    "professorsTitle": "Преподаватели кафедры",
+    "professorsError": "Не удалось загрузить преподавателей кафедры.",
     "sections": [
       {
         "title": "Общая информация",
@@ -746,6 +748,8 @@
   },
   "PhilologyDepartmentPage": {
     "title": "Кафедра арабской филологии",
+    "professorsTitle": "Преподаватели кафедры",
+    "professorsError": "Не удалось загрузить преподавателей кафедры.",
     "sections": [
       {
         "title": "Общая информация",
@@ -818,6 +822,8 @@
   },
   "ShariaDepartmentPage": {
     "title": "Кафедра шариата",
+    "professorsTitle": "Преподаватели кафедры",
+    "professorsError": "Не удалось загрузить преподавателей кафедры.",
     "sections": [
       {
         "title": "Общая информация",

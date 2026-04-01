@@ -673,6 +673,8 @@
   },
   "TheologyDepartmentPage": {
     "title": "Theology Department",
+    "professorsTitle": "Department Faculty",
+    "professorsError": "Failed to load department faculty.",
     "sections": [
       {
         "title": "General information",
@@ -746,6 +748,8 @@
   },
   "PhilologyDepartmentPage": {
     "title": "Arabic Philology Department",
+    "professorsTitle": "Department Faculty",
+    "professorsError": "Failed to load department faculty.",
     "sections": [
       {
         "title": "General information",
@@ -818,6 +822,8 @@
   },
   "ShariaDepartmentPage": {
     "title": "Sharia Department",
+    "professorsTitle": "Department Faculty",
+    "professorsError": "Failed to load department faculty.",
     "sections": [
       {
         "title": "General information",

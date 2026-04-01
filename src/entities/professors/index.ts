@@ -12,4 +12,5 @@ export type {
   LocalizedProfessorPosition,
   ProfessorDetail,
   ProfessorItem,
+  ProfessorSection,
 } from "./model/types";

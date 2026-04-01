@@ -5,4 +5,5 @@ export const API_ROUTES = {
   IMAGES_UPLOAD: "/images/upload",
   NEWS: "/news",
   PROFESSORS: "/professors",
+  PROFESSORS_BY_SECTION: "/professors/section",
 } as const;
