@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import { FileText } from "lucide-react";
 
+import { DeleteDocumentButton } from "@/features/delete-document";
+
 import { type DocumentItem } from "@/entities/documents";
 
 interface Props {
@@ -29,7 +31,7 @@ export const DocumentCard = ({ item }: Props) => {
         </div>
       </div>
 
-      <div className="mt-auto pt-4">
+      <div className="mt-auto flex flex-wrap gap-2 pt-4">
         <a
           href={item.content}
           target="_blank"
@@ -38,6 +40,8 @@ export const DocumentCard = ({ item }: Props) => {
         >
           {t("open")}
         </a>
+
+        <DeleteDocumentButton id={item.id} />
       </div>
     </article>
   );

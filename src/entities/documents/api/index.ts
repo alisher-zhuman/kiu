@@ -18,3 +18,9 @@ export const createDocument = async (payload: CreateDocumentPayload) => {
 
   return DocumentActionResponseSchema.parse(data);
 };
+
+export const deleteDocument = async (id: number) => {
+  const { data } = await api.delete(`${API_ROUTES.DOCUMENTS}/${id}`);
+
+  return DocumentActionResponseSchema.parse(data);
+};

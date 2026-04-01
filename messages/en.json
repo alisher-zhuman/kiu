@@ -406,6 +406,12 @@
     "empty": "No documents yet.",
     "error": "Could not load documents",
     "open": "Open",
+    "delete": {
+      "action": "Delete",
+      "pending": "Deleting...",
+      "success": "The document was deleted successfully",
+      "error": "Could not delete the document"
+    },
     "addForm": {
       "fileTitle": "File",
       "emptyFile": "No PDF selected",
