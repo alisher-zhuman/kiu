@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useFieldArray, useForm, useWatch } from "react-hook-form";
 import { useLocale, useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -62,6 +62,12 @@ export const useAddProfessorForm = () => {
     name: "positions",
   });
 
+  const selectedSections = useWatch({
+    control,
+    defaultValue: [],
+    name: "sections",
+  });
+
   const {
     fileInputRef,
     handlePhotoSelect,
@@ -102,6 +108,20 @@ export const useAddProfessorForm = () => {
     mutation.mutate(values);
   });
 
+  const toggleSection = (
+    section: (typeof PROFESSOR_SECTION_OPTIONS)[number],
+  ) => {
+    const nextSections = selectedSections.includes(section)
+      ? selectedSections.filter((currentSection) => currentSection !== section)
+      : [...selectedSections, section];
+
+    setValue("sections", nextSections, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  };
+
   return {
     addPosition: () => appendPosition({ en: "", kg: "", ru: "" }),
     errors,
@@ -119,6 +139,8 @@ export const useAddProfessorForm = () => {
     register,
     removePhoto,
     removePosition,
+    selectedSections,
     t,
+    toggleSection,
   };
 };

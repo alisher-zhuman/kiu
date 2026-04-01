@@ -8,6 +8,7 @@ import { useAddProfessorForm } from "../../hooks/useAddProfessorForm";
 import { FullNameFields } from "../full-name-fields";
 import { PhotoFieldset } from "../photo-fieldset";
 import { PositionFields } from "../position-fields";
+import { SectionsSelect } from "../sections-select";
 
 export const AddProfessorForm = () => {
   const sectionsT = useTranslations("AdminProfessorsPage");
@@ -29,7 +30,9 @@ export const AddProfessorForm = () => {
     register,
     removePhoto,
     removePosition,
+    selectedSections,
     t,
+    toggleSection,
   } = useAddProfessorForm();
 
   return (
@@ -57,37 +60,14 @@ export const AddProfessorForm = () => {
               {t("sectionLabel")}
             </p>
 
-            <div
-              className={cn(
-                "grid gap-2",
-                errors.sections?.message &&
-                  "rounded-[0.95rem] border border-red-500/30 p-3",
-              )}
-            >
-              {professorSectionOptions.map((sectionOption) => (
-                <label
-                  key={sectionOption}
-                  className="flex cursor-pointer items-center gap-3 rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-sm text-black transition-colors hover:border-[#004C97]/35 hover:bg-black/[0.02]"
-                >
-                  <input
-                    type="checkbox"
-                    value={sectionOption}
-                    {...register("sections")}
-                    className="size-4 rounded border-black/20 accent-[#004C97]"
-                  />
-
-                  <span className="font-medium">
-                    {sectionsT(`sections.${sectionOption}`)}
-                  </span>
-                </label>
-              ))}
-
-              {errors.sections?.message ? (
-                <p className="text-sm text-red-500 md:text-base">
-                  {errors.sections.message}
-                </p>
-              ) : null}
-            </div>
+            <SectionsSelect
+              errorMessage={errors.sections?.message}
+              options={professorSectionOptions}
+              placeholder={t("sectionsPlaceholder")}
+              sectionLabel={(section) => sectionsT(`sections.${section}`)}
+              selectedSections={selectedSections}
+              toggleSection={toggleSection}
+            />
           </div>
         </div>
 

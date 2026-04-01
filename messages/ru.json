@@ -456,6 +456,7 @@
       "removePosition": "Удалить должность",
       "positionItem": "Должность",
       "sectionLabel": "Разделы",
+      "sectionsPlaceholder": "Выберите разделы",
       "submit": "Добавить",
       "success": "Профессор успешно добавлен",
       "placeholders": {

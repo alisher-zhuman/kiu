@@ -456,6 +456,7 @@
       "removePosition": "Remove position",
       "positionItem": "Position",
       "sectionLabel": "Sections",
+      "sectionsPlaceholder": "Select sections",
       "submit": "Add",
       "success": "The professor was added successfully",
       "placeholders": {

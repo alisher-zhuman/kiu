@@ -456,6 +456,7 @@
       "removePosition": "Кызматты өчүрүү",
       "positionItem": "Кызмат",
       "sectionLabel": "Бөлүмдөр",
+      "sectionsPlaceholder": "Бөлүмдөрдү тандаңыз",
       "submit": "Кошуу",
       "success": "Профессор ийгиликтүү кошулду",
       "placeholders": {
