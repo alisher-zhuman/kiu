@@ -1,11 +1,29 @@
-import { useTranslations } from "next-intl";
+import { type AppLocale } from "@/i18n/routing";
 
-import { InDevelopment } from "@/widgets/in-development";
+import { Documents } from "@/widgets/documents";
 
-const StructureDocumentsPage = () => {
-  const t = useTranslations("Navbar");
+import { getPublicDocuments } from "@/entities/documents";
+import { type DocumentItem } from "@/entities/documents";
 
-  return <InDevelopment title={t("structure.links.documents")} />;
+interface Props {
+  params: Promise<{
+    locale: AppLocale;
+  }>;
+}
+
+const StructureDocumentsPage = async ({ params }: Props) => {
+  const { locale } = await params;
+  
+  let hasError = false;
+  let documents: DocumentItem[] = [];
+
+  try {
+    documents = await getPublicDocuments(locale);
+  } catch {
+    hasError = true;
+  }
+
+  return <Documents documents={documents} hasError={hasError} />;
 };
 
 export default StructureDocumentsPage;

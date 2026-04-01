@@ -666,6 +666,16 @@
       }
     ]
   },
+  "DocumentsPage": {
+    "title": "Documents",
+    "open": "Open",
+    "empty": "No documents have been published yet.",
+    "error": "Failed to load documents.",
+    "docTypes": {
+      "LOCAL_KIU_DOCUMENTS": "Local KIU documents",
+      "MINISTRY_DOCUMENTS": "Ministry documents"
+    }
+  },
   "RectoratePage": {
     "title": "Rectorate",
     "empty": "No rectorate members have been added yet.",
