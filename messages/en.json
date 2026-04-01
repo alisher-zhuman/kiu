@@ -406,27 +406,11 @@
     "empty": "No documents yet.",
     "error": "Could not load documents",
     "open": "Open",
-    "edit": {
-      "action": "Edit"
-    },
     "delete": {
       "action": "Delete",
       "pending": "Deleting...",
       "success": "The document was deleted successfully",
       "error": "Could not delete the document"
-    },
-    "editForm": {
-      "submit": "Save",
-      "success": "The document was updated successfully",
-      "loading": "Loading document...",
-      "empty": "Document not found",
-      "error": "Could not load the document",
-      "pending": {
-        "submit": "Saving document..."
-      },
-      "errors": {
-        "submit": "Could not save the document"
-      }
     },
     "addForm": {
       "fileTitle": "File",
