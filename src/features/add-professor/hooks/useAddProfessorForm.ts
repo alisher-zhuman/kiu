@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { useLocale, useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -31,6 +31,7 @@ export const useAddProfessorForm = () => {
 
   const {
     clearErrors,
+    control,
     formState: { errors, isSubmitting },
     getValues,
     handleSubmit,
@@ -46,10 +47,19 @@ export const useAddProfessorForm = () => {
         ru: "",
       },
       photo: "",
-      position: "",
-      section: PROFESSOR_SECTION_OPTIONS[0],
+      positions: [{ en: "", kg: "", ru: "" }],
+      sections: [],
     },
     mode: "onChange",
+  });
+
+  const {
+    append: appendPosition,
+    fields: positionFields,
+    remove: removePosition,
+  } = useFieldArray({
+    control,
+    name: "positions",
   });
 
   const {
@@ -69,7 +79,15 @@ export const useAddProfessorForm = () => {
   });
 
   const mutation = useToastMutation({
-    mutationFn: (values: AddProfessorFormValues) => createProfessor(values),
+    mutationFn: (values: AddProfessorFormValues) =>
+      createProfessor({
+        fullName: values.fullName,
+        photo: values.photo,
+        positionsEn: values.positions.map((position) => position.en),
+        positionsKg: values.positions.map((position) => position.kg),
+        positionsRu: values.positions.map((position) => position.ru),
+        sections: values.sections,
+      }),
     invalidateKeys: [QUERY_KEYS.adminProfessors(locale)],
     pendingMessage: t("pending.submit"),
     successMessage: t("success"),
@@ -85,6 +103,7 @@ export const useAddProfessorForm = () => {
   });
 
   return {
+    addPosition: () => appendPosition({ en: "", kg: "", ru: "" }),
     errors,
     fileInputRef,
     handlePhotoSelect,
@@ -95,9 +114,11 @@ export const useAddProfessorForm = () => {
     onSubmit,
     openFileDialog,
     photo: getValues("photo"),
+    positionFields,
     professorSectionOptions: PROFESSOR_SECTION_OPTIONS,
     register,
     removePhoto,
+    removePosition,
     t,
   };
 };

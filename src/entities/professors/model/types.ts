@@ -9,11 +9,19 @@ export interface LocalizedProfessorName {
   ru: string;
 }
 
+export interface LocalizedProfessorPosition {
+  en: string;
+  kg: string;
+  ru: string;
+}
+
 export interface CreateProfessorPayload {
   fullName: LocalizedProfessorName;
   photo: string;
-  position: string;
-  section: (typeof PROFESSOR_SECTION_OPTIONS)[number];
+  positionsEn: string[];
+  positionsKg: string[];
+  positionsRu: string[];
+  sections: ((typeof PROFESSOR_SECTION_OPTIONS)[number])[];
 }
 
 export type ProfessorItem = z.infer<typeof ProfessorItemSchema>;

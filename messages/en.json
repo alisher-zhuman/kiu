@@ -451,8 +451,11 @@
       "photoPreviewAlt": "Uploaded photo",
       "removePhoto": "Remove photo",
       "fullNameTitle": "Full name",
-      "positionLabel": "Position",
-      "sectionLabel": "Section",
+      "positionLabel": "Positions",
+      "addPosition": "Add position",
+      "removePosition": "Remove position",
+      "positionItem": "Position",
+      "sectionLabel": "Sections",
       "submit": "Add",
       "success": "The professor was added successfully",
       "placeholders": {
@@ -461,7 +464,11 @@
           "ru": "Enter the full name in Russian",
           "en": "Enter the full name in English"
         },
-        "position": "Enter the position"
+        "position": {
+          "kg": "Enter the position in Kyrgyz",
+          "ru": "Enter the position in Russian",
+          "en": "Enter the position in English"
+        }
       },
       "locales": {
         "kg": "Kyrgyz",
@@ -485,10 +492,11 @@
           "delete": "Could not delete the photo"
         },
         "position": {
-          "required": "Fill in the position"
+          "required": "Fill in the position",
+          "min": "Add at least one position"
         },
         "section": {
-          "required": "Select a section"
+          "required": "Select at least one section"
         },
         "submit": "Could not add the professor"
       }

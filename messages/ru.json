@@ -451,8 +451,11 @@
       "photoPreviewAlt": "Загруженное фото",
       "removePhoto": "Удалить фото",
       "fullNameTitle": "ФИО",
-      "positionLabel": "Должность",
-      "sectionLabel": "Раздел",
+      "positionLabel": "Должности",
+      "addPosition": "Добавить должность",
+      "removePosition": "Удалить должность",
+      "positionItem": "Должность",
+      "sectionLabel": "Разделы",
       "submit": "Добавить",
       "success": "Профессор успешно добавлен",
       "placeholders": {
@@ -461,7 +464,11 @@
           "ru": "Введите ФИО на русском",
           "en": "Enter the full name in English"
         },
-        "position": "Введите должность"
+        "position": {
+          "kg": "Введите должность на кыргызском",
+          "ru": "Введите должность на русском",
+          "en": "Enter the position in English"
+        }
       },
       "locales": {
         "kg": "Кыргызча",
@@ -485,10 +492,11 @@
           "delete": "Не удалось удалить фото"
         },
         "position": {
-          "required": "Заполните должность"
+          "required": "Заполните должность",
+          "min": "Добавьте хотя бы одну должность"
         },
         "section": {
-          "required": "Выберите раздел"
+          "required": "Выберите хотя бы один раздел"
         },
         "submit": "Не удалось добавить профессора"
       }

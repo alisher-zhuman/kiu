@@ -7,11 +7,13 @@ import { cn } from "@/shared/helpers";
 import { useAddProfessorForm } from "../../hooks/useAddProfessorForm";
 import { FullNameFields } from "../full-name-fields";
 import { PhotoFieldset } from "../photo-fieldset";
+import { PositionFields } from "../position-fields";
 
 export const AddProfessorForm = () => {
   const sectionsT = useTranslations("AdminProfessorsPage");
 
   const {
+    addPosition,
     errors,
     fileInputRef,
     handlePhotoSelect,
@@ -22,9 +24,11 @@ export const AddProfessorForm = () => {
     onSubmit,
     openFileDialog,
     photo,
+    positionFields,
     professorSectionOptions,
     register,
     removePhoto,
+    removePosition,
     t,
   } = useAddProfessorForm();
 
@@ -49,73 +53,62 @@ export const AddProfessorForm = () => {
           />
 
           <div className="space-y-3">
-            <label
-              htmlFor="professor-section"
-              className="text-xl font-medium tracking-tight text-black md:text-2xl"
-            >
+            <p className="text-xl font-medium tracking-tight text-black md:text-2xl">
               {t("sectionLabel")}
-            </label>
+            </p>
 
-            <div className="space-y-2">
-              <select
-                id="professor-section"
-                {...register("section")}
-                className={cn(
-                  "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors focus:border-[#004C97]",
-                  errors.section?.message &&
-                    "border-red-500 focus:border-red-500",
-                )}
-              >
-                {professorSectionOptions.map((sectionOption) => (
-                  <option key={sectionOption} value={sectionOption}>
-                    {sectionsT(`sections.${sectionOption}`)}
-                  </option>
-                ))}
-              </select>
-
-              {errors.section?.message ? (
-                <p className="text-sm text-red-500 md:text-base">
-                  {errors.section.message}
-                </p>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <label
-              htmlFor="professor-position"
-              className="text-xl font-medium tracking-tight text-black md:text-2xl"
+            <div
+              className={cn(
+                "grid gap-2",
+                errors.sections?.message &&
+                  "rounded-[0.95rem] border border-red-500/30 p-3",
+              )}
             >
-              {t("positionLabel")}
-            </label>
+              {professorSectionOptions.map((sectionOption) => (
+                <label
+                  key={sectionOption}
+                  className="flex cursor-pointer items-center gap-3 rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-sm text-black transition-colors hover:border-[#004C97]/35 hover:bg-black/[0.02]"
+                >
+                  <input
+                    type="checkbox"
+                    value={sectionOption}
+                    {...register("sections")}
+                    className="size-4 rounded border-black/20 accent-[#004C97]"
+                  />
 
-            <div className="space-y-2">
-              <input
-                id="professor-position"
-                {...register("position")}
-                placeholder={t("placeholders.position")}
-                className={cn(
-                  "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors placeholder:text-black/35 focus:border-[#004C97]",
-                  errors.position?.message &&
-                    "border-red-500 focus:border-red-500",
-                )}
-              />
+                  <span className="font-medium">
+                    {sectionsT(`sections.${sectionOption}`)}
+                  </span>
+                </label>
+              ))}
 
-              {errors.position?.message ? (
+              {errors.sections?.message ? (
                 <p className="text-sm text-red-500 md:text-base">
-                  {errors.position.message}
+                  {errors.sections.message}
                 </p>
               ) : null}
             </div>
           </div>
         </div>
 
-        <FullNameFields
-          errors={errors.fullName ?? {}}
-          localeOptions={localeOptions}
-          register={register}
-          t={t}
-        />
+        <div className="space-y-6">
+          <FullNameFields
+            errors={errors.fullName ?? {}}
+            localeOptions={localeOptions}
+            register={register}
+            t={t}
+          />
+
+          <PositionFields
+            addPosition={addPosition}
+            errors={errors.positions}
+            localeOptions={localeOptions}
+            positionFields={positionFields}
+            register={register}
+            removePosition={removePosition}
+            t={t}
+          />
+        </div>
       </div>
 
       <div className="flex">
