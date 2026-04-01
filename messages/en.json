@@ -451,6 +451,9 @@
       "success": "The professor was deleted successfully",
       "error": "Could not delete the professor"
     },
+    "edit": {
+      "action": "Edit"
+    },
     "addForm": {
       "photoTitle": "Photo",
       "photoHint": "Click to choose a photo",
@@ -506,6 +509,19 @@
           "required": "Select at least one section"
         },
         "submit": "Could not add the professor"
+      }
+    },
+    "editForm": {
+      "submit": "Save",
+      "success": "The professor was updated successfully",
+      "loading": "Loading professor...",
+      "empty": "Professor not found",
+      "error": "Could not load the professor",
+      "pending": {
+        "submit": "Saving professor..."
+      },
+      "errors": {
+        "submit": "Could not save the professor"
       }
     },
     "sections": {

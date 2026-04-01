@@ -1,37 +1,44 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useFieldArray, useForm, useWatch } from "react-hook-form";
 import { useLocale, useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQuery } from "@tanstack/react-query";
 
 import { useRouter } from "@/i18n/navigation";
 
 import {
-  createProfessor,
+  createDefaultProfessorFormValues,
+  mapProfessorDetailToFormValues,
+  mapProfessorFormValuesToPayload,
+} from "@/features/add-professor/helpers/base";
+import { useAddProfessorPhoto } from "@/features/add-professor/hooks/useAddProfessorPhoto";
+import { createAddProfessorFormSchema } from "@/features/add-professor/schemas";
+import { type AddProfessorFormValues } from "@/features/add-professor/types";
+
+import {
+  getProfessorById,
   PROFESSOR_SECTION_OPTIONS,
+  updateProfessor,
 } from "@/entities/professors";
 
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
-import {
-  createDefaultProfessorFormValues,
-  mapProfessorFormValuesToPayload,
-} from "../helpers/base";
-import { createAddProfessorFormSchema } from "../schemas";
-import { type AddProfessorFormValues } from "../types";
+interface Params {
+  id: number;
+}
 
-import { useAddProfessorPhoto } from "./useAddProfessorPhoto";
-
-export const useAddProfessorForm = () => {
+export const useEditProfessorForm = ({ id }: Params) => {
   const locale = useLocale();
   const router = useRouter();
 
-  const t = useTranslations("AdminProfessorsPage.addForm");
+  const fieldsT = useTranslations("AdminProfessorsPage.addForm");
+  const editT = useTranslations("AdminProfessorsPage.editForm");
 
-  const schema = useMemo(() => createAddProfessorFormSchema(t), [t]);
+  const schema = useMemo(() => createAddProfessorFormSchema(fieldsT), [fieldsT]);
 
   const {
     clearErrors,
@@ -40,6 +47,7 @@ export const useAddProfessorForm = () => {
     getValues,
     handleSubmit,
     register,
+    reset,
     setError,
     setValue,
   } = useForm<AddProfessorFormValues>({
@@ -76,17 +84,37 @@ export const useAddProfessorForm = () => {
     getValues,
     setError,
     setValue,
-    t,
+    t: fieldsT,
   });
+
+  const {
+    data: professor,
+    error: professorError,
+    isLoading: isProfessorLoading,
+  } = useQuery({
+    queryKey: QUERY_KEYS.adminProfessorById(locale, id),
+    queryFn: () => getProfessorById(id),
+  });
+
+  useEffect(() => {
+    if (!professor) {
+      return;
+    }
+
+    reset(mapProfessorDetailToFormValues(professor));
+  }, [professor, reset]);
 
   const mutation = useToastMutation({
     mutationFn: (values: AddProfessorFormValues) =>
-      createProfessor(mapProfessorFormValuesToPayload(values)),
-    invalidateKeys: [QUERY_KEYS.adminProfessors(locale)],
-    pendingMessage: t("pending.submit"),
-    successMessage: t("success"),
+      updateProfessor(id, mapProfessorFormValuesToPayload(values)),
+    invalidateKeys: [
+      QUERY_KEYS.adminProfessorById(locale, id),
+      QUERY_KEYS.adminProfessors(locale),
+    ],
+    pendingMessage: editT("pending.submit"),
+    successMessage: editT("success"),
     errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.submit")),
+      getApiErrorMessage(error, editT("errors.submit")),
     onSuccess: () => {
       router.replace("/admin/professors");
     },
@@ -112,23 +140,27 @@ export const useAddProfessorForm = () => {
 
   return {
     addPosition: () => appendPosition({ en: "", kg: "", ru: "" }),
+    editT,
     errors,
+    fieldsT,
     fileInputRef,
     handlePhotoSelect,
     isPhotoDeletePending,
     isPhotoUploadDisabled,
+    isProfessorLoading,
     isSubmitDisabled: isSubmittingPhoto || mutation.isPending || isSubmitting,
     localeOptions: LOCALE_OPTIONS,
     onSubmit,
     openFileDialog,
     photo: getValues("photo"),
     positionFields,
+    professor,
+    professorError,
     professorSectionOptions: PROFESSOR_SECTION_OPTIONS,
     register,
     removePhoto,
     removePosition,
     selectedSections,
-    t,
     toggleSection,
   };
 };

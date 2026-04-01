@@ -24,4 +24,13 @@ export interface CreateProfessorPayload {
   sections: ((typeof PROFESSOR_SECTION_OPTIONS)[number])[];
 }
 
+export interface ProfessorDetail {
+  fullName: LocalizedProfessorName;
+  photo: string;
+  positionsEn: string[];
+  positionsKg: string[];
+  positionsRu: string[];
+  sections: ((typeof PROFESSOR_SECTION_OPTIONS)[number])[];
+}
+
 export type ProfessorItem = z.infer<typeof ProfessorItemSchema>;

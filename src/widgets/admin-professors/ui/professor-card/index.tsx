@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
+import { Link } from "@/i18n/navigation";
+
 import { DeleteProfessorButton } from "@/features/delete-professor";
 
 import { type ProfessorItem } from "@/entities/professors";
@@ -55,7 +57,14 @@ export const ProfessorCard = ({ item, priority = false }: Props) => {
           </div>
         </div>
 
-        <div className="pt-1">
+        <div className="mt-auto flex flex-wrap gap-2 pt-1">
+          <Link
+            href={`/admin/professors/${item.id}/edit`}
+            className="inline-flex items-center justify-center rounded-full border border-[#004C97]/15 bg-[#004C97]/6 px-3 py-1.5 text-xs font-medium text-[#004C97] transition-colors hover:bg-[#004C97]/10 md:text-sm"
+          >
+            {t("edit.action")}
+          </Link>
+
           <DeleteProfessorButton id={item.id} />
         </div>
       </div>
