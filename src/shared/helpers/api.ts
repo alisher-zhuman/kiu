@@ -1,5 +1,6 @@
 import { type AppLocale, routing } from "@/i18n/routing";
 
+import { SERVER_API_URL } from "@/shared/constants";
 import { type ApiErrorLike } from "@/shared/types";
 
 import { checkExternalHref } from "./base";
@@ -26,6 +27,22 @@ export const getLocalizedApiBaseUrl = (apiUrl: string, locale: AppLocale) => {
   return normalizedApiUrl.endsWith(`/${locale}`)
     ? normalizedApiUrl
     : `${normalizedApiUrl}/${locale}`;
+};
+
+export const getLocalizedServerApiUrl = (
+  path: string,
+  locale: AppLocale,
+) => {
+  if (!SERVER_API_URL) {
+    throw new Error("API base URL is not configured");
+  }
+
+  const normalizedApiUrl = SERVER_API_URL.endsWith("/")
+    ? SERVER_API_URL.slice(0, -1)
+    : SERVER_API_URL;
+  const normalizedPath = normalizeApiPath(path);
+
+  return `${normalizedApiUrl}/${locale}${normalizedPath}`;
 };
 
 export const normalizeApiPath = (url: string) => {
