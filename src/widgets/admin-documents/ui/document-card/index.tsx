@@ -1,0 +1,44 @@
+import { useTranslations } from "next-intl";
+import { FileText } from "lucide-react";
+
+import { type DocumentItem } from "@/entities/documents";
+
+interface Props {
+  item: DocumentItem;
+}
+
+export const DocumentCard = ({ item }: Props) => {
+  const t = useTranslations("AdminDocumentsPage");
+  const tDocTypes = useTranslations("AdminDocumentsPage.addForm");
+
+  return (
+    <article className="flex h-full flex-col rounded-2xl border border-black/10 bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.035)]">
+      <div className="flex items-start gap-3">
+        <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#004C97]/8 text-[#004C97]">
+          <FileText className="size-5" />
+        </span>
+
+        <div className="min-w-0 space-y-2">
+          <span className="inline-flex w-fit items-center rounded-full bg-black/6 px-2.5 py-1 text-xs font-medium text-black/70">
+            {tDocTypes(`docTypes.${item.docType}`)}
+          </span>
+
+          <h2 className="text-base font-semibold tracking-tight text-black md:text-lg">
+            {item.title}
+          </h2>
+        </div>
+      </div>
+
+      <div className="mt-auto pt-4">
+        <a
+          href={item.content}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-full bg-[#004C97] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C]"
+        >
+          {t("open")}
+        </a>
+      </div>
+    </article>
+  );
+};

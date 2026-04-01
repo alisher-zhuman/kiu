@@ -401,6 +401,11 @@
     "error": "Could not load news"
   },
   "AdminDocumentsPage": {
+    "sectionLabel": "Documents list",
+    "loading": "Loading documents...",
+    "empty": "No documents yet.",
+    "error": "Could not load documents",
+    "open": "Open",
     "addForm": {
       "fileTitle": "File",
       "emptyFile": "No PDF selected",

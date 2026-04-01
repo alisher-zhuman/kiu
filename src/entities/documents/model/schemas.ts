@@ -1,10 +1,12 @@
 import { z } from "zod";
 
+import { DOCUMENT_TYPE_OPTIONS } from "./constants";
+
 export const DocumentItemSchema = z.object({
-  content: z.string(),
   id: z.number(),
   title: z.string(),
-  type: z.string(),
+  content: z.string(),
+  docType: z.enum(DOCUMENT_TYPE_OPTIONS),
 });
 
 export const DocumentActionResponseSchema = z.object({

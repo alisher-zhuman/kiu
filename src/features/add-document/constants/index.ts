@@ -1,6 +1,3 @@
-export const MAX_DOCUMENT_FILE_SIZE_BYTES = 10 * 1024 * 1024;
+export { DOCUMENT_TYPE_OPTIONS } from "@/entities/documents";
 
-export const DOCUMENT_TYPE_OPTIONS = [
-  "LOCAL_KIU_DOCUMENTS",
-  "MINISTRY_DOCUMENTS",
-] as const;
+export const MAX_DOCUMENT_FILE_SIZE_BYTES = 10 * 1024 * 1024;
