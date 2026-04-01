@@ -25,18 +25,32 @@ export const ProfessorCard = ({ item, priority = false }: Props) => {
       </div>
 
       <div className="flex flex-1 flex-col space-y-2 p-3">
-        <span className="inline-flex w-fit items-center rounded-full bg-[#004C97]/8 px-1.5 py-0.5 text-[10px] font-medium text-[#004C97]">
-          {t(`sections.${item.section}`)}
-        </span>
+        <div className="flex flex-wrap gap-1.5">
+          {item.sections.map((section) => (
+            <span
+              key={`${item.id}-${section}`}
+              className="inline-flex w-fit items-center rounded-full bg-[#004C97]/8 px-1.5 py-0.5 text-[10px] font-medium text-[#004C97]"
+            >
+              {t(`sections.${section}`)}
+            </span>
+          ))}
+        </div>
 
         <div className="space-y-1">
           <h2 className="text-sm font-semibold tracking-tight text-black md:text-base">
             {item.fullName}
           </h2>
 
-          <p className="text-xs leading-5 text-black/70 md:text-sm">
-            {item.position}
-          </p>
+          <div className="space-y-0.5">
+            {item.positions.map((position, index) => (
+              <p
+                key={`${item.id}-position-${index}`}
+                className="text-xs leading-5 text-black/70 md:text-sm"
+              >
+                {position}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </article>

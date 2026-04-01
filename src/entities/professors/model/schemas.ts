@@ -6,8 +6,8 @@ export const ProfessorItemSchema = z.object({
   id: z.number(),
   photo: z.string(),
   fullName: z.string(),
-  position: z.string(),
-  section: z.enum(PROFESSOR_SECTION_OPTIONS),
+  positions: z.array(z.string()),
+  sections: z.array(z.enum(PROFESSOR_SECTION_OPTIONS)),
 });
 
 export const ProfessorActionResponseSchema = z.object({
