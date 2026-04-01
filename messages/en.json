@@ -666,6 +666,11 @@
       }
     ]
   },
+  "RectoratePage": {
+    "title": "Rectorate",
+    "empty": "No rectorate members have been added yet.",
+    "error": "Failed to load the rectorate list."
+  },
   "TheologyDepartmentPage": {
     "title": "Theology Department",
     "sections": [
