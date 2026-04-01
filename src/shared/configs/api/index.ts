@@ -1,13 +1,12 @@
 import axios from "axios";
 
+import { API_URL } from "@/shared/constants";
 import {
   getCurrentApiLocale,
   getLocalizedApiBaseUrl,
   normalizeApiPath,
 } from "@/shared/helpers";
 import { useAuthStore } from "@/shared/stores";
-
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
 
 export const api = axios.create({
   baseURL: API_URL,

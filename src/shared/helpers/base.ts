@@ -65,3 +65,13 @@ export const getFileNameFromUrl = (fileUrl: string) => {
     return fileUrl.split("/").pop() ?? fileUrl;
   }
 };
+
+export const getPreviewText = (value: string, limit: number) => {
+  const normalizedValue = value.trim();
+
+  if (normalizedValue.length <= limit) {
+    return normalizedValue;
+  }
+
+  return `${normalizedValue.slice(0, limit).trimEnd()}...`;
+};

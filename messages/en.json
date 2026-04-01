@@ -312,6 +312,13 @@
       "submit": "Log in failed"
     }
   },
+  "NewsPage": {
+    "eyebrow": "News",
+    "title": "News",
+    "description": "",
+    "empty": "There are no published news items yet.",
+    "error": "Failed to load news."
+  },
   "AdminLayout": {
     "actions": {
       "add": "Add"

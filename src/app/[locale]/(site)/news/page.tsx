@@ -1,11 +1,29 @@
-import { useTranslations } from "next-intl";
+import { type AppLocale } from "@/i18n/routing";
 
-import { InDevelopment } from "@/widgets/in-development";
+import { News } from "@/widgets/news";
 
-const NewsPage = () => {
-  const t = useTranslations("Navbar");
+import { type NewsItem } from "@/entities/news";
+import { getPublicNews } from "@/entities/news/api/server";
 
-  return <InDevelopment title={t("news")} />;
+interface Props {
+  params: Promise<{
+    locale: AppLocale;
+  }>;
+}
+
+const NewsPage = async ({ params }: Props) => {
+  const { locale } = await params;
+  
+  let hasError = false;
+  let news: NewsItem[] = [];
+
+  try {
+    news = await getPublicNews(locale);
+  } catch {
+    hasError = true;
+  }
+
+  return <News hasError={hasError} locale={locale} news={news} />;
 };
 
 export default NewsPage;
