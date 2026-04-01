@@ -636,6 +636,36 @@
     ],
     "support": "We provide special support and tuition discounts for students who have been left without parental care or who have lost one of their parents."
   },
+  "TuitionPage": {
+    "title": "Tuition Information",
+    "columns": {
+      "program": "Program",
+      "local": "Tuition",
+      "foreign": "For international students"
+    },
+    "rows": [
+      {
+        "program": "Shariat",
+        "local": "20,000 KGS",
+        "foreign": "30,000 KGS"
+      },
+      {
+        "program": "Shariat / distance learning",
+        "local": "40,000 KGS",
+        "foreign": "45,000 KGS"
+      },
+      {
+        "program": "Philology",
+        "local": "40,000 KGS",
+        "foreign": "45,000 KGS"
+      },
+      {
+        "program": "Theology",
+        "local": "45,000 KGS",
+        "foreign": "50,000 KGS"
+      }
+    ]
+  },
   "TheologyDepartmentPage": {
     "title": "Theology Department",
     "sections": [
