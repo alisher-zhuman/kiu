@@ -1,4 +1,6 @@
 export const QUERY_KEYS = {
+  adminDocumentById: (locale: string, id: number) =>
+    ["admin-document", locale, id] as const,
   adminDocuments: (locale: string) => ["admin-documents", locale] as const,
   adminNews: (locale: string) => ["admin-news", locale] as const,
   adminNewsById: (locale: string, id: number) =>

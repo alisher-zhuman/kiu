@@ -47,3 +47,21 @@ export const formatDate = (
 ) => {
   return new Intl.DateTimeFormat(locale, options).format(new Date(date));
 };
+
+export const getFileNameFromUrl = (fileUrl: string) => {
+  if (!fileUrl) {
+    return "";
+  }
+
+  try {
+    const normalizedUrl = fileUrl.startsWith("http")
+      ? fileUrl
+      : `https://placeholder.local${fileUrl}`;
+    const { pathname } = new URL(normalizedUrl);
+    const rawFileName = pathname.split("/").pop() ?? "";
+
+    return decodeURIComponent(rawFileName);
+  } catch {
+    return fileUrl.split("/").pop() ?? fileUrl;
+  }
+};

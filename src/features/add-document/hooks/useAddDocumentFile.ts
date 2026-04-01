@@ -1,16 +1,18 @@
 "use client";
 
-import { type ChangeEvent, useRef, useState } from "react";
+import { type ChangeEvent, useEffect, useRef, useState } from "react";
 import {
+  type Control,
   type UseFormClearErrors,
   type UseFormGetValues,
   type UseFormSetError,
   type UseFormSetValue,
+  useWatch,
 } from "react-hook-form";
 
 import { deleteFile, uploadFile } from "@/entities/files";
 
-import { getApiErrorMessage } from "@/shared/helpers";
+import { getApiErrorMessage, getFileNameFromUrl } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
 import { MAX_DOCUMENT_FILE_SIZE_BYTES } from "../schemas";
@@ -18,6 +20,7 @@ import { type AddDocumentFormValues } from "../types";
 
 interface Params {
   clearErrors: UseFormClearErrors<AddDocumentFormValues>;
+  control: Control<AddDocumentFormValues>;
   getValues: UseFormGetValues<AddDocumentFormValues>;
   setError: UseFormSetError<AddDocumentFormValues>;
   setValue: UseFormSetValue<AddDocumentFormValues>;
@@ -33,6 +36,7 @@ const checkIsPdfFile = (file: File) => {
 
 export const useAddDocumentFile = ({
   clearErrors,
+  control,
   getValues,
   setError,
   setValue,
@@ -40,7 +44,17 @@ export const useAddDocumentFile = ({
 }: Params) => {
   const [fileName, setFileName] = useState("");
 
+  const content = useWatch({
+    control,
+    defaultValue: "",
+    name: "content",
+  });
+
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    setFileName(getFileNameFromUrl(content));
+  }, [content]);
 
   const uploadMutation = useToastMutation({
     mutationFn: (file: File) => uploadFile(file),

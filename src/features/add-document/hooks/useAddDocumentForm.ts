@@ -14,6 +14,10 @@ import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
 import { DOCUMENT_TYPE_OPTIONS } from "../constants";
+import {
+  createDefaultDocumentFormValues,
+  mapDocumentFormValuesToPayload,
+} from "../helpers/base";
 import { createAddDocumentFormSchema } from "../schemas";
 import { type AddDocumentFormValues } from "../types";
 
@@ -29,6 +33,7 @@ export const useAddDocumentForm = () => {
 
   const {
     clearErrors,
+    control,
     formState: { errors, isSubmitting },
     getValues,
     handleSubmit,
@@ -37,11 +42,7 @@ export const useAddDocumentForm = () => {
     setValue,
   } = useForm<AddDocumentFormValues>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      content: "",
-      docType: DOCUMENT_TYPE_OPTIONS[0],
-      title: "",
-    },
+    defaultValues: createDefaultDocumentFormValues(),
     mode: "onChange",
   });
 
@@ -56,6 +57,7 @@ export const useAddDocumentForm = () => {
     removeFile,
   } = useAddDocumentFile({
     clearErrors,
+    control,
     getValues,
     setError,
     setValue,
@@ -63,7 +65,8 @@ export const useAddDocumentForm = () => {
   });
 
   const mutation = useToastMutation({
-    mutationFn: (values: AddDocumentFormValues) => createDocument(values),
+    mutationFn: (values: AddDocumentFormValues) =>
+      createDocument(mapDocumentFormValuesToPayload(values)),
     invalidateKeys: [QUERY_KEYS.adminDocuments(locale)],
     pendingMessage: t("pending.submit"),
     successMessage: t("success"),

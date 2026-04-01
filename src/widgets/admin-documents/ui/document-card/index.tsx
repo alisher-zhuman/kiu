@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl";
-import { FileText } from "lucide-react";
+import { ExternalLink, FileText, Pencil } from "lucide-react";
+
+import { Link } from "@/i18n/navigation";
 
 import { DeleteDocumentButton } from "@/features/delete-document";
 
@@ -36,10 +38,21 @@ export const DocumentCard = ({ item }: Props) => {
           href={item.content}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-full bg-[#004C97] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C]"
+          aria-label={t("open")}
+          className="inline-flex size-9 items-center justify-center rounded-full bg-[#004C97] text-white transition-colors hover:bg-[#002E5C] md:size-auto md:px-4 md:py-2 md:text-sm md:font-semibold"
         >
-          {t("open")}
+          <ExternalLink className="size-4 md:hidden" />
+          <span className="hidden md:inline">{t("open")}</span>
         </a>
+
+        <Link
+          href={`/admin/documents/${item.id}/edit`}
+          aria-label={t("edit.action")}
+          className="inline-flex size-9 items-center justify-center rounded-full border border-[#004C97]/15 bg-[#004C97]/6 text-[#004C97] transition-colors hover:bg-[#004C97]/10 md:size-auto md:px-4 md:py-2 md:text-sm md:font-semibold"
+        >
+          <Pencil className="size-4 md:hidden" />
+          <span className="hidden md:inline">{t("edit.action")}</span>
+        </Link>
 
         <DeleteDocumentButton id={item.id} />
       </div>
