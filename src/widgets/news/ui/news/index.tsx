@@ -56,9 +56,13 @@ export const News = ({ hasError = false, locale, news }: Props) => {
         ) : null}
 
         {news.length ? (
-          <div className="grid gap-6 md:gap-7 xl:grid-cols-2">
+          <div className="grid items-stretch gap-6 md:gap-7 xl:grid-cols-2">
             {news.map((item, index) => (
-              <Reveal key={item.id} delay={Math.min(index * 50, 200)}>
+              <Reveal
+                key={item.id}
+                delay={Math.min(index * 50, 200)}
+                className="h-full"
+              >
                 <NewsCard item={item} locale={locale} />
               </Reveal>
             ))}

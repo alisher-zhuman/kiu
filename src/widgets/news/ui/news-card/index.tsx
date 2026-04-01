@@ -24,7 +24,7 @@ export const NewsCard = ({ item, locale }: Props) => {
   const previewImage = item.images[0];
 
   return (
-    <article className="overflow-hidden rounded-4xl border border-black/10 bg-white shadow-[0_18px_38px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)]">
+    <article className="flex h-full flex-col overflow-hidden rounded-4xl border border-black/10 bg-white shadow-[0_18px_38px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)]">
       {previewImage ? (
         <div className="relative aspect-16/10 overflow-hidden">
           <Image
@@ -39,7 +39,7 @@ export const NewsCard = ({ item, locale }: Props) => {
         <div className="aspect-16/10 bg-[linear-gradient(135deg,#004C97_0%,#0A6ACF_100%)]" />
       )}
 
-      <div className="space-y-4 p-5 md:space-y-5 md:p-7">
+      <div className="flex flex-1 flex-col space-y-4 p-5 md:space-y-5 md:p-7">
         <p className="text-sm font-medium text-[#004C97] md:text-base">
           {formattedDate}
         </p>
