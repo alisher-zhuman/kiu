@@ -33,7 +33,7 @@ export const DocumentCard = ({ item }: Props) => {
         </div>
       </div>
 
-      <div className="mt-auto flex flex-wrap gap-2 pt-4">
+      <div className="mt-auto flex justify-end flex-wrap gap-2 pt-4">
         <a
           href={item.content}
           target="_blank"
