@@ -6,17 +6,7 @@ export const NewsContentFieldSchema = z.object({
   ru: z.string(),
 });
 
-const EditableNewsContentFieldSchema = z
-  .object({
-    ENGLISH: z.string(),
-    KYRGYZ: z.string(),
-    RUSSIAN: z.string(),
-  })
-  .transform((field) => ({
-    en: field.ENGLISH,
-    kg: field.KYRGYZ,
-    ru: field.RUSSIAN,
-  }));
+const EditableNewsContentFieldSchema = NewsContentFieldSchema;
 
 export const NewsItemSchema = z.object({
   id: z.number(),

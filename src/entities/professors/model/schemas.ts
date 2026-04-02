@@ -8,17 +8,7 @@ export const LocalizedProfessorNameSchema = z.object({
   ru: z.string(),
 });
 
-const ProfessorDetailFullNameSchema = z
-  .object({
-    ENGLISH: z.string(),
-    KYRGYZ: z.string(),
-    RUSSIAN: z.string(),
-  })
-  .transform((fullName) => ({
-    en: fullName.ENGLISH,
-    kg: fullName.KYRGYZ,
-    ru: fullName.RUSSIAN,
-  }));
+const ProfessorDetailFullNameSchema = LocalizedProfessorNameSchema;
 
 export const ProfessorItemSchema = z.object({
   id: z.number(),
