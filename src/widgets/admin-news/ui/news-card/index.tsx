@@ -21,6 +21,7 @@ interface Props {
 
 export const NewsCard = ({ cardIndex, item, locale }: Props) => {
   const t = useTranslations("AdminNewsPage.archive");
+  const tEdit = useTranslations("AdminNewsPage.edit");
 
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewImages = item.images.slice(0, 2);
@@ -86,6 +87,12 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
       </Link>
 
       <div className="flex flex-wrap items-center gap-2 px-4 pb-4 md:px-5 md:pb-5">
+        <Link
+          href={`/admin/news/${item.id}/edit`}
+          className="inline-flex items-center justify-center rounded-full border border-[#004C97]/15 bg-[#004C97]/6 px-3 py-1.5 text-xs font-medium text-[#004C97] transition-colors hover:bg-[#004C97]/10 md:text-sm"
+        >
+          {tEdit("action")}
+        </Link>
         <ArchiveNewsButton archived={item.archived} id={item.id} />
         <DeleteNewsButton id={item.id} />
       </div>

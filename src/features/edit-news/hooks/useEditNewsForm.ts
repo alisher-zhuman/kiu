@@ -1,34 +1,43 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useLocale, useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQuery } from "@tanstack/react-query";
 
 import { useRouter } from "@/i18n/navigation";
 
-import { createNews } from "@/entities/news";
+import {
+  createDefaultNewsFormValues,
+  mapEditableNewsToFormValues,
+  mapNewsFormValuesToPayload,
+} from "@/features/add-news/helpers/base";
+import { useAddNewsImages } from "@/features/add-news/hooks/useAddNewsImages";
+import { createAddNewsFormSchema } from "@/features/add-news/schemas";
+import { type AddNewsFormValues } from "@/features/add-news/types";
+
+import { getNewsByIdForEdit, updateNews } from "@/entities/news";
 
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
-import {
-  createDefaultNewsFormValues,
-  mapNewsFormValuesToPayload,
-} from "../helpers/base";
-import { createAddNewsFormSchema } from "../schemas";
-import { type AddNewsFormValues } from "../types";
+interface Params {
+  id: number;
+}
 
-import { useAddNewsImages } from "./useAddNewsImages";
-
-export const useAddNewsForm = () => {
+export const useEditNewsForm = ({ id }: Params) => {
   const locale = useLocale();
   const router = useRouter();
 
-  const t = useTranslations("AdminNewsPage.addForm");
+  const fieldsT = useTranslations("AdminNewsPage.addForm");
+  const editT = useTranslations("AdminNewsPage.editForm");
 
-  const schema = useMemo(() => createAddNewsFormSchema(t), [t]);
+  const schema = useMemo(
+    () => createAddNewsFormSchema(fieldsT),
+    [fieldsT],
+  );
 
   const {
     clearErrors,
@@ -37,6 +46,7 @@ export const useAddNewsForm = () => {
     getValues,
     handleSubmit,
     register,
+    reset,
     setError,
     setValue,
   } = useForm<AddNewsFormValues>({
@@ -65,17 +75,38 @@ export const useAddNewsForm = () => {
     images,
     setError,
     setValue,
-    t,
+    t: fieldsT,
   });
+
+  const {
+    data: news,
+    error: newsError,
+    isLoading: isNewsLoading,
+  } = useQuery({
+    queryKey: QUERY_KEYS.adminNewsFormById(locale, id),
+    queryFn: () => getNewsByIdForEdit(id),
+  });
+
+  useEffect(() => {
+    if (!news) {
+      return;
+    }
+
+    reset(mapEditableNewsToFormValues(news));
+  }, [news, reset]);
 
   const mutation = useToastMutation({
     mutationFn: (values: AddNewsFormValues) =>
-      createNews(mapNewsFormValuesToPayload(values)),
-    invalidateKeys: [QUERY_KEYS.adminNews(locale)],
-    pendingMessage: t("pending.submit"),
-    successMessage: t("success"),
+      updateNews(id, mapNewsFormValuesToPayload(values)),
+    invalidateKeys: [
+      QUERY_KEYS.adminNews(locale),
+      QUERY_KEYS.adminNewsById(locale, id),
+      QUERY_KEYS.adminNewsFormById(locale, id),
+    ],
+    pendingMessage: editT("pending.submit"),
+    successMessage: editT("success"),
     errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.submit")),
+      getApiErrorMessage(error, editT("errors.submit")),
     onSuccess: () => {
       router.replace("/admin/news");
     },
@@ -86,18 +117,22 @@ export const useAddNewsForm = () => {
   });
 
   return {
+    editT,
     errors,
     fileInputRef,
     handleFilesSelect,
     images,
     isDeletePending,
+    isNewsLoading,
     isSubmitDisabled: isUploadingImages || mutation.isPending || isSubmitting,
     isUploadDisabled,
     localeOptions: LOCALE_OPTIONS,
+    news,
+    newsError,
     onSubmit,
     openFileDialog,
     removeImage,
     register,
-    t,
+    t: fieldsT,
   };
 };

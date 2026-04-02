@@ -2,6 +2,7 @@ export {
   createProfessor,
   deleteProfessor,
   getProfessorById,
+  getProfessorByIdForEdit,
   getProfessors,
   updateProfessor,
 } from "./api";

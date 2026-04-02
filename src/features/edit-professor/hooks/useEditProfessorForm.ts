@@ -18,7 +18,7 @@ import { createAddProfessorFormSchema } from "@/features/add-professor/schemas";
 import { type AddProfessorFormValues } from "@/features/add-professor/types";
 
 import {
-  getProfessorById,
+  getProfessorByIdForEdit,
   PROFESSOR_SECTION_OPTIONS,
   updateProfessor,
 } from "@/entities/professors";
@@ -93,7 +93,7 @@ export const useEditProfessorForm = ({ id }: Params) => {
     isLoading: isProfessorLoading,
   } = useQuery({
     queryKey: QUERY_KEYS.adminProfessorById(locale, id),
-    queryFn: () => getProfessorById(id),
+    queryFn: () => getProfessorByIdForEdit(id),
   });
 
   useEffect(() => {

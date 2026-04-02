@@ -2,8 +2,8 @@ import { type AppLocale } from "@/i18n/routing";
 
 import { Documents } from "@/widgets/documents";
 
-import { getPublicDocuments } from "@/entities/documents";
 import { type DocumentItem } from "@/entities/documents";
+import { getPublicDocuments } from "@/entities/documents/api/server";
 
 interface Props {
   params: Promise<{

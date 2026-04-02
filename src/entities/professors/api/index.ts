@@ -31,6 +31,14 @@ export const getProfessorById = async (
   return ProfessorDetailSchema.parse(data);
 };
 
+export const getProfessorByIdForEdit = async (
+  id: number,
+): Promise<ProfessorDetail> => {
+  const { data } = await api.get(`${API_ROUTES.PROFESSORS}/${id}/edit`);
+
+  return ProfessorDetailSchema.parse(data);
+};
+
 export const deleteProfessor = async (id: number) => {
   const { data } = await api.delete(`${API_ROUTES.PROFESSORS}/${id}`);
 

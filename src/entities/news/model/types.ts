@@ -14,4 +14,10 @@ export interface CreateNewsPayload {
   title: NewsContentField;
 }
 
+export interface EditableNews {
+  description: NewsContentField;
+  images: string[];
+  title: NewsContentField;
+}
+
 export type NewsItem = z.infer<typeof NewsItemSchema>;

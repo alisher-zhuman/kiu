@@ -353,6 +353,9 @@
       "pending": "Deleting...",
       "success": "The news item was deleted successfully"
     },
+    "edit": {
+      "action": "Edit"
+    },
     "addForm": {
       "photosTitle": "Photos",
       "titleSectionTitle": "Title",
@@ -400,6 +403,19 @@
           "delete": "Could not delete photo"
         },
         "submit": "Could not add the news item"
+      }
+    },
+    "editForm": {
+      "submit": "Save",
+      "success": "The news item was updated successfully",
+      "loading": "Loading the news item...",
+      "empty": "News item not found",
+      "error": "Could not load the news item",
+      "pending": {
+        "submit": "Saving the news item..."
+      },
+      "errors": {
+        "submit": "Could not save the news item"
       }
     },
     "sectionLabel": "News list",

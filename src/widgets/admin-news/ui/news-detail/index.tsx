@@ -88,6 +88,12 @@ export const AdminNewsDetail = ({ id }: Props) => {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href={`/admin/news/${newsItem.id}/edit`}
+            className="inline-flex items-center justify-center rounded-full border border-[#004C97]/15 bg-[#004C97]/6 px-3 py-1.5 text-xs font-medium text-[#004C97] transition-colors hover:bg-[#004C97]/10 md:text-sm"
+          >
+            {t("edit.action")}
+          </Link>
           <ArchiveNewsButton archived={newsItem.archived} id={newsItem.id} />
           <DeleteNewsButton id={newsItem.id} redirectOnSuccess="/admin/news" />
         </div>
