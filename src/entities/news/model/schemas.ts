@@ -6,6 +6,18 @@ export const NewsContentFieldSchema = z.object({
   ru: z.string(),
 });
 
+const EditableNewsContentFieldSchema = z
+  .object({
+    ENGLISH: z.string(),
+    KYRGYZ: z.string(),
+    RUSSIAN: z.string(),
+  })
+  .transform((field) => ({
+    en: field.ENGLISH,
+    kg: field.KYRGYZ,
+    ru: field.RUSSIAN,
+  }));
+
 export const NewsItemSchema = z.object({
   id: z.number(),
   images: z.array(z.string()),
@@ -17,8 +29,8 @@ export const NewsItemSchema = z.object({
 
 export const EditableNewsSchema = z.object({
   images: z.array(z.string()),
-  title: NewsContentFieldSchema,
-  description: NewsContentFieldSchema,
+  title: EditableNewsContentFieldSchema,
+  description: EditableNewsContentFieldSchema,
 });
 
 export const NewsActionResponseSchema = z.object({
