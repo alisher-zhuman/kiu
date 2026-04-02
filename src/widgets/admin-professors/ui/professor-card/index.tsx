@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { PencilLine } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
@@ -60,12 +61,14 @@ export const ProfessorCard = ({ item, priority = false }: Props) => {
         <div className="mt-auto flex flex-wrap gap-2 pt-1">
           <Link
             href={`/admin/professors/${item.id}/edit`}
-            className="inline-flex items-center justify-center rounded-full border border-[#004C97]/15 bg-[#004C97]/6 px-3 py-1.5 text-xs font-medium text-[#004C97] transition-colors hover:bg-[#004C97]/10 md:text-sm"
+            aria-label={t("edit.action")}
+            className="inline-flex size-9 items-center justify-center rounded-full border border-[#004C97]/15 bg-[#004C97]/6 text-[#004C97] transition-colors hover:bg-[#004C97]/10 md:size-auto md:px-4 md:py-2 md:text-sm md:font-semibold"
           >
-            {t("edit.action")}
+            <PencilLine className="size-4 md:hidden" />
+            <span className="hidden md:inline">{t("edit.action")}</span>
           </Link>
 
-          <DeleteProfessorButton id={item.id} />
+          <DeleteProfessorButton id={item.id} iconOnlyOnMobile />
         </div>
       </div>
     </article>
