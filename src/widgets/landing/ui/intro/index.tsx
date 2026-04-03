@@ -4,8 +4,11 @@ import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Volume2, VolumeX } from "lucide-react";
 
+import { cn } from "@/shared/helpers";
+
 export const Intro = () => {
   const [isMuted, setIsMuted] = useState(true);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -30,17 +33,31 @@ export const Intro = () => {
   return (
     <section className="w-full">
       <div className="relative max-w-400 m-auto">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted={isMuted}
-          loop
-          playsInline
-          preload="metadata"
-          className="block h-auto w-full"
-        >
-          <source src="/videos/intro.mp4" type="video/mp4" />
-        </video>
+        <div className="relative overflow-hidden">
+          <div
+            aria-hidden="true"
+            className={cn(
+              "pointer-events-none absolute inset-0 z-10 bg-black/8 transition-opacity duration-300",
+              isVideoReady && "opacity-0",
+            )}
+          />
+
+          <video
+            ref={videoRef}
+            autoPlay
+            muted={isMuted}
+            loop
+            playsInline
+            preload="metadata"
+            onLoadedData={() => setIsVideoReady(true)}
+            className={cn(
+              "block aspect-video w-full bg-black/8 object-cover transition-opacity duration-300",
+              isVideoReady ? "opacity-100" : "opacity-0",
+            )}
+          >
+            <source src="/videos/intro.mp4" type="video/mp4" />
+          </video>
+        </div>
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden pr-14 pb-14 md:block">
           <div className="relative inline-flex bg-[#004C97] px-6 py-4 lg:px-8 lg:py-6">
