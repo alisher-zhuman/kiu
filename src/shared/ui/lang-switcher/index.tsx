@@ -26,6 +26,7 @@ export const LangSwitcher = ({ className }: Props) => {
   const t = useTranslations("LangSwitcher");
 
   const currentLocale = useLocale() as AppLocale;
+
   const pathname = usePathname();
   const router = useRouter();
 

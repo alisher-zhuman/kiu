@@ -44,6 +44,7 @@ const PageRevealFrame = ({ children }: Props) => {
 
 export const PageReveal = ({ children }: Props) => {
   const locale = useLocale();
+
   const pathname = usePathname();
 
   return (

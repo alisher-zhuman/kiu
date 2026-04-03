@@ -2,9 +2,8 @@ import { useTranslations } from "next-intl";
 
 import { type ProfessorItem } from "@/entities/professors";
 
+import { PublicProfessorCard } from "@/shared/ui/public-professor-card";
 import { Reveal } from "@/shared/ui/reveal";
-
-import { ProfessorCard } from "../professor-card";
 
 interface Props {
   hasError?: boolean;
@@ -49,7 +48,7 @@ export const Rectorate = ({ hasError = false, professors }: Props) => {
                 delay={Math.min(index * 50, 200)}
                 className="h-full"
               >
-                <ProfessorCard item={item} priority={index === 0} />
+                <PublicProfessorCard item={item} priority={index === 0} />
               </Reveal>
             ))}
           </div>

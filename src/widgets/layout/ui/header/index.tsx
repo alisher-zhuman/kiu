@@ -62,6 +62,7 @@ export const Header = ({ mode = "site" }: Props) => {
               className="inline-flex size-10 cursor-pointer items-center justify-center text-black transition-colors hover:text-[#004C97] md:size-auto md:gap-2 md:text-sm md:font-medium"
             >
               <LogOut size={22} strokeWidth={1.75} />
+              
               <span className="hidden md:inline">{t("logout")}</span>
             </button>
           </div>
