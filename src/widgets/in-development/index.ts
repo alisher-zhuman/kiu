@@ -1,1 +1,1 @@
-export * from "./ui/page";
+export { InDevelopment } from "./ui/page";

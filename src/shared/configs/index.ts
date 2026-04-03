@@ -1,2 +1,2 @@
-export * from "./api";
-export * from "./query";
+export { api } from "./api";
+export { QUERY_CLIENT } from "./query";

@@ -1,3 +1,3 @@
-export * from "./ui/applicants";
-export * from "./ui/required-documents";
-export * from "./ui/tuition";
+export { Applicants } from "./ui/applicants";
+export { RequiredDocuments } from "./ui/required-documents";
+export { Tuition } from "./ui/tuition";

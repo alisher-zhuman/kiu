@@ -1,1 +1,1 @@
-export * from "./ui/science";
+export { Science } from "./ui/science";

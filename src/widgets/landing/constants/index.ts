@@ -1,3 +1,3 @@
-export * from "./departaments";
+export { STAT_KEYS } from "./base";
+export { DEPARTMENT_LINKS } from "./departaments";
 
-export const STAT_KEYS = ["books", "teachers", "employment", "students"] as const;

@@ -1,4 +1,4 @@
-export * from "./ui/add-news";
-export * from "./ui/admin-news";
-export * from "./ui/edit-news";
-export * from "./ui/news-detail";
+export { AddNews } from "./ui/add-news";
+export { AdminNews } from "./ui/admin-news";
+export { EditNews } from "./ui/edit-news";
+export { AdminNewsDetail } from "./ui/news-detail";
