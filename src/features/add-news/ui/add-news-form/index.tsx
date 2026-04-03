@@ -1,11 +1,9 @@
 "use client";
 
-import { NewsForm } from "@/entities/news";
-
-import { useAddNewsForm } from "../../hooks/useAddNewsForm";
+import { NewsForm, useNewsForm } from "@/entities/news";
 
 export const AddNewsForm = () => {
-  const form = useAddNewsForm();
+  const form = useNewsForm({ mode: "add" });
 
   return <NewsForm {...form} submitLabel={form.t("submit")} />;
 };

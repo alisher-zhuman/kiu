@@ -1,11 +1,9 @@
 "use client";
 
-import { ProfessorForm } from "@/entities/professors";
-
-import { useAddProfessorForm } from "../../hooks/useAddProfessorForm";
+import { ProfessorForm, useProfessorForm } from "@/entities/professors";
 
 export const AddProfessorForm = () => {
-  const form = useAddProfessorForm();
+  const form = useProfessorForm({ mode: "add" });
 
   return <ProfessorForm {...form} submitLabel={form.t("submit")} />;
 };

@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const EditNewsForm = ({ id }: Props) => {
-  const form = useNewsForm({ id });
+  const form = useNewsForm({ id, mode: "edit" });
 
   return (
     <AsyncItemState

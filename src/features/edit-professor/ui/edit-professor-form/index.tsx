@@ -1,6 +1,6 @@
 "use client";
 
-import { ProfessorForm } from "@/entities/professors";
+import { ProfessorForm, useProfessorForm } from "@/entities/professors";
 
 import { AsyncItemState } from "@/shared/ui/async-item-state";
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const EditProfessorForm = ({ id }: Props) => {
-  const form = useEditProfessorForm({ id });
+  const form = useProfessorForm({ id, mode: "edit" });
 
   return (
     <AsyncItemState
