@@ -31,6 +31,7 @@ interface Params {
 
 export const useEditProfessorForm = ({ id }: Params) => {
   const locale = useLocale();
+  
   const router = useRouter();
 
   const fieldsT = useTranslations("AdminProfessorsPage.addForm");

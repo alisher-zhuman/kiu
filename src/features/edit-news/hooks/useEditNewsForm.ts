@@ -29,6 +29,7 @@ interface Params {
 
 export const useEditNewsForm = ({ id }: Params) => {
   const locale = useLocale();
+  
   const router = useRouter();
 
   const fieldsT = useTranslations("AdminNewsPage.addForm");

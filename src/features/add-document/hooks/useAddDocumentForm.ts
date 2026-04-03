@@ -25,6 +25,7 @@ import { useAddDocumentFile } from "./useAddDocumentFile";
 
 export const useAddDocumentForm = () => {
   const locale = useLocale();
+  
   const router = useRouter();
 
   const t = useTranslations("AdminDocumentsPage.addForm");

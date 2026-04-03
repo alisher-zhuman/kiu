@@ -17,6 +17,7 @@ interface Params {
 
 export const useDeleteNews = ({ id, redirectOnSuccess }: Params) => {
   const locale = useLocale();
+  
   const router = useRouter();
 
   const t = useTranslations("AdminNewsPage.delete");

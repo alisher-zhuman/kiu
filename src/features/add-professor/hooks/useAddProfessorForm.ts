@@ -24,6 +24,7 @@ import { useToastMutation } from "@/shared/hooks";
 
 export const useAddProfessorForm = () => {
   const locale = useLocale();
+  
   const router = useRouter();
 
   const t = useTranslations("AdminProfessorsPage.addForm");

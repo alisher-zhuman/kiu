@@ -22,6 +22,7 @@ import { useToastMutation } from "@/shared/hooks";
 
 export const useAddNewsForm = () => {
   const locale = useLocale();
+  
   const router = useRouter();
 
   const t = useTranslations("AdminNewsPage.addForm");
