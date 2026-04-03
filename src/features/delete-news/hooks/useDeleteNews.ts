@@ -8,7 +8,7 @@ import { deleteNews } from "@/entities/news";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
-import { useDeleteEntityAction } from "@/shared/hooks";
+import { useToastMutation } from "@/shared/hooks";
 
 interface Params {
   id: number;
@@ -22,7 +22,7 @@ export const useDeleteNews = ({ id, redirectOnSuccess }: Params) => {
 
   const t = useTranslations("AdminNewsPage.delete");
 
-  const action = useDeleteEntityAction({
+  const mutation = useToastMutation({
     mutationFn: () => deleteNews(id),
     invalidateKeys: [
       QUERY_KEYS.adminNews(locale),
@@ -42,7 +42,7 @@ export const useDeleteNews = ({ id, redirectOnSuccess }: Params) => {
   });
 
   return {
-    isPending: action.isPending,
-    onDeleteNews: action.onDelete,
+    isPending: mutation.isPending,
+    onDeleteNews: () => mutation.mutate(),
   };
 };

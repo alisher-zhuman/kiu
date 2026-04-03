@@ -6,7 +6,7 @@ import { deleteProfessor } from "@/entities/professors";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
-import { useDeleteEntityAction } from "@/shared/hooks";
+import { useToastMutation } from "@/shared/hooks";
 
 interface Params {
   id: number;
@@ -17,7 +17,7 @@ export const useDeleteProfessor = ({ id }: Params) => {
 
   const t = useTranslations("AdminProfessorsPage.delete");
 
-  const action = useDeleteEntityAction({
+  const mutation = useToastMutation({
     mutationFn: () => deleteProfessor(id),
     invalidateKeys: [QUERY_KEYS.adminProfessors(locale)],
     pendingMessage: t("pending"),
@@ -27,7 +27,7 @@ export const useDeleteProfessor = ({ id }: Params) => {
   });
 
   return {
-    isPending: action.isPending,
-    onDeleteProfessor: action.onDelete,
+    isPending: mutation.isPending,
+    onDeleteProfessor: () => mutation.mutate(),
   };
 };
