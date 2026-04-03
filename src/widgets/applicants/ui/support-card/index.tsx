@@ -11,7 +11,7 @@ export const SupportCard = ({ text }: Props) => (
         <HandCoins size={42} strokeWidth={1.75} />
       </div>
 
-      <p className="text-base leading-7 text-black/85 md:text-[1.7rem] md:leading-[1.5]">
+      <p className="text-base leading-7 text-black/85 md:text-[1.7rem] md:leading-normal">
         {text}
       </p>
     </div>
