@@ -15,8 +15,8 @@ import { useToastMutation } from "@/shared/hooks";
 import {
   MAX_NEWS_IMAGE_SIZE_BYTES,
   MAX_NEWS_IMAGES_COUNT,
-  type NewsFormValues,
-} from "../model/form";
+} from "../model/constants";
+import { type NewsFormValues } from "../model/types";
 
 interface Params {
   clearErrors: UseFormClearErrors<NewsFormValues>;

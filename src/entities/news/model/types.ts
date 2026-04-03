@@ -1,6 +1,6 @@
 import { type z } from "zod";
 
-import { type NewsItemSchema } from "./schemas";
+import { type createNewsFormSchema, type NewsItemSchema } from "./schemas";
 
 export interface NewsContentField {
   en: string;
@@ -20,4 +20,5 @@ export interface EditableNews {
   title: NewsContentField;
 }
 
+export type NewsFormValues = z.infer<ReturnType<typeof createNewsFormSchema>>;
 export type NewsItem = z.infer<typeof NewsItemSchema>;

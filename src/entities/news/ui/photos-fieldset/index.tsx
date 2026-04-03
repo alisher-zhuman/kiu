@@ -6,7 +6,7 @@ import { Camera, X } from "lucide-react";
 
 import { cn } from "@/shared/helpers";
 
-import { MAX_NEWS_IMAGES_COUNT } from "../../model/form";
+import { MAX_NEWS_IMAGES_COUNT } from "../../model/constants";
 
 interface Props {
   errorMessage: string | undefined;

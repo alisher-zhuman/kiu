@@ -10,6 +10,7 @@ interface Props {
 const Layout = ({ children }: Props) => (
   <ReactQueryProvider>
     <Toaster />
+    
     {children}
   </ReactQueryProvider>
 );

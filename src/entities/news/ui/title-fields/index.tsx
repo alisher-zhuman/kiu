@@ -6,7 +6,7 @@ import { type AppLocale } from "@/i18n/routing";
 
 import { cn } from "@/shared/helpers";
 
-import { type NewsFormValues } from "../../model/form";
+import { type NewsFormValues } from "../../model/types";
 
 interface Props {
   errors: FieldErrors<NewsFormValues>["title"];

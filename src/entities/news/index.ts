@@ -7,16 +7,20 @@ export {
   toggleNewsArchive,
   updateNews,
 } from "./api";
-export type { NewsFormValues } from "./model/form";
+export {
+  MAX_NEWS_IMAGE_SIZE_BYTES,
+  MAX_NEWS_IMAGES_COUNT,
+} from "./model/constants";
 export {
   createDefaultNewsFormValues,
-  createNewsFormSchema,
   mapEditableNewsToFormValues,
   mapNewsFormValuesToPayload,
-} from "./model/form";
+} from "./model/helpers";
+export { createNewsFormSchema } from "./model/schemas";
 export type {
   CreateNewsPayload,
   EditableNews,
   NewsContentField,
+  NewsFormValues,
   NewsItem,
 } from "./model/types";
