@@ -6,7 +6,7 @@ import { deleteDocument } from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
-import { useToastMutation } from "@/shared/hooks";
+import { useDeleteEntityAction } from "@/shared/hooks";
 
 interface Params {
   id: number;
@@ -17,7 +17,7 @@ export const useDeleteDocument = ({ id }: Params) => {
 
   const t = useTranslations("AdminDocumentsPage.delete");
 
-  const mutation = useToastMutation({
+  const action = useDeleteEntityAction({
     mutationFn: () => deleteDocument(id),
     invalidateKeys: [QUERY_KEYS.adminDocuments(locale)],
     pendingMessage: t("pending"),
@@ -26,7 +26,7 @@ export const useDeleteDocument = ({ id }: Params) => {
   });
 
   return {
-    isPending: mutation.isPending,
-    onDeleteDocument: () => mutation.mutate(),
+    isPending: action.isPending,
+    onDeleteDocument: action.onDelete,
   };
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   type Control,
   type UseFormClearErrors,
@@ -10,9 +10,8 @@ import {
   useWatch,
 } from "react-hook-form";
 
-import { DIRTY_FORM_VALUE_OPTIONS } from "@/shared/constants/form";
 import { getFileNameFromUrl } from "@/shared/helpers";
-import { useFileTransfer } from "@/shared/hooks/useFileTransfer";
+import { useSingleFileFieldTransfer } from "@/shared/hooks";
 
 import { MAX_DOCUMENT_FILE_SIZE_BYTES } from "../constants";
 import { checkIsPdfFile } from "../helpers/base";
@@ -43,76 +42,55 @@ export const useAddDocumentFile = ({
     name: "content",
   });
 
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
   useEffect(() => {
     setFileName(getFileNameFromUrl(content));
   }, [content]);
 
-  const fileTransfer = useFileTransfer({
+  const {
+    fileInputRef,
+    handleFileSelect: handleSingleFileSelect,
+    isDeletePending,
+    isTransferDisabled,
+    isTransferring,
+    openFileDialog,
+    removeFile,
+  } = useSingleFileFieldTransfer({
+    clearErrors,
     deleteErrorMessage: t("errors.file.delete"),
     deletePendingMessage: t("pending.delete"),
+    fieldName: "content",
+    getValues,
+    setError,
+    setValue,
     uploadErrorMessage: t("errors.file.upload"),
     uploadPendingMessage: t("pending.upload"),
+    validateFile: (file) => {
+      if (!checkIsPdfFile(file)) {
+        return t("errors.file.invalidType");
+      }
+
+      if (file.size > MAX_DOCUMENT_FILE_SIZE_BYTES) {
+        return t("errors.file.maxSize");
+      }
+
+      return null;
+    },
   });
 
-  const setContentValue = (content: string) => {
-    setValue("content", content, DIRTY_FORM_VALUE_OPTIONS);
-  };
-
-  const openFileDialog = () => {
-    if (getValues("content") || fileTransfer.isUploadPending) {
-      return;
-    }
-
-    fileInputRef.current?.click();
-  };
-
-  const handleFileSelect = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-
-    event.target.value = "";
+  const handleFileSelect = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const file = await handleSingleFileSelect(event);
 
     if (!file) {
       return;
     }
 
-    if (!checkIsPdfFile(file)) {
-      setError("content", {
-        message: t("errors.file.invalidType"),
-        type: "manual",
-      });
-
-      return;
-    }
-
-    if (file.size > MAX_DOCUMENT_FILE_SIZE_BYTES) {
-      setError("content", {
-        message: t("errors.file.maxSize"),
-        type: "manual",
-      });
-
-      return;
-    }
-
-    clearErrors("content");
-
-    const { url } = await fileTransfer.uploadFile(file);
-
-    setContentValue(url);
     setFileName(file.name);
   };
 
-  const removeFile = async () => {
-    const fileUrl = getValues("content");
-
-    if (!fileUrl) {
-      return;
-    }
-
-    await fileTransfer.deleteFile(fileUrl);
-
-    setContentValue("");
+  const handleFileRemove = async () => {
+    await removeFile();
     setFileName("");
   };
 
@@ -120,11 +98,10 @@ export const useAddDocumentFile = ({
     fileInputRef,
     fileName,
     handleFileSelect,
-    isFileDeletePending: fileTransfer.isDeletePending,
-    isFileUploadDisabled:
-      Boolean(getValues("content")) || fileTransfer.isUploadPending,
-    isSubmittingFile: fileTransfer.isTransferring,
+    isFileDeletePending: isDeletePending,
+    isFileUploadDisabled: isTransferDisabled,
+    isSubmittingFile: isTransferring,
     openFileDialog,
-    removeFile,
+    removeFile: handleFileRemove,
   };
 };
