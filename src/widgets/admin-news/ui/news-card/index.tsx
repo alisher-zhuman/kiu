@@ -9,10 +9,12 @@ import { DeleteNewsButton } from "@/features/delete-news";
 
 import { type NewsItem } from "@/entities/news";
 
-import { cn, formatDate } from "@/shared/helpers";
+import { cn, formatDate, getPreviewText } from "@/shared/helpers";
 
-const TITLE_PREVIEW_LIMIT = 80;
-const DESCRIPTION_PREVIEW_LIMIT = 160;
+import {
+  ADMIN_NEWS_DESCRIPTION_PREVIEW_LIMIT,
+  ADMIN_NEWS_TITLE_PREVIEW_LIMIT,
+} from "../../constants";
 
 interface Props {
   cardIndex: number;
@@ -26,15 +28,11 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
 
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewImages = item.images.slice(0, 2);
-  const isLongTitle = item.title.trim().length > TITLE_PREVIEW_LIMIT;
-  const isLongDescription =
-    item.description.trim().length > DESCRIPTION_PREVIEW_LIMIT;
-  const previewTitle = isLongTitle
-    ? `${item.title.slice(0, TITLE_PREVIEW_LIMIT).trimEnd()}...`
-    : item.title;
-  const previewDescription = isLongDescription
-    ? `${item.description.slice(0, DESCRIPTION_PREVIEW_LIMIT).trimEnd()}...`
-    : item.description;
+  const previewTitle = getPreviewText(item.title, ADMIN_NEWS_TITLE_PREVIEW_LIMIT);
+  const previewDescription = getPreviewText(
+    item.description,
+    ADMIN_NEWS_DESCRIPTION_PREVIEW_LIMIT,
+  );
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]">

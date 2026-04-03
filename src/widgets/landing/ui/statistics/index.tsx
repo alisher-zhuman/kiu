@@ -5,9 +5,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { cn } from "@/shared/helpers";
 import { useInView } from "@/shared/hooks";
 
-import { StatisticsCounter } from "./counter";
+import { STAT_KEYS } from "../../constants";
 
-const STAT_KEYS = ["books", "teachers", "employment", "students"] as const;
+import { StatisticsCounter } from "./counter";
 
 export const Statistics = () => {
   const locale = useLocale();

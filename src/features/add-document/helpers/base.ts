@@ -2,6 +2,13 @@ import { type CreateDocumentPayload, type DocumentItem } from "@/entities/docume
 
 import { type AddDocumentFormValues } from "../types";
 
+export const checkIsPdfFile = (file: File) => {
+  return (
+    file.type === "application/pdf" ||
+    file.name.toLowerCase().endsWith(".pdf")
+  );
+};
+
 export const createDefaultDocumentFormValues = (): AddDocumentFormValues => ({
   content: "",
   docType: "LOCAL_KIU_DOCUMENTS",

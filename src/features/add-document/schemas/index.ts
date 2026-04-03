@@ -1,20 +1,14 @@
 import { z } from "zod";
 
-import {
-  DOCUMENT_TYPE_OPTIONS,
-  MAX_DOCUMENT_FILE_SIZE_BYTES,
-} from "../constants";
+import { DOCUMENT_TYPE_OPTIONS } from "@/entities/documents";
 
 export const createAddDocumentFormSchema = (
   t: (key: string) => string,
-) => {
-  return z.object({
+) =>
+  z.object({
     content: z.string().trim().min(1, t("errors.file.required")),
     docType: z.enum(DOCUMENT_TYPE_OPTIONS, {
       error: () => t("errors.docType.required"),
     }),
     title: z.string().trim().min(1, t("errors.title.required")),
   });
-};
-
-export { DOCUMENT_TYPE_OPTIONS, MAX_DOCUMENT_FILE_SIZE_BYTES };

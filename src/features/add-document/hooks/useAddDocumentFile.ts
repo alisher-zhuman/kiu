@@ -14,7 +14,8 @@ import { deleteFile, uploadFile } from "@/shared/api/files";
 import { getApiErrorMessage, getFileNameFromUrl } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
-import { MAX_DOCUMENT_FILE_SIZE_BYTES } from "../schemas";
+import { MAX_DOCUMENT_FILE_SIZE_BYTES } from "../constants";
+import { checkIsPdfFile } from "../helpers/base";
 import { type AddDocumentFormValues } from "../types";
 
 interface Params {
@@ -25,13 +26,6 @@ interface Params {
   setValue: UseFormSetValue<AddDocumentFormValues>;
   t: (key: string) => string;
 }
-
-const checkIsPdfFile = (file: File) => {
-  return (
-    file.type === "application/pdf" ||
-    file.name.toLowerCase().endsWith(".pdf")
-  );
-};
 
 export const useAddDocumentFile = ({
   clearErrors,
