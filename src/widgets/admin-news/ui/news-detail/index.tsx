@@ -6,8 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 
 import { Link } from "@/i18n/navigation";
 
-import { AdminPageShell } from "@/widgets/layout/ui/admin-page-shell";
-
 import { ArchiveNewsButton } from "@/features/archive-news";
 import { DeleteNewsButton } from "@/features/delete-news";
 
@@ -15,6 +13,7 @@ import { getNewsById } from "@/entities/news";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { formatDate, getApiErrorMessage } from "@/shared/helpers";
+import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
 interface Props {
   id: number;

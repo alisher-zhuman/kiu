@@ -4,12 +4,11 @@ import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
-import { AdminCollectionState } from "@/widgets/layout/ui/admin-collection-state";
-import { AdminPageShell } from "@/widgets/layout/ui/admin-page-shell";
-
 import { DOCUMENT_TYPE_OPTIONS, getDocuments } from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
+import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
+import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
 import { DocumentCard } from "../document-card";
 

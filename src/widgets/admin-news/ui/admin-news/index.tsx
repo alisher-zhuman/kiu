@@ -3,12 +3,11 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
-import { AdminCollectionState } from "@/widgets/layout/ui/admin-collection-state";
-import { AdminPageShell } from "@/widgets/layout/ui/admin-page-shell";
-
 import { getNews } from "@/entities/news";
 
 import { QUERY_KEYS } from "@/shared/constants";
+import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
+import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
 import { NewsCard } from "../news-card";
 

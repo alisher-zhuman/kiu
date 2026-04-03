@@ -1,7 +1,8 @@
 "use client";
 
+import { ProfessorForm } from "@/entities/professors/ui/professor-form";
+
 import { useAddProfessorForm } from "../../hooks/useAddProfessorForm";
-import { ProfessorForm } from "../professor-form";
 
 export const AddProfessorForm = () => {
   const form = useAddProfessorForm();

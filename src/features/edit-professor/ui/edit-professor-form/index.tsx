@@ -1,6 +1,6 @@
 "use client";
 
-import { ProfessorForm } from "@/features/add-professor/ui/professor-form";
+import { ProfessorForm } from "@/entities/professors/ui/professor-form";
 
 import { getApiErrorMessage } from "@/shared/helpers";
 

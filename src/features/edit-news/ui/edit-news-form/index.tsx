@@ -1,6 +1,6 @@
 "use client";
 
-import { NewsForm } from "@/features/add-news";
+import { NewsForm } from "@/entities/news/ui/news-form";
 
 import { getApiErrorMessage } from "@/shared/helpers";
 

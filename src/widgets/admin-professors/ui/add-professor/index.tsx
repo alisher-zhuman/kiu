@@ -1,8 +1,8 @@
 "use client";
 
-import { AdminPageShell } from "@/widgets/layout/ui/admin-page-shell";
-
 import { AddProfessorForm } from "@/features/add-professor";
+
+import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
 export const AddProfessor = () => {
   return (

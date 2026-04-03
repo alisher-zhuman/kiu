@@ -1,7 +1,8 @@
 "use client";
 
+import { NewsForm } from "@/entities/news/ui/news-form";
+
 import { useAddNewsForm } from "../../hooks/useAddNewsForm";
-import { NewsForm } from "../news-form";
 
 export const AddNewsForm = () => {
   const form = useAddNewsForm();

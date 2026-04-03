@@ -7,20 +7,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useRouter } from "@/i18n/navigation";
 
-import { createNews } from "@/entities/news";
+import {
+  createDefaultNewsFormValues,
+  createNews,
+  createNewsFormSchema,
+  mapNewsFormValuesToPayload,
+  type NewsFormValues,
+} from "@/entities/news";
+import { useNewsImages } from "@/entities/news/hooks/useNewsImages";
 
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
-
-import {
-  createDefaultNewsFormValues,
-  mapNewsFormValuesToPayload,
-} from "../helpers/base";
-import { createAddNewsFormSchema } from "../schemas";
-import { type AddNewsFormValues } from "../types";
-
-import { useAddNewsImages } from "./useAddNewsImages";
 
 export const useAddNewsForm = () => {
   const locale = useLocale();
@@ -28,7 +26,7 @@ export const useAddNewsForm = () => {
 
   const t = useTranslations("AdminNewsPage.addForm");
 
-  const schema = useMemo(() => createAddNewsFormSchema(t), [t]);
+  const schema = useMemo(() => createNewsFormSchema(t), [t]);
 
   const {
     clearErrors,
@@ -39,7 +37,7 @@ export const useAddNewsForm = () => {
     register,
     setError,
     setValue,
-  } = useForm<AddNewsFormValues>({
+  } = useForm<NewsFormValues>({
     resolver: zodResolver(schema),
     defaultValues: createDefaultNewsFormValues(),
     mode: "onChange",
@@ -59,7 +57,7 @@ export const useAddNewsForm = () => {
     isUploadingImages,
     openFileDialog,
     removeImage,
-  } = useAddNewsImages({
+  } = useNewsImages({
     clearErrors,
     getValues,
     images,
@@ -69,7 +67,7 @@ export const useAddNewsForm = () => {
   });
 
   const mutation = useToastMutation({
-    mutationFn: (values: AddNewsFormValues) =>
+    mutationFn: (values: NewsFormValues) =>
       createNews(mapNewsFormValuesToPayload(values)),
     invalidateKeys: [QUERY_KEYS.adminNews(locale)],
     pendingMessage: t("pending.submit"),

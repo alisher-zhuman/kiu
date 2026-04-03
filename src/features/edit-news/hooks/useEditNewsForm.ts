@@ -10,14 +10,14 @@ import { useRouter } from "@/i18n/navigation";
 
 import {
   createDefaultNewsFormValues,
+  createNewsFormSchema,
+  getNewsByIdForEdit,
   mapEditableNewsToFormValues,
   mapNewsFormValuesToPayload,
-} from "@/features/add-news/helpers/base";
-import { useAddNewsImages } from "@/features/add-news/hooks/useAddNewsImages";
-import { createAddNewsFormSchema } from "@/features/add-news/schemas";
-import { type AddNewsFormValues } from "@/features/add-news/types";
-
-import { getNewsByIdForEdit, updateNews } from "@/entities/news";
+  type NewsFormValues,
+  updateNews,
+} from "@/entities/news";
+import { useNewsImages } from "@/entities/news/hooks/useNewsImages";
 
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
@@ -34,10 +34,7 @@ export const useEditNewsForm = ({ id }: Params) => {
   const fieldsT = useTranslations("AdminNewsPage.addForm");
   const editT = useTranslations("AdminNewsPage.editForm");
 
-  const schema = useMemo(
-    () => createAddNewsFormSchema(fieldsT),
-    [fieldsT],
-  );
+  const schema = useMemo(() => createNewsFormSchema(fieldsT), [fieldsT]);
 
   const {
     clearErrors,
@@ -49,7 +46,7 @@ export const useEditNewsForm = ({ id }: Params) => {
     reset,
     setError,
     setValue,
-  } = useForm<AddNewsFormValues>({
+  } = useForm<NewsFormValues>({
     resolver: zodResolver(schema),
     defaultValues: createDefaultNewsFormValues(),
     mode: "onChange",
@@ -69,7 +66,7 @@ export const useEditNewsForm = ({ id }: Params) => {
     isUploadingImages,
     openFileDialog,
     removeImage,
-  } = useAddNewsImages({
+  } = useNewsImages({
     clearErrors,
     getValues,
     images,
@@ -96,7 +93,7 @@ export const useEditNewsForm = ({ id }: Params) => {
   }, [news, reset]);
 
   const mutation = useToastMutation({
-    mutationFn: (values: AddNewsFormValues) =>
+    mutationFn: (values: NewsFormValues) =>
       updateNews(id, mapNewsFormValuesToPayload(values)),
     invalidateKeys: [
       QUERY_KEYS.adminNews(locale),

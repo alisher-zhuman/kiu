@@ -10,18 +10,16 @@ import { useRouter } from "@/i18n/navigation";
 
 import {
   createDefaultProfessorFormValues,
+  createProfessorFormSchema,
+  getProfessorByIdForEdit,
   mapProfessorDetailToFormValues,
   mapProfessorFormValuesToPayload,
-} from "@/features/add-professor/helpers/base";
-import { useAddProfessorPhoto } from "@/features/add-professor/hooks/useAddProfessorPhoto";
-import { createAddProfessorFormSchema } from "@/features/add-professor/schemas";
-import { type AddProfessorFormValues } from "@/features/add-professor/types";
-
-import {
-  getProfessorByIdForEdit,
   PROFESSOR_SECTION_OPTIONS,
+  type ProfessorFormValues,
+  toggleProfessorSectionValue,
   updateProfessor,
 } from "@/entities/professors";
+import { useProfessorPhoto } from "@/entities/professors/hooks/useProfessorPhoto";
 
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
@@ -38,7 +36,7 @@ export const useEditProfessorForm = ({ id }: Params) => {
   const fieldsT = useTranslations("AdminProfessorsPage.addForm");
   const editT = useTranslations("AdminProfessorsPage.editForm");
 
-  const schema = useMemo(() => createAddProfessorFormSchema(fieldsT), [fieldsT]);
+  const schema = useMemo(() => createProfessorFormSchema(fieldsT), [fieldsT]);
 
   const {
     clearErrors,
@@ -50,7 +48,7 @@ export const useEditProfessorForm = ({ id }: Params) => {
     reset,
     setError,
     setValue,
-  } = useForm<AddProfessorFormValues>({
+  } = useForm<ProfessorFormValues>({
     resolver: zodResolver(schema),
     defaultValues: createDefaultProfessorFormValues(),
     mode: "onChange",
@@ -79,7 +77,7 @@ export const useEditProfessorForm = ({ id }: Params) => {
     isSubmittingPhoto,
     openFileDialog,
     removePhoto,
-  } = useAddProfessorPhoto({
+  } = useProfessorPhoto({
     clearErrors,
     getValues,
     setError,
@@ -105,7 +103,7 @@ export const useEditProfessorForm = ({ id }: Params) => {
   }, [professor, reset]);
 
   const mutation = useToastMutation({
-    mutationFn: (values: AddProfessorFormValues) =>
+    mutationFn: (values: ProfessorFormValues) =>
       updateProfessor(id, mapProfessorFormValuesToPayload(values)),
     invalidateKeys: [
       QUERY_KEYS.adminProfessorById(locale, id),
@@ -127,11 +125,7 @@ export const useEditProfessorForm = ({ id }: Params) => {
   const toggleSection = (
     section: (typeof PROFESSOR_SECTION_OPTIONS)[number],
   ) => {
-    const nextSections = selectedSections.includes(section)
-      ? selectedSections.filter((currentSection) => currentSection !== section)
-      : [...selectedSections, section];
-
-    setValue("sections", nextSections, {
+    setValue("sections", toggleProfessorSectionValue(selectedSections, section), {
       shouldDirty: true,
       shouldTouch: true,
       shouldValidate: true,

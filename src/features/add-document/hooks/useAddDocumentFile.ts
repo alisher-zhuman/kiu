@@ -10,8 +10,7 @@ import {
   useWatch,
 } from "react-hook-form";
 
-import { deleteFile, uploadFile } from "@/entities/files";
-
+import { deleteFile, uploadFile } from "@/shared/api/files";
 import { getApiErrorMessage, getFileNameFromUrl } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 

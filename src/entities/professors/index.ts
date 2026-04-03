@@ -8,6 +8,17 @@ export {
 } from "./api";
 export { PROFESSOR_SECTION_OPTIONS } from "./model/constants";
 export type {
+  ProfessorFormValues,
+  ProfessorPositionFormValue,
+} from "./model/form";
+export {
+  createDefaultProfessorFormValues,
+  createProfessorFormSchema,
+  mapProfessorDetailToFormValues,
+  mapProfessorFormValuesToPayload,
+  toggleProfessorSectionValue,
+} from "./model/form";
+export type {
   CreateProfessorPayload,
   LocalizedProfessorName,
   LocalizedProfessorPosition,

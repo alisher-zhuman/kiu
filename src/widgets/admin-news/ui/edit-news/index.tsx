@@ -1,8 +1,8 @@
 "use client";
 
-import { AdminPageShell } from "@/widgets/layout/ui/admin-page-shell";
-
 import { EditNewsForm } from "@/features/edit-news";
+
+import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
 interface Props {
   id: number;

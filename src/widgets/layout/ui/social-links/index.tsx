@@ -1,6 +1,6 @@
 import { Facebook, Instagram, Youtube } from "lucide-react";
 
-import { SOCIAL_LINKS } from "@/widgets/layout/constants";
+import { SOCIAL_LINKS } from "../../constants";
 
 const ICONS = {
   instagram: Instagram,

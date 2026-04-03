@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
 
-import { FAX_LABEL, MAPS_URL, PHONE_LINKS } from "@/widgets/layout/constants";
+import { FAX_LABEL, MAPS_URL, PHONE_LINKS } from "../../constants";
 
 interface Props {
   addressLine1: string;

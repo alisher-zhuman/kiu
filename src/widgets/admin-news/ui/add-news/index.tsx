@@ -1,8 +1,8 @@
 "use client";
 
-import { AdminPageShell } from "@/widgets/layout/ui/admin-page-shell";
-
 import { AddNewsForm } from "@/features/add-news";
+
+import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
 export const AddNews = () => {
   return (
