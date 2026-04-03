@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 
-import { UserLayout } from "@/widgets/layout/ui/user-layout";
+import { UserLayout } from "@/widgets/layout";
 
 interface Props {
   children: ReactNode;

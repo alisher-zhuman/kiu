@@ -13,8 +13,8 @@ import {
   createNewsFormSchema,
   mapNewsFormValuesToPayload,
   type NewsFormValues,
+  useNewsImages,
 } from "@/entities/news";
-import { useNewsImages } from "@/entities/news/hooks/useNewsImages";
 
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";

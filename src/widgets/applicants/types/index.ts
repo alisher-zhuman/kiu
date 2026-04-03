@@ -1,2 +1,2 @@
-export * from "./required-documents";
-export * from "./tuition";
+export type * from "./required-documents";
+export type * from "./tuition";

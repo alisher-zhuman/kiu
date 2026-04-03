@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 
-import { AdminLayout } from "@/widgets/layout/ui/admin-layout";
+import { AdminLayout } from "@/widgets/layout";
 
 import { AuthGuard } from "@/shared/ui/auth-quard";
 

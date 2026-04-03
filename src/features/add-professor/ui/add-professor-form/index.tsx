@@ -1,6 +1,6 @@
 "use client";
 
-import { ProfessorForm } from "@/entities/professors/ui/professor-form";
+import { ProfessorForm } from "@/entities/professors";
 
 import { useAddProfessorForm } from "../../hooks/useAddProfessorForm";
 

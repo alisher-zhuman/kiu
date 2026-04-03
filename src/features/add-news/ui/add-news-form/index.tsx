@@ -1,6 +1,6 @@
 "use client";
 
-import { NewsForm } from "@/entities/news/ui/news-form";
+import { NewsForm } from "@/entities/news";
 
 import { useAddNewsForm } from "../../hooks/useAddNewsForm";
 

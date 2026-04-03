@@ -6,6 +6,7 @@ export {
   getProfessors,
   updateProfessor,
 } from "./api";
+export { useProfessorPhoto } from "./hooks/useProfessorPhoto";
 export {
   MAX_PROFESSOR_PHOTO_SIZE_BYTES,
   PROFESSOR_SECTION_OPTIONS,
@@ -27,3 +28,4 @@ export type {
   ProfessorPositionFormValue,
   ProfessorSection,
 } from "./model/types";
+export { ProfessorForm } from "./ui/professor-form";

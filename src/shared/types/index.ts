@@ -1,6 +1,6 @@
-export * from "./api";
-export * from "./auth";
-export * from "./link-action";
-export * from "./locale";
-export * from "./navbar";
-export * from "./section";
+export type * from "./api";
+export type * from "./auth";
+export type * from "./link-action";
+export type * from "./locale";
+export type * from "./navbar";
+export type * from "./section";

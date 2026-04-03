@@ -2,11 +2,23 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import {
+  createBarrelImportConfig,
+  createSameLayerImportConfig,
+  createSelfLayerImportConfig,
+} from "./eslint/helpers/internal-imports.mjs";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     plugins: {
       "simple-import-sort": simpleImportSort,
     },
@@ -24,11 +36,23 @@ const eslintConfig = defineConfig([
         },
       ],
       "@typescript-eslint/consistent-type-imports": [
-        "warn",
+        "error",
         { prefer: "type-imports", fixStyle: "inline-type-imports" },
       ],
+      "@typescript-eslint/consistent-type-exports": [
+        "error",
+        { fixMixedExportsWithInlineTypeSpecifier: true },
+      ],
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          checksVoidReturn: {
+            attributes: false,
+          },
+        },
+      ],
       "simple-import-sort/imports": [
-        "warn",
+        "error",
         {
           groups: [
             ["^\\u0000"],
@@ -51,7 +75,45 @@ const eslintConfig = defineConfig([
           ],
         },
       ],
-      "simple-import-sort/exports": "warn",
+      "simple-import-sort/exports": "error",
+    },
+  },
+  createSelfLayerImportConfig("shared"),
+  createSelfLayerImportConfig("app"),
+  createSameLayerImportConfig("entities"),
+  createSameLayerImportConfig("features"),
+  createSameLayerImportConfig("widgets"),
+  createBarrelImportConfig({
+    files: ["src/app/**/*.{ts,tsx}"],
+    layer: "widgets",
+    pattern: "*/*",
+    message: "Use widget barrel exports.",
+  }),
+  createBarrelImportConfig({
+    files: ["src/**/*.{ts,tsx}"],
+    layer: "features",
+    pattern: "*/*",
+    message: "Use feature barrel exports.",
+  }),
+  {
+    files: ["src/features/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: [
+                "@/entities/*/ui/*",
+                "@entities/*/ui/*",
+                "@/entities/*/hooks/*",
+                "@entities/*/hooks/*",
+              ],
+              message: "Use entity barrel exports.",
+            },
+          ],
+        },
+      ],
     },
   },
   // Override default ignores of eslint-config-next.

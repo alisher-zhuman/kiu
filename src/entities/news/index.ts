@@ -7,6 +7,7 @@ export {
   toggleNewsArchive,
   updateNews,
 } from "./api";
+export { useNewsImages } from "./hooks/useNewsImages";
 export {
   MAX_NEWS_IMAGE_SIZE_BYTES,
   MAX_NEWS_IMAGES_COUNT,
@@ -24,3 +25,4 @@ export type {
   NewsFormValues,
   NewsItem,
 } from "./model/types";
+export { NewsForm } from "./ui/news-form";

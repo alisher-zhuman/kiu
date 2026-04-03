@@ -15,8 +15,8 @@ import {
   PROFESSOR_SECTION_OPTIONS,
   type ProfessorFormValues,
   toggleProfessorSectionValue,
+  useProfessorPhoto,
 } from "@/entities/professors";
-import { useProfessorPhoto } from "@/entities/professors/hooks/useProfessorPhoto";
 
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";

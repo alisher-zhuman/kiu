@@ -16,8 +16,8 @@ import {
   mapNewsFormValuesToPayload,
   type NewsFormValues,
   updateNews,
+  useNewsImages,
 } from "@/entities/news";
-import { useNewsImages } from "@/entities/news/hooks/useNewsImages";
 
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
