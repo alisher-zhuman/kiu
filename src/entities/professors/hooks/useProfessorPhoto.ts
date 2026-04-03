@@ -14,8 +14,8 @@ import { useToastMutation } from "@/shared/hooks";
 
 import {
   MAX_PROFESSOR_PHOTO_SIZE_BYTES,
-  type ProfessorFormValues,
-} from "../model/form";
+} from "../model/constants";
+import { type ProfessorFormValues } from "../model/types";
 
 interface Params {
   clearErrors: UseFormClearErrors<ProfessorFormValues>;

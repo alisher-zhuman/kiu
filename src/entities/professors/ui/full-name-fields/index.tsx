@@ -6,7 +6,7 @@ import { type AppLocale } from "@/i18n/routing";
 
 import { cn } from "@/shared/helpers";
 
-import { type ProfessorFormValues } from "../../model/form";
+import { type ProfessorFormValues } from "../../model/types";
 
 interface Props {
   errors: FieldErrors<ProfessorFormValues["fullName"]>;

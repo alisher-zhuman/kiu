@@ -10,7 +10,7 @@ import { cn } from "@/shared/helpers";
 import {
   type ProfessorFormValues,
   type ProfessorPositionFormValue,
-} from "../../model/form";
+} from "../../model/types";
 
 interface Props {
   addPosition: () => void;

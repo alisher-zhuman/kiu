@@ -1,7 +1,7 @@
 import { type z } from "zod";
 
 import { type PROFESSOR_SECTION_OPTIONS } from "./constants";
-import { type ProfessorItemSchema } from "./schemas";
+import { type createProfessorFormSchema,type ProfessorItemSchema } from "./schemas";
 
 export type ProfessorSection = (typeof PROFESSOR_SECTION_OPTIONS)[number];
 
@@ -12,6 +12,12 @@ export interface LocalizedProfessorName {
 }
 
 export interface LocalizedProfessorPosition {
+  en: string;
+  kg: string;
+  ru: string;
+}
+
+export interface ProfessorPositionFormValue {
   en: string;
   kg: string;
   ru: string;
@@ -35,4 +41,7 @@ export interface ProfessorDetail {
   sections: ProfessorSection[];
 }
 
+export type ProfessorFormValues = z.infer<
+  ReturnType<typeof createProfessorFormSchema>
+>;
 export type ProfessorItem = z.infer<typeof ProfessorItemSchema>;
