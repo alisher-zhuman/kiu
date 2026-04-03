@@ -7,6 +7,7 @@ export {
   toggleNewsArchive,
   updateNews,
 } from "./api";
+export { useNewsForm } from "./hooks/useNewsForm";
 export { useNewsImages } from "./hooks/useNewsImages";
 export {
   MAX_NEWS_IMAGE_SIZE_BYTES,

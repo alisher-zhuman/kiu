@@ -6,6 +6,7 @@ export {
   getProfessors,
   updateProfessor,
 } from "./api";
+export { useProfessorForm } from "./hooks/useProfessorForm";
 export { useProfessorPhoto } from "./hooks/useProfessorPhoto";
 export {
   MAX_PROFESSOR_PHOTO_SIZE_BYTES,

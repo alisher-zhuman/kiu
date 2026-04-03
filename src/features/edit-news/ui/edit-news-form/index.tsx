@@ -1,41 +1,25 @@
 "use client";
 
-import { NewsForm } from "@/entities/news";
+import { NewsForm, useNewsForm } from "@/entities/news";
 
-import { getApiErrorMessage } from "@/shared/helpers";
-
-import { useEditNewsForm } from "../../hooks/useEditNewsForm";
+import { AsyncItemState } from "@/shared/ui/async-item-state";
 
 interface Props {
   id: number;
 }
 
 export const EditNewsForm = ({ id }: Props) => {
-  const form = useEditNewsForm({ id });
+  const form = useNewsForm({ id });
 
-  if (form.isNewsLoading) {
-    return (
-      <p className="text-base text-black/60 md:text-lg">
-        {form.editT("loading")}
-      </p>
-    );
-  }
-
-  if (form.newsError) {
-    return (
-      <p className="text-base text-red-600 md:text-lg">
-        {getApiErrorMessage(form.newsError, form.editT("error"))}
-      </p>
-    );
-  }
-
-  if (!form.news) {
-    return (
-      <p className="text-base text-black/60 md:text-lg">
-        {form.editT("empty")}
-      </p>
-    );
-  }
-
-  return <NewsForm {...form} submitLabel={form.editT("submit")} />;
+  return (
+    <AsyncItemState
+      emptyLabel={form.editT("empty")}
+      error={form.newsError}
+      errorLabel={form.editT("error")}
+      isLoading={form.isNewsLoading}
+      item={form.news}
+      loadingLabel={form.editT("loading")}
+      render={() => <NewsForm {...form} submitLabel={form.editT("submit")} />}
+    />
+  );
 };

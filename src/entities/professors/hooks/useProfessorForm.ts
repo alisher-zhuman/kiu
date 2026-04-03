@@ -8,34 +8,43 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useRouter } from "@/i18n/navigation";
 
-import {
-  createDefaultProfessorFormValues,
-  createProfessorFormSchema,
-  getProfessorByIdForEdit,
-  mapProfessorDetailToFormValues,
-  mapProfessorFormValuesToPayload,
-  PROFESSOR_SECTION_OPTIONS,
-  type ProfessorFormValues,
-  toggleProfessorSectionValue,
-  updateProfessor,
-  useProfessorPhoto,
-} from "@/entities/professors";
-
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
-interface Params {
-  id: number;
+import { createProfessor, getProfessorByIdForEdit, updateProfessor } from "../api";
+import { PROFESSOR_SECTION_OPTIONS } from "../model/constants";
+import {
+  createDefaultProfessorFormValues,
+  mapProfessorDetailToFormValues,
+  mapProfessorFormValuesToPayload,
+  toggleProfessorSectionValue,
+} from "../model/helpers";
+import { createProfessorFormSchema } from "../model/schemas";
+import { type ProfessorDetail, type ProfessorFormValues } from "../model/types";
+
+import { useProfessorPhoto } from "./useProfessorPhoto";
+
+interface BaseParams {
+  mode: "add" | "edit";
 }
 
-export const useEditProfessorForm = ({ id }: Params) => {
+interface EditParams extends BaseParams {
+  id: number;
+  mode: "edit";
+}
+
+type Params = BaseParams | EditParams;
+
+export const useProfessorForm = (params: Params) => {
   const locale = useLocale();
-  
   const router = useRouter();
 
   const fieldsT = useTranslations("AdminProfessorsPage.addForm");
   const editT = useTranslations("AdminProfessorsPage.editForm");
+
+  const isEditMode = params.mode === "edit";
+  const submitT = isEditMode ? editT : fieldsT;
 
   const schema = useMemo(() => createProfessorFormSchema(fieldsT), [fieldsT]);
 
@@ -91,8 +100,12 @@ export const useEditProfessorForm = ({ id }: Params) => {
     error: professorError,
     isLoading: isProfessorLoading,
   } = useQuery({
-    queryKey: QUERY_KEYS.adminProfessorById(locale, id),
-    queryFn: () => getProfessorByIdForEdit(id),
+    queryKey:
+      isEditMode && "id" in params
+        ? QUERY_KEYS.adminProfessorById(locale, params.id)
+        : ["admin-professor-idle", locale],
+    queryFn: () => getProfessorByIdForEdit((params as EditParams).id),
+    enabled: isEditMode,
   });
 
   useEffect(() => {
@@ -104,16 +117,26 @@ export const useEditProfessorForm = ({ id }: Params) => {
   }, [professor, reset]);
 
   const mutation = useToastMutation({
-    mutationFn: (values: ProfessorFormValues) =>
-      updateProfessor(id, mapProfessorFormValuesToPayload(values)),
-    invalidateKeys: [
-      QUERY_KEYS.adminProfessorById(locale, id),
-      QUERY_KEYS.adminProfessors(locale),
-    ],
-    pendingMessage: editT("pending.submit"),
-    successMessage: editT("success"),
+    mutationFn: (values: ProfessorFormValues) => {
+      const payload = mapProfessorFormValuesToPayload(values);
+
+      if (isEditMode && "id" in params) {
+        return updateProfessor(params.id, payload);
+      }
+
+      return createProfessor(payload);
+    },
+    invalidateKeys:
+      isEditMode && "id" in params
+        ? [
+            QUERY_KEYS.adminProfessorById(locale, params.id),
+            QUERY_KEYS.adminProfessors(locale),
+          ]
+        : [QUERY_KEYS.adminProfessors(locale)],
+    pendingMessage: submitT("pending.submit"),
+    successMessage: submitT("success"),
     errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, editT("errors.submit")),
+      getApiErrorMessage(error, submitT("errors.submit")),
     onSuccess: () => {
       router.replace("/admin/professors");
     },
@@ -126,11 +149,15 @@ export const useEditProfessorForm = ({ id }: Params) => {
   const toggleSection = (
     section: (typeof PROFESSOR_SECTION_OPTIONS)[number],
   ) => {
-    setValue("sections", toggleProfessorSectionValue(selectedSections, section), {
-      shouldDirty: true,
-      shouldTouch: true,
-      shouldValidate: true,
-    });
+    setValue(
+      "sections",
+      toggleProfessorSectionValue(selectedSections, section),
+      {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      },
+    );
   };
 
   return {
@@ -149,13 +176,14 @@ export const useEditProfessorForm = ({ id }: Params) => {
     openFileDialog,
     photo: getValues("photo"),
     positionFields,
-    professor,
+    professor: (professor ?? null) as ProfessorDetail | null,
     professorError,
     professorSectionOptions: PROFESSOR_SECTION_OPTIONS,
     register,
     removePhoto,
     removePosition,
     selectedSections,
+    t: fieldsT,
     toggleSection,
   };
 };

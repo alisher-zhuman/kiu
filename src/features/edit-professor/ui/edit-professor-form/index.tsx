@@ -2,9 +2,7 @@
 
 import { ProfessorForm } from "@/entities/professors";
 
-import { getApiErrorMessage } from "@/shared/helpers";
-
-import { useEditProfessorForm } from "../../hooks/useEditProfessorForm";
+import { AsyncItemState } from "@/shared/ui/async-item-state";
 
 interface Props {
   id: number;
@@ -13,25 +11,21 @@ interface Props {
 export const EditProfessorForm = ({ id }: Props) => {
   const form = useEditProfessorForm({ id });
 
-  if (form.isProfessorLoading) {
-    return (
-      <p className="text-base text-black/60 md:text-lg">
-        {form.editT("loading")}
-      </p>
-    );
-  }
-
-  if (form.professorError) {
-    return (
-      <p className="text-base text-red-600 md:text-lg">
-        {getApiErrorMessage(form.professorError, form.editT("error"))}
-      </p>
-    );
-  }
-
-  if (!form.professor) {
-    return <p className="text-base text-black/60 md:text-lg">{form.editT("empty")}</p>;
-  }
-
-  return <ProfessorForm {...form} submitLabel={form.editT("submit")} t={form.fieldsT} />;
+  return (
+    <AsyncItemState
+      emptyLabel={form.editT("empty")}
+      error={form.professorError}
+      errorLabel={form.editT("error")}
+      isLoading={form.isProfessorLoading}
+      item={form.professor}
+      loadingLabel={form.editT("loading")}
+      render={() => (
+        <ProfessorForm
+          {...form}
+          submitLabel={form.editT("submit")}
+          t={form.fieldsT}
+        />
+      )}
+    />
+  );
 };

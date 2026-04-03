@@ -8,9 +8,8 @@ import {
   type UseFormSetValue,
 } from "react-hook-form";
 
-import { deleteFile, uploadFile } from "@/shared/api/files";
-import { getApiErrorMessage } from "@/shared/helpers";
-import { useToastMutation } from "@/shared/hooks";
+import { DIRTY_FORM_VALUE_OPTIONS } from "@/shared/constants/form";
+import { useFileTransfer } from "@/shared/hooks/useFileTransfer";
 
 import {
   MAX_PROFESSOR_PHOTO_SIZE_BYTES,
@@ -34,30 +33,19 @@ export const useProfessorPhoto = ({
 }: Params) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const uploadMutation = useToastMutation({
-    mutationFn: (file: File) => uploadFile(file),
-    pendingMessage: t("pending.upload"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.photo.upload")),
-  });
-
-  const deleteMutation = useToastMutation({
-    mutationFn: (fileUrl: string) => deleteFile(fileUrl),
-    pendingMessage: t("pending.delete"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.photo.delete")),
+  const fileTransfer = useFileTransfer({
+    deleteErrorMessage: t("errors.photo.delete"),
+    deletePendingMessage: t("pending.delete"),
+    uploadErrorMessage: t("errors.photo.upload"),
+    uploadPendingMessage: t("pending.upload"),
   });
 
   const setPhotoValue = (photo: string) => {
-    setValue("photo", photo, {
-      shouldDirty: true,
-      shouldTouch: true,
-      shouldValidate: true,
-    });
+    setValue("photo", photo, DIRTY_FORM_VALUE_OPTIONS);
   };
 
   const openFileDialog = () => {
-    if (getValues("photo") || uploadMutation.isPending) {
+    if (getValues("photo") || fileTransfer.isUploadPending) {
       return;
     }
 
@@ -93,7 +81,7 @@ export const useProfessorPhoto = ({
 
     clearErrors("photo");
 
-    const { url } = await uploadMutation.mutateAsync(file);
+    const { url } = await fileTransfer.uploadFile(file);
 
     setPhotoValue(url);
   };
@@ -105,17 +93,17 @@ export const useProfessorPhoto = ({
       return;
     }
 
-    await deleteMutation.mutateAsync(photo);
+    await fileTransfer.deleteFile(photo);
     setPhotoValue("");
   };
 
   return {
     fileInputRef,
     handlePhotoSelect,
-    isPhotoDeletePending: deleteMutation.isPending,
+    isPhotoDeletePending: fileTransfer.isDeletePending,
     isPhotoUploadDisabled:
-      Boolean(getValues("photo")) || uploadMutation.isPending,
-    isSubmittingPhoto: uploadMutation.isPending || deleteMutation.isPending,
+      Boolean(getValues("photo")) || fileTransfer.isUploadPending,
+    isSubmittingPhoto: fileTransfer.isTransferring,
     openFileDialog,
     removePhoto,
   };

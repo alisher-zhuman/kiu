@@ -1,9 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Archive, ArchiveRestore, Loader2 } from "lucide-react";
+import { Archive, ArchiveRestore } from "lucide-react";
 
-import { cn } from "@/shared/helpers";
+import { AdminActionButton } from "@/shared/ui/admin-action-button";
 
 import { useArchiveNews } from "../../hooks/useArchiveNews";
 
@@ -31,40 +31,21 @@ export const ArchiveNewsButton = ({
   const pendingLabel = archived ? t("unarchivePending") : t("archivePending");
 
   return (
-    <button
-      type="button"
+    <AdminActionButton
+      className={className}
+      iconOnlyOnMobile={iconOnlyOnMobile}
+      idleLabel={idleLabel}
+      isPending={isPending}
+      mobileIcon={
+        archived ? (
+          <ArchiveRestore className="size-4 md:hidden" />
+        ) : (
+          <Archive className="size-4 md:hidden" />
+        )
+      }
       onClick={onToggleArchive}
-      disabled={isPending}
-      aria-label={isPending ? pendingLabel : idleLabel}
-      className={cn(
-        "inline-flex cursor-pointer items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-60",
-        iconOnlyOnMobile
-          ? "size-9 md:size-auto md:px-4 md:py-2 md:text-sm md:font-semibold"
-          : "px-3 py-1.5 text-xs font-medium md:text-sm",
-        archived
-          ? "border-[#004C97]/15 bg-[#004C97]/6 text-[#004C97] hover:bg-[#004C97]/10"
-          : "border-black/10 bg-black/3 text-black/70 hover:bg-black/5",
-        className,
-      )}
-    >
-      {iconOnlyOnMobile ? (
-        <>
-          {isPending ? (
-            <Loader2 className="size-4 animate-spin md:hidden" />
-          ) : archived ? (
-            <ArchiveRestore className="size-4 md:hidden" />
-          ) : (
-            <Archive className="size-4 md:hidden" />
-          )}
-          <span className="hidden md:inline">
-            {isPending ? pendingLabel : idleLabel}
-          </span>
-        </>
-      ) : isPending ? (
-        pendingLabel
-      ) : (
-        idleLabel
-      )}
-    </button>
+      pendingLabel={pendingLabel}
+      variant={archived ? "primary" : "neutral"}
+    />
   );
 };

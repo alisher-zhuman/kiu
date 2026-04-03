@@ -8,32 +8,41 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useRouter } from "@/i18n/navigation";
 
-import {
-  createDefaultNewsFormValues,
-  createNewsFormSchema,
-  getNewsByIdForEdit,
-  mapEditableNewsToFormValues,
-  mapNewsFormValuesToPayload,
-  type NewsFormValues,
-  updateNews,
-  useNewsImages,
-} from "@/entities/news";
-
 import { LOCALE_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
-interface Params {
-  id: number;
+import { createNews, getNewsByIdForEdit, updateNews } from "../api";
+import {
+  createDefaultNewsFormValues,
+  mapEditableNewsToFormValues,
+  mapNewsFormValuesToPayload,
+} from "../model/helpers";
+import { createNewsFormSchema } from "../model/schemas";
+import { type EditableNews, type NewsFormValues } from "../model/types";
+
+import { useNewsImages } from "./useNewsImages";
+
+interface BaseParams {
+  mode: "add" | "edit";
 }
 
-export const useEditNewsForm = ({ id }: Params) => {
+interface EditParams extends BaseParams {
+  id: number;
+  mode: "edit";
+}
+
+type Params = BaseParams | EditParams;
+
+export const useNewsForm = (params: Params) => {
   const locale = useLocale();
-  
   const router = useRouter();
 
   const fieldsT = useTranslations("AdminNewsPage.addForm");
   const editT = useTranslations("AdminNewsPage.editForm");
+
+  const isEditMode = params.mode === "edit";
+  const submitT = isEditMode ? editT : fieldsT;
 
   const schema = useMemo(() => createNewsFormSchema(fieldsT), [fieldsT]);
 
@@ -81,8 +90,12 @@ export const useEditNewsForm = ({ id }: Params) => {
     error: newsError,
     isLoading: isNewsLoading,
   } = useQuery({
-    queryKey: QUERY_KEYS.adminNewsFormById(locale, id),
-    queryFn: () => getNewsByIdForEdit(id),
+    queryKey:
+      isEditMode && "id" in params
+        ? QUERY_KEYS.adminNewsFormById(locale, params.id)
+        : ["admin-news-form-idle", locale],
+    queryFn: () => getNewsByIdForEdit((params as EditParams).id),
+    enabled: isEditMode,
   });
 
   useEffect(() => {
@@ -94,17 +107,27 @@ export const useEditNewsForm = ({ id }: Params) => {
   }, [news, reset]);
 
   const mutation = useToastMutation({
-    mutationFn: (values: NewsFormValues) =>
-      updateNews(id, mapNewsFormValuesToPayload(values)),
-    invalidateKeys: [
-      QUERY_KEYS.adminNews(locale),
-      QUERY_KEYS.adminNewsById(locale, id),
-      QUERY_KEYS.adminNewsFormById(locale, id),
-    ],
-    pendingMessage: editT("pending.submit"),
-    successMessage: editT("success"),
+    mutationFn: (values: NewsFormValues) => {
+      const payload = mapNewsFormValuesToPayload(values);
+
+      if (isEditMode && "id" in params) {
+        return updateNews(params.id, payload);
+      }
+
+      return createNews(payload);
+    },
+    invalidateKeys:
+      isEditMode && "id" in params
+        ? [
+            QUERY_KEYS.adminNews(locale),
+            QUERY_KEYS.adminNewsById(locale, params.id),
+            QUERY_KEYS.adminNewsFormById(locale, params.id),
+          ]
+        : [QUERY_KEYS.adminNews(locale)],
+    pendingMessage: submitT("pending.submit"),
+    successMessage: submitT("success"),
     errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, editT("errors.submit")),
+      getApiErrorMessage(error, submitT("errors.submit")),
     onSuccess: () => {
       router.replace("/admin/news");
     },
@@ -125,7 +148,7 @@ export const useEditNewsForm = ({ id }: Params) => {
     isSubmitDisabled: isUploadingImages || mutation.isPending || isSubmitting,
     isUploadDisabled,
     localeOptions: LOCALE_OPTIONS,
-    news,
+    news: (news ?? null) as EditableNews | null,
     newsError,
     onSubmit,
     openFileDialog,

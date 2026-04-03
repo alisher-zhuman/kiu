@@ -10,9 +10,9 @@ import {
   useWatch,
 } from "react-hook-form";
 
-import { deleteFile, uploadFile } from "@/shared/api/files";
-import { getApiErrorMessage, getFileNameFromUrl } from "@/shared/helpers";
-import { useToastMutation } from "@/shared/hooks";
+import { DIRTY_FORM_VALUE_OPTIONS } from "@/shared/constants/form";
+import { getFileNameFromUrl } from "@/shared/helpers";
+import { useFileTransfer } from "@/shared/hooks/useFileTransfer";
 
 import { MAX_DOCUMENT_FILE_SIZE_BYTES } from "../constants";
 import { checkIsPdfFile } from "../helpers/base";
@@ -49,30 +49,19 @@ export const useAddDocumentFile = ({
     setFileName(getFileNameFromUrl(content));
   }, [content]);
 
-  const uploadMutation = useToastMutation({
-    mutationFn: (file: File) => uploadFile(file),
-    pendingMessage: t("pending.upload"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.file.upload")),
-  });
-
-  const deleteMutation = useToastMutation({
-    mutationFn: (fileUrl: string) => deleteFile(fileUrl),
-    pendingMessage: t("pending.delete"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.file.delete")),
+  const fileTransfer = useFileTransfer({
+    deleteErrorMessage: t("errors.file.delete"),
+    deletePendingMessage: t("pending.delete"),
+    uploadErrorMessage: t("errors.file.upload"),
+    uploadPendingMessage: t("pending.upload"),
   });
 
   const setContentValue = (content: string) => {
-    setValue("content", content, {
-      shouldDirty: true,
-      shouldTouch: true,
-      shouldValidate: true,
-    });
+    setValue("content", content, DIRTY_FORM_VALUE_OPTIONS);
   };
 
   const openFileDialog = () => {
-    if (getValues("content") || uploadMutation.isPending) {
+    if (getValues("content") || fileTransfer.isUploadPending) {
       return;
     }
 
@@ -108,7 +97,7 @@ export const useAddDocumentFile = ({
 
     clearErrors("content");
 
-    const { url } = await uploadMutation.mutateAsync(file);
+    const { url } = await fileTransfer.uploadFile(file);
 
     setContentValue(url);
     setFileName(file.name);
@@ -121,7 +110,7 @@ export const useAddDocumentFile = ({
       return;
     }
 
-    await deleteMutation.mutateAsync(fileUrl);
+    await fileTransfer.deleteFile(fileUrl);
 
     setContentValue("");
     setFileName("");
@@ -131,9 +120,10 @@ export const useAddDocumentFile = ({
     fileInputRef,
     fileName,
     handleFileSelect,
-    isFileDeletePending: deleteMutation.isPending,
-    isFileUploadDisabled: Boolean(getValues("content")) || uploadMutation.isPending,
-    isSubmittingFile: uploadMutation.isPending || deleteMutation.isPending,
+    isFileDeletePending: fileTransfer.isDeletePending,
+    isFileUploadDisabled:
+      Boolean(getValues("content")) || fileTransfer.isUploadPending,
+    isSubmittingFile: fileTransfer.isTransferring,
     openFileDialog,
     removeFile,
   };

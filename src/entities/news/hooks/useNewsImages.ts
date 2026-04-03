@@ -8,9 +8,8 @@ import {
   type UseFormSetValue,
 } from "react-hook-form";
 
-import { deleteFile, uploadFile } from "@/shared/api/files";
-import { getApiErrorMessage } from "@/shared/helpers";
-import { useToastMutation } from "@/shared/hooks";
+import { DIRTY_FORM_VALUE_OPTIONS } from "@/shared/constants/form";
+import { useFileTransfer } from "@/shared/hooks/useFileTransfer";
 
 import {
   MAX_NEWS_IMAGE_SIZE_BYTES,
@@ -37,26 +36,15 @@ export const useNewsImages = ({
 }: Params) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const uploadMutation = useToastMutation({
-    mutationFn: (file: File) => uploadFile(file),
-    pendingMessage: t("pending.upload"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.images.upload")),
-  });
-
-  const deleteMutation = useToastMutation({
-    mutationFn: (fileUrl: string) => deleteFile(fileUrl),
-    pendingMessage: t("pending.delete"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.images.delete")),
+  const fileTransfer = useFileTransfer({
+    deleteErrorMessage: t("errors.images.delete"),
+    deletePendingMessage: t("pending.delete"),
+    uploadErrorMessage: t("errors.images.upload"),
+    uploadPendingMessage: t("pending.upload"),
   });
 
   const setImagesValue = (nextImages: string[]) => {
-    setValue("images", nextImages, {
-      shouldDirty: true,
-      shouldTouch: true,
-      shouldValidate: true,
-    });
+    setValue("images", nextImages, DIRTY_FORM_VALUE_OPTIONS);
   };
 
   const validateSelectedFiles = (files: File[]) => {
@@ -80,7 +68,7 @@ export const useNewsImages = ({
   };
 
   const openFileDialog = () => {
-    if (images.length >= MAX_NEWS_IMAGES_COUNT || uploadMutation.isPending) {
+    if (images.length >= MAX_NEWS_IMAGES_COUNT || fileTransfer.isUploadPending) {
       return;
     }
 
@@ -108,7 +96,7 @@ export const useNewsImages = ({
     const nextImages = [...getValues("images")];
 
     for (const file of selectedFiles) {
-      const { url } = await uploadMutation.mutateAsync(file);
+      const { url } = await fileTransfer.uploadFile(file);
 
       nextImages.push(url);
       setImagesValue(nextImages);
@@ -116,7 +104,7 @@ export const useNewsImages = ({
   };
 
   const removeImage = async (fileUrl: string) => {
-    await deleteMutation.mutateAsync(fileUrl);
+    await fileTransfer.deleteFile(fileUrl);
 
     setImagesValue(getValues("images").filter((url) => url !== fileUrl));
   };
@@ -124,10 +112,10 @@ export const useNewsImages = ({
   return {
     fileInputRef,
     handleFilesSelect,
-    isDeletePending: deleteMutation.isPending,
+    isDeletePending: fileTransfer.isDeletePending,
     isUploadDisabled:
-      uploadMutation.isPending || images.length >= MAX_NEWS_IMAGES_COUNT,
-    isUploadingImages: uploadMutation.isPending || deleteMutation.isPending,
+      fileTransfer.isUploadPending || images.length >= MAX_NEWS_IMAGES_COUNT,
+    isUploadingImages: fileTransfer.isTransferring,
     openFileDialog,
     removeImage,
   };
