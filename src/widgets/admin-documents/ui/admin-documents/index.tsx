@@ -4,10 +4,12 @@ import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
+import { AdminCollectionState } from "@/widgets/layout/ui/admin-collection-state";
+import { AdminPageShell } from "@/widgets/layout/ui/admin-page-shell";
+
 import { DOCUMENT_TYPE_OPTIONS, getDocuments } from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
-import { getApiErrorMessage } from "@/shared/helpers";
 
 import { DocumentCard } from "../document-card";
 
@@ -32,24 +34,16 @@ export const AdminDocuments = () => {
   );
 
   return (
-    <main className="mx-auto max-w-400 px-5 pt-3 pb-8 text-black md:px-10 md:pt-4 md:pb-10">
-      <section aria-label={t("sectionLabel")} className="space-y-8">
-        {isLoading ? (
-          <p className="text-base text-black/60 md:text-lg">{t("loading")}</p>
-        ) : null}
-
-        {!isLoading && error ? (
-          <p className="text-base text-red-600 md:text-lg">
-            {getApiErrorMessage(error, t("error"))}
-          </p>
-        ) : null}
-
-        {!isLoading && !error && !documents?.length ? (
-          <p className="text-base text-black/60 md:text-lg">{t("empty")}</p>
-        ) : null}
-
-        {documents?.length
-          ? groupedDocuments.map(({ docType, items }) =>
+    <AdminPageShell ariaLabel={t("sectionLabel")}>
+      <AdminCollectionState
+        emptyLabel={t("empty")}
+        error={error}
+        errorLabel={t("error")}
+        isEmpty={!documents?.length}
+        isLoading={isLoading}
+        loadingLabel={t("loading")}
+      >
+        {groupedDocuments.map(({ docType, items }) =>
               items.length ? (
                 <div key={docType} className="space-y-4">
                   <h2 className="text-xl font-semibold tracking-tight text-black md:text-2xl">
@@ -63,9 +57,8 @@ export const AdminDocuments = () => {
                   </div>
                 </div>
               ) : null,
-            )
-          : null}
-      </section>
-    </main>
+            )}
+      </AdminCollectionState>
+    </AdminPageShell>
   );
 };

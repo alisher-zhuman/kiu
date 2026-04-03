@@ -3,10 +3,12 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
+import { AdminCollectionState } from "@/widgets/layout/ui/admin-collection-state";
+import { AdminPageShell } from "@/widgets/layout/ui/admin-page-shell";
+
 import { getNews } from "@/entities/news";
 
 import { QUERY_KEYS } from "@/shared/constants";
-import { getApiErrorMessage } from "@/shared/helpers";
 
 import { NewsCard } from "../news-card";
 
@@ -20,36 +22,29 @@ export const AdminNews = () => {
     queryFn: getNews,
   });
 
+  const newsItems = news ?? [];
+
   return (
-    <main className="mx-auto max-w-400 px-5 pt-3 pb-8 text-black md:px-10 md:pt-4 md:pb-10">
-      <section aria-label={t("sectionLabel")} className="space-y-8">
-        {isLoading ? (
-          <p className="text-base text-black/60 md:text-lg">{t("loading")}</p>
-        ) : null}
-
-        {!isLoading && error ? (
-          <p className="text-base text-red-600 md:text-lg">
-            {getApiErrorMessage(error, t("error"))}
-          </p>
-        ) : null}
-
-        {!isLoading && !error && !news?.length ? (
-          <p className="text-base text-black/60 md:text-lg">{t("empty")}</p>
-        ) : null}
-
-        {news?.length ? (
-          <div className="grid items-stretch gap-5 md:gap-6 xl:grid-cols-2">
-            {news.map((item, index) => (
-              <NewsCard
-                key={item.id}
-                cardIndex={index}
-                item={item}
-                locale={locale}
-              />
-            ))}
-          </div>
-        ) : null}
-      </section>
-    </main>
+    <AdminPageShell ariaLabel={t("sectionLabel")}>
+      <AdminCollectionState
+        emptyLabel={t("empty")}
+        error={error}
+        errorLabel={t("error")}
+        isEmpty={!news?.length}
+        isLoading={isLoading}
+        loadingLabel={t("loading")}
+      >
+        <div className="grid items-stretch gap-5 md:gap-6 xl:grid-cols-2">
+          {newsItems.map((item, index) => (
+            <NewsCard
+              key={item.id}
+              cardIndex={index}
+              item={item}
+              locale={locale}
+            />
+          ))}
+        </div>
+      </AdminCollectionState>
+    </AdminPageShell>
   );
 };
