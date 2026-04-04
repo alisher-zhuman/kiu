@@ -1,0 +1,19 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#E9EEF4"/>
+  <rect x="0" y="0" width="1600" height="900" fill="url(#paint0_linear_0_1)"/>
+  <circle cx="1248" cy="182" r="220" fill="#FFFFFF" fill-opacity="0.08"/>
+  <circle cx="294" cy="732" r="280" fill="#FFFFFF" fill-opacity="0.06"/>
+  <path d="M210 663L681 393L1135 564L1434 394" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+  <rect x="148" y="165" width="320" height="320" rx="48" fill="#FFFFFF" fill-opacity="0.1"/>
+  <path d="M246 326C246 289.549 275.549 260 312 260H327.02C343.429 260 359.199 266.333 370.986 277.673L384.5 290.68C392.669 298.54 403.567 302.939 414.903 302.939H435C471.451 302.939 501 332.488 501 368.939V423C501 459.451 471.451 489 435 489H312C275.549 489 246 459.451 246 423V326Z" stroke="white" stroke-opacity="0.75" stroke-width="22"/>
+  <circle cx="375" cy="376" r="50" stroke="white" stroke-opacity="0.75" stroke-width="22"/>
+  <circle cx="285" cy="341" r="12" fill="white" fill-opacity="0.75"/>
+  <text x="148" y="582" fill="white" fill-opacity="0.92" font-family="Montserrat, Arial, sans-serif" font-size="76" font-weight="700">Кыргыз Ислам Университети</text>
+  <text x="148" y="650" fill="white" fill-opacity="0.78" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="500">Видеонун жүктөлүшү күтүлүүдө</text>
+  <defs>
+    <linearGradient id="paint0_linear_0_1" x1="96" y1="94" x2="1490" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C56A5"/>
+      <stop offset="1" stop-color="#004C97"/>
+    </linearGradient>
+  </defs>
+</svg>

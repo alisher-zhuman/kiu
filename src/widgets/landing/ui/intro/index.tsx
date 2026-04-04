@@ -48,6 +48,7 @@ export const Intro = () => {
             muted={isMuted}
             loop
             playsInline
+            poster="/images/intro-poster.svg"
             preload="metadata"
             onLoadedData={() => setIsVideoReady(true)}
             className={cn(
