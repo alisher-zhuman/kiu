@@ -34,6 +34,7 @@ export const Header = ({ mode = "site" }: Props) => {
           <Image
             src="/icons/logo.svg"
             alt={t("logoAlt")}
+            loading="eager"
             className="w-10 h-10 md:w-23 md:h-23"
             width={92}
             height={92}

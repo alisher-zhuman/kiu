@@ -4,9 +4,10 @@ import { type ProfessorItem } from "@/entities/professors";
 
 interface Props {
   item: ProfessorItem;
+  priority?: boolean;
 }
 
-export const PublicProfessorCard = ({ item }: Props) => (
+export const PublicProfessorCard = ({ item, priority = false }: Props) => (
   <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-black/10 bg-white shadow-[0_14px_32px_rgba(0,0,0,0.04)]">
     <div className="p-2">
       <Image
@@ -14,6 +15,7 @@ export const PublicProfessorCard = ({ item }: Props) => (
         alt={item.fullName}
         width={1200}
         height={1200}
+        loading={priority ? "eager" : "lazy"}
         sizes="(min-width: 1280px) 22rem, (min-width: 768px) 50vw, 100vw"
         className="aspect-[4/4.2] w-full rounded-[1.2rem] object-cover"
       />
