@@ -48,7 +48,7 @@ export const Rectorate = ({ hasError = false, professors }: Props) => {
                 delay={Math.min(index * 50, 200)}
                 className="h-full"
               >
-                <PublicProfessorCard item={item} priority={index === 0} />
+                <PublicProfessorCard item={item} />
               </Reveal>
             ))}
           </div>

@@ -10,10 +10,9 @@ import { type ProfessorItem } from "@/entities/professors";
 
 interface Props {
   item: ProfessorItem;
-  priority?: boolean;
 }
 
-export const ProfessorCard = ({ item, priority = false }: Props) => {
+export const ProfessorCard = ({ item }: Props) => {
   const t = useTranslations("AdminProfessorsPage");
 
   return (
@@ -24,7 +23,7 @@ export const ProfessorCard = ({ item, priority = false }: Props) => {
           alt={item.fullName}
           width={1200}
           height={1200}
-          loading={priority ? "eager" : "lazy"}
+          sizes="(min-width: 1280px) 16rem, (min-width: 1024px) 22vw, (min-width: 640px) 50vw, 100vw"
           className="aspect-[4/4.2] w-full rounded-md object-cover"
         />
       </div>

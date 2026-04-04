@@ -54,11 +54,10 @@ export const DepartmentPage = ({
             </div>
 
             <div className="grid items-stretch gap-5 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
-              {professors.map((item, index) => (
+              {professors.map((item) => (
                 <PublicProfessorCard
                   key={item.id}
                   item={item}
-                  priority={index === 0}
                 />
               ))}
             </div>

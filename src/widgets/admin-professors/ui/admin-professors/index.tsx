@@ -34,8 +34,8 @@ export const AdminProfessors = () => {
         loadingLabel={t("loading")}
       >
         <div className="grid items-stretch gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-4">
-          {professorItems.map((item, index) => (
-            <ProfessorCard key={item.id} item={item} priority={index === 0} />
+          {professorItems.map((item) => (
+            <ProfessorCard key={item.id} item={item} />
           ))}
         </div>
       </AdminCollectionState>

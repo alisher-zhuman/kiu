@@ -58,6 +58,7 @@ export const NewsDetail = ({ hasError = false, locale, newsItem }: Props) => {
                   alt={newsItem.title}
                   width={1600}
                   height={1200}
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   loading={index === 0 ? "eager" : "lazy"}
                   className="aspect-4/3 w-full rounded-3xl object-cover"
                 />

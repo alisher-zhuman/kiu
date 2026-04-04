@@ -51,6 +51,11 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
                 alt={item.title}
                 width={1200}
                 height={900}
+                sizes={
+                  previewImages.length > 1
+                    ? "(min-width: 1280px) 20rem, (min-width: 768px) 25vw, 50vw"
+                    : "(min-width: 1280px) 42rem, (min-width: 768px) 50vw, 100vw"
+                }
                 loading={cardIndex === 0 && index === 0 ? "eager" : "lazy"}
                 className="aspect-4/3 w-full rounded-xl object-cover"
               />
