@@ -34,6 +34,14 @@ export const Intro = () => {
     <section className="w-full">
       <div className="relative max-w-400 m-auto">
         <div className="relative overflow-hidden">
+          {!isVideoReady ? (
+            <div className="pointer-events-none absolute inset-x-5 top-5 z-20 md:inset-x-8 md:top-8">
+              <p className="inline-flex max-w-full rounded-full bg-white/88 px-4 py-2 text-sm font-medium text-[#003B75] shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-sm md:text-base">
+                {t("loading")}
+              </p>
+            </div>
+          ) : null}
+
           <div
             aria-hidden="true"
             className={cn(
@@ -53,7 +61,7 @@ export const Intro = () => {
             onLoadedData={() => setIsVideoReady(true)}
             className={cn(
               "block aspect-video w-full bg-black/8 object-cover transition-opacity duration-300",
-              isVideoReady ? "opacity-100" : "opacity-0",
+              isVideoReady ? "opacity-100" : "opacity-100",
             )}
           >
             <source src="/videos/intro.mp4" type="video/mp4" />

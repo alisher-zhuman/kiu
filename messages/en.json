@@ -27,6 +27,7 @@
   },
   "Intro": {
     "quote": "\"Knowledge is light, education is the path, religion is guidance.\"",
+    "loading": "Video is loading",
     "unmute": "Enable sound",
     "mute": "Mute sound"
   },
