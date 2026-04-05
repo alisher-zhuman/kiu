@@ -56,7 +56,7 @@ export const Intro = () => {
             muted={isMuted}
             loop
             playsInline
-            poster="/images/intro-poster.svg"
+            poster="/images/intro-poster.webp"
             preload="metadata"
             onLoadedData={() => setIsVideoReady(true)}
             className={cn(
@@ -78,28 +78,30 @@ export const Intro = () => {
           </div>
         </div>
 
-        <button
-          type="button"
-          aria-label={isMuted ? t("unmute") : t("mute")}
-          onClick={handleSoundToggle}
-          className="group absolute right-4 bottom-4 inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#004C97]/90 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-px hover:bg-[#004C97]"
-        >
-          {isMuted ? (
-            <VolumeX
-              size={18}
-              strokeWidth={1.75}
-              className="transition-transform duration-200 group-hover:scale-105"
-            />
-          ) : (
-            <Volume2
-              size={18}
-              strokeWidth={1.75}
-              className="transition-transform duration-200 group-hover:scale-105"
-            />
-          )}
+        {isVideoReady && (
+          <button
+            type="button"
+            aria-label={isMuted ? t("unmute") : t("mute")}
+            onClick={handleSoundToggle}
+            className="group absolute right-4 bottom-4 inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#004C97]/90 px-4 py-2 text-sm font-medium text-white shadow-2xl backdrop-blur-sm transition-all duration-200 hover:-translate-y-px hover:bg-[#004C97]"
+          >
+            {isMuted ? (
+              <VolumeX
+                size={18}
+                strokeWidth={1.75}
+                className="transition-transform duration-200 group-hover:scale-105"
+              />
+            ) : (
+              <Volume2
+                size={18}
+                strokeWidth={1.75}
+                className="transition-transform duration-200 group-hover:scale-105"
+              />
+            )}
 
-          <span>{isMuted ? t("unmute") : t("mute")}</span>
-        </button>
+            <span>{isMuted ? t("unmute") : t("mute")}</span>
+          </button>
+        )}
       </div>
 
       <div className="pr-16 md:hidden">
