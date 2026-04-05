@@ -6,6 +6,7 @@ import { Montserrat } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/next";
 
 import { routing } from "@/i18n/routing";
 
@@ -50,6 +51,8 @@ const LocaleLayout = async ({ children, params }: Props) => {
     <html lang={locale}>
       <body className={montserrat.variable}>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
+
+        <Analytics />
       </body>
     </html>
   );
