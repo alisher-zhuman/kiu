@@ -82,7 +82,8 @@
       "faxLabel": "Fax:"
     },
     "menuTitle": "Menu",
-    "copyright": "© {year} KIU"
+    "copyright": "© {year} KIU",
+    "developer": "Created by Alisher Zhuman"
   },
   "Layout": {
     "back": "Back"
@@ -252,6 +253,7 @@
   "Metadata": {
     "title": "KIU",
     "description": "Official website of Kyrgyzstan Islamic University - news, departments, academic programs, and information for students.",
+    "author": "Alisher Zhuman",
     "publisher": "Kyrgyzstan Islamic University",
     "keywords": [
       "Kyrgyzstan Islamic University",

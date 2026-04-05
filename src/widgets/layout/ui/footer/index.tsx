@@ -42,10 +42,18 @@ export const Footer = () => {
         />
       </div>
 
-      <div className="relative max-w-400 m-auto px-5 pb-6 md:px-10 md:pb-8">
+      <div className="relative max-w-400 m-auto flex flex-col gap-1 px-5 pb-6 md:px-10 md:pb-8">
         <p className="text-sm text-white/90 md:text-lg">
           {footerT("copyright", { year: new Date().getFullYear() })}
         </p>
+        <a
+          href="https://www.linkedin.com/in/alisher-zhuman"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-block self-end text-right text-xs text-white/65 transition-colors hover:text-white/90 md:text-sm"
+        >
+          {footerT("developer")}
+        </a>
       </div>
     </footer>
   );

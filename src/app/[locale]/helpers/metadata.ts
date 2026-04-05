@@ -17,11 +17,11 @@ export const getMetadata = async (locale: AppLocale): Promise<Metadata> => {
     keywords: t.raw("keywords") as string[],
     authors: [
       {
-        name: "Alisher Zhuman",
+        name: t("author"),
         url: "https://www.linkedin.com/in/alisher-zhuman",
       },
     ],
-    creator: "Alisher Zhuman",
+    creator: t("publisher"),
     publisher: t("publisher"),
     metadataBase: new URL(SITE_URL),
     openGraph: {
@@ -31,7 +31,7 @@ export const getMetadata = async (locale: AppLocale): Promise<Metadata> => {
       siteName: t("openGraph.siteName"),
       images: [
         {
-          url: "/icons/logo.svg",
+          url: "/icons/logo.png",
           width: 1200,
           height: 630,
           alt: t("openGraph.imageAlt"),
@@ -44,7 +44,7 @@ export const getMetadata = async (locale: AppLocale): Promise<Metadata> => {
       card: "summary_large_image",
       title: t("twitter.title"),
       description: t("twitter.description"),
-      images: ["/icons/logo.svg"],
+      images: ["/icons/logo.png"],
     },
     alternates: {
       canonical: SITE_URL,
