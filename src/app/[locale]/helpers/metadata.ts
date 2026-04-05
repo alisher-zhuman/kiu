@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { type AppLocale } from "@/i18n/routing";
+
 import { SITE_URL } from "@/shared/constants";
 
 import { OPEN_GRAPH_LOCALES } from "../constants";
