@@ -5,6 +5,7 @@ import {
 } from "./types";
 
 export const createDefaultNewsFormValues = (): NewsFormValues => ({
+  dateOfPublication: new Date().toISOString().split("T")[0],
   images: [],
   title: {
     en: "",
@@ -21,6 +22,7 @@ export const createDefaultNewsFormValues = (): NewsFormValues => ({
 export const mapEditableNewsToFormValues = (
   news: EditableNews,
 ): NewsFormValues => ({
+  dateOfPublication: news.dateOfPublication.split("T")[0],
   images: news.images,
   title: news.title,
   description: news.description,
@@ -29,6 +31,7 @@ export const mapEditableNewsToFormValues = (
 export const mapNewsFormValuesToPayload = (
   values: NewsFormValues,
 ): CreateNewsPayload => ({
+  dateOfPublication: values.dateOfPublication,
   images: values.images,
   title: values.title,
   description: values.description,

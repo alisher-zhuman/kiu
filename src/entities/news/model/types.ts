@@ -9,12 +9,14 @@ export interface NewsContentField {
 }
 
 export interface CreateNewsPayload {
+  dateOfPublication: string;
   description: NewsContentField;
   images: string[];
   title: NewsContentField;
 }
 
 export interface EditableNews {
+  dateOfPublication: string;
   description: NewsContentField;
   images: string[];
   title: NewsContentField;

@@ -99,11 +99,13 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
           <PencilLine className="size-4 md:hidden" />
           <span className="hidden md:inline">{tEdit("action")}</span>
         </Link>
+
         <ArchiveNewsButton
           archived={item.archived}
           id={item.id}
           iconOnlyOnMobile
         />
+
         <DeleteNewsButton id={item.id} iconOnlyOnMobile />
       </div>
     </article>

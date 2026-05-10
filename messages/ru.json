@@ -361,6 +361,7 @@
     },
     "addForm": {
       "photosTitle": "Фото",
+      "dateLabel": "Дата публикации",
       "titleSectionTitle": "Заголовок",
       "descriptionSectionTitle": "Описание",
       "photoHint": "Нажмите, чтобы выбрать фото",
@@ -393,6 +394,9 @@
       "errors": {
         "title": {
           "required": "Заполните заголовок"
+        },
+        "dateOfPublication": {
+          "required": "Выберите дату публикации"
         },
         "description": {
           "required": "Заполните описание"

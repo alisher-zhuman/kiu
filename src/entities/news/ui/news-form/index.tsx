@@ -66,6 +66,29 @@ export const NewsForm = ({
       </div>
 
       <div className="space-y-6">
+        <div className="space-y-3">
+          <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
+            {t("dateLabel")}
+          </h2>
+
+          <div className="space-y-1.5">
+            <input
+              type="date"
+              {...register("dateOfPublication")}
+              className={cn(
+                "w-full rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors focus:border-[#004C97] md:text-base",
+                errors.dateOfPublication && "border-red-500 focus:border-red-500",
+              )}
+            />
+
+            {errors.dateOfPublication?.message ? (
+              <p className="text-sm text-red-500">
+                {errors.dateOfPublication.message}
+              </p>
+            ) : null}
+          </div>
+        </div>
+
         <TitleFields
           errors={errors.title}
           localeOptions={localeOptions}

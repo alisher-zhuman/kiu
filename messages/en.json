@@ -361,6 +361,7 @@
     },
     "addForm": {
       "photosTitle": "Photos",
+      "dateLabel": "Publication date",
       "titleSectionTitle": "Title",
       "descriptionSectionTitle": "Description",
       "photoHint": "Click to choose a photo",
@@ -393,6 +394,9 @@
       "errors": {
         "title": {
           "required": "Fill in the title"
+        },
+        "dateOfPublication": {
+          "required": "Select the publication date"
         },
         "description": {
           "required": "Fill in the description"

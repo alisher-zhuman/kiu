@@ -361,6 +361,7 @@
     },
     "addForm": {
       "photosTitle": "Сүрөттөр",
+      "dateLabel": "Жарыяланган күнү",
       "titleSectionTitle": "Аталышы",
       "descriptionSectionTitle": "Сыпаттамасы",
       "photoHint": "Сүрөт тандоо үчүн басыңыз",
@@ -393,6 +394,9 @@
       "errors": {
         "title": {
           "required": "Аталышты толтуруңуз"
+        },
+        "dateOfPublication": {
+          "required": "Жарыяланган күнүн тандаңыз"
         },
         "description": {
           "required": "Сыпаттаманы толтуруңуз"

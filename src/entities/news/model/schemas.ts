@@ -17,6 +17,7 @@ export const createNewsFormSchema = (t: (key: string) => string) => {
     });
 
   return z.object({
+    dateOfPublication: z.string().min(1, t("errors.dateOfPublication.required")),
     images: z
       .array(z.url())
       .min(1, t("errors.images.required"))
@@ -41,6 +42,7 @@ export const NewsItemSchema = z.object({
 });
 
 export const EditableNewsSchema = z.object({
+  dateOfPublication: z.string(),
   images: z.array(z.string()),
   title: NewsContentFieldSchema,
   description: NewsContentFieldSchema,
