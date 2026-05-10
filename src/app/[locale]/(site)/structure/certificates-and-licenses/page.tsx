@@ -29,7 +29,7 @@ const CertificatesAndLicensesPage = async ({ params }: Props) => {
 
   return (
     <Documents
-      allowedDocTypes={["LICENSES_AND_CERTIFICATES"]}
+      allowedDocTypes={["LICENCES_AND_CERTIFICATIONS"]}
       documents={documents}
       hasError={hasError}
       title={t("structure.links.certificatesAndLicenses")}

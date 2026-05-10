@@ -451,7 +451,7 @@
       "docTypes": {
         "LOCAL_KIU_DOCUMENTS": "Local KIU documents",
         "MINISTRY_DOCUMENTS": "Ministry documents",
-        "LICENSES_AND_CERTIFICATES": "Licenses and certificates"
+        "LICENCES_AND_CERTIFICATIONS": "Licenses and certificates"
       },
       "titleLabel": "Document title",
       "placeholders": {
@@ -698,7 +698,7 @@
     "docTypes": {
       "LOCAL_KIU_DOCUMENTS": "Local KIU documents",
       "MINISTRY_DOCUMENTS": "Ministry documents",
-      "LICENSES_AND_CERTIFICATES": "Licenses and certificates"
+      "LICENCES_AND_CERTIFICATIONS": "Licenses and certificates"
     }
   },
   "RectoratePage": {

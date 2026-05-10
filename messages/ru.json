@@ -451,7 +451,7 @@
       "docTypes": {
         "LOCAL_KIU_DOCUMENTS": "Локальные документы КИУ",
         "MINISTRY_DOCUMENTS": "Документы Министерства",
-        "LICENSES_AND_CERTIFICATES": "Лицензии и сертификаты"
+        "LICENCES_AND_CERTIFICATIONS": "Лицензии и сертификаты"
       },
       "titleLabel": "Название документа",
       "placeholders": {
@@ -698,7 +698,7 @@
     "docTypes": {
       "LOCAL_KIU_DOCUMENTS": "Локальные документы КИУ",
       "MINISTRY_DOCUMENTS": "Документы Министерства",
-      "LICENSES_AND_CERTIFICATES": "Лицензии и сертификаты"
+      "LICENCES_AND_CERTIFICATIONS": "Лицензии и сертификаты"
     }
   },
   "RectoratePage": {

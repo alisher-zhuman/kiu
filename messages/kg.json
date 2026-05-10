@@ -451,7 +451,7 @@
       "docTypes": {
         "LOCAL_KIU_DOCUMENTS": "КИУнун жергиликтүү документтери",
         "MINISTRY_DOCUMENTS": "Министрликтин документтери",
-        "LICENSES_AND_CERTIFICATES": "Лицензиялар жана сертификаттар"
+        "LICENCES_AND_CERTIFICATIONS": "Лицензиялар жана сертификаттар"
       },
       "titleLabel": "Документтин аталышы",
       "placeholders": {
@@ -698,7 +698,7 @@
     "docTypes": {
       "LOCAL_KIU_DOCUMENTS": "КИУнун жергиликтүү документтери",
       "MINISTRY_DOCUMENTS": "Министрликтин документтери",
-      "LICENSES_AND_CERTIFICATES": "Лицензиялар жана сертификаттар"
+      "LICENCES_AND_CERTIFICATIONS": "Лицензиялар жана сертификаттар"
     }
   },
   "RectoratePage": {
