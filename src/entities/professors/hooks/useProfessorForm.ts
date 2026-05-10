@@ -51,7 +51,7 @@ export const useProfessorForm = (params: Params) => {
   const {
     clearErrors,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
     getValues,
     handleSubmit,
     register,
@@ -170,7 +170,11 @@ export const useProfessorForm = (params: Params) => {
     isPhotoDeletePending,
     isPhotoUploadDisabled,
     isProfessorLoading,
-    isSubmitDisabled: isSubmittingPhoto || mutation.isPending || isSubmitting,
+    isSubmitDisabled:
+      isSubmittingPhoto ||
+      mutation.isPending ||
+      isSubmitting ||
+      (isEditMode && !isDirty),
     localeOptions: LOCALE_OPTIONS,
     onSubmit,
     openFileDialog,

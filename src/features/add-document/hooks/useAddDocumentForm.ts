@@ -34,7 +34,7 @@ export const useAddDocumentForm = () => {
   const {
     clearErrors,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
     getValues,
     handleSubmit,
     register,
@@ -88,7 +88,8 @@ export const useAddDocumentForm = () => {
     handleFileSelect,
     isFileDeletePending,
     isFileUploadDisabled,
-    isSubmitDisabled: isSubmittingFile || mutation.isPending || isSubmitting,
+    isSubmitDisabled:
+      isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
     documentTypeOptions: DOCUMENT_TYPE_OPTIONS,
     onSubmit,
     openFileDialog,

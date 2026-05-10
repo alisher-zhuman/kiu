@@ -49,7 +49,7 @@ export const useNewsForm = (params: Params) => {
   const {
     clearErrors,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
     getValues,
     handleSubmit,
     register,
@@ -145,7 +145,11 @@ export const useNewsForm = (params: Params) => {
     images,
     isDeletePending,
     isNewsLoading,
-    isSubmitDisabled: isUploadingImages || mutation.isPending || isSubmitting,
+    isSubmitDisabled:
+      isUploadingImages ||
+      mutation.isPending ||
+      isSubmitting ||
+      (isEditMode && !isDirty),
     isUploadDisabled,
     localeOptions: LOCALE_OPTIONS,
     news: (news ?? null) as EditableNews | null,
