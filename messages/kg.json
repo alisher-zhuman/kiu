@@ -450,7 +450,8 @@
       "docTypeLabel": "Бөлүм",
       "docTypes": {
         "LOCAL_KIU_DOCUMENTS": "КИУнун жергиликтүү документтери",
-        "MINISTRY_DOCUMENTS": "Министрликтин документтери"
+        "MINISTRY_DOCUMENTS": "Министрликтин документтери",
+        "LICENSES_AND_CERTIFICATES": "Лицензиялар жана сертификаттар"
       },
       "titleLabel": "Документтин аталышы",
       "placeholders": {
@@ -696,7 +697,8 @@
     "error": "Документтерди жүктөө мүмкүн болгон жок.",
     "docTypes": {
       "LOCAL_KIU_DOCUMENTS": "КИУнун жергиликтүү документтери",
-      "MINISTRY_DOCUMENTS": "Министрликтин документтери"
+      "MINISTRY_DOCUMENTS": "Министрликтин документтери",
+      "LICENSES_AND_CERTIFICATES": "Лицензиялар жана сертификаттар"
     }
   },
   "RectoratePage": {

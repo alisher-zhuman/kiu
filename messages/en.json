@@ -450,7 +450,8 @@
       "docTypeLabel": "Section",
       "docTypes": {
         "LOCAL_KIU_DOCUMENTS": "Local KIU documents",
-        "MINISTRY_DOCUMENTS": "Ministry documents"
+        "MINISTRY_DOCUMENTS": "Ministry documents",
+        "LICENSES_AND_CERTIFICATES": "Licenses and certificates"
       },
       "titleLabel": "Document title",
       "placeholders": {
@@ -696,7 +697,8 @@
     "error": "Failed to load documents.",
     "docTypes": {
       "LOCAL_KIU_DOCUMENTS": "Local KIU documents",
-      "MINISTRY_DOCUMENTS": "Ministry documents"
+      "MINISTRY_DOCUMENTS": "Ministry documents",
+      "LICENSES_AND_CERTIFICATES": "Licenses and certificates"
     }
   },
   "RectoratePage": {

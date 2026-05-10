@@ -450,7 +450,8 @@
       "docTypeLabel": "Раздел",
       "docTypes": {
         "LOCAL_KIU_DOCUMENTS": "Локальные документы КИУ",
-        "MINISTRY_DOCUMENTS": "Документы Министерства"
+        "MINISTRY_DOCUMENTS": "Документы Министерства",
+        "LICENSES_AND_CERTIFICATES": "Лицензии и сертификаты"
       },
       "titleLabel": "Название документа",
       "placeholders": {
@@ -696,7 +697,8 @@
     "error": "Не удалось загрузить документы.",
     "docTypes": {
       "LOCAL_KIU_DOCUMENTS": "Локальные документы КИУ",
-      "MINISTRY_DOCUMENTS": "Документы Министерства"
+      "MINISTRY_DOCUMENTS": "Документы Министерства",
+      "LICENSES_AND_CERTIFICATES": "Лицензии и сертификаты"
     }
   },
   "RectoratePage": {
