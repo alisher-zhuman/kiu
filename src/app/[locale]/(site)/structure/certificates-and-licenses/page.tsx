@@ -1,11 +1,39 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { type AppLocale } from "@/i18n/routing";
 
-import { InDevelopment } from "@/widgets/in-development";
+import { Documents } from "@/widgets/documents";
 
-const CertificatesAndLicensesPage = () => {
-  const t = useTranslations("Navbar");
+import { type DocumentItem } from "@/entities/documents";
+import { getPublicDocuments } from "@/entities/documents/api/server";
 
-  return <InDevelopment title={t("structure.links.certificatesAndLicenses")} />;
+interface Props {
+  params: Promise<{
+    locale: AppLocale;
+  }>;
+}
+
+const CertificatesAndLicensesPage = async ({ params }: Props) => {
+  const { locale } = await params;
+
+  const t = await getTranslations("Navbar");
+
+  let hasError = false;
+  let documents: DocumentItem[] = [];
+
+  try {
+    documents = await getPublicDocuments(locale);
+  } catch {
+    hasError = true;
+  }
+
+  return (
+    <Documents
+      allowedDocTypes={["LICENSES_AND_CERTIFICATES"]}
+      documents={documents}
+      hasError={hasError}
+      title={t("structure.links.certificatesAndLicenses")}
+    />
+  );
 };
 
 export default CertificatesAndLicensesPage;

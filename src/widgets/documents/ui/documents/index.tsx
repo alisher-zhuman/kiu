@@ -10,14 +10,23 @@ import { Reveal } from "@/shared/ui/reveal";
 import { DocumentCard } from "../document-card";
 
 interface Props {
+  allowedDocTypes?: (typeof DOCUMENT_TYPE_OPTIONS)[number][];
   documents: DocumentItem[];
   hasError?: boolean;
+  title?: string;
 }
 
-export const Documents = ({ documents, hasError = false }: Props) => {
+export const Documents = ({
+  allowedDocTypes,
+  documents,
+  hasError = false,
+  title,
+}: Props) => {
   const t = useTranslations("DocumentsPage");
 
-  const groupedDocuments = DOCUMENT_TYPE_OPTIONS.map((docType) => ({
+  const typesToDisplay = allowedDocTypes ?? DOCUMENT_TYPE_OPTIONS;
+
+  const groupedDocuments = typesToDisplay.map((docType) => ({
     docType,
     items: documents.filter((item) => item.docType === docType),
   }));
@@ -28,7 +37,7 @@ export const Documents = ({ documents, hasError = false }: Props) => {
         <Reveal>
           <div className="border-l-2 border-black pl-3 md:pl-4">
             <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
-              {t("title")}
+              {title ?? t("title")}
             </h1>
           </div>
         </Reveal>
