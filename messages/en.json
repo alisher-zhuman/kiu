@@ -49,19 +49,19 @@
     "title": "Statistics",
     "items": {
       "books": {
-        "value": "2650",
-        "label": "books in the library"
+        "value": "30 974",
+        "label": "number of books in the library"
       },
       "teachers": {
-        "value": "47",
+        "value": "70",
         "label": "teachers"
       },
       "employment": {
-        "value": "96%",
-        "label": "employed in their profession"
+        "value": "86%",
+        "label": "employed by profession"
       },
       "students": {
-        "value": "12 000",
+        "value": "900",
         "label": "students in one academic year"
       }
     }
