@@ -1,7 +1,6 @@
 const AdminLoading = () => (
   <main className="mx-auto max-w-400 px-5 pt-3 pb-8 text-black md:px-10 md:pt-4 md:pb-10">
     <section className="space-y-8">
-      <div className="h-10 w-40 animate-pulse rounded bg-black/8" />
 
       <div className="grid gap-5 xl:grid-cols-2">
         {Array.from({ length: 4 }).map((_, index) => (
