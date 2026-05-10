@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+
 import { type AppLocale } from "@/i18n/routing";
 
 import { Documents } from "@/widgets/documents";
