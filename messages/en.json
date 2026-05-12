@@ -694,7 +694,9 @@
     "title": "Documents",
     "open": "Open",
     "empty": "No documents have been published yet.",
+    "emptyCertificates": "No licenses and certificates have been published yet.",
     "error": "Failed to load documents.",
+    "errorCertificates": "Failed to load licenses and certificates.",
     "docTypes": {
       "LOCAL_KIU_DOCUMENTS": "Local KIU documents",
       "MINISTRY_DOCUMENTS": "Ministry documents",
@@ -709,6 +711,7 @@
   "TheologyDepartmentPage": {
     "title": "Theology Department",
     "professorsTitle": "Department Faculty",
+    "professorsEmpty": "No department faculty members have been added yet.",
     "professorsError": "Failed to load department faculty.",
     "sections": [
       {
@@ -784,6 +787,7 @@
   "PhilologyDepartmentPage": {
     "title": "Arabic Philology Department",
     "professorsTitle": "Department Faculty",
+    "professorsEmpty": "No department faculty members have been added yet.",
     "professorsError": "Failed to load department faculty.",
     "sections": [
       {
@@ -858,6 +862,7 @@
   "ShariaDepartmentPage": {
     "title": "Sharia Department",
     "professorsTitle": "Department Faculty",
+    "professorsEmpty": "No department faculty members have been added yet.",
     "professorsError": "Failed to load department faculty.",
     "sections": [
       {

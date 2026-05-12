@@ -45,6 +45,12 @@ export const DepartmentPage = ({
           </div>
         ) : null}
 
+        {!hasProfessorsError && !professors.length ? (
+          <div className="rounded-3xl border border-black/10 bg-white px-5 py-10 text-center text-base text-black/60 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:px-6 md:py-12 md:text-lg">
+            {t("professorsEmpty")}
+          </div>
+        ) : null}
+
         {!hasProfessorsError && professors.length ? (
           <section className="space-y-6 md:space-y-7">
             <div className="border-l-2 border-black pl-3 md:pl-4">

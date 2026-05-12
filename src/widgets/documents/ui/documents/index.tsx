@@ -12,6 +12,8 @@ import { DocumentCard } from "../document-card";
 interface Props {
   allowedDocTypes?: (typeof DOCUMENT_TYPE_OPTIONS)[number][];
   documents: DocumentItem[];
+  emptyLabel?: string;
+  errorLabel?: string;
   hasError?: boolean;
   title?: string;
 }
@@ -19,6 +21,8 @@ interface Props {
 export const Documents = ({
   allowedDocTypes,
   documents,
+  emptyLabel,
+  errorLabel,
   hasError = false,
   title,
 }: Props) => {
@@ -45,7 +49,7 @@ export const Documents = ({
         {hasError ? (
           <Reveal delay={50}>
             <div className="rounded-3xl border border-red-200 bg-red-50 px-5 py-4 text-base text-red-600 md:px-6 md:py-5 md:text-lg">
-              {t("error")}
+              {errorLabel ?? t("error")}
             </div>
           </Reveal>
         ) : null}
@@ -53,7 +57,7 @@ export const Documents = ({
         {!hasError && !documents.length ? (
           <Reveal delay={50}>
             <div className="rounded-3xl border border-black/10 bg-white px-5 py-10 text-center text-base text-black/60 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:px-6 md:py-12 md:text-lg">
-              {t("empty")}
+              {emptyLabel ?? t("empty")}
             </div>
           </Reveal>
         ) : null}

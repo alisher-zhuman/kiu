@@ -17,6 +17,7 @@ const CertificatesAndLicensesPage = async ({ params }: Props) => {
   const { locale } = await params;
 
   const t = await getTranslations("Navbar");
+  const tDocs = await getTranslations("DocumentsPage");
 
   let hasError = false;
   let documents: DocumentItem[] = [];
@@ -31,6 +32,8 @@ const CertificatesAndLicensesPage = async ({ params }: Props) => {
     <Documents
       allowedDocTypes={["LICENCES_AND_CERTIFICATIONS"]}
       documents={documents}
+      emptyLabel={tDocs("emptyCertificates")}
+      errorLabel={tDocs("errorCertificates")}
       hasError={hasError}
       title={t("structure.links.certificatesAndLicenses")}
     />

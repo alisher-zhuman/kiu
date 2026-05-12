@@ -694,7 +694,9 @@
     "title": "Документы",
     "open": "Открыть",
     "empty": "Документы пока не опубликованы.",
+    "emptyCertificates": "Лицензии и сертификаты пока не опубликованы.",
     "error": "Не удалось загрузить документы.",
+    "errorCertificates": "Не удалось загрузить лицензии и сертификаты.",
     "docTypes": {
       "LOCAL_KIU_DOCUMENTS": "Локальные документы КИУ",
       "MINISTRY_DOCUMENTS": "Документы Министерства",
@@ -709,6 +711,7 @@
   "TheologyDepartmentPage": {
     "title": "Кафедра теологии",
     "professorsTitle": "Преподаватели кафедры",
+    "professorsEmpty": "Преподаватели кафедры пока не добавлены.",
     "professorsError": "Не удалось загрузить преподавателей кафедры.",
     "sections": [
       {
@@ -784,6 +787,7 @@
   "PhilologyDepartmentPage": {
     "title": "Кафедра арабской филологии",
     "professorsTitle": "Преподаватели кафедры",
+    "professorsEmpty": "Преподаватели кафедры пока не добавлены.",
     "professorsError": "Не удалось загрузить преподавателей кафедры.",
     "sections": [
       {
@@ -858,6 +862,7 @@
   "ShariaDepartmentPage": {
     "title": "Кафедра шариата",
     "professorsTitle": "Преподаватели кафедры",
+    "professorsEmpty": "Преподаватели кафедры пока не добавлены.",
     "professorsError": "Не удалось загрузить преподавателей кафедры.",
     "sections": [
       {
