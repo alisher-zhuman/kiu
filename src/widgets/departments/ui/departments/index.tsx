@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 
 import { type Section } from "@/shared/types";
+import { useSearchParamState } from "@/shared/hooks";
 import { SectionsAccordion } from "@/shared/ui/sections-accordion";
 
 import { DepartmentsMobileTabs } from "../mobile-tabs";
@@ -15,10 +16,17 @@ interface Department {
 }
 
 export const Departments = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   const t = useTranslations("DepartmentsPage");
   const departments = t.raw("departments") as ReadonlyArray<Department>;
+
+  const [activeDeptParam, setActiveDeptParam] = useSearchParamState("dept", "0");
+
+  const activeIndex = Math.min(
+    Math.max(parseInt(activeDeptParam, 10) || 0, 0),
+    departments.length - 1,
+  );
+  const setActiveIndex = (index: number) => setActiveDeptParam(String(index));
+
   const activeDept = (departments[activeIndex] ?? departments[0])!;
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);

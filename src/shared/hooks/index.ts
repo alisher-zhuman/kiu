@@ -3,4 +3,5 @@ export { useFileTransfer } from "./useFileTransfer";
 export { useInView } from "./useInView";
 export { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 export { useSingleFileFieldTransfer } from "./useSingleFileFieldTransfer";
+export { useSearchParamState } from "./useSearchParamState";
 export { useToastMutation } from "./useToastMutation";

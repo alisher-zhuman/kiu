@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
@@ -9,6 +9,7 @@ import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
 import { DOCUMENT_TYPE_OPTIONS, getDocuments } from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
+import { useSearchParamState } from "@/shared/hooks";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
@@ -20,7 +21,7 @@ export const AdminDocuments = () => {
   const t = useTranslations("AdminDocumentsPage");
   const tDocTypes = useTranslations("AdminDocumentsPage.addForm");
 
-  const [activeKey, setActiveKey] = useState<string>(DOCUMENT_TYPE_OPTIONS[0]);
+  const [activeKey, setActiveKey] = useSearchParamState("category", DOCUMENT_TYPE_OPTIONS[0], DOCUMENT_TYPE_OPTIONS);
 
   const { data: documents, error, isLoading } = useQuery({
     queryKey: QUERY_KEYS.adminDocuments(locale),

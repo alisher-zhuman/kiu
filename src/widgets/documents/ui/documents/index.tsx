@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 
 import {
@@ -8,6 +8,7 @@ import {
   type DocumentItem,
 } from "@/entities/documents";
 
+import { useSearchParamState } from "@/shared/hooks";
 import { Reveal } from "@/shared/ui/reveal";
 
 import { DocumentCard } from "../document-card";
@@ -41,7 +42,7 @@ export const Documents = ({
     label: t(`docTypes.${key}`),
   }));
 
-  const [activeKey, setActiveKey] = useState<string>(typesToDisplay[0]);
+  const [activeKey, setActiveKey] = useSearchParamState("category", typesToDisplay[0], typesToDisplay);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
@@ -13,6 +13,7 @@ import {
 } from "@/entities/schedules";
 
 import { QUERY_KEYS } from "@/shared/constants";
+import { useSearchParamState } from "@/shared/hooks";
 import { cn } from "@/shared/helpers";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
@@ -23,8 +24,8 @@ export const AdminSchedules = () => {
   const locale = useLocale();
   const t = useTranslations("AdminSchedulesPage");
 
-  const [activeLevel, setActiveLevel] = useState<string>(SCHEDULE_LEVEL_OPTIONS[0]);
-  const [activeSection, setActiveSection] = useState<string>(SCHEDULE_SECTION_OPTIONS[0]);
+  const [activeLevel, setActiveLevel] = useSearchParamState("level", SCHEDULE_LEVEL_OPTIONS[0], SCHEDULE_LEVEL_OPTIONS);
+  const [activeSection, setActiveSection] = useSearchParamState("section", SCHEDULE_SECTION_OPTIONS[0], SCHEDULE_SECTION_OPTIONS);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
