@@ -3,7 +3,7 @@ import { API_ROUTES } from "@/shared/constants";
 
 import {
   ScheduleActionResponseSchema,
-  SchedulesByLevelSchema,
+  SchedulesResponseSchema,
 } from "../model/schemas";
 import { type CreateSchedulePayload } from "../model/types";
 
@@ -13,8 +13,10 @@ export const createSchedule = async (payload: CreateSchedulePayload) => {
   return ScheduleActionResponseSchema.parse(data);
 };
 
-export const getSchedulesByLevel = async (level: string) => {
-  const { data } = await api.get(`${API_ROUTES.SCHEDULES}/all/${level}`);
+export const getSchedulesByLevel = async (level: string, section: string) => {
+  const { data } = await api.get(`${API_ROUTES.SCHEDULES}/all/${level}`, {
+    params: { section },
+  });
 
-  return SchedulesByLevelSchema.parse(data);
+  return SchedulesResponseSchema.parse(data);
 };

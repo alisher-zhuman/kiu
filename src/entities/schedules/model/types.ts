@@ -4,11 +4,11 @@ import { type SCHEDULE_SECTION_OPTIONS } from "./constants";
 import {
   type ScheduleActionResponseSchema,
   type ScheduleItemSchema,
-  type SchedulesByLevelSchema,
+  type SchedulesResponseSchema,
 } from "./schemas";
 
 export type ScheduleItem = z.infer<typeof ScheduleItemSchema>;
-export type SchedulesByLevel = z.infer<typeof SchedulesByLevelSchema>;
+export type SchedulesResponse = z.infer<typeof SchedulesResponseSchema>;
 export type ScheduleActionResponse = z.infer<typeof ScheduleActionResponseSchema>;
 
 export interface CreateSchedulePayload {

@@ -63,7 +63,7 @@ export const useAddScheduleForm = () => {
   const mutation = useToastMutation({
     mutationFn: (values: AddScheduleFormValues) =>
       createSchedule(mapScheduleFormValuesToPayload(values)),
-    invalidateKeys: [QUERY_KEYS.adminSchedules(locale, getValues("level"))],
+    invalidateKeys: [QUERY_KEYS.adminSchedules(locale, getValues("level"), getValues("section"))],
     pendingMessage: t("pending.submit"),
     successMessage: t("success"),
     errorMessage: (error: unknown) =>

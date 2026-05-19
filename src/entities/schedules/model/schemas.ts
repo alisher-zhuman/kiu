@@ -11,11 +11,7 @@ export const ScheduleItemSchema = z.object({
   dateOfPublication: z.string(),
 });
 
-export const SchedulesByLevelSchema = z.object({
-  theologySchedules: z.array(ScheduleItemSchema),
-  philologySchedules: z.array(ScheduleItemSchema),
-  shariatSchedule: z.array(ScheduleItemSchema),
-});
+export const SchedulesResponseSchema = z.array(ScheduleItemSchema);
 
 export const ScheduleActionResponseSchema = z.object({
   message: z.string(),

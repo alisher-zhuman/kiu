@@ -1,17 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
-
-import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
 
 import {
   getSchedulesByLevel,
   SCHEDULE_LEVEL_OPTIONS,
   SCHEDULE_SECTION_OPTIONS,
-  type SchedulesByLevel,
 } from "@/entities/schedules";
 
 import { QUERY_KEYS } from "@/shared/constants";
@@ -19,52 +15,35 @@ import { cn } from "@/shared/helpers";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
+import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
+
 import { ScheduleCard } from "../schedule-card";
 
-const SECTION_KEY_MAP: Record<string, keyof SchedulesByLevel> = {
-  THEOLOGY: "theologySchedules",
-  PHILOLOGY: "philologySchedules",
-  SHARIAT: "shariatSchedule",
-};
-
 export const AdminSchedules = () => {
-  const [activeLevel, setActiveLevel] = useState<string>(
-    SCHEDULE_LEVEL_OPTIONS[0],
-  );
-  const [activeSection, setActiveSection] = useState<string>(
-    SCHEDULE_SECTION_OPTIONS[0],
-  );
+  const locale = useLocale();
+  const t = useTranslations("AdminSchedulesPage");
+
+  const [activeLevel, setActiveLevel] = useState<string>(SCHEDULE_LEVEL_OPTIONS[0]);
+  const [activeSection, setActiveSection] = useState<string>(SCHEDULE_SECTION_OPTIONS[0]);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const locale = useLocale();
-  const t = useTranslations("AdminSchedulesPage");
-
   useEffect(() => {
     const container = scrollContainerRef.current;
-    const tab =
-      tabRefs.current[
-        SCHEDULE_LEVEL_OPTIONS.indexOf(
-          activeLevel as (typeof SCHEDULE_LEVEL_OPTIONS)[number],
-        )
-      ];
+    const tab = tabRefs.current[
+      SCHEDULE_LEVEL_OPTIONS.indexOf(activeLevel as (typeof SCHEDULE_LEVEL_OPTIONS)[number])
+    ];
     if (!container || !tab) return;
     const containerCenter = container.offsetWidth / 2;
     const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({
-      left: tabCenter - containerCenter,
-      behavior: "smooth",
-    });
+    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
   }, [activeLevel]);
 
   const { data, error, isLoading } = useQuery({
-    queryKey: QUERY_KEYS.adminSchedules(locale, activeLevel),
-    queryFn: () => getSchedulesByLevel(activeLevel),
+    queryKey: QUERY_KEYS.adminSchedules(locale, activeLevel, activeSection),
+    queryFn: () => getSchedulesByLevel(activeLevel, activeSection),
   });
-
-  const sectionKey = SECTION_KEY_MAP[activeSection];
-  const activeItems = sectionKey && data ? data[sectionKey] : [];
 
   const sectionTabs = SCHEDULE_SECTION_OPTIONS.map((key) => ({
     key,
@@ -82,9 +61,7 @@ export const AdminSchedules = () => {
         {SCHEDULE_LEVEL_OPTIONS.map((level, index) => (
           <button
             key={level}
-            ref={(el) => {
-              tabRefs.current[index] = el;
-            }}
+            ref={(el) => { tabRefs.current[index] = el; }}
             type="button"
             role="tab"
             aria-selected={activeLevel === level}
@@ -107,12 +84,12 @@ export const AdminSchedules = () => {
             emptyLabel={t("empty")}
             error={error}
             errorLabel={t("error")}
-            isEmpty={!activeItems.length}
+            isEmpty={!data?.length}
             isLoading={isLoading}
             loadingLabel={t("loading")}
           >
             <div className="grid items-stretch gap-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-              {activeItems.map((item) => (
+              {data?.map((item) => (
                 <ScheduleCard key={item.id} item={item} />
               ))}
             </div>
