@@ -95,6 +95,34 @@ Domain-specific logic and reusable entity-level UI.
 
 Generic building blocks used across the project.
 
+## Component Placement Rules
+
+### Sub-components are siblings, not nested
+
+Every component lives in its own named folder with `index.tsx`. When a component is split into smaller parts, those parts go as **siblings** in the same `ui/` directory — never nested inside the parent component's folder.
+
+Example from `entities/professors/ui/`:
+
+```
+ui/
+  professor-form/       ← parent
+  photo-fieldset/       ← sub-component (sibling)
+  full-name-fields/     ← sub-component (sibling)
+  position-fields/      ← sub-component (sibling)
+  sections-select/      ← sub-component (sibling)
+```
+
+Not like this:
+
+```
+ui/
+  professor-form/
+    index.tsx
+    photo-fieldset/     ← wrong, nested inside parent
+```
+
+This applies to all layers: `widgets`, `features`, `entities`, `shared`.
+
 ## Development Approach
 
 The project favors:
