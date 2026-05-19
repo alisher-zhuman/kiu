@@ -13,6 +13,12 @@ export const createSchedule = async (payload: CreateSchedulePayload) => {
   return ScheduleActionResponseSchema.parse(data);
 };
 
+export const deleteSchedule = async (id: number) => {
+  const { data } = await api.delete(`${API_ROUTES.SCHEDULES}/${id}`);
+
+  return ScheduleActionResponseSchema.parse(data);
+};
+
 export const getSchedulesByLevel = async (level: string, section: string) => {
   const { data } = await api.get(`${API_ROUTES.SCHEDULES}/all/${level}`, {
     params: { section },

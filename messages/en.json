@@ -1003,6 +1003,14 @@
     "empty": "No schedules yet.",
     "error": "Failed to load schedules",
     "open": "Open",
+    "delete": {
+      "action": "Delete",
+      "pending": "Deleting...",
+      "success": "Schedule deleted successfully",
+      "error": "Could not delete the schedule",
+      "confirmTitle": "Delete schedule?",
+      "confirmMessage": "This action cannot be undone."
+    },
     "levels": {
       "1": "Year 1",
       "2": "Year 2",

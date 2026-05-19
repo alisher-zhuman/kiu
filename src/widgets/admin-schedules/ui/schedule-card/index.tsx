@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import { ExternalLink, FileText } from "lucide-react";
 
+import { DeleteScheduleButton } from "@/features/delete-schedule";
+
 import { type ScheduleItem } from "@/entities/schedules";
 
 interface Props {
@@ -25,7 +27,7 @@ export const ScheduleCard = ({ item }: Props) => {
         </div>
       </div>
 
-      <div className="mt-auto flex justify-end pt-4">
+      <div className="mt-auto flex flex-wrap justify-end gap-2 pt-4">
         <a
           href={item.content}
           target="_blank"
@@ -36,6 +38,8 @@ export const ScheduleCard = ({ item }: Props) => {
           <ExternalLink className="size-4" />
           <span className="hidden md:inline">{t("open")}</span>
         </a>
+
+        <DeleteScheduleButton id={item.id} />
       </div>
     </article>
   );
