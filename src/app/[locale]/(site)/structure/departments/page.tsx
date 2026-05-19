@@ -1,11 +1,5 @@
-import { useTranslations } from "next-intl";
+import { StructureDepartments } from "@/widgets/structure-departments";
 
-import { InDevelopment } from "@/widgets/in-development";
-
-const StructureDepartmentsPage = () => {
-  const t = useTranslations("Navbar");
-
-  return <InDevelopment title={t("structure.links.departments")} />;
-};
+const StructureDepartmentsPage = () => <StructureDepartments />;
 
 export default StructureDepartmentsPage;

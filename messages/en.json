@@ -931,5 +931,54 @@
         ]
       }
     ]
+  },
+  "StructureDepartmentsPage": {
+    "title": "Departments",
+    "sections": [
+      {
+        "title": "General Provisions",
+        "description": "The Human Resources Department is a structural unit of the university and reports to the university rector. In its activities, it is guided by the legislation of the Kyrgyz Republic, regulatory documents of the Ministry of Education and Science of the Kyrgyz Republic, the university charter, as well as local regulatory acts, orders and directives of the rector in force at the university."
+      },
+      {
+        "title": "Responsibilities",
+        "items": [
+          "2.1. Implementation of the university's human resources policy.",
+          "2.2. Processing of employment relations.",
+          "2.3. Participation in the formation of the university's HR policy, evaluation of personnel and advancement of their qualifications."
+        ]
+      },
+      {
+        "title": "Structure",
+        "items": [
+          "3.1. The structure and staffing of the department are approved by the university rector.",
+          "3.2. The department is headed by a manager appointed by order of the rector.",
+          "3.3. The head of the department performs administrative and executive functions and issues mandatory instructions to employees.",
+          "3.4. Employees are guided in their work by their job descriptions."
+        ]
+      },
+      {
+        "title": "Department Functions",
+        "description": "4.1. HR records management:\n— recording employee data;\n— preparation of analyses and reports;\n— preparation of personnel orders;\n— maintaining personal employee cards;\n— filling in, accounting for and storing employment records;\n— calculating work experience;\n— drawing up vacation schedules;\n— transferring documents to the archive.\n\n4.2. Selection and placement of personnel:\n— planning of vacancies;\n— selection of candidates;\n— organisation of employment;\n— communication with employment centres.\n\n4.3. Conducting activities to improve employee qualifications.\n4.4. Ensuring compliance with labour legislation and preparing relevant documents.\n4.5. Developing proposals for employee incentives and motivation.\n4.6. Preparing proposals for changes to the staffing schedule.\n4.7. Advising employees on labour relations matters."
+      },
+      {
+        "title": "Rights",
+        "items": [
+          "5.1. Obtaining necessary information within the limits of its competence.",
+          "5.2. Interaction with other departments.",
+          "5.3. Submitting proposals on personnel matters."
+        ]
+      },
+      {
+        "title": "Responsibility",
+        "items": [
+          "6.1. The department is responsible for the quality and timely fulfilment of its duties.",
+          "6.2. The responsibility of employees is determined by job descriptions."
+        ]
+      },
+      {
+        "title": "Interaction",
+        "description": "The Human Resources Department works closely with other departments of the university (administrative, financial, academic, etc.)."
+      }
+    ]
   }
 }
