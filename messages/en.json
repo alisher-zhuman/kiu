@@ -5,7 +5,9 @@
     "menuLabel": "Open menu",
     "closeMenuLabel": "Close menu",
     "logout": "Log out",
-    "logoutLabel": "Log out of your account"
+    "logoutLabel": "Log out of your account",
+    "confirmLogoutTitle": "Log out?",
+    "confirmLogoutMessage": "Are you sure you want to log out?"
   },
   "LangSwitcher": {
     "triggerLabel": "Change language",
@@ -87,7 +89,8 @@
     "developer": "Created by Alisher Zhuman"
   },
   "Layout": {
-    "back": "Back"
+    "back": "Back",
+    "cancel": "Cancel"
   },
   "SciencePage": {
     "title": "SCIENCE SECTION",
@@ -355,6 +358,8 @@
     "delete": {
       "action": "Delete",
       "error": "Could not delete the news item",
+      "confirmTitle": "Delete news item?",
+      "confirmMessage": "This action cannot be undone.",
       "pending": "Deleting...",
       "success": "The news item was deleted successfully"
     },
@@ -442,7 +447,9 @@
       "action": "Delete",
       "pending": "Deleting...",
       "success": "The document was deleted successfully",
-      "error": "Could not delete the document"
+      "error": "Could not delete the document",
+      "confirmTitle": "Delete document?",
+      "confirmMessage": "This action cannot be undone."
     },
     "addForm": {
       "fileTitle": "File",
@@ -493,7 +500,9 @@
       "action": "Delete",
       "pending": "Deleting...",
       "success": "The professor was deleted successfully",
-      "error": "Could not delete the professor"
+      "error": "Could not delete the professor",
+      "confirmTitle": "Delete professor?",
+      "confirmMessage": "This action cannot be undone."
     },
     "edit": {
       "action": "Edit"
