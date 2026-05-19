@@ -104,10 +104,7 @@ export const StudentsSchedule = ({
           >
             {title}
           </h1>
-        </div>
-
-        {/* Mobile: два селекта */}
-        <div className="flex gap-3 md:hidden">
+        </div>        <div className="flex gap-3 md:hidden">
           <select
             value={activeLevel}
             onChange={(e) => handleLevelChange(e.target.value)}
@@ -131,13 +128,7 @@ export const StudentsSchedule = ({
               </option>
             ))}
           </select>
-        </div>
-
-        {/* Mobile: контент */}
-        <div className="md:hidden">{content}</div>
-
-        {/* Desktop: border-b-2 табы уровней + контент + сайдбар секций */}
-        <div className="hidden space-y-0 md:block">
+        </div>        <div className="md:hidden">{content}</div>        <div className="hidden space-y-0 md:block">
           <div className="flex overflow-x-auto">
             {SCHEDULE_LEVEL_OPTIONS.map((level) => (
               <Link

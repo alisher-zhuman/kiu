@@ -46,7 +46,6 @@ export const AdminTabs = () => {
       className="mx-auto w-full max-w-400 px-5 py-3 md:px-10 md:py-4"
     >
       <div className="flex items-center justify-between gap-4">
-        {/* Mobile: horizontal scroll */}
         <div
           ref={scrollContainerRef}
           className="flex flex-1 gap-2 overflow-x-auto md:hidden"
@@ -72,7 +71,6 @@ export const AdminTabs = () => {
           })}
         </div>
 
-        {/* Desktop: flex wrap */}
         <div className="hidden md:flex md:flex-1 md:flex-wrap md:gap-3">
           {ADMIN_TABS.map(({ href, key }) => {
             const isActive = pathname === href || pathname.startsWith(`${href}/`);

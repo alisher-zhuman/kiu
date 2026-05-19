@@ -67,7 +67,6 @@ export const AdminSchedules = () => {
 
   return (
     <AdminPageShell ariaLabel={t("sectionLabel")}>
-      {/* Mobile: два селекта */}
       <div className="flex gap-3 md:hidden">
         <select
           value={activeLevel}
@@ -94,7 +93,6 @@ export const AdminSchedules = () => {
         </select>
       </div>
 
-      {/* Desktop: горизонтальные табы курса */}
       <div
         ref={scrollContainerRef}
         role="tablist"
@@ -141,7 +139,6 @@ export const AdminSchedules = () => {
           </AdminCollectionState>
         </div>
 
-        {/* Desktop: сайдбар факультетов */}
         <div className="hidden md:block">
           <DocumentsSidebar
             activeKey={activeSection}

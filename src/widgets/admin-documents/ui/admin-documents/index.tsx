@@ -40,7 +40,6 @@ export const AdminDocuments = () => {
 
   return (
     <AdminPageShell ariaLabel={t("sectionLabel")}>
-      {/* Mobile: селект */}
       <div className="md:hidden">
         <select
           value={activeKey}
@@ -73,7 +72,6 @@ export const AdminDocuments = () => {
           </AdminCollectionState>
         </div>
 
-        {/* Desktop: сайдбар */}
         <div className="hidden md:block">
           <DocumentsSidebar
             activeKey={activeKey}
