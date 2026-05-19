@@ -16,10 +16,16 @@ interface Department {
 }
 
 export const Departments = () => {
+  const [activeDeptParam, setActiveDeptParam] = useSearchParamState(
+    "dept",
+    "0",
+  );
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
   const t = useTranslations("DepartmentsPage");
   const departments = t.raw("departments") as ReadonlyArray<Department>;
-
-  const [activeDeptParam, setActiveDeptParam] = useSearchParamState("dept", "0");
 
   const activeIndex = Math.min(
     Math.max(parseInt(activeDeptParam, 10) || 0, 0),
@@ -29,9 +35,6 @@ export const Departments = () => {
 
   const activeDept = (departments[activeIndex] ?? departments[0])!;
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-
   useEffect(() => {
     const container = scrollContainerRef.current;
     const tab = tabRefs.current[activeIndex];
@@ -39,12 +42,18 @@ export const Departments = () => {
 
     const containerCenter = container.offsetWidth / 2;
     const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
+    container.scrollTo({
+      left: tabCenter - containerCenter,
+      behavior: "smooth",
+    });
   }, [activeIndex]);
 
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
-      <section aria-labelledby="departments-title" className="space-y-8 md:space-y-10">
+      <section
+        aria-labelledby="departments-title"
+        className="space-y-8 md:space-y-10"
+      >
         <div className="border-l-2 border-black pl-3 md:pl-4">
           <h1
             id="departments-title"
@@ -69,7 +78,10 @@ export const Departments = () => {
 
         <div className="hidden md:flex md:items-start md:gap-10">
           <div className="min-w-0 flex-1">
-            <SectionsAccordion key={activeIndex} sections={activeDept.sections} />
+            <SectionsAccordion
+              key={activeIndex}
+              sections={activeDept.sections}
+            />
           </div>
 
           <DepartmentsSidebar

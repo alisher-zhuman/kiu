@@ -3,10 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 
-import {
-  DOCUMENT_TYPE_OPTIONS,
-  type DocumentItem,
-} from "@/entities/documents";
+import { DOCUMENT_TYPE_OPTIONS, type DocumentItem } from "@/entities/documents";
 
 import { useSearchParamState } from "@/shared/hooks";
 import { Reveal } from "@/shared/ui/reveal";
@@ -37,24 +34,34 @@ export const Documents = ({
   const typesToDisplay = allowedDocTypes ?? DOCUMENT_TYPE_OPTIONS;
   const showTabs = typesToDisplay.length > 1;
 
+  const [activeKey, setActiveKey] = useSearchParamState(
+    "category",
+    typesToDisplay[0],
+    typesToDisplay,
+  );
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
   const tabs = typesToDisplay.map((key) => ({
     key,
     label: t(`docTypes.${key}`),
   }));
 
-  const [activeKey, setActiveKey] = useSearchParamState("category", typesToDisplay[0], typesToDisplay);
-
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-
   useEffect(() => {
     const container = scrollContainerRef.current;
-    const tab = tabRefs.current[typesToDisplay.indexOf(activeKey as typeof typesToDisplay[number])];
+    const tab =
+      tabRefs.current[
+        typesToDisplay.indexOf(activeKey as (typeof typesToDisplay)[number])
+      ];
     if (!container || !tab) return;
 
     const containerCenter = container.offsetWidth / 2;
     const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
+    container.scrollTo({
+      left: tabCenter - containerCenter,
+      behavior: "smooth",
+    });
   }, [activeKey]);
 
   const activeItems = documents.filter((item) => item.docType === activeKey);
@@ -90,7 +97,11 @@ export const Documents = ({
         ) : null}
 
         {!hasError ? (
-          <div className={showTabs ? "md:flex md:items-start md:gap-10" : undefined}>
+          <div
+            className={
+              showTabs ? "md:flex md:items-start md:gap-10" : undefined
+            }
+          >
             <div className="min-w-0 flex-1">
               {!showTabs && !documents.length ? (
                 <Reveal delay={50}>

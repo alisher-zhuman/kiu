@@ -21,24 +21,38 @@ import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 import { ScheduleCard } from "../schedule-card";
 
 export const AdminSchedules = () => {
-  const locale = useLocale();
-  const t = useTranslations("AdminSchedulesPage");
-
-  const [activeLevel, setActiveLevel] = useSearchParamState("level", SCHEDULE_LEVEL_OPTIONS[0], SCHEDULE_LEVEL_OPTIONS);
-  const [activeSection, setActiveSection] = useSearchParamState("section", SCHEDULE_SECTION_OPTIONS[0], SCHEDULE_SECTION_OPTIONS);
+  const [activeLevel, setActiveLevel] = useSearchParamState(
+    "level",
+    SCHEDULE_LEVEL_OPTIONS[0],
+    SCHEDULE_LEVEL_OPTIONS,
+  );
+  const [activeSection, setActiveSection] = useSearchParamState(
+    "section",
+    SCHEDULE_SECTION_OPTIONS[0],
+    SCHEDULE_SECTION_OPTIONS,
+  );
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
+  const locale = useLocale();
+  const t = useTranslations("AdminSchedulesPage");
+
   useEffect(() => {
     const container = scrollContainerRef.current;
-    const tab = tabRefs.current[
-      SCHEDULE_LEVEL_OPTIONS.indexOf(activeLevel as (typeof SCHEDULE_LEVEL_OPTIONS)[number])
-    ];
+    const tab =
+      tabRefs.current[
+        SCHEDULE_LEVEL_OPTIONS.indexOf(
+          activeLevel as (typeof SCHEDULE_LEVEL_OPTIONS)[number],
+        )
+      ];
     if (!container || !tab) return;
     const containerCenter = container.offsetWidth / 2;
     const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
+    container.scrollTo({
+      left: tabCenter - containerCenter,
+      behavior: "smooth",
+    });
   }, [activeLevel]);
 
   const { data, error, isLoading } = useQuery({
@@ -90,7 +104,9 @@ export const AdminSchedules = () => {
         {SCHEDULE_LEVEL_OPTIONS.map((level, index) => (
           <button
             key={level}
-            ref={(el) => { tabRefs.current[index] = el; }}
+            ref={(el) => {
+              tabRefs.current[index] = el;
+            }}
             type="button"
             role="tab"
             aria-selected={activeLevel === level}
