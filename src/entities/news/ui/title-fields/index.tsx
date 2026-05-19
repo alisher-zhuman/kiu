@@ -28,7 +28,7 @@ export const TitleFields = ({
 
     <div className="space-y-3">
       {localeOptions.map((locale) => (
-        <div key={`title-${locale}`} className="space-y-1.5">
+        <div key={`title-${locale}`} className="space-y-2">
           <label
             htmlFor={`title-${locale}`}
             className="text-sm font-medium text-black/65"

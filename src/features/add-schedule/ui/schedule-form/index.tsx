@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent, type FormEventHandler, type RefObject } from "react";
+import { type ChangeEvent, type ComponentProps, type RefObject } from "react";
 import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
 import { cn } from "@/shared/helpers";
@@ -20,7 +20,7 @@ interface Props {
   isFileUploadDisabled: boolean;
   isSubmitDisabled: boolean;
   levelOptions: readonly string[];
-  onSubmit: FormEventHandler<HTMLFormElement>;
+  onSubmit: ComponentProps<"form">["onSubmit"];
   openFileDialog: () => void;
   register: UseFormRegister<AddScheduleFormValues>;
   removeFile: () => Promise<void>;
@@ -63,7 +63,7 @@ export const ScheduleForm = ({
       t={t}
     />
 
-    <div className="space-y-3">
+    <div className="space-y-2">
       <label
         htmlFor="schedule-title"
         className="text-xl font-medium tracking-tight text-black md:text-2xl"

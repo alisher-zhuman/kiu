@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const DateField = ({ errors, register, t }: Props) => (
-  <div className="space-y-3">
+  <div className="space-y-2">
     <label
       htmlFor="schedule-date"
       className="text-xl font-medium tracking-tight text-black md:text-2xl"

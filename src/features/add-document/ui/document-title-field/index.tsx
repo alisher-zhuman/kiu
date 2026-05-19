@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const DocumentTitleField = ({ errors, register, t }: Props) => (
-  <div className="space-y-3">
+  <div className="space-y-2">
     <label
       htmlFor="document-title"
       className="text-xl font-medium tracking-tight text-black md:text-2xl"

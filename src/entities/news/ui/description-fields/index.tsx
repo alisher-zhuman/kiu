@@ -28,7 +28,7 @@ export const DescriptionFields = ({
 
     <div className="space-y-3">
       {localeOptions.map((locale) => (
-        <div key={`description-${locale}`} className="space-y-1.5">
+        <div key={`description-${locale}`} className="space-y-2">
           <label
             htmlFor={`description-${locale}`}
             className="text-sm font-medium text-black/65"

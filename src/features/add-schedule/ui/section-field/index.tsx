@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const SectionField = ({ errors, register, sectionOptions, t }: Props) => (
-  <div className="space-y-3">
+  <div className="space-y-2">
     <label
       htmlFor="schedule-section"
       className="text-xl font-medium tracking-tight text-black md:text-2xl"

@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const DocTypeField = ({ documentTypeOptions, errors, register, t }: Props) => (
-  <div className="space-y-3">
+  <div className="space-y-2">
     <label
       htmlFor="document-doc-type"
       className="text-xl font-medium tracking-tight text-black md:text-2xl"
