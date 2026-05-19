@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { cn } from "@/shared/helpers";
@@ -19,9 +19,29 @@ export const Departments = () => {
   const departments = t.raw("departments") as ReadonlyArray<Department>;
   const activeDept = (departments[activeIndex] ?? departments[0])!;
 
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const tab = tabRefs.current[activeIndex];
+
+    if (!container || !tab) return;
+
+    const containerCenter = container.offsetWidth / 2;
+    const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
+    container.scrollTo({
+      left: tabCenter - containerCenter,
+      behavior: "smooth",
+    });
+  }, [activeIndex]);
+
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
-      <section aria-labelledby="departments-title" className="space-y-8 md:space-y-10">
+      <section
+        aria-labelledby="departments-title"
+        className="space-y-8 md:space-y-10"
+      >
         <div className="border-l-2 border-black pl-3 md:pl-4">
           <h1
             id="departments-title"
@@ -31,24 +51,27 @@ export const Departments = () => {
           </h1>
         </div>
 
-        {/* Mobile: horizontal scroll tabs */}
         <div
+          ref={scrollContainerRef}
           role="tablist"
           aria-label={t("title")}
-          className="flex gap-2 overflow-x-auto pb-1 md:hidden"
+          className="flex overflow-x-auto md:hidden"
         >
           {departments.map((dept, index) => (
             <button
               key={dept.name}
+              ref={(el) => {
+                tabRefs.current[index] = el;
+              }}
               type="button"
               role="tab"
               aria-selected={activeIndex === index}
               onClick={() => setActiveIndex(index)}
               className={cn(
-                "shrink-0 rounded-xl px-4 py-2 text-sm font-medium transition-colors duration-200",
+                "shrink-0 border-b-2 px-4 py-3 text-center text-sm transition-all duration-200",
                 activeIndex === index
-                  ? "bg-[#004C97] text-white"
-                  : "bg-black/6 text-black hover:bg-black/8",
+                  ? "border-[#004C97] font-semibold text-[#004C97]"
+                  : "border-black/10 font-normal text-black/40",
               )}
             >
               {dept.name}
@@ -56,31 +79,29 @@ export const Departments = () => {
           ))}
         </div>
 
-        {/* Mobile: accordion */}
         <div role="tabpanel" className="md:hidden">
           <SectionsAccordion key={activeIndex} sections={activeDept.sections} />
         </div>
 
-        {/* Desktop: accordion left + vertical tabs right */}
         <div className="hidden md:flex md:items-start md:gap-10">
           <div className="min-w-0 flex-1">
-            <SectionsAccordion key={activeIndex} sections={activeDept.sections} />
+            <SectionsAccordion
+              key={activeIndex}
+              sections={activeDept.sections}
+            />
           </div>
 
-          <nav
-            aria-label={t("title")}
-            className="w-64 shrink-0 space-y-2 pt-5"
-          >
+          <nav aria-label={t("title")} className="sticky top-10 w-52 shrink-0">
             {departments.map((dept, index) => (
               <button
                 key={dept.name}
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 className={cn(
-                  "w-full rounded-2xl px-5 py-4 text-left text-base font-medium transition-colors duration-200",
+                  "block w-full border-l-2 py-3 pl-4 text-left text-sm transition-all duration-200",
                   activeIndex === index
-                    ? "bg-[#004C97] text-white"
-                    : "bg-black/6 text-black hover:bg-black/8",
+                    ? "border-[#004C97] font-semibold text-[#004C97]"
+                    : "border-black/10 font-normal text-black/40 hover:border-black/25 hover:text-black/60",
                 )}
               >
                 {dept.name}

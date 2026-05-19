@@ -983,6 +983,42 @@
         "description": "The Human Resources Department works closely with other departments of the university (administrative, financial, academic, etc.)."
       }
         ]
+      },
+      {
+        "name": "General Department",
+        "sections": [
+          {
+            "title": "General Provisions",
+            "description": "Section content is currently being prepared."
+          }
+        ]
+      },
+      {
+        "name": "Finance Department",
+        "sections": [
+          {
+            "title": "General Provisions",
+            "description": "Section content is currently being prepared."
+          }
+        ]
+      },
+      {
+        "name": "Academic Department",
+        "sections": [
+          {
+            "title": "General Provisions",
+            "description": "Section content is currently being prepared."
+          }
+        ]
+      },
+      {
+        "name": "Administrative Department",
+        "sections": [
+          {
+            "title": "General Provisions",
+            "description": "Section content is currently being prepared."
+          }
+        ]
       }
     ]
   }
