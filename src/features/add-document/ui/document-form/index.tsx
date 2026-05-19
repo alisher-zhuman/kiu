@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEventHandler, type RefObject, type ChangeEvent } from "react";
+import { type ChangeEvent,type FormEventHandler, type RefObject } from "react";
 import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
 import { type DocumentItem } from "@/entities/documents";
@@ -8,9 +8,9 @@ import { type DocumentItem } from "@/entities/documents";
 import { cn } from "@/shared/helpers";
 
 import { type AddDocumentFormValues } from "../../types";
-import { FileFieldset } from "../file-fieldset";
 import { DocTypeField } from "../doc-type-field";
 import { DocumentTitleField } from "../document-title-field";
+import { FileFieldset } from "../file-fieldset";
 
 interface Props {
   documentTypeOptions: readonly DocumentItem["docType"][];
