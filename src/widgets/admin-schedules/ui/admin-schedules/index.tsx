@@ -27,21 +27,33 @@ const SECTION_KEY_MAP: Record<string, keyof SchedulesByLevel> = {
 };
 
 export const AdminSchedules = () => {
-  const t = useTranslations("AdminSchedulesPage");
-
-  const [activeLevel, setActiveLevel] = useState<string>(SCHEDULE_LEVEL_OPTIONS[0]);
-  const [activeSection, setActiveSection] = useState<string>(SCHEDULE_SECTION_OPTIONS[0]);
+  const [activeLevel, setActiveLevel] = useState<string>(
+    SCHEDULE_LEVEL_OPTIONS[0],
+  );
+  const [activeSection, setActiveSection] = useState<string>(
+    SCHEDULE_SECTION_OPTIONS[0],
+  );
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
+  const t = useTranslations("AdminSchedulesPage");
+
   useEffect(() => {
     const container = scrollContainerRef.current;
-    const tab = tabRefs.current[SCHEDULE_LEVEL_OPTIONS.indexOf(activeLevel as typeof SCHEDULE_LEVEL_OPTIONS[number])];
+    const tab =
+      tabRefs.current[
+        SCHEDULE_LEVEL_OPTIONS.indexOf(
+          activeLevel as (typeof SCHEDULE_LEVEL_OPTIONS)[number],
+        )
+      ];
     if (!container || !tab) return;
     const containerCenter = container.offsetWidth / 2;
     const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
+    container.scrollTo({
+      left: tabCenter - containerCenter,
+      behavior: "smooth",
+    });
   }, [activeLevel]);
 
   const { data, error, isLoading } = useQuery({
@@ -59,7 +71,6 @@ export const AdminSchedules = () => {
 
   return (
     <AdminPageShell ariaLabel={t("sectionLabel")}>
-      {/* Горизонтальные табы курса */}
       <div
         ref={scrollContainerRef}
         role="tablist"
@@ -69,7 +80,9 @@ export const AdminSchedules = () => {
         {SCHEDULE_LEVEL_OPTIONS.map((level, index) => (
           <button
             key={level}
-            ref={(el) => { tabRefs.current[index] = el; }}
+            ref={(el) => {
+              tabRefs.current[index] = el;
+            }}
             type="button"
             role="tab"
             aria-selected={activeLevel === level}
@@ -114,7 +127,6 @@ export const AdminSchedules = () => {
         </div>
       </div>
 
-      {/* Мобайл: сайдбар-секции как горизонтальный скролл */}
       <div
         role="tablist"
         aria-label={t("sectionLabel")}
