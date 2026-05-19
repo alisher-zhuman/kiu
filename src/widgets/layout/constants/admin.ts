@@ -14,4 +14,9 @@ export const ADMIN_TABS = [
     key: "professors",
     addHref: "/admin/professors/add",
   },
+  {
+    href: "/admin/schedules",
+    key: "schedules",
+    addHref: "/admin/schedules/add",
+  },
 ] as const;

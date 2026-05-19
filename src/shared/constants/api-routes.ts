@@ -6,4 +6,5 @@ export const API_ROUTES = {
   NEWS: "/news",
   PROFESSORS: "/professors",
   PROFESSORS_BY_SECTION: "/professors/section",
+  SCHEDULES: "/schedules",
 } as const;

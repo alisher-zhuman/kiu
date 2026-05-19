@@ -330,12 +330,14 @@
       "label": "Навигация по админке",
       "news": "Новости",
       "professors": "Профессора",
-      "documents": "Документы"
+      "documents": "Документы",
+      "schedules": "Расписание"
     },
     "pages": {
       "addNews": "Добавить новость",
       "addDocuments": "Добавить документ",
-      "addProfessors": "Добавить профессора"
+      "addProfessors": "Добавить профессора",
+      "addSchedules": "Добавить расписание"
     }
   },
   "AdminNewsPage": {
@@ -985,6 +987,58 @@
         ]
       }
     ]
+  },
+  "AdminSchedulesPage": {
+    "sectionLabel": "Список расписаний",
+    "loading": "Загрузка расписаний...",
+    "empty": "Расписаний пока нет.",
+    "error": "Не удалось загрузить расписания",
+    "open": "Открыть",
+    "levels": {
+      "1": "1 курс",
+      "2": "2 курс",
+      "3": "3 курс",
+      "4": "4 курс"
+    },
+    "sections": {
+      "THEOLOGY": "Теология",
+      "PHILOLOGY": "Филология",
+      "SHARIAT": "Шариат"
+    },
+    "addForm": {
+      "fileTitle": "Файл",
+      "emptyFile": "PDF не выбран",
+      "addFile": "Добавить PDF",
+      "removeFile": "Удалить файл",
+      "titleLabel": "Название расписания",
+      "levelLabel": "Курс",
+      "sectionLabel": "Факультет",
+      "dateLabel": "Дата публикации",
+      "placeholders": {
+        "title": "Введите название расписания"
+      },
+      "submit": "Добавить",
+      "success": "Расписание успешно добавлено",
+      "pending": {
+        "upload": "Загрузка файла...",
+        "delete": "Удаление файла...",
+        "submit": "Добавление расписания..."
+      },
+      "errors": {
+        "title": { "required": "Заполните название" },
+        "level": { "required": "Выберите курс" },
+        "section": { "required": "Выберите факультет" },
+        "date": { "required": "Укажите дату публикации" },
+        "file": {
+          "required": "Добавьте PDF-файл",
+          "invalidType": "Разрешены только PDF-файлы",
+          "maxSize": "Размер PDF не должен превышать 10 МБ",
+          "upload": "Не удалось загрузить файл",
+          "delete": "Не удалось удалить файл"
+        },
+        "submit": "Не удалось добавить расписание"
+      }
+    }
   },
   "StudentsTuitionPage": {
     "title": "Оплата за обучение",

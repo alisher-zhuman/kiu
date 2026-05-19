@@ -330,12 +330,14 @@
       "label": "Admin navigation",
       "news": "News",
       "professors": "Professors",
-      "documents": "Documents"
+      "documents": "Documents",
+      "schedules": "Schedule"
     },
     "pages": {
       "addNews": "Add news",
       "addDocuments": "Add document",
-      "addProfessors": "Add professor"
+      "addProfessors": "Add professor",
+      "addSchedules": "Add schedule"
     }
   },
   "AdminNewsPage": {
@@ -985,6 +987,58 @@
         ]
       }
     ]
+  },
+  "AdminSchedulesPage": {
+    "sectionLabel": "Schedules list",
+    "loading": "Loading schedules...",
+    "empty": "No schedules yet.",
+    "error": "Failed to load schedules",
+    "open": "Open",
+    "levels": {
+      "1": "Year 1",
+      "2": "Year 2",
+      "3": "Year 3",
+      "4": "Year 4"
+    },
+    "sections": {
+      "THEOLOGY": "Theology",
+      "PHILOLOGY": "Philology",
+      "SHARIAT": "Sharia"
+    },
+    "addForm": {
+      "fileTitle": "File",
+      "emptyFile": "No PDF selected",
+      "addFile": "Add PDF",
+      "removeFile": "Remove file",
+      "titleLabel": "Schedule title",
+      "levelLabel": "Year",
+      "sectionLabel": "Faculty",
+      "dateLabel": "Publication date",
+      "placeholders": {
+        "title": "Enter schedule title"
+      },
+      "submit": "Add",
+      "success": "Schedule added successfully",
+      "pending": {
+        "upload": "Uploading file...",
+        "delete": "Deleting file...",
+        "submit": "Adding schedule..."
+      },
+      "errors": {
+        "title": { "required": "Enter the title" },
+        "level": { "required": "Select a year" },
+        "section": { "required": "Select a faculty" },
+        "date": { "required": "Specify the publication date" },
+        "file": {
+          "required": "Add a PDF file",
+          "invalidType": "Only PDF files are allowed",
+          "maxSize": "PDF size must not exceed 10 MB",
+          "upload": "Failed to upload file",
+          "delete": "Failed to delete file"
+        },
+        "submit": "Failed to add schedule"
+      }
+    }
   },
   "StudentsTuitionPage": {
     "title": "Tuition Payment",
