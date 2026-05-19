@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import {
@@ -7,6 +10,8 @@ import {
 
 import { Reveal } from "@/shared/ui/reveal";
 
+import { DocumentsMobileTabs } from "../documents-mobile-tabs";
+import { DocumentsSidebar } from "../documents-sidebar";
 import { DocumentCard } from "../document-card";
 
 interface Props {
@@ -29,11 +34,29 @@ export const Documents = ({
   const t = useTranslations("DocumentsPage");
 
   const typesToDisplay = allowedDocTypes ?? DOCUMENT_TYPE_OPTIONS;
+  const showTabs = typesToDisplay.length > 1;
 
-  const groupedDocuments = typesToDisplay.map((docType) => ({
-    docType,
-    items: documents.filter((item) => item.docType === docType),
+  const tabs = typesToDisplay.map((key) => ({
+    key,
+    label: t(`docTypes.${key}`),
   }));
+
+  const [activeKey, setActiveKey] = useState<string>(typesToDisplay[0]);
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const tab = tabRefs.current[typesToDisplay.indexOf(activeKey as typeof typesToDisplay[number])];
+    if (!container || !tab) return;
+
+    const containerCenter = container.offsetWidth / 2;
+    const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
+    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
+  }, [activeKey]);
+
+  const activeItems = documents.filter((item) => item.docType === activeKey);
 
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
@@ -54,33 +77,63 @@ export const Documents = ({
           </Reveal>
         ) : null}
 
-        {!hasError && !documents.length ? (
-          <Reveal delay={50}>
-            <div className="rounded-3xl border border-black/10 bg-white px-5 py-10 text-center text-base text-black/60 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:px-6 md:py-12 md:text-lg">
-              {emptyLabel ?? t("empty")}
-            </div>
-          </Reveal>
+        {!hasError && showTabs ? (
+          <DocumentsMobileTabs
+            activeKey={activeKey}
+            label={title ?? t("title")}
+            onSelect={setActiveKey}
+            scrollContainerRef={scrollContainerRef}
+            tabRefs={tabRefs}
+            tabs={tabs}
+          />
         ) : null}
 
-        {!hasError
-          ? groupedDocuments.map(({ docType, items }, sectionIndex) =>
-              items.length ? (
-                <Reveal key={docType} delay={Math.min(sectionIndex * 50, 150)}>
-                  <section className="space-y-4 md:space-y-5">
-                    <h2 className="text-xl font-semibold tracking-tight text-black md:text-2xl">
-                      {t(`docTypes.${docType}`)}
-                    </h2>
-
-                    <div className="grid items-stretch gap-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-                      {items.map((item) => (
-                        <DocumentCard key={item.id} item={item} />
-                      ))}
-                    </div>
-                  </section>
+        {!hasError ? (
+          <div className={showTabs ? "md:flex md:items-start md:gap-10" : undefined}>
+            <div className="min-w-0 flex-1">
+              {!showTabs && !documents.length ? (
+                <Reveal delay={50}>
+                  <div className="rounded-3xl border border-black/10 bg-white px-5 py-10 text-center text-base text-black/60 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:px-6 md:py-12 md:text-lg">
+                    {emptyLabel ?? t("empty")}
+                  </div>
                 </Reveal>
-              ) : null,
-            )
-          : null}
+              ) : null}
+
+              {showTabs && !activeItems.length ? (
+                <div className="rounded-3xl border border-black/10 bg-white px-5 py-10 text-center text-base text-black/60 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:px-6 md:py-12 md:text-lg">
+                  {emptyLabel ?? t("empty")}
+                </div>
+              ) : null}
+
+              {showTabs && activeItems.length ? (
+                <div className="grid items-stretch gap-3 md:gap-4 lg:grid-cols-2">
+                  {activeItems.map((item) => (
+                    <DocumentCard key={item.id} item={item} />
+                  ))}
+                </div>
+              ) : null}
+
+              {!showTabs && documents.length ? (
+                <div className="grid items-stretch gap-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+                  {documents.map((item) => (
+                    <DocumentCard key={item.id} item={item} />
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            {showTabs ? (
+              <div className="hidden md:block">
+                <DocumentsSidebar
+                  activeKey={activeKey}
+                  label={title ?? t("title")}
+                  onSelect={setActiveKey}
+                  tabs={tabs}
+                />
+              </div>
+            ) : null}
+          </div>
+        ) : null}
       </section>
     </main>
   );
