@@ -97,6 +97,12 @@ Generic building blocks used across the project.
 
 ## Component Placement Rules
 
+### One component per file
+
+Each file exports exactly one component. If a component needs a helper sub-component, that sub-component goes in its own folder as a sibling in `ui/` — never defined in the same file.
+
+Constants and type definitions in the same file are fine (e.g. `const LINKS = [...]` above the component).
+
 ### Sub-components are siblings, not nested
 
 Every component lives in its own named folder with `index.tsx`. When a component is split into smaller parts, those parts go as **siblings** in the same `ui/` directory — never nested inside the parent component's folder.

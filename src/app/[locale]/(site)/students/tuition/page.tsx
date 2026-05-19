@@ -1,11 +1,5 @@
-import { useTranslations } from "next-intl";
+import { StudentsTuition } from "@/widgets/students";
 
-import { InDevelopment } from "@/widgets/in-development";
-
-const StudentsTuitionPage = () => {
-  const t = useTranslations("Navbar");
-
-  return <InDevelopment title={t("students.links.tuition")} />;
-};
+const StudentsTuitionPage = () => <StudentsTuition />;
 
 export default StudentsTuitionPage;

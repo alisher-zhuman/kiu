@@ -1021,5 +1021,30 @@
         ]
       }
     ]
+  },
+  "StudentsTuitionPage": {
+    "title": "Tuition Payment",
+    "accountLabel": "Account number",
+    "hoursLabel": "Working hours",
+    "banks": [
+      {
+        "name": "Optima Bank",
+        "forWhom": "For Sharia Students",
+        "accountNumber": "1091408509400227",
+        "note": "Charity sub-account",
+        "workingDay": "Operating hours: 9:00 AM – 5:00 PM",
+        "lunchBreak": "Lunch break: 12:00 PM – 1:00 PM",
+        "weekends": "Days off: Saturday, Sunday"
+      },
+      {
+        "name": "Optima Bank",
+        "forWhom": "For Philology and Theology Students",
+        "accountNumber": "1091408509400126",
+        "note": null,
+        "workingDay": "Operating hours: 9:00 AM – 5:00 PM",
+        "lunchBreak": "Lunch break: 12:00 PM – 1:00 PM",
+        "weekends": "Days off: Saturday, Sunday"
+      }
+    ]
   }
 }
