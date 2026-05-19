@@ -29,6 +29,7 @@ export const StudentsSchedule = ({
   title,
 }: Props) => {
   const t = useTranslations("StudentsSchedulePage");
+  
   const pathname = usePathname();
   const router = useRouter();
 
