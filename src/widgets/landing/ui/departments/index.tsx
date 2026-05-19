@@ -7,6 +7,8 @@ import { Reveal } from "@/shared/ui/reveal";
 
 import { DEPARTMENT_LINKS } from "../../constants";
 
+const FLOAT_DELAYS = ["[animation-delay:0s]", "[animation-delay:0.4s]", "[animation-delay:0.8s]"];
+
 export const Departments = () => {
   const t = useTranslations("Departments");
 
@@ -38,8 +40,8 @@ export const Departments = () => {
 
         <nav aria-label={t("navLabel")} className="relative z-10">
           <ul className="mt-5 flex flex-col flex-wrap items-center justify-center gap-5 md:mt-10 md:flex-row md:gap-10">
-            {DEPARTMENT_LINKS.map(({ href, labelKey }) => (
-              <li key={href}>
+            {DEPARTMENT_LINKS.map(({ href, labelKey }, index) => (
+              <li key={href} className={`motion-safe:animate-float ${FLOAT_DELAYS[index]}`}>
                 <Link
                   href={href}
                   className="inline-block w-50 rounded-xl bg-[#004C97] py-4 text-center font-medium text-white transition-colors duration-200 hover:bg-[#002E5C] md:w-auto md:px-20 md:py-5 md:text-3xl"
