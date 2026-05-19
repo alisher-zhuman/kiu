@@ -13,8 +13,10 @@ import { Globe } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { type AppLocale } from "@/i18n/routing";
 
-import { getLocaleLabels, LOCALE_OPTIONS } from "@/shared/constants";
+import { getLocaleLabels } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
+
+import { LangSwitcherPanel } from "./lang-switcher-panel";
 
 interface Props {
   className?: string;
@@ -41,28 +43,18 @@ export const LangSwitcher = ({ className }: Props) => {
     if (panelRef.current?.contains(document.activeElement)) {
       triggerRef.current?.focus();
     }
-
     setIsOpen(false);
   };
 
   const closeDropdown = useEffectEvent((event: MouseEvent) => {
-    if (rootRef.current?.contains(event.target as Node)) {
-      return;
-    }
-
+    if (rootRef.current?.contains(event.target as Node)) return;
     closeMenu();
   });
 
   useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
+    if (!isOpen) return;
     document.addEventListener("mousedown", closeDropdown);
-
-    return () => {
-      document.removeEventListener("mousedown", closeDropdown);
-    };
+    return () => document.removeEventListener("mousedown", closeDropdown);
   }, [isOpen]);
 
   const handleLocaleChange = (nextLocale: AppLocale) => {
@@ -70,9 +62,7 @@ export const LangSwitcher = ({ className }: Props) => {
       closeMenu();
       return;
     }
-
     closeMenu();
-
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
     });
@@ -101,38 +91,13 @@ export const LangSwitcher = ({ className }: Props) => {
         />
       </button>
 
-      <div
-        ref={panelRef}
-        id="language-switcher-panel"
-        aria-hidden={!isOpen}
-        className={cn(
-          "absolute right-1 z-50 flex flex-col gap-2 overflow-hidden rounded-4xl bg-[#0c56a5] p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-200 ease-out md:right-20 md:-bottom-20 md:origin-top",
-          isOpen
-            ? "translate-y-0 scale-100 opacity-100"
-            : "pointer-events-none invisible translate-y-2 scale-95 opacity-0",
-        )}
-      >
-        {LOCALE_OPTIONS.map((locale, index) => {
-          const isActive = locale === currentLocale;
-          const isLast = index === LOCALE_OPTIONS.length - 1;
-          const option = localeLabels[locale];
-
-          return (
-            <button
-              key={locale}
-              type="button"
-              onClick={() => handleLocaleChange(locale)}
-              className={cn(
-                "w-full cursor-pointer text-left font-light leading-none transition-colors md:text-xl",
-                isActive ? "text-[#ffea00]" : "text-white hover:text-[#ffea00]",
-                !isLast && "border-b border-white/80 pb-2",
-              )}
-            >
-              {option.label}
-            </button>
-          );
-        })}
-      </div>
+      <LangSwitcherPanel
+        currentLocale={currentLocale}
+        isOpen={isOpen}
+        localeLabels={localeLabels}
+        onSelect={handleLocaleChange}
+        panelRef={panelRef}
+      />
     </div>
   );
 };

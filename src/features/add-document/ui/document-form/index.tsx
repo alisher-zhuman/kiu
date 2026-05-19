@@ -1,7 +1,6 @@
 "use client";
 
-import { type FormEventHandler, type RefObject } from "react";
-import { type ChangeEvent } from "react";
+import { type FormEventHandler, type RefObject, type ChangeEvent } from "react";
 import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
 import { type DocumentItem } from "@/entities/documents";
@@ -10,6 +9,8 @@ import { cn } from "@/shared/helpers";
 
 import { type AddDocumentFormValues } from "../../types";
 import { FileFieldset } from "../file-fieldset";
+import { DocTypeField } from "./doc-type-field";
+import { DocumentTitleField } from "./document-title-field";
 
 interface Props {
   documentTypeOptions: readonly DocumentItem["docType"][];
@@ -61,64 +62,14 @@ export const DocumentForm = ({
       t={t}
     />
 
-    <div className="space-y-3">
-      <label
-        htmlFor="document-doc-type"
-        className="text-xl font-medium tracking-tight text-black md:text-2xl"
-      >
-        {t("docTypeLabel")}
-      </label>
+    <DocTypeField
+      documentTypeOptions={documentTypeOptions}
+      errors={errors}
+      register={register}
+      t={t}
+    />
 
-      <div className="space-y-2">
-        <select
-          id="document-doc-type"
-          {...register("docType")}
-          className={cn(
-            "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors focus:border-[#004C97]",
-            errors.docType?.message && "border-red-500 focus:border-red-500",
-          )}
-        >
-          {documentTypeOptions.map((option) => (
-            <option key={option} value={option}>
-              {t(`docTypes.${option}`)}
-            </option>
-          ))}
-        </select>
-
-        {errors.docType?.message ? (
-          <p className="text-sm text-red-500 md:text-base">
-            {errors.docType.message}
-          </p>
-        ) : null}
-      </div>
-    </div>
-
-    <div className="space-y-3">
-      <label
-        htmlFor="document-title"
-        className="text-xl font-medium tracking-tight text-black md:text-2xl"
-      >
-        {t("titleLabel")}
-      </label>
-
-      <div className="space-y-2">
-        <input
-          id="document-title"
-          {...register("title")}
-          placeholder={t("placeholders.title")}
-          className={cn(
-            "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors placeholder:text-black/35 focus:border-[#004C97]",
-            errors.title?.message && "border-red-500 focus:border-red-500",
-          )}
-        />
-
-        {errors.title?.message ? (
-          <p className="text-sm text-red-500 md:text-base">
-            {errors.title.message}
-          </p>
-        ) : null}
-      </div>
-    </div>
+    <DocumentTitleField errors={errors} register={register} t={t} />
 
     <div className="flex">
       <button
@@ -126,8 +77,7 @@ export const DocumentForm = ({
         disabled={isSubmitDisabled}
         className={cn(
           "inline-flex w-full cursor-pointer items-center justify-center rounded-[0.95rem] bg-[#004C97] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C] md:ml-auto md:w-auto md:min-w-40 md:text-base",
-          isSubmitDisabled &&
-            "cursor-not-allowed opacity-55 hover:bg-[#004C97]",
+          isSubmitDisabled && "cursor-not-allowed opacity-55 hover:bg-[#004C97]",
         )}
       >
         {submitLabel}

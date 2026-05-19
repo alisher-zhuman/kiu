@@ -3,6 +3,8 @@ import { useTranslations } from "next-intl";
 import { Reveal } from "@/shared/ui/reveal";
 
 import { type TuitionRow } from "../../types";
+import { TuitionDesktopTable } from "./tuition-desktop-table";
+import { TuitionMobileList } from "./tuition-mobile-list";
 
 export const Tuition = () => {
   const t = useTranslations("TuitionPage");
@@ -20,75 +22,11 @@ export const Tuition = () => {
         </Reveal>
 
         <Reveal delay={50} className="md:hidden">
-          <div className="space-y-4">
-            {rows.map(({ program, local, foreign }) => (
-              <article
-                key={program}
-                className="rounded-3xl border border-black/10 bg-white p-5 shadow-[0_14px_32px_rgba(0,0,0,0.04)]"
-              >
-                <div className="space-y-4">
-                  <h2 className="text-lg font-semibold tracking-tight text-black">
-                    {program}
-                  </h2>
-
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="text-black/55">{t("columns.local")}</span>
-                      <span className="text-right font-medium text-black">
-                        {local}
-                      </span>
-                    </div>
-
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="max-w-32 text-black/55">
-                        {t("columns.foreign")}
-                      </span>
-                      <span className="text-right font-medium text-black">
-                        {foreign}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <TuitionMobileList rows={rows} t={t} />
         </Reveal>
 
         <Reveal delay={50} className="hidden md:block">
-          <div className="overflow-hidden rounded-4xl border border-black/10 bg-white shadow-[0_18px_38px_rgba(0,0,0,0.05)]">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b border-black/10 bg-black/3 text-left">
-                  <th className="px-7 py-5 text-base font-semibold text-black">
-                    {t("columns.program")}
-                  </th>
-                  <th className="px-7 py-5 text-base font-semibold text-black">
-                    {t("columns.local")}
-                  </th>
-                  <th className="px-7 py-5 text-base font-semibold text-black">
-                    {t("columns.foreign")}
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {rows.map(({ program, local, foreign }, index) => (
-                  <tr
-                    key={program}
-                    className={index < rows.length - 1 ? "border-b border-black/10" : undefined}
-                  >
-                    <td className="px-7 py-5 text-lg font-medium text-black">
-                      {program}
-                    </td>
-                    <td className="px-7 py-5 text-lg text-black/80">{local}</td>
-                    <td className="px-7 py-5 text-lg text-black/80">
-                      {foreign}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TuitionDesktopTable rows={rows} t={t} />
         </Reveal>
       </section>
     </main>

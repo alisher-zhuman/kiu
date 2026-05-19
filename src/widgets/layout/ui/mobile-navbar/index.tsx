@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronDown } from "lucide-react";
 
 import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 
 import { moveScienceToEnd } from "../../helpers";
 import { NavigationLink } from "../navigation-link";
+import { MobileNavItem } from "./mobile-nav-item";
 
 interface Props {
   isOpen: boolean;
@@ -40,53 +40,18 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
       >
         {MOBILE_NAVBAR_LINKS.map(({ href, labelKey, links }) =>
           links ? (
-            <div key={href} className="border-b border-white/15 pb-6">
-              <button
-                type="button"
-                aria-expanded={openSection === href}
-                aria-controls={`${href}-links`}
-                onClick={() =>
-                  setOpenSection((current) => (current === href ? null : href))
-                }
-                className="flex w-full items-center justify-between gap-4 py-1 text-left text-lg font-semibold text-white"
-              >
-                <span>{t(labelKey)}</span>
-
-                <ChevronDown
-                  size={20}
-                  strokeWidth={1.75}
-                  className={cn(
-                    "shrink-0 transition-transform duration-200",
-                    openSection === href && "rotate-180",
-                  )}
-                />
-              </button>
-
-              <div
-                id={`${href}-links`}
-                className={cn(
-                  "grid transition-all duration-200 ease-out",
-                  openSection === href
-                    ? "grid-rows-[1fr] pt-3 opacity-100"
-                    : "grid-rows-[0fr] pt-0 opacity-0",
-                )}
-              >
-                <div className="flex min-h-0 flex-col gap-2 overflow-hidden pl-4">
-                  {links.map(
-                    ({ href: nestedHref, labelKey: nestedLabelKey }) => (
-                      <NavigationLink
-                        key={nestedHref}
-                        href={nestedHref}
-                        onClick={onNavigate}
-                        className="text-sm font-medium text-white/80 transition-colors hover:text-white"
-                      >
-                        {t(nestedLabelKey)}
-                      </NavigationLink>
-                    ),
-                  )}
-                </div>
-              </div>
-            </div>
+            <MobileNavItem
+              key={href}
+              href={href}
+              isOpen={openSection === href}
+              label={t(labelKey)}
+              links={links}
+              onNavigate={onNavigate}
+              onToggle={() =>
+                setOpenSection((current) => (current === href ? null : href))
+              }
+              t={t}
+            />
           ) : (
             <NavigationLink
               key={href}
