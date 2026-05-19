@@ -5,11 +5,11 @@ import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
 import { cn } from "@/shared/helpers";
 
+import { type AddScheduleFormValues } from "../../types";
 import { DateField } from "../date-field";
 import { LevelField } from "../level-field";
-import { SectionField } from "../section-field";
 import { ScheduleFileFieldset } from "../schedule-file-fieldset";
-import { type AddScheduleFormValues } from "../../types";
+import { SectionField } from "../section-field";
 
 interface Props {
   errors: FieldErrors<AddScheduleFormValues>;

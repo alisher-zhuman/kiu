@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
+import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
+
 import {
   getSchedulesByLevel,
   SCHEDULE_LEVEL_OPTIONS,
   SCHEDULE_SECTION_OPTIONS,
-  type ScheduleItem,
+  type SchedulesByLevel,
 } from "@/entities/schedules";
 
 import { QUERY_KEYS } from "@/shared/constants";
@@ -16,21 +18,13 @@ import { cn } from "@/shared/helpers";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 
-import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
-
 import { ScheduleCard } from "../schedule-card";
 
-const SECTION_KEY_MAP: Record<string, keyof ReturnType<typeof normalizeData>> = {
+const SECTION_KEY_MAP: Record<string, keyof SchedulesByLevel> = {
   THEOLOGY: "theologySchedules",
   PHILOLOGY: "philologySchedules",
   SHARIAT: "shariatSchedule",
 };
-
-const normalizeData = (data: {
-  theologySchedules: ScheduleItem[];
-  philologySchedules: ScheduleItem[];
-  shariatSchedule: ScheduleItem[];
-}) => data;
 
 export const AdminSchedules = () => {
   const t = useTranslations("AdminSchedulesPage");

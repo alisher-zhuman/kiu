@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { type z } from "zod";
 
-import { createAddScheduleFormSchema } from "../schemas";
+import { type createAddScheduleFormSchema } from "../schemas";
 
 export type AddScheduleFormValues = z.infer<
   ReturnType<typeof createAddScheduleFormSchema>

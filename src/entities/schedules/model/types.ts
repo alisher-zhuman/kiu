@@ -1,12 +1,11 @@
-import { z } from "zod";
+import { type z } from "zod";
 
+import { type SCHEDULE_SECTION_OPTIONS } from "./constants";
 import {
-  ScheduleActionResponseSchema,
-  ScheduleItemSchema,
-  SchedulesByLevelSchema,
+  type ScheduleActionResponseSchema,
+  type ScheduleItemSchema,
+  type SchedulesByLevelSchema,
 } from "./schemas";
-
-import { SCHEDULE_SECTION_OPTIONS } from "./constants";
 
 export type ScheduleItem = z.infer<typeof ScheduleItemSchema>;
 export type SchedulesByLevel = z.infer<typeof SchedulesByLevelSchema>;
