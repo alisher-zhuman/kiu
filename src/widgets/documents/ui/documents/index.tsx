@@ -10,9 +10,9 @@ import {
 
 import { Reveal } from "@/shared/ui/reveal";
 
+import { DocumentCard } from "../document-card";
 import { DocumentsMobileTabs } from "../documents-mobile-tabs";
 import { DocumentsSidebar } from "../documents-sidebar";
-import { DocumentCard } from "../document-card";
 
 interface Props {
   allowedDocTypes?: (typeof DOCUMENT_TYPE_OPTIONS)[number][];
