@@ -1017,6 +1017,17 @@
       "placeholders": {
         "title": "Enter schedule title"
       },
+      "levels": {
+        "1": "Year 1",
+        "2": "Year 2",
+        "3": "Year 3",
+        "4": "Year 4"
+      },
+      "sections": {
+        "THEOLOGY": "Theology",
+        "PHILOLOGY": "Philology",
+        "SHARIAT": "Sharia"
+      },
       "submit": "Add",
       "success": "Schedule added successfully",
       "pending": {
