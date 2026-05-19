@@ -52,11 +52,39 @@ export const AdminSchedules = () => {
 
   return (
     <AdminPageShell ariaLabel={t("sectionLabel")}>
+      {/* Mobile: два селекта */}
+      <div className="flex gap-3 md:hidden">
+        <select
+          value={activeLevel}
+          onChange={(e) => setActiveLevel(e.target.value)}
+          className="flex-1 rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
+        >
+          {SCHEDULE_LEVEL_OPTIONS.map((level) => (
+            <option key={level} value={level}>
+              {t(`levels.${level}`)}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={activeSection}
+          onChange={(e) => setActiveSection(e.target.value)}
+          className="flex-1 rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
+        >
+          {SCHEDULE_SECTION_OPTIONS.map((section) => (
+            <option key={section} value={section}>
+              {t(`sections.${section}`)}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Desktop: горизонтальные табы курса */}
       <div
         ref={scrollContainerRef}
         role="tablist"
         aria-label={t("sectionLabel")}
-        className="flex overflow-x-auto"
+        className="hidden overflow-x-auto md:flex"
       >
         {SCHEDULE_LEVEL_OPTIONS.map((level, index) => (
           <button
@@ -96,6 +124,7 @@ export const AdminSchedules = () => {
           </AdminCollectionState>
         </div>
 
+        {/* Desktop: сайдбар факультетов */}
         <div className="hidden md:block">
           <DocumentsSidebar
             activeKey={activeSection}
@@ -104,30 +133,6 @@ export const AdminSchedules = () => {
             tabs={sectionTabs}
           />
         </div>
-      </div>
-
-      <div
-        role="tablist"
-        aria-label={t("sectionLabel")}
-        className="flex overflow-x-auto md:hidden"
-      >
-        {sectionTabs.map((tab) => (
-          <button
-            key={tab.key}
-            type="button"
-            role="tab"
-            aria-selected={activeSection === tab.key}
-            onClick={() => setActiveSection(tab.key)}
-            className={cn(
-              "shrink-0 border-b-2 px-4 py-3 text-center text-sm transition-all duration-200",
-              activeSection === tab.key
-                ? "border-[#004C97] font-semibold text-[#004C97]"
-                : "border-black/10 font-normal text-black/40",
-            )}
-          >
-            {tab.label}
-          </button>
-        ))}
       </div>
     </AdminPageShell>
   );
