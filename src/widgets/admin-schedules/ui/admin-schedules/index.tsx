@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
+import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
+
 import {
   getSchedulesByLevel,
   SCHEDULE_LEVEL_OPTIONS,
@@ -14,8 +16,6 @@ import { QUERY_KEYS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
-
-import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
 
 import { ScheduleCard } from "../schedule-card";
 
