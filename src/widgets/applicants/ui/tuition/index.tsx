@@ -3,8 +3,8 @@ import { useTranslations } from "next-intl";
 import { Reveal } from "@/shared/ui/reveal";
 
 import { type TuitionRow } from "../../types";
-import { TuitionDesktopTable } from "./tuition-desktop-table";
-import { TuitionMobileList } from "./tuition-mobile-list";
+import { TuitionDesktopTable } from "../tuition-desktop-table";
+import { TuitionMobileList } from "../tuition-mobile-list";
 
 export const Tuition = () => {
   const t = useTranslations("TuitionPage");

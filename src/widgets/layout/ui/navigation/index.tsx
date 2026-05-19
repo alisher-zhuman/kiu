@@ -1,6 +1,6 @@
 import { FOOTER_NAVBAR_LINKS } from "../../constants";
+import { NavSection } from "../nav-section";
 import { NavigationLink } from "../navigation-link";
-import { NavSection } from "./nav-section";
 
 interface Props {
   getLabel: (key: string) => string;

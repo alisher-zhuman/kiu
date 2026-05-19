@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { type Section } from "@/shared/types";
 import { SectionsAccordion } from "@/shared/ui/sections-accordion";
 
-import { DepartmentsMobileTabs } from "./mobile-tabs";
-import { DepartmentsSidebar } from "./sidebar";
+import { DepartmentsMobileTabs } from "../mobile-tabs";
+import { DepartmentsSidebar } from "../sidebar";
 
 interface Department {
   name: string;

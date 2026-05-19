@@ -1,4 +1,4 @@
-import { type TuitionRow } from "../../../types";
+import { type TuitionRow } from "../../types";
 
 interface Props {
   rows: ReadonlyArray<TuitionRow>;

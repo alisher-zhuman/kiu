@@ -4,7 +4,7 @@ import { type DocumentItem } from "@/entities/documents";
 
 import { cn } from "@/shared/helpers";
 
-import { type AddDocumentFormValues } from "../../../types";
+import { type AddDocumentFormValues } from "../../types";
 
 interface Props {
   documentTypeOptions: readonly DocumentItem["docType"][];

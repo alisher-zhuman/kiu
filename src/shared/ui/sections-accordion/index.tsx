@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { type Section } from "@/shared/types";
 
-import { AccordionSection } from "./accordion-section";
+import { AccordionSection } from "../accordion-section";
 
 interface Props {
   sections: ReadonlyArray<Section>;

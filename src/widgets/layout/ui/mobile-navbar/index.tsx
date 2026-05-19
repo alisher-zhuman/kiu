@@ -7,8 +7,8 @@ import { NAVBAR_LINKS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 
 import { moveScienceToEnd } from "../../helpers";
+import { MobileNavItem } from "../mobile-nav-item";
 import { NavigationLink } from "../navigation-link";
-import { MobileNavItem } from "./mobile-nav-item";
 
 interface Props {
   isOpen: boolean;

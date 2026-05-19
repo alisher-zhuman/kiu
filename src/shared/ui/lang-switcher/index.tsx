@@ -16,7 +16,7 @@ import { type AppLocale } from "@/i18n/routing";
 import { getLocaleLabels } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 
-import { LangSwitcherPanel } from "./lang-switcher-panel";
+import { LangSwitcherPanel } from "../lang-switcher-panel";
 
 interface Props {
   className?: string;

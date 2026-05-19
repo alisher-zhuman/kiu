@@ -9,8 +9,8 @@ import { cn } from "@/shared/helpers";
 
 import { type AddDocumentFormValues } from "../../types";
 import { FileFieldset } from "../file-fieldset";
-import { DocTypeField } from "./doc-type-field";
-import { DocumentTitleField } from "./document-title-field";
+import { DocTypeField } from "../doc-type-field";
+import { DocumentTitleField } from "../document-title-field";
 
 interface Props {
   documentTypeOptions: readonly DocumentItem["docType"][];
