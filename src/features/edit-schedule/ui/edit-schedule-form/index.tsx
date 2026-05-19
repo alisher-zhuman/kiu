@@ -1,8 +1,8 @@
 "use client";
 
-import { AsyncItemState } from "@/shared/ui/async-item-state";
-
 import { ScheduleForm } from "@/features/add-schedule/ui/schedule-form";
+
+import { AsyncItemState } from "@/shared/ui/async-item-state";
 
 import { useEditScheduleForm } from "../../hooks/useEditScheduleForm";
 

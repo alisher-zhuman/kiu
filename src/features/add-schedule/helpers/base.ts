@@ -1,8 +1,8 @@
 import {
   type CreateSchedulePayload,
-  type ScheduleItem,
   SCHEDULE_LEVEL_OPTIONS,
   SCHEDULE_SECTION_OPTIONS,
+  type ScheduleItem,
 } from "@/entities/schedules";
 
 import { type AddScheduleFormValues } from "../types";

@@ -23,9 +23,9 @@ import {
   mapEditableScheduleToFormValues,
   mapScheduleFormValuesToPayload,
 } from "../../add-schedule/helpers/base";
+import { useAddScheduleFile } from "../../add-schedule/hooks/useAddScheduleFile";
 import { createAddScheduleFormSchema } from "../../add-schedule/schemas";
 import { type AddScheduleFormValues } from "../../add-schedule/types";
-import { useAddScheduleFile } from "../../add-schedule/hooks/useAddScheduleFile";
 
 interface Params {
   id: number;
