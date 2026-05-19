@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
-import { DocumentsMobileTabs } from "@/widgets/documents/ui/documents-mobile-tabs";
 import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
 
 import { DOCUMENT_TYPE_OPTIONS, getDocuments } from "@/entities/documents";
@@ -23,19 +22,6 @@ export const AdminDocuments = () => {
 
   const [activeKey, setActiveKey] = useState<string>(DOCUMENT_TYPE_OPTIONS[0]);
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    const tab = tabRefs.current[DOCUMENT_TYPE_OPTIONS.indexOf(activeKey as typeof DOCUMENT_TYPE_OPTIONS[number])];
-    if (!container || !tab) return;
-
-    const containerCenter = container.offsetWidth / 2;
-    const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
-  }, [activeKey]);
-
   const { data: documents, error, isLoading } = useQuery({
     queryKey: QUERY_KEYS.adminDocuments(locale),
     queryFn: getDocuments,
@@ -53,14 +39,20 @@ export const AdminDocuments = () => {
 
   return (
     <AdminPageShell ariaLabel={t("sectionLabel")}>
-      <DocumentsMobileTabs
-        activeKey={activeKey}
-        label={t("sectionLabel")}
-        onSelect={setActiveKey}
-        scrollContainerRef={scrollContainerRef}
-        tabRefs={tabRefs}
-        tabs={tabs}
-      />
+      {/* Mobile: селект */}
+      <div className="md:hidden">
+        <select
+          value={activeKey}
+          onChange={(e) => setActiveKey(e.target.value)}
+          className="w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
+        >
+          {tabs.map(({ key, label }) => (
+            <option key={key} value={key}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div className="md:flex md:items-start md:gap-10">
         <div className="min-w-0 flex-1">
@@ -80,6 +72,7 @@ export const AdminDocuments = () => {
           </AdminCollectionState>
         </div>
 
+        {/* Desktop: сайдбар */}
         <div className="hidden md:block">
           <DocumentsSidebar
             activeKey={activeKey}
