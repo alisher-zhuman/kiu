@@ -4,14 +4,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
+import { DocumentsMobileTabs } from "@/widgets/documents/ui/documents-mobile-tabs";
+import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
+
 import { DOCUMENT_TYPE_OPTIONS, getDocuments } from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
-
-import { DocumentsMobileTabs } from "@/widgets/documents/ui/documents-mobile-tabs";
-import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
 
 import { DocumentCard } from "../document-card";
 
