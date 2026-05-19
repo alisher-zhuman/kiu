@@ -14,7 +14,7 @@ export const createSchedule = async (payload: CreateSchedulePayload) => {
 };
 
 export const getSchedulesByLevel = async (level: string) => {
-  const { data } = await api.get(`${API_ROUTES.SCHEDULES}/${level}`);
+  const { data } = await api.get(`${API_ROUTES.SCHEDULES}/all/${level}`);
 
   return SchedulesByLevelSchema.parse(data);
 };
