@@ -12,19 +12,19 @@ interface Department {
   sections: ReadonlyArray<Section>;
 }
 
-export const StructureDepartments = () => {
-  const t = useTranslations("StructureDepartmentsPage");
-  const departments = t.raw("departments") as ReadonlyArray<Department>;
+export const Departments = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const activeDept = departments[activeIndex] ?? departments[0];
+  const t = useTranslations("DepartmentsPage");
+  const departments = t.raw("departments") as ReadonlyArray<Department>;
+  const activeDept = (departments[activeIndex] ?? departments[0])!;
 
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
-      <section aria-labelledby="structure-departments-title" className="space-y-8 md:space-y-10">
+      <section aria-labelledby="departments-title" className="space-y-8 md:space-y-10">
         <div className="border-l-2 border-black pl-3 md:pl-4">
           <h1
-            id="structure-departments-title"
+            id="departments-title"
             className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl"
           >
             {t("title")}

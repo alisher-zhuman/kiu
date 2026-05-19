@@ -1,5 +1,5 @@
-import { StructureDepartments } from "@/widgets/structure-departments";
+import { Departments } from "@/widgets/departments";
 
-const StructureDepartmentsPage = () => <StructureDepartments />;
+const DepartmentsPage = () => <Departments />;
 
-export default StructureDepartmentsPage;
+export default DepartmentsPage;

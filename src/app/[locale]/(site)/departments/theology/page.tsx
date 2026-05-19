@@ -1,6 +1,6 @@
 import { type AppLocale } from "@/i18n/routing";
 
-import { DepartmentPage } from "@/widgets/departments";
+import { FacultyPage } from "@/widgets/faculty";
 
 import { type ProfessorItem } from "@/entities/professors";
 import { getPublicProfessorsBySection } from "@/entities/professors/api/server";
@@ -11,9 +11,9 @@ interface Props {
   }>;
 }
 
-export const TheologyDepartmentPage = async ({ params }: Props) => {
+export const TheologyFacultyPage = async ({ params }: Props) => {
   const { locale } = await params;
-  
+
   let hasProfessorsError = false;
   let professors: ProfessorItem[] = [];
 
@@ -24,12 +24,12 @@ export const TheologyDepartmentPage = async ({ params }: Props) => {
   }
 
   return (
-    <DepartmentPage
+    <FacultyPage
       hasProfessorsError={hasProfessorsError}
-      namespace="TheologyDepartmentPage"
+      namespace="TheologyFacultyPage"
       professors={professors}
     />
   );
 };
 
-export default TheologyDepartmentPage;
+export default TheologyFacultyPage;

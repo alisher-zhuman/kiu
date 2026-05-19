@@ -708,7 +708,7 @@
     "empty": "No rectorate members have been added yet.",
     "error": "Failed to load the rectorate list."
   },
-  "TheologyDepartmentPage": {
+  "TheologyFacultyPage": {
     "title": "Theology Department",
     "professorsTitle": "Department Faculty",
     "professorsEmpty": "No department faculty members have been added yet.",
@@ -784,7 +784,7 @@
       }
     ]
   },
-  "PhilologyDepartmentPage": {
+  "PhilologyFacultyPage": {
     "title": "Arabic Philology Department",
     "professorsTitle": "Department Faculty",
     "professorsEmpty": "No department faculty members have been added yet.",
@@ -859,7 +859,7 @@
       }
     ]
   },
-  "ShariaDepartmentPage": {
+  "ShariaFacultyPage": {
     "title": "Sharia Department",
     "professorsTitle": "Department Faculty",
     "professorsEmpty": "No department faculty members have been added yet.",
@@ -932,7 +932,7 @@
       }
     ]
   },
-  "StructureDepartmentsPage": {
+  "DepartmentsPage": {
     "title": "Departments",
     "departments": [
       {

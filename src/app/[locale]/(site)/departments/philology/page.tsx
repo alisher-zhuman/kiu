@@ -1,6 +1,6 @@
 import { type AppLocale } from "@/i18n/routing";
 
-import { DepartmentPage } from "@/widgets/departments";
+import { FacultyPage } from "@/widgets/faculty";
 
 import { type ProfessorItem } from "@/entities/professors";
 import { getPublicProfessorsBySection } from "@/entities/professors/api/server";
@@ -11,9 +11,9 @@ interface Props {
   }>;
 }
 
-export const PhilologyDepartmentPage = async ({ params }: Props) => {
+export const PhilologyFacultyPage = async ({ params }: Props) => {
   const { locale } = await params;
-  
+
   let hasProfessorsError = false;
   let professors: ProfessorItem[] = [];
 
@@ -24,12 +24,12 @@ export const PhilologyDepartmentPage = async ({ params }: Props) => {
   }
 
   return (
-    <DepartmentPage
+    <FacultyPage
       hasProfessorsError={hasProfessorsError}
-      namespace="PhilologyDepartmentPage"
+      namespace="PhilologyFacultyPage"
       professors={professors}
     />
   );
 };
 
-export default PhilologyDepartmentPage;
+export default PhilologyFacultyPage;

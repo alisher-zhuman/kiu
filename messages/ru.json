@@ -708,7 +708,7 @@
     "empty": "Сотрудники ректората пока не добавлены.",
     "error": "Не удалось загрузить список ректората."
   },
-  "TheologyDepartmentPage": {
+  "TheologyFacultyPage": {
     "title": "Кафедра теологии",
     "professorsTitle": "Преподаватели кафедры",
     "professorsEmpty": "Преподаватели кафедры пока не добавлены.",
@@ -784,7 +784,7 @@
       }
     ]
   },
-  "PhilologyDepartmentPage": {
+  "PhilologyFacultyPage": {
     "title": "Кафедра арабской филологии",
     "professorsTitle": "Преподаватели кафедры",
     "professorsEmpty": "Преподаватели кафедры пока не добавлены.",
@@ -859,7 +859,7 @@
       }
     ]
   },
-  "ShariaDepartmentPage": {
+  "ShariaFacultyPage": {
     "title": "Кафедра шариата",
     "professorsTitle": "Преподаватели кафедры",
     "professorsEmpty": "Преподаватели кафедры пока не добавлены.",
@@ -932,7 +932,7 @@
       }
     ]
   },
-  "StructureDepartmentsPage": {
+  "DepartmentsPage": {
     "title": "Отделы",
     "departments": [
       {

@@ -6,18 +6,18 @@ import { type Section } from "@/shared/types";
 import { PublicProfessorCard } from "@/shared/ui/public-professor-card";
 import { SectionsAccordion } from "@/shared/ui/sections-accordion";
 
-type DepartmentPageNamespace =
-  | "PhilologyDepartmentPage"
-  | "ShariaDepartmentPage"
-  | "TheologyDepartmentPage";
+type FacultyPageNamespace =
+  | "PhilologyFacultyPage"
+  | "ShariaFacultyPage"
+  | "TheologyFacultyPage";
 
 interface Props {
   hasProfessorsError?: boolean;
-  namespace: DepartmentPageNamespace;
+  namespace: FacultyPageNamespace;
   professors?: ProfessorItem[];
 }
 
-export const DepartmentPage = ({
+export const FacultyPage = ({
   hasProfessorsError = false,
   namespace,
   professors = [],
@@ -27,10 +27,10 @@ export const DepartmentPage = ({
 
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
-      <section aria-labelledby="department-page-title" className="space-y-10">
+      <section aria-labelledby="faculty-page-title" className="space-y-10">
         <div className="border-l-2 border-black pl-3 md:pl-4">
           <h1
-            id="department-page-title"
+            id="faculty-page-title"
             className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl"
           >
             {t("title")}

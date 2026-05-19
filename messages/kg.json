@@ -708,7 +708,7 @@
     "empty": "Ректораттын кызматкерлери азырынча кошула элек.",
     "error": "Ректораттын тизмесин жүктөө мүмкүн болгон жок."
   },
-  "TheologyDepartmentPage": {
+  "TheologyFacultyPage": {
     "title": "Теология кафедрасы",
     "professorsTitle": "Кафедранын окутуучулары",
     "professorsEmpty": "Кафедранын окутуучулары азырынча кошула элек.",
@@ -784,7 +784,7 @@
       }
     ]
   },
-  "PhilologyDepartmentPage": {
+  "PhilologyFacultyPage": {
     "title": "Араб филология кафедрасы",
     "professorsTitle": "Кафедранын окутуучулары",
     "professorsEmpty": "Кафедранын окутуучулары азырынча кошула элек.",
@@ -859,7 +859,7 @@
       }
     ]
   },
-  "ShariaDepartmentPage": {
+  "ShariaFacultyPage": {
     "title": "Шариат кафедрасы",
     "professorsTitle": "Кафедранын окутуучулары",
     "professorsEmpty": "Кафедранын окутуучулары азырынча кошула элек.",
@@ -932,7 +932,7 @@
       }
     ]
   },
-  "StructureDepartmentsPage": {
+  "DepartmentsPage": {
     "title": "Бөлүмдөр",
     "departments": [
       {
