@@ -2,7 +2,7 @@ import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
 import { cn } from "@/shared/helpers";
 
-import { type AddDocumentFormValues } from "../../types";
+import { type AddDocumentFormValues } from "../../../types";
 
 interface Props {
   errors: FieldErrors<AddDocumentFormValues>;

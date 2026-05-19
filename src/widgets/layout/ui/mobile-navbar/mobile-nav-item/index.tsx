@@ -2,7 +2,7 @@ import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/shared/helpers";
 
-import { NavigationLink } from "../navigation-link";
+import { NavigationLink } from "../../navigation-link";
 
 interface NavLink {
   href: string;
