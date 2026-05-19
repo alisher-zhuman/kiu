@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { cn } from "@/shared/helpers";
 
@@ -27,6 +28,12 @@ export const ConfirmModal = ({
   title,
   variant = "danger",
 }: Props) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -38,9 +45,9 @@ export const ConfirmModal = ({
     return () => document.removeEventListener("keydown", handleKey);
   }, [isOpen, onCancel]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       aria-modal="true"
@@ -52,7 +59,7 @@ export const ConfirmModal = ({
         onClick={onCancel}
       />
 
-      <div className="relative w-full max-w-sm rounded-3xl bg-white p-6 shadow-[0_24px_64px_rgba(0,0,0,0.18)] md:p-8">
+      <div className="relative w-full max-w-sm rounded-3xl bg-white px-6 pt-6 pb-5 shadow-[0_24px_64px_rgba(0,0,0,0.18)] md:px-7 md:pt-7 md:pb-6">
         <h2 className="text-xl font-bold tracking-tight text-black md:text-2xl">
           {title}
         </h2>
@@ -61,7 +68,7 @@ export const ConfirmModal = ({
           <p className="mt-2 text-sm text-black/55 md:text-base">{message}</p>
         ) : null}
 
-        <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+        <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
           <button
             type="button"
             onClick={onCancel}
@@ -86,6 +93,7 @@ export const ConfirmModal = ({
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };
