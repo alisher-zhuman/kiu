@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { useQuery } from "@tanstack/react-query";
 import { useLocale } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
 
 import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
 
