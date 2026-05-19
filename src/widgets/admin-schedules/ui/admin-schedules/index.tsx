@@ -13,8 +13,8 @@ import {
 } from "@/entities/schedules";
 
 import { QUERY_KEYS } from "@/shared/constants";
-import { useSearchParamState } from "@/shared/hooks";
 import { cn } from "@/shared/helpers";
+import { useSearchParamState } from "@/shared/hooks";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
 

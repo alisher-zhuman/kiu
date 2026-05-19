@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 
-import { type Section } from "@/shared/types";
 import { useSearchParamState } from "@/shared/hooks";
+import { type Section } from "@/shared/types";
 import { SectionsAccordion } from "@/shared/ui/sections-accordion";
 
 import { DepartmentsMobileTabs } from "../mobile-tabs";
