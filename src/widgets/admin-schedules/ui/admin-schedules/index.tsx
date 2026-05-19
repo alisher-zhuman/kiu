@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
+import { useLocale } from "next-intl";
 
 import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
 
@@ -37,6 +38,7 @@ export const AdminSchedules = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
+  const locale = useLocale();
   const t = useTranslations("AdminSchedulesPage");
 
   useEffect(() => {
@@ -57,7 +59,7 @@ export const AdminSchedules = () => {
   }, [activeLevel]);
 
   const { data, error, isLoading } = useQuery({
-    queryKey: QUERY_KEYS.adminSchedules(activeLevel),
+    queryKey: QUERY_KEYS.adminSchedules(locale, activeLevel),
     queryFn: () => getSchedulesByLevel(activeLevel),
   });
 

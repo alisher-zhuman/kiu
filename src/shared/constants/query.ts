@@ -8,5 +8,5 @@ export const QUERY_KEYS = {
   adminProfessorById: (locale: string, id: number) =>
     ["admin-professor", locale, id] as const,
   adminProfessors: (locale: string) => ["admin-professors", locale] as const,
-  adminSchedules: (level: string) => ["admin-schedules", level] as const,
+  adminSchedules: (locale: string, level: string) => ["admin-schedules", locale, level] as const,
 } as const;

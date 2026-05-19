@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { useForm } from "react-hook-form";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useRouter } from "@/i18n/navigation";
@@ -28,6 +28,7 @@ import { useAddScheduleFile } from "./useAddScheduleFile";
 
 export const useAddScheduleForm = () => {
   const router = useRouter();
+  const locale = useLocale();
 
   const t = useTranslations("AdminSchedulesPage.addForm");
 
@@ -62,7 +63,7 @@ export const useAddScheduleForm = () => {
   const mutation = useToastMutation({
     mutationFn: (values: AddScheduleFormValues) =>
       createSchedule(mapScheduleFormValuesToPayload(values)),
-    invalidateKeys: [QUERY_KEYS.adminSchedules(getValues("level"))],
+    invalidateKeys: [QUERY_KEYS.adminSchedules(locale, getValues("level"))],
     pendingMessage: t("pending.submit"),
     successMessage: t("success"),
     errorMessage: (error: unknown) =>
