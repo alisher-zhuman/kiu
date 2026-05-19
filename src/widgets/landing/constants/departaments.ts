@@ -2,15 +2,15 @@ import { type DepartmentLink } from "../types";
 
 export const DEPARTMENT_LINKS: ReadonlyArray<DepartmentLink> = [
   {
-    href: "/departments/theology",
+    href: "/faculty/theology",
     labelKey: "items.theology",
   },
   {
-    href: "/departments/philology",
+    href: "/faculty/philology",
     labelKey: "items.philology",
   },
   {
-    href: "/departments/sharia",
+    href: "/faculty/sharia",
     labelKey: "items.sharia",
   },
 ] as const;

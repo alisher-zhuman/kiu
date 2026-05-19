@@ -23,9 +23,9 @@ const STATIC_PATHS = [
   "/structure/departments",
   "/structure/documents",
   "/structure/certificates-and-licenses",
-  "/departments/theology",
-  "/departments/philology",
-  "/departments/sharia",
+  "/faculty/theology",
+  "/faculty/philology",
+  "/faculty/sharia",
 ] as const;
 
 const buildUrl = (locale: AppLocale, path: string) =>
