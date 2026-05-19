@@ -5,9 +5,9 @@ import { type AppLocale } from "@/i18n/routing";
 import { StudentsSchedule } from "@/widgets/students";
 
 import {
-  type ScheduleItem,
   SCHEDULE_LEVEL_OPTIONS,
   SCHEDULE_SECTION_OPTIONS,
+  type ScheduleItem,
 } from "@/entities/schedules";
 import { getPublicSchedulesByLevel } from "@/entities/schedules/api/server";
 

@@ -6,9 +6,9 @@ import { ExternalLink, FileText } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
 import {
-  type ScheduleItem,
   SCHEDULE_LEVEL_OPTIONS,
   SCHEDULE_SECTION_OPTIONS,
+  type ScheduleItem,
 } from "@/entities/schedules";
 
 import { cn } from "@/shared/helpers";
