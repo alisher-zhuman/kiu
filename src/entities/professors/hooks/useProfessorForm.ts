@@ -138,7 +138,11 @@ export const useProfessorForm = (params: Params) => {
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, submitT("errors.submit")),
     onSuccess: () => {
-      router.replace("/admin/professors");
+      if (isEditMode) {
+        router.back();
+      } else {
+        router.replace("/admin/professors");
+      }
     },
   });
 

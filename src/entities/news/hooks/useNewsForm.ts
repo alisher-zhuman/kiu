@@ -129,7 +129,11 @@ export const useNewsForm = (params: Params) => {
     errorMessage: (error: unknown) =>
       getApiErrorMessage(error, submitT("errors.submit")),
     onSuccess: () => {
-      router.replace("/admin/news");
+      if (isEditMode) {
+        router.back();
+      } else {
+        router.replace("/admin/news");
+      }
     },
   });
 

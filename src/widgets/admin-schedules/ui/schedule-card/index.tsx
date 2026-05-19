@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl";
-import { ExternalLink, FileText } from "lucide-react";
+import { ExternalLink, FileText, PencilLine } from "lucide-react";
+
+import { Link } from "@/i18n/navigation";
 
 import { DeleteScheduleButton } from "@/features/delete-schedule";
 
@@ -11,6 +13,7 @@ interface Props {
 
 export const ScheduleCard = ({ item }: Props) => {
   const t = useTranslations("AdminSchedulesPage");
+  const tEdit = useTranslations("AdminSchedulesPage.editForm");
 
   return (
     <article className="flex h-full flex-col rounded-2xl border border-black/10 bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.035)]">
@@ -38,6 +41,14 @@ export const ScheduleCard = ({ item }: Props) => {
           <ExternalLink className="size-4" />
           <span className="hidden md:inline">{t("open")}</span>
         </a>
+
+        <Link
+          href={`/admin/schedules/${item.id}/edit`}
+          aria-label={tEdit("action")}
+          className="inline-flex size-9 items-center justify-center rounded-full bg-black/6 text-black transition-colors hover:bg-black/10"
+        >
+          <PencilLine className="size-4" />
+        </Link>
 
         <DeleteScheduleButton id={item.id} />
       </div>

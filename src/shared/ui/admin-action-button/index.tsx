@@ -7,6 +7,7 @@ import { cn } from "@/shared/helpers";
 
 interface Props {
   className?: string | undefined;
+  iconOnly?: boolean | undefined;
   iconOnlyOnMobile?: boolean | undefined;
   idleLabel: string;
   isPending: boolean;
@@ -26,6 +27,7 @@ const VARIANT_CLASS_NAMES = {
 
 export const AdminActionButton = ({
   className,
+  iconOnly = false,
   iconOnlyOnMobile = false,
   idleLabel,
   isPending,
@@ -33,36 +35,46 @@ export const AdminActionButton = ({
   onClick,
   pendingLabel,
   variant = "primary",
-}: Props) => (
-  <button
-    type="button"
-    onClick={onClick}
-    disabled={isPending}
-    aria-label={isPending ? pendingLabel : idleLabel}
-    className={cn(
-      "inline-flex cursor-pointer items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-60",
-      iconOnlyOnMobile
-        ? "size-9 md:size-auto md:px-4 md:py-2 md:text-sm md:font-semibold"
-        : "px-3 py-1.5 text-xs font-medium md:text-sm",
-      VARIANT_CLASS_NAMES[variant],
-      className,
-    )}
-  >
-    {iconOnlyOnMobile ? (
-      <>
-        {isPending ? (
-          <Loader2 className="size-4 animate-spin md:hidden" />
-        ) : (
-          mobileIcon
-        )}
-        <span className="hidden md:inline">
-          {isPending ? pendingLabel : idleLabel}
-        </span>
-      </>
-    ) : isPending ? (
-      pendingLabel
-    ) : (
-      idleLabel
-    )}
-  </button>
-);
+}: Props) => {
+  const showIconOnly = iconOnly || iconOnlyOnMobile;
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={isPending}
+      aria-label={isPending ? pendingLabel : idleLabel}
+      className={cn(
+        "inline-flex cursor-pointer items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-60",
+        showIconOnly
+          ? iconOnly
+            ? "size-9"
+            : "size-9 md:size-auto md:px-4 md:py-2 md:text-sm md:font-semibold"
+          : "px-3 py-1.5 text-xs font-medium md:text-sm",
+        VARIANT_CLASS_NAMES[variant],
+        className,
+      )}
+    >
+      {showIconOnly ? (
+        <>
+          {isPending ? (
+            <Loader2 className={cn("size-4 animate-spin", !iconOnly && "md:hidden")} />
+          ) : (
+            iconOnly
+              ? mobileIcon
+              : mobileIcon
+          )}
+          {!iconOnly ? (
+            <span className="hidden md:inline">
+              {isPending ? pendingLabel : idleLabel}
+            </span>
+          ) : null}
+        </>
+      ) : isPending ? (
+        pendingLabel
+      ) : (
+        idleLabel
+      )}
+    </button>
+  );
+};

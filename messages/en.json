@@ -1011,6 +1011,15 @@
       "confirmTitle": "Delete schedule?",
       "confirmMessage": "This action cannot be undone."
     },
+    "editForm": {
+      "action": "Edit",
+      "loading": "Loading schedule...",
+      "empty": "Schedule not found.",
+      "error": "Could not load the schedule",
+      "submit": "Save",
+      "pending": "Saving...",
+      "success": "Schedule updated successfully"
+    },
     "levels": {
       "1": "Year 1",
       "2": "Year 2",

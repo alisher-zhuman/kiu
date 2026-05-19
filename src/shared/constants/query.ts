@@ -9,4 +9,5 @@ export const QUERY_KEYS = {
     ["admin-professor", locale, id] as const,
   adminProfessors: (locale: string) => ["admin-professors", locale] as const,
   adminSchedules: (locale: string, level: string, section: string) => ["admin-schedules", locale, level, section] as const,
+  adminScheduleFormById: (id: number) => ["admin-schedule-form", id] as const,
 } as const;

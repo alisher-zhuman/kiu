@@ -24,10 +24,10 @@ export const DeleteScheduleButton = ({ id }: Props) => {
   return (
     <>
       <AdminActionButton
-        iconOnlyOnMobile
+        iconOnly
         idleLabel={t("action")}
         isPending={isPending}
-        mobileIcon={<Trash2 className="size-4 md:hidden" />}
+        mobileIcon={<Trash2 className="size-4" />}
         onClick={() => setIsConfirmOpen(true)}
         pendingLabel={t("pending")}
         variant="danger"
