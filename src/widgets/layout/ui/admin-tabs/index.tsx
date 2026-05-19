@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Plus } from "lucide-react";
 
@@ -21,6 +22,21 @@ export const AdminTabs = () => {
     ) ?? ADMIN_TABS[0];
   const shouldShowAddButton = pathname !== activeTab.addHref;
 
+  const activeIndex = ADMIN_TABS.indexOf(activeTab);
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const tab = tabRefs.current[activeIndex];
+    if (!container || !tab) return;
+
+    const containerCenter = container.offsetWidth / 2;
+    const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
+    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
+  }, [activeIndex]);
+
   const addButtonClass =
     "inline-flex items-center justify-center rounded-full bg-[#004C97] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C]";
 
@@ -29,8 +45,35 @@ export const AdminTabs = () => {
       aria-label={tNavigation("label")}
       className="mx-auto w-full max-w-400 px-5 py-3 md:px-10 md:py-4"
     >
-      <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
-        <div className="grid grid-cols-3 gap-2 md:flex md:flex-wrap md:gap-3">
+      <div className="flex items-center justify-between gap-4">
+        {/* Mobile: horizontal scroll */}
+        <div
+          ref={scrollContainerRef}
+          className="flex flex-1 gap-2 overflow-x-auto md:hidden"
+        >
+          {ADMIN_TABS.map(({ href, key }, index) => {
+            const isActive = pathname === href || pathname.startsWith(`${href}/`);
+
+            return (
+              <Link
+                key={href}
+                ref={(el) => { tabRefs.current[index] = el; }}
+                href={href}
+                className={cn(
+                  "shrink-0 rounded-xl px-4 py-2 text-center text-sm font-medium transition-colors duration-200",
+                  isActive
+                    ? "bg-[#004C97] text-white"
+                    : "bg-black/6 text-black hover:bg-black/8",
+                )}
+              >
+                {tNavigation(key)}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Desktop: flex wrap */}
+        <div className="hidden md:flex md:flex-1 md:flex-wrap md:gap-3">
           {ADMIN_TABS.map(({ href, key }) => {
             const isActive = pathname === href || pathname.startsWith(`${href}/`);
 
@@ -39,7 +82,7 @@ export const AdminTabs = () => {
                 key={href}
                 href={href}
                 className={cn(
-                  "flex min-w-0 items-center justify-center rounded-xl px-2 py-2 text-center text-[0.78rem] leading-tight font-medium tracking-tight transition-colors duration-200 md:min-w-40 md:rounded-2xl md:px-5 md:py-3 md:text-base md:tracking-normal",
+                  "flex min-w-40 items-center justify-center rounded-2xl px-5 py-3 text-center text-base font-medium tracking-normal transition-colors duration-200",
                   isActive
                     ? "bg-[#004C97] text-white"
                     : "bg-black/6 text-black hover:bg-black/8",
