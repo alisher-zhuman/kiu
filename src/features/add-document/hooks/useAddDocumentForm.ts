@@ -9,7 +9,6 @@ import { useRouter } from "@/i18n/navigation";
 
 import { createDocument,DOCUMENT_TYPE_OPTIONS } from "@/entities/documents";
 
-import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
