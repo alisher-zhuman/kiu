@@ -23,3 +23,23 @@ export const getPublicDocuments = async (locale: AppLocale) => {
 
   return DocumentsResponseSchema.parse(data);
 };
+
+export const getPublicDocumentsByType = async (
+  locale: AppLocale,
+  docType: string,
+) => {
+  const url = new URL(getLocalizedServerApiUrl(API_ROUTES.DOCUMENTS_BY_TYPE, locale));
+  url.searchParams.set("docType", docType);
+
+  const response = await fetch(url.toString(), {
+    next: { revalidate: 60 },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch documents: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  return DocumentsResponseSchema.parse(data);
+};

@@ -4,9 +4,6 @@ import { type AppLocale } from "@/i18n/routing";
 
 import { Documents } from "@/widgets/documents";
 
-import { type DocumentItem } from "@/entities/documents";
-import { getPublicDocuments } from "@/entities/documents/api/server";
-
 interface Props {
   params: Promise<{
     locale: AppLocale;
@@ -16,25 +13,14 @@ interface Props {
 const CertificatesAndLicensesPage = async ({ params }: Props) => {
   const { locale } = await params;
 
-  const t = await getTranslations("Navbar");
-  const tDocs = await getTranslations("DocumentsPage");
-
-  let hasError = false;
-  let documents: DocumentItem[] = [];
-
-  try {
-    documents = await getPublicDocuments(locale);
-  } catch {
-    hasError = true;
-  }
+  const t = await getTranslations({ locale, namespace: "Navbar" });
+  const tDocs = await getTranslations({ locale, namespace: "DocumentsPage" });
 
   return (
     <Documents
       allowedDocTypes={["LICENCES_AND_CERTIFICATIONS"]}
-      documents={documents}
       emptyLabel={tDocs("emptyCertificates")}
       errorLabel={tDocs("errorCertificates")}
-      hasError={hasError}
       title={t("structure.links.certificatesAndLicenses")}
     />
   );

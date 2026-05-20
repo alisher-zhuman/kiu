@@ -19,6 +19,14 @@ export const getDocuments = async () => {
   return DocumentsResponseSchema.parse(data);
 };
 
+export const getDocumentsByType = async (docType: string) => {
+  const { data } = await api.get(API_ROUTES.DOCUMENTS_BY_TYPE, {
+    params: { docType },
+  });
+
+  return DocumentsResponseSchema.parse(data);
+};
+
 export const deleteDocument = async (id: number) => {
   const { data } = await api.delete(`${API_ROUTES.DOCUMENTS}/${id}`);
 

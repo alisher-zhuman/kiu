@@ -706,6 +706,7 @@
     "open": "Open",
     "empty": "No documents have been published yet.",
     "emptyCertificates": "No licenses and certificates have been published yet.",
+    "loading": "Loading documents...",
     "error": "Failed to load documents.",
     "errorCertificates": "Failed to load licenses and certificates.",
     "docTypes": {

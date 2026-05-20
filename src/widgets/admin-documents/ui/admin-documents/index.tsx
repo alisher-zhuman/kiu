@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
 
-import { DOCUMENT_TYPE_OPTIONS, getDocuments } from "@/entities/documents";
+import { DOCUMENT_TYPE_OPTIONS, getDocumentsByType } from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { useSearchParamState } from "@/shared/hooks";
@@ -21,21 +21,20 @@ export const AdminDocuments = () => {
   const t = useTranslations("AdminDocumentsPage");
   const tDocTypes = useTranslations("AdminDocumentsPage.addForm");
 
-  const [activeKey, setActiveKey] = useSearchParamState("category", DOCUMENT_TYPE_OPTIONS[0], DOCUMENT_TYPE_OPTIONS);
+  const [activeKey, setActiveKey] = useSearchParamState(
+    "category",
+    DOCUMENT_TYPE_OPTIONS[0],
+    DOCUMENT_TYPE_OPTIONS,
+  );
 
-  const { data: documents, error, isLoading } = useQuery({
-    queryKey: QUERY_KEYS.adminDocuments(locale),
-    queryFn: getDocuments,
+  const { data, error, isLoading } = useQuery({
+    queryKey: QUERY_KEYS.adminDocuments(locale, activeKey),
+    queryFn: () => getDocumentsByType(activeKey),
   });
 
   const tabs = useMemo(
     () => DOCUMENT_TYPE_OPTIONS.map((key) => ({ key, label: tDocTypes(`docTypes.${key}`) })),
     [tDocTypes],
-  );
-
-  const activeItems = useMemo(
-    () => documents?.filter((item) => item.docType === activeKey) ?? [],
-    [documents, activeKey],
   );
 
   return (
@@ -60,12 +59,12 @@ export const AdminDocuments = () => {
             emptyLabel={t("empty")}
             error={error}
             errorLabel={t("error")}
-            isEmpty={!activeItems.length}
+            isEmpty={!data?.length}
             isLoading={isLoading}
             loadingLabel={t("loading")}
           >
             <div className="grid items-stretch gap-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-              {activeItems.map((item) => (
+              {data?.map((item) => (
                 <DocumentCard key={item.id} item={item} />
               ))}
             </div>

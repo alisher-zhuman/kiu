@@ -67,7 +67,7 @@ export const useAddDocumentForm = () => {
   const mutation = useToastMutation({
     mutationFn: (values: AddDocumentFormValues) =>
       createDocument(mapDocumentFormValuesToPayload(values)),
-    invalidateKeys: [QUERY_KEYS.adminDocuments(locale)],
+    invalidateKeys: [["admin-documents", locale]],
     pendingMessage: t("pending.submit"),
     successMessage: t("success"),
     errorMessage: (error: unknown) =>

@@ -19,7 +19,7 @@ export const useDeleteDocument = ({ id }: Params) => {
 
   const mutation = useToastMutation({
     mutationFn: () => deleteDocument(id),
-    invalidateKeys: [QUERY_KEYS.adminDocuments(locale)],
+    invalidateKeys: [["admin-documents", locale]],
     pendingMessage: t("pending"),
     successMessage: t("success"),
     errorMessage: (error: unknown) => getApiErrorMessage(error, t("error")),
