@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { useQuery } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 
-import { DOCUMENT_TYPE_OPTIONS, getDocumentsByType } from "@/entities/documents";
+import { DOCUMENT_TYPE_OPTIONS, type DocumentItem } from "@/entities/documents";
 
 import { useSearchParamState } from "@/shared/hooks";
 import { Reveal } from "@/shared/ui/reveal";
@@ -15,19 +14,21 @@ import { DocumentsSidebar } from "../documents-sidebar";
 
 interface Props {
   allowedDocTypes?: (typeof DOCUMENT_TYPE_OPTIONS)[number][];
+  documents: DocumentItem[];
   emptyLabel?: string;
   errorLabel?: string;
+  hasError?: boolean;
   title?: string;
 }
 
 export const Documents = ({
   allowedDocTypes,
+  documents,
   emptyLabel,
   errorLabel,
+  hasError = false,
   title,
 }: Props) => {
-  const locale = useLocale();
-  
   const t = useTranslations("DocumentsPage");
 
   const typesToDisplay = allowedDocTypes ?? DOCUMENT_TYPE_OPTIONS;
@@ -60,10 +61,7 @@ export const Documents = ({
     container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
   }, [activeKey]);
 
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["public-documents", locale, activeKey],
-    queryFn: () => getDocumentsByType(activeKey),
-  });
+  const activeItems = documents.filter((item) => item.docType === activeKey);
 
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
@@ -76,7 +74,7 @@ export const Documents = ({
           </div>
         </Reveal>
 
-        {error ? (
+        {hasError ? (
           <Reveal delay={50}>
             <div className="rounded-3xl border border-red-200 bg-red-50 px-5 py-4 text-base text-red-600 md:px-6 md:py-5 md:text-lg">
               {errorLabel ?? t("error")}
@@ -84,7 +82,7 @@ export const Documents = ({
           </Reveal>
         ) : null}
 
-        {!error && showTabs ? (
+        {!hasError && showTabs ? (
           <DocumentsMobileTabs
             activeKey={activeKey}
             label={title ?? t("title")}
@@ -95,16 +93,10 @@ export const Documents = ({
           />
         ) : null}
 
-        {!error ? (
+        {!hasError ? (
           <div className={showTabs ? "md:flex md:items-start md:gap-10" : undefined}>
             <div className="min-w-0 flex-1">
-              {isLoading ? (
-                <div className="rounded-3xl border border-black/10 bg-white px-5 py-10 text-center text-base text-black/60 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:px-6 md:py-12 md:text-lg">
-                  {t("loading")}
-                </div>
-              ) : null}
-
-              {!isLoading && !data?.length ? (
+              {!documents.length ? (
                 <Reveal delay={50}>
                   <div className="rounded-3xl border border-black/10 bg-white px-5 py-10 text-center text-base text-black/60 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:px-6 md:py-12 md:text-lg">
                     {emptyLabel ?? t("empty")}
@@ -112,9 +104,9 @@ export const Documents = ({
                 </Reveal>
               ) : null}
 
-              {!isLoading && data?.length ? (
+              {activeItems.length ? (
                 <div className={`grid items-stretch gap-3 md:gap-4 ${showTabs ? "lg:grid-cols-2" : "lg:grid-cols-2 xl:grid-cols-3"}`}>
-                  {data.map((item) => (
+                  {activeItems.map((item) => (
                     <DocumentCard key={item.id} item={item} />
                   ))}
                 </div>
