@@ -11,16 +11,17 @@ import { useDeleteDocument } from "../../hooks/useDeleteDocument";
 
 interface Props {
   className?: string;
+  docType: string;
   id: number;
 }
 
-export const DeleteDocumentButton = ({ className, id }: Props) => {
+export const DeleteDocumentButton = ({ className, docType, id }: Props) => {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   const t = useTranslations("AdminDocumentsPage.delete");
   const tLayout = useTranslations("Layout");
 
-  const { isPending, onDeleteDocument } = useDeleteDocument({ id });
+  const { isPending, onDeleteDocument } = useDeleteDocument({ docType, id });
 
   return (
     <>

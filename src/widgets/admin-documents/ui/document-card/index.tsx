@@ -38,7 +38,7 @@ export const DocumentCard = ({ item }: Props) => {
           <span className="hidden md:inline">{t("open")}</span>
         </a>
 
-        <DeleteDocumentButton id={item.id} />
+        <DeleteDocumentButton docType={item.docType} id={item.id} />
       </div>
     </article>
   );

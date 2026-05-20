@@ -9,6 +9,7 @@ import { useRouter } from "@/i18n/navigation";
 
 import { createDocument,DOCUMENT_TYPE_OPTIONS } from "@/entities/documents";
 
+import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
@@ -66,7 +67,7 @@ export const useAddDocumentForm = () => {
   const mutation = useToastMutation({
     mutationFn: (values: AddDocumentFormValues) =>
       createDocument(mapDocumentFormValuesToPayload(values)),
-    invalidateKeys: [["admin-documents", locale]],
+    invalidateKeys: [QUERY_KEYS.adminDocuments(locale, getValues("docType"))],
     pendingMessage: t("pending.submit"),
     successMessage: t("success"),
     errorMessage: (error: unknown) =>

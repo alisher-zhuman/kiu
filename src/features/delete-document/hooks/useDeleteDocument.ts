@@ -4,21 +4,23 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { deleteDocument } from "@/entities/documents";
 
+import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
 interface Params {
+  docType: string;
   id: number;
 }
 
-export const useDeleteDocument = ({ id }: Params) => {
+export const useDeleteDocument = ({ docType, id }: Params) => {
   const locale = useLocale();
 
   const t = useTranslations("AdminDocumentsPage.delete");
 
   const mutation = useToastMutation({
     mutationFn: () => deleteDocument(id),
-    invalidateKeys: [["admin-documents", locale]],
+    invalidateKeys: [QUERY_KEYS.adminDocuments(locale, docType)],
     pendingMessage: t("pending"),
     successMessage: t("success"),
     errorMessage: (error: unknown) => getApiErrorMessage(error, t("error")),
