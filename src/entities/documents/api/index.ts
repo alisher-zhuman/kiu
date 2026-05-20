@@ -21,7 +21,7 @@ export const getDocuments = async () => {
 
 export const getDocumentsByType = async (docType: string) => {
   const { data } = await api.get(API_ROUTES.DOCUMENTS_BY_TYPE, {
-    params: { docType },
+    params: { type: docType },
   });
 
   return DocumentsResponseSchema.parse(data);

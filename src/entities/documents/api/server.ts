@@ -29,7 +29,7 @@ export const getPublicDocumentsByType = async (
   docType: string,
 ) => {
   const url = new URL(getLocalizedServerApiUrl(API_ROUTES.DOCUMENTS_BY_TYPE, locale));
-  url.searchParams.set("docType", docType);
+  url.searchParams.set("type", docType);
 
   const response = await fetch(url.toString(), {
     next: { revalidate: 60 },
