@@ -4,7 +4,10 @@ import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
-import { DOCUMENT_TYPE_OPTIONS, getDocumentsByType } from "@/entities/documents";
+import {
+  DOCUMENT_TYPE_OPTIONS,
+  getDocumentsByType,
+} from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { useSearchParamState } from "@/shared/hooks";
@@ -16,16 +19,16 @@ import { TabSidebar } from "@/shared/ui/tab-sidebar";
 import { DocumentCard } from "../document-card";
 
 export const AdminDocuments = () => {
-  const locale = useLocale();
-
-  const t = useTranslations("AdminDocumentsPage");
-  const tDocTypes = useTranslations("AdminDocumentsPage.addForm");
-
   const [activeKey, setActiveKey] = useSearchParamState(
     "category",
     DOCUMENT_TYPE_OPTIONS[0],
     DOCUMENT_TYPE_OPTIONS,
   );
+
+  const locale = useLocale();
+
+  const t = useTranslations("AdminDocumentsPage");
+  const tDocTypes = useTranslations("AdminDocumentsPage.addForm");
 
   const { data, error, isLoading } = useQuery({
     queryKey: QUERY_KEYS.adminDocuments(locale, activeKey),
@@ -33,7 +36,11 @@ export const AdminDocuments = () => {
   });
 
   const tabs = useMemo(
-    () => DOCUMENT_TYPE_OPTIONS.map((key) => ({ key, label: tDocTypes(`docTypes.${key}`) })),
+    () =>
+      DOCUMENT_TYPE_OPTIONS.map((key) => ({
+        key,
+        label: tDocTypes(`docTypes.${key}`),
+      })),
     [tDocTypes],
   );
 
