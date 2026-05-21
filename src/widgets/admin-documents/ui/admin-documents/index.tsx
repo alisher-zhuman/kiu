@@ -10,6 +10,7 @@ import { QUERY_KEYS } from "@/shared/constants";
 import { useSearchParamState } from "@/shared/hooks";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
+import { FilterSelect } from "@/shared/ui/filter-select";
 import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
 import { DocumentCard } from "../document-card";
@@ -39,17 +40,17 @@ export const AdminDocuments = () => {
   return (
     <AdminPageShell ariaLabel={t("sectionLabel")}>
       <div className="md:hidden">
-        <select
+        <FilterSelect
           value={activeKey}
           onChange={(e) => setActiveKey(e.target.value)}
-          className="w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
+          className="w-full"
         >
           {tabs.map(({ key, label }) => (
             <option key={key} value={key}>
               {label}
             </option>
           ))}
-        </select>
+        </FilterSelect>
       </div>
 
       <div className="md:flex md:items-start md:gap-10">

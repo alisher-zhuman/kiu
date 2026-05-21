@@ -5,7 +5,7 @@ import { Minus, Plus } from "lucide-react";
 
 import { type AppLocale } from "@/i18n/routing";
 
-import { cn } from "@/shared/helpers";
+import { FormInput } from "@/shared/ui/form-input";
 
 import {
   type ProfessorFormValues,
@@ -86,14 +86,11 @@ export const PositionFields = ({
                     {t(`locales.${locale}`)}
                   </label>
 
-                  <input
+                  <FormInput
                     id={`professor-position-${field.id}-${locale}`}
                     {...register(`positions.${index}.${locale}`)}
                     placeholder={t(`placeholders.position.${locale}`)}
-                    className={cn(
-                      "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors placeholder:text-black/35 focus:border-[#004C97]",
-                      fieldError && "border-red-500 focus:border-red-500",
-                    )}
+                    hasError={!!fieldError}
                   />
 
                   {fieldError ? (

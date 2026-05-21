@@ -1,6 +1,6 @@
 import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
-import { cn } from "@/shared/helpers";
+import { FormInput } from "@/shared/ui/form-input";
 
 import { type AddDocumentFormValues } from "../../types";
 
@@ -20,14 +20,11 @@ export const DocumentTitleField = ({ errors, register, t }: Props) => (
     </label>
 
     <div className="space-y-2">
-      <input
+      <FormInput
         id="document-title"
         {...register("title")}
         placeholder={t("placeholders.title")}
-        className={cn(
-          "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors placeholder:text-black/35 focus:border-[#004C97]",
-          errors.title?.message && "border-red-500 focus:border-red-500",
-        )}
+        hasError={!!errors.title?.message}
       />
 
       {errors.title?.message ? (

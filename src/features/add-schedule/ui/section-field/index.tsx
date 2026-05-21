@@ -1,6 +1,6 @@
 import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
-import { cn } from "@/shared/helpers";
+import { FormSelect } from "@/shared/ui/form-select";
 
 import { type AddScheduleFormValues } from "../../types";
 
@@ -21,20 +21,17 @@ export const SectionField = ({ errors, register, sectionOptions, t }: Props) => 
     </label>
 
     <div className="space-y-2">
-      <select
+      <FormSelect
         id="schedule-section"
         {...register("section")}
-        className={cn(
-          "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors focus:border-[#004C97]",
-          errors.section?.message && "border-red-500 focus:border-red-500",
-        )}
+        hasError={!!errors.section?.message}
       >
         {sectionOptions.map((section) => (
           <option key={section} value={section}>
             {t(`sections.${section}`)}
           </option>
         ))}
-      </select>
+      </FormSelect>
 
       {errors.section?.message ? (
         <p className="text-sm text-red-500 md:text-base">{errors.section.message}</p>

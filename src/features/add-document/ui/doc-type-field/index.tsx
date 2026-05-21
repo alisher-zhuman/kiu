@@ -2,7 +2,7 @@ import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
 import { type DocumentItem } from "@/entities/documents";
 
-import { cn } from "@/shared/helpers";
+import { FormSelect } from "@/shared/ui/form-select";
 
 import { type AddDocumentFormValues } from "../../types";
 
@@ -23,20 +23,17 @@ export const DocTypeField = ({ documentTypeOptions, errors, register, t }: Props
     </label>
 
     <div className="space-y-2">
-      <select
+      <FormSelect
         id="document-doc-type"
         {...register("docType")}
-        className={cn(
-          "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors focus:border-[#004C97]",
-          errors.docType?.message && "border-red-500 focus:border-red-500",
-        )}
+        hasError={!!errors.docType?.message}
       >
         {documentTypeOptions.map((option) => (
           <option key={option} value={option}>
             {t(`docTypes.${option}`)}
           </option>
         ))}
-      </select>
+      </FormSelect>
 
       {errors.docType?.message ? (
         <p className="text-sm text-red-500 md:text-base">{errors.docType.message}</p>

@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { SCHEDULE_LEVEL_OPTIONS } from "@/entities/schedules";
 
 import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
+import { FilterSelect } from "@/shared/ui/filter-select";
 
 interface Props {
   activeLevel: string;
@@ -21,29 +22,29 @@ export const ScheduleMobileFilters = ({
 
   return (
     <div className="flex gap-3 md:hidden">
-      <select
+      <FilterSelect
         value={activeLevel}
         onChange={(e) => onLevelChange(e.target.value)}
-        className="flex-1 rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
+        className="flex-1"
       >
         {SCHEDULE_LEVEL_OPTIONS.map((level) => (
           <option key={level} value={level}>
             {t(`levels.${level}`)}
           </option>
         ))}
-      </select>
+      </FilterSelect>
 
-      <select
+      <FilterSelect
         value={activeSection}
         onChange={(e) => onSectionChange(e.target.value)}
-        className="flex-1 rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
+        className="flex-1"
       >
         {FACULTY_SECTION_OPTIONS.map((section) => (
           <option key={section} value={section}>
             {t(`sections.${section}`)}
           </option>
         ))}
-      </select>
+      </FilterSelect>
     </div>
   );
 };

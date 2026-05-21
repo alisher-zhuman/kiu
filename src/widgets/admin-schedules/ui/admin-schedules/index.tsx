@@ -15,6 +15,7 @@ import { useTabScroll } from "@/shared/hooks";
 import { useSearchParamState } from "@/shared/hooks";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
+import { FilterSelect } from "@/shared/ui/filter-select";
 import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
 import { ScheduleCard } from "../schedule-card";
@@ -35,6 +36,7 @@ export const AdminSchedules = () => {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const locale = useLocale();
+  
   const t = useTranslations("AdminSchedulesPage");
 
   useTabScroll(
@@ -56,29 +58,29 @@ export const AdminSchedules = () => {
   return (
     <AdminPageShell ariaLabel={t("sectionLabel")}>
       <div className="flex gap-3 md:hidden">
-        <select
+        <FilterSelect
           value={activeLevel}
           onChange={(e) => setActiveLevel(e.target.value)}
-          className="flex-1 rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
+          className="flex-1"
         >
           {SCHEDULE_LEVEL_OPTIONS.map((level) => (
             <option key={level} value={level}>
               {t(`levels.${level}`)}
             </option>
           ))}
-        </select>
+        </FilterSelect>
 
-        <select
+        <FilterSelect
           value={activeSection}
           onChange={(e) => setActiveSection(e.target.value)}
-          className="flex-1 rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
+          className="flex-1"
         >
           {FACULTY_SECTION_OPTIONS.map((section) => (
             <option key={section} value={section}>
               {t(`sections.${section}`)}
             </option>
           ))}
-        </select>
+        </FilterSelect>
       </div>
 
       <div
