@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { SCHEDULE_LEVEL_OPTIONS } from "@/entities/schedules";
+
 import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 
 export const createAddScheduleFormSchema = (t: (key: string) => string) =>

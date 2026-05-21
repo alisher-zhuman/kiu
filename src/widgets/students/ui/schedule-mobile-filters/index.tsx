@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { SCHEDULE_LEVEL_OPTIONS } from "@/entities/schedules";
+
 import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 
 interface Props {

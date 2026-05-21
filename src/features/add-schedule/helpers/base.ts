@@ -3,6 +3,7 @@ import {
   SCHEDULE_LEVEL_OPTIONS,
   type ScheduleItem,
 } from "@/entities/schedules";
+
 import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 
 import { type AddScheduleFormValues } from "../types";

@@ -1,6 +1,7 @@
 import { type z } from "zod";
 
 import { type FACULTY_SECTION_OPTIONS } from "@/shared/constants";
+
 import {
   type ScheduleActionResponseSchema,
   type ScheduleItemSchema,

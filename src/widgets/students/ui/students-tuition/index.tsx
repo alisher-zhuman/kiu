@@ -2,8 +2,8 @@
 
 import { useTranslations } from "next-intl";
 
-import { PageTitle } from "@/shared/ui/page-title";
 import { CopyButton } from "@/shared/ui/copy-button";
+import { PageTitle } from "@/shared/ui/page-title";
 
 interface BankInfo {
   name: string;

@@ -8,8 +8,9 @@ import {
   SCHEDULE_LEVEL_OPTIONS,
   type ScheduleItem,
 } from "@/entities/schedules";
-import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 import { getPublicSchedulesByLevel } from "@/entities/schedules/api/server";
+
+import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 
 interface Props {
   params: Promise<{ locale: AppLocale }>;
