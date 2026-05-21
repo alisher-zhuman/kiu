@@ -12,7 +12,8 @@ export const RequiredDocuments = () => {
 
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
-      <div className="space-y-24 md:space-y-36">
+      <div className="space-y-16 md:space-y-24">
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-12">
         {sections.map(({ title, items, contacts, contactsLabel }, index) => {
           const headingTag = index === 0 ? "h1" : "h2";
           const Heading = headingTag;
@@ -65,6 +66,7 @@ export const RequiredDocuments = () => {
             </section>
           );
         })}
+        </div>
 
         <SupportCard text={t("support")} />
       </div>
