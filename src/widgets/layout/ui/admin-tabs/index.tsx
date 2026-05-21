@@ -6,8 +6,8 @@ import { Plus } from "lucide-react";
 
 import { Link, usePathname } from "@/i18n/navigation";
 
-import { useTabScroll } from "@/shared/hooks";
 import { cn } from "@/shared/helpers";
+import { useTabScroll } from "@/shared/hooks";
 
 import { ADMIN_TABS } from "../../constants";
 

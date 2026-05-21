@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { useSearchParamState, useTabScroll } from "@/shared/hooks";
 import { type Section } from "@/shared/types";
 import { MobileTabList } from "@/shared/ui/mobile-tab-list";
-import { TabSidebar } from "@/shared/ui/tab-sidebar";
 import { SectionsAccordion } from "@/shared/ui/sections-accordion";
+import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
 interface Department {
   name: string;

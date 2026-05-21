@@ -1,4 +1,4 @@
-import { type MutableRefObject, type RefObject } from "react";
+import { type RefObject } from "react";
 
 import { cn } from "@/shared/helpers";
 
@@ -12,7 +12,7 @@ interface Props {
   label: string;
   onSelect: (key: string) => void;
   scrollContainerRef: RefObject<HTMLDivElement | null>;
-  tabRefs: MutableRefObject<(HTMLButtonElement | null)[]>;
+  tabRefs: RefObject<(HTMLButtonElement | null)[]>;
   tabs: ReadonlyArray<Tab>;
 }
 

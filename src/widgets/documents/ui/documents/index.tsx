@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { DOCUMENT_TYPE_OPTIONS, type DocumentItem } from "@/entities/documents";
 
 import { useSearchParamState, useTabScroll } from "@/shared/hooks";
-import { Reveal } from "@/shared/ui/reveal";
 import { MobileTabList } from "@/shared/ui/mobile-tab-list";
+import { Reveal } from "@/shared/ui/reveal";
 import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
 import { DocumentCard } from "../document-card";
