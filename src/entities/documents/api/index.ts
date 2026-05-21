@@ -13,12 +13,6 @@ export const createDocument = async (payload: CreateDocumentPayload) => {
   return DocumentActionResponseSchema.parse(data);
 };
 
-export const getDocuments = async () => {
-  const { data } = await api.get(API_ROUTES.DOCUMENTS);
-
-  return DocumentsResponseSchema.parse(data);
-};
-
 export const getDocumentsByType = async (docType: string) => {
   const { data } = await api.get(API_ROUTES.DOCUMENTS_BY_TYPE, {
     params: { type: docType },

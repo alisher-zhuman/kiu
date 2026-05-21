@@ -7,6 +7,7 @@ export {
 } from "./api";
 export {
   checkExternalHref,
+  checkIsPdfFile,
   cn,
   formatDate,
   getFileNameFromUrl,

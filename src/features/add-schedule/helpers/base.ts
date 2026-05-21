@@ -7,9 +7,6 @@ import {
 
 import { type AddScheduleFormValues } from "../types";
 
-export const checkIsPdfFile = (file: File) =>
-  file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
-
 export const createDefaultScheduleFormValues = (): AddScheduleFormValues => ({
   content: "",
   title: "",

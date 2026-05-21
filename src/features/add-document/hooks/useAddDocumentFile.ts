@@ -10,11 +10,10 @@ import {
   useWatch,
 } from "react-hook-form";
 
-import { getFileNameFromUrl } from "@/shared/helpers";
+import { checkIsPdfFile, getFileNameFromUrl } from "@/shared/helpers";
 import { useSingleFileFieldTransfer } from "@/shared/hooks";
 
 import { MAX_DOCUMENT_FILE_SIZE_BYTES } from "../constants";
-import { checkIsPdfFile } from "../helpers/base";
 import { type AddDocumentFormValues } from "../types";
 
 interface Params {

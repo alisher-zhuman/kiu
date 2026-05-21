@@ -66,6 +66,9 @@ export const getFileNameFromUrl = (fileUrl: string) => {
   }
 };
 
+export const checkIsPdfFile = (file: File) =>
+  file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+
 export const getPreviewText = (value: string, limit: number) => {
   const normalizedValue = value.trim();
 
