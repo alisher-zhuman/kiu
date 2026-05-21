@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
-import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
+import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
 import { DOCUMENT_TYPE_OPTIONS, getDocumentsByType } from "@/entities/documents";
 
@@ -72,7 +72,7 @@ export const AdminDocuments = () => {
         </div>
 
         <div className="hidden md:block">
-          <DocumentsSidebar
+          <TabSidebar
             activeKey={activeKey}
             label={t("sectionLabel")}
             onSelect={setActiveKey}

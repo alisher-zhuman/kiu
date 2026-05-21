@@ -1,36 +1,32 @@
 import { cn } from "@/shared/helpers";
 
-interface Department {
-  name: string;
+interface Tab {
+  key: string;
+  label: string;
 }
 
 interface Props {
-  activeIndex: number;
-  departments: ReadonlyArray<Department>;
+  activeKey: string;
   label: string;
-  onSelect: (index: number) => void;
+  onSelect: (key: string) => void;
+  tabs: ReadonlyArray<Tab>;
 }
 
-export const DepartmentsSidebar = ({
-  activeIndex,
-  departments,
-  label,
-  onSelect,
-}: Props) => (
+export const TabSidebar = ({ activeKey, label, onSelect, tabs }: Props) => (
   <nav aria-label={label} className="sticky top-10 w-52 shrink-0">
-    {departments.map((dept, index) => (
+    {tabs.map((tab) => (
       <button
-        key={dept.name}
+        key={tab.key}
         type="button"
-        onClick={() => onSelect(index)}
+        onClick={() => onSelect(tab.key)}
         className={cn(
           "block w-full border-l-2 py-3 pl-4 text-left text-sm transition-all duration-200",
-          activeIndex === index
+          activeKey === tab.key
             ? "border-[#004C97] font-semibold text-[#004C97]"
             : "border-black/10 font-normal text-black/40 hover:border-black/25 hover:text-black/60",
         )}
       >
-        {dept.name}
+        {tab.label}
       </button>
     ))}
   </nav>

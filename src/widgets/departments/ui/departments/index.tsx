@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
 
-import { useSearchParamState } from "@/shared/hooks";
+import { useSearchParamState, useTabScroll } from "@/shared/hooks";
 import { type Section } from "@/shared/types";
+import { MobileTabList } from "@/shared/ui/mobile-tab-list";
+import { TabSidebar } from "@/shared/ui/tab-sidebar";
 import { SectionsAccordion } from "@/shared/ui/sections-accordion";
-
-import { DepartmentsMobileTabs } from "../mobile-tabs";
-import { DepartmentsSidebar } from "../sidebar";
 
 interface Department {
   name: string;
@@ -16,44 +15,30 @@ interface Department {
 }
 
 export const Departments = () => {
-  const [activeDeptParam, setActiveDeptParam] = useSearchParamState(
+  const t = useTranslations("DepartmentsPage");
+  const departments = t.raw("departments") as ReadonlyArray<Department>;
+
+  const deptNames = departments.map((d) => d.name);
+
+  const [activeKey, setActiveKey] = useSearchParamState(
     "dept",
-    "0",
+    deptNames[0] ?? "",
+    deptNames,
   );
+
+  const activeDept = (departments.find((d) => d.name === activeKey) ?? departments[0])!;
+  const activeIndex = departments.findIndex((d) => d.name === activeKey);
+
+  const tabs = departments.map((d) => ({ key: d.name, label: d.name }));
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const t = useTranslations("DepartmentsPage");
-  const departments = t.raw("departments") as ReadonlyArray<Department>;
-
-  const activeIndex = Math.min(
-    Math.max(parseInt(activeDeptParam, 10) || 0, 0),
-    departments.length - 1,
-  );
-  const setActiveIndex = (index: number) => setActiveDeptParam(String(index));
-
-  const activeDept = (departments[activeIndex] ?? departments[0])!;
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    const tab = tabRefs.current[activeIndex];
-    if (!container || !tab) return;
-
-    const containerCenter = container.offsetWidth / 2;
-    const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({
-      left: tabCenter - containerCenter,
-      behavior: "smooth",
-    });
-  }, [activeIndex]);
+  useTabScroll(activeIndex, scrollContainerRef, tabRefs);
 
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
-      <section
-        aria-labelledby="departments-title"
-        className="space-y-8 md:space-y-10"
-      >
+      <section aria-labelledby="departments-title" className="space-y-8 md:space-y-10">
         <div className="border-l-2 border-black pl-3 md:pl-4">
           <h1
             id="departments-title"
@@ -63,32 +48,29 @@ export const Departments = () => {
           </h1>
         </div>
 
-        <DepartmentsMobileTabs
-          activeIndex={activeIndex}
-          departments={departments}
+        <MobileTabList
+          activeKey={activeKey}
           label={t("title")}
-          onSelect={setActiveIndex}
+          onSelect={setActiveKey}
           scrollContainerRef={scrollContainerRef}
           tabRefs={tabRefs}
+          tabs={tabs}
         />
 
         <div role="tabpanel" className="md:hidden">
-          <SectionsAccordion key={activeIndex} sections={activeDept.sections} />
+          <SectionsAccordion key={activeKey} sections={activeDept.sections} />
         </div>
 
         <div className="hidden md:flex md:items-start md:gap-10">
           <div className="min-w-0 flex-1">
-            <SectionsAccordion
-              key={activeIndex}
-              sections={activeDept.sections}
-            />
+            <SectionsAccordion key={activeKey} sections={activeDept.sections} />
           </div>
 
-          <DepartmentsSidebar
-            activeIndex={activeIndex}
-            departments={departments}
+          <TabSidebar
+            activeKey={activeKey}
             label={t("title")}
-            onSelect={setActiveIndex}
+            onSelect={setActiveKey}
+            tabs={tabs}
           />
         </div>
       </section>

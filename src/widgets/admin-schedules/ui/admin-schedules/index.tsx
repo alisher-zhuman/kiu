@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
-import { DocumentsSidebar } from "@/widgets/documents/ui/documents-sidebar";
+import { useTabScroll } from "@/shared/hooks";
+import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
 import {
   getSchedulesByLevel,
@@ -38,22 +39,11 @@ export const AdminSchedules = () => {
   const locale = useLocale();
   const t = useTranslations("AdminSchedulesPage");
 
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    const tab =
-      tabRefs.current[
-        SCHEDULE_LEVEL_OPTIONS.indexOf(
-          activeLevel as (typeof SCHEDULE_LEVEL_OPTIONS)[number],
-        )
-      ];
-    if (!container || !tab) return;
-    const containerCenter = container.offsetWidth / 2;
-    const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({
-      left: tabCenter - containerCenter,
-      behavior: "smooth",
-    });
-  }, [activeLevel]);
+  useTabScroll(
+    SCHEDULE_LEVEL_OPTIONS.indexOf(activeLevel as (typeof SCHEDULE_LEVEL_OPTIONS)[number]),
+    scrollContainerRef,
+    tabRefs,
+  );
 
   const { data, error, isLoading } = useQuery({
     queryKey: QUERY_KEYS.adminSchedules(locale, activeLevel, activeSection),
@@ -140,7 +130,7 @@ export const AdminSchedules = () => {
         </div>
 
         <div className="hidden md:block">
-          <DocumentsSidebar
+          <TabSidebar
             activeKey={activeSection}
             label={t("sectionLabel")}
             onSelect={setActiveSection}

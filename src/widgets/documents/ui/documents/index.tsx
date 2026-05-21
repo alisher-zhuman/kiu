@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
 
 import { DOCUMENT_TYPE_OPTIONS, type DocumentItem } from "@/entities/documents";
 
-import { useSearchParamState } from "@/shared/hooks";
+import { useSearchParamState, useTabScroll } from "@/shared/hooks";
 import { Reveal } from "@/shared/ui/reveal";
+import { MobileTabList } from "@/shared/ui/mobile-tab-list";
+import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
 import { DocumentCard } from "../document-card";
-import { DocumentsMobileTabs } from "../documents-mobile-tabs";
-import { DocumentsSidebar } from "../documents-sidebar";
 
 interface Props {
   allowedDocTypes?: (typeof DOCUMENT_TYPE_OPTIONS)[number][];
@@ -48,18 +48,11 @@ export const Documents = ({
     label: t(`docTypes.${key}`),
   }));
 
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    const tab =
-      tabRefs.current[
-        typesToDisplay.indexOf(activeKey as (typeof typesToDisplay)[number])
-      ];
-    if (!container || !tab) return;
-
-    const containerCenter = container.offsetWidth / 2;
-    const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
-  }, [activeKey]);
+  useTabScroll(
+    typesToDisplay.indexOf(activeKey as (typeof typesToDisplay)[number]),
+    scrollContainerRef,
+    tabRefs,
+  );
 
   const activeItems = documents.filter((item) => item.docType === activeKey);
 
@@ -83,7 +76,7 @@ export const Documents = ({
         ) : null}
 
         {!hasError && showTabs ? (
-          <DocumentsMobileTabs
+          <MobileTabList
             activeKey={activeKey}
             label={title ?? t("title")}
             onSelect={setActiveKey}
@@ -115,7 +108,7 @@ export const Documents = ({
 
             {showTabs ? (
               <div className="hidden md:block">
-                <DocumentsSidebar
+                <TabSidebar
                   activeKey={activeKey}
                   label={title ?? t("title")}
                   onSelect={setActiveKey}

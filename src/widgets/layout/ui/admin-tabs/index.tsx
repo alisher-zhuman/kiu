@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Plus } from "lucide-react";
 
 import { Link, usePathname } from "@/i18n/navigation";
 
+import { useTabScroll } from "@/shared/hooks";
 import { cn } from "@/shared/helpers";
 
 import { ADMIN_TABS } from "../../constants";
@@ -27,15 +28,7 @@ export const AdminTabs = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    const tab = tabRefs.current[activeIndex];
-    if (!container || !tab) return;
-
-    const containerCenter = container.offsetWidth / 2;
-    const tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
-    container.scrollTo({ left: tabCenter - containerCenter, behavior: "smooth" });
-  }, [activeIndex]);
+  useTabScroll(activeIndex, scrollContainerRef, tabRefs);
 
   const addButtonClass =
     "inline-flex items-center justify-center rounded-full bg-[#004C97] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C]";

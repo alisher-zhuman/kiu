@@ -1,4 +1,4 @@
-import { type RefObject } from "react";
+import { type MutableRefObject, type RefObject } from "react";
 
 import { cn } from "@/shared/helpers";
 
@@ -12,11 +12,11 @@ interface Props {
   label: string;
   onSelect: (key: string) => void;
   scrollContainerRef: RefObject<HTMLDivElement | null>;
-  tabRefs: React.MutableRefObject<(HTMLButtonElement | null)[]>;
+  tabRefs: MutableRefObject<(HTMLButtonElement | null)[]>;
   tabs: ReadonlyArray<Tab>;
 }
 
-export const DocumentsMobileTabs = ({
+export const MobileTabList = ({
   activeKey,
   label,
   onSelect,
