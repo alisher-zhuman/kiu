@@ -1,6 +1,6 @@
 import { type z } from "zod";
 
-import { type SCHEDULE_SECTION_OPTIONS } from "./constants";
+import { type FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 import {
   type ScheduleActionResponseSchema,
   type ScheduleItemSchema,
@@ -15,6 +15,6 @@ export interface CreateSchedulePayload {
   title: string;
   content: string;
   level: string;
-  section: (typeof SCHEDULE_SECTION_OPTIONS)[number];
+  section: (typeof FACULTY_SECTION_OPTIONS)[number];
   dateOfPublication: string;
 }

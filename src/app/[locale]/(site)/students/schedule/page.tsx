@@ -6,9 +6,9 @@ import { StudentsSchedule } from "@/widgets/students";
 
 import {
   SCHEDULE_LEVEL_OPTIONS,
-  SCHEDULE_SECTION_OPTIONS,
   type ScheduleItem,
 } from "@/entities/schedules";
+import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 import { getPublicSchedulesByLevel } from "@/entities/schedules/api/server";
 
 interface Props {
@@ -26,11 +26,11 @@ const StudentsSchedulePage = async ({ params, searchParams }: Props) => {
     ? level!
     : SCHEDULE_LEVEL_OPTIONS[0];
 
-  const activeSection = SCHEDULE_SECTION_OPTIONS.includes(
-    section as (typeof SCHEDULE_SECTION_OPTIONS)[number],
+  const activeSection = FACULTY_SECTION_OPTIONS.includes(
+    section as (typeof FACULTY_SECTION_OPTIONS)[number],
   )
     ? section!
-    : SCHEDULE_SECTION_OPTIONS[0];
+    : FACULTY_SECTION_OPTIONS[0];
 
   const t = await getTranslations({ locale, namespace: "Navbar" });
 

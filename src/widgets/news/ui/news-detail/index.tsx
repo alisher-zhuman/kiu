@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { type NewsItem } from "@/entities/news";
 
 import { formatDate } from "@/shared/helpers";
+import { PageTitle } from "@/shared/ui/page-title";
 import { Reveal } from "@/shared/ui/reveal";
 
 interface Props {
@@ -40,11 +41,7 @@ export const NewsDetail = ({ hasError = false, locale, newsItem }: Props) => {
               {formattedDate}
             </p>
 
-            <div className="border-l-2 border-black pl-3 md:pl-4">
-              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
-                {newsItem.title}
-              </h1>
-            </div>
+            <PageTitle>{newsItem.title}</PageTitle>
           </div>
         </Reveal>
 

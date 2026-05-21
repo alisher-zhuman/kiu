@@ -10,10 +10,9 @@ import { useRouter } from "@/i18n/navigation";
 import {
   createSchedule,
   SCHEDULE_LEVEL_OPTIONS,
-  SCHEDULE_SECTION_OPTIONS,
 } from "@/entities/schedules";
 
-import { QUERY_KEYS } from "@/shared/constants";
+import { FACULTY_SECTION_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
@@ -87,7 +86,7 @@ export const useAddScheduleForm = () => {
     isSubmitDisabled:
       isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
     levelOptions: SCHEDULE_LEVEL_OPTIONS,
-    sectionOptions: SCHEDULE_SECTION_OPTIONS,
+    sectionOptions: FACULTY_SECTION_OPTIONS,
     onSubmit,
     openFileDialog,
     register,

@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
+import { PageTitle } from "@/shared/ui/page-title";
 import { CopyButton } from "@/shared/ui/copy-button";
 
 interface BankInfo {
@@ -21,11 +22,7 @@ export const StudentsTuition = () => {
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
       <section className="space-y-10 md:space-y-12">
-        <div className="border-l-2 border-black pl-3 md:pl-4">
-          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
-            {t("title")}
-          </h1>
-        </div>
+        <PageTitle>{t("title")}</PageTitle>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {banks.map((bank) => (

@@ -1,4 +1,5 @@
 import { checkExternalHref } from "@/shared/helpers";
+import { PageTitle } from "@/shared/ui/page-title";
 
 import { type Course, type CourseLabels } from "../../types";
 
@@ -12,11 +13,7 @@ export const CourseCard = ({ course, labels }: Props) => {
 
   return (
     <article className="space-y-8 md:space-y-10">
-      <div className="border-l-2 border-black pl-3 md:pl-4">
-        <h2 className="text-2xl font-bold sm:text-3xl md:text-5xl">
-          {course.title}
-        </h2>
-      </div>
+      <PageTitle as="h2" className="tracking-normal">{course.title}</PageTitle>
 
       <div className="space-y-6 pl-6 text-base leading-8 text-black/85 md:space-y-8 md:pl-16 md:text-[1.9rem] md:leading-[1.45]">
         <ul className="list-disc space-y-1 pl-5 marker:text-black/70 md:pl-7">

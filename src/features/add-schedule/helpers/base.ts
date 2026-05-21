@@ -1,9 +1,9 @@
 import {
   type CreateSchedulePayload,
   SCHEDULE_LEVEL_OPTIONS,
-  SCHEDULE_SECTION_OPTIONS,
   type ScheduleItem,
 } from "@/entities/schedules";
+import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 
 import { type AddScheduleFormValues } from "../types";
 
@@ -23,9 +23,9 @@ export const mapEditableScheduleToFormValues = (
   level: (SCHEDULE_LEVEL_OPTIONS.includes(schedule.level as typeof SCHEDULE_LEVEL_OPTIONS[number])
     ? schedule.level
     : SCHEDULE_LEVEL_OPTIONS[0]) as typeof SCHEDULE_LEVEL_OPTIONS[number],
-  section: (SCHEDULE_SECTION_OPTIONS.includes(schedule.section as typeof SCHEDULE_SECTION_OPTIONS[number])
+  section: (FACULTY_SECTION_OPTIONS.includes(schedule.section as typeof FACULTY_SECTION_OPTIONS[number])
     ? schedule.section
-    : SCHEDULE_SECTION_OPTIONS[0]) as typeof SCHEDULE_SECTION_OPTIONS[number],
+    : FACULTY_SECTION_OPTIONS[0]) as typeof FACULTY_SECTION_OPTIONS[number],
   dateOfPublication: schedule.dateOfPublication,
 });
 

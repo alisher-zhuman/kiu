@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useSearchParamState, useTabScroll } from "@/shared/hooks";
 import { type Section } from "@/shared/types";
 import { MobileTabList } from "@/shared/ui/mobile-tab-list";
+import { PageTitle } from "@/shared/ui/page-title";
 import { SectionsAccordion } from "@/shared/ui/sections-accordion";
 import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
@@ -39,14 +40,7 @@ export const Departments = () => {
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
       <section aria-labelledby="departments-title" className="space-y-8 md:space-y-10">
-        <div className="border-l-2 border-black pl-3 md:pl-4">
-          <h1
-            id="departments-title"
-            className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl"
-          >
-            {t("title")}
-          </h1>
-        </div>
+        <PageTitle id="departments-title">{t("title")}</PageTitle>
 
         <MobileTabList
           activeKey={activeKey}

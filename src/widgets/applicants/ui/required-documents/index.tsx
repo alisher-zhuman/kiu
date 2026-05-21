@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { checkExternalHref } from "@/shared/helpers";
+import { PageTitle } from "@/shared/ui/page-title";
 
 import { type RequiredDocumentsSection } from "../../types";
 import { SupportCard } from "../support-card";
@@ -15,8 +16,7 @@ export const RequiredDocuments = () => {
       <div className="space-y-16 md:space-y-24">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-12">
         {sections.map(({ title, items, contacts, contactsLabel }, index) => {
-          const headingTag = index === 0 ? "h1" : "h2";
-          const Heading = headingTag;
+          const headingTag = index === 0 ? "h1" as const : "h2" as const;
           const headingText = index === 0 ? pageTitle : title;
 
           return (
@@ -24,14 +24,13 @@ export const RequiredDocuments = () => {
               key={headingText ?? index}
               aria-labelledby={`required-documents-${index}`}
             >
-              <div className="border-l-2 border-black pl-3 md:pl-4">
-                <Heading
-                  id={`required-documents-${index}`}
-                  className="text-2xl font-bold sm:text-3xl md:text-5xl"
-                >
-                  {headingText}
-                </Heading>
-              </div>
+              <PageTitle
+                as={headingTag}
+                id={`required-documents-${index}`}
+                className="tracking-normal"
+              >
+                {headingText}
+              </PageTitle>
 
               <div className="mt-8 pl-6 md:mt-10 md:pl-12">
                 <ul className="list-disc space-y-1 text-base leading-7 text-black/85 marker:text-black/70 md:space-y-2 md:text-[1.7rem] md:leading-normal">

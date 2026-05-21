@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
-import { SCHEDULE_LEVEL_OPTIONS, SCHEDULE_SECTION_OPTIONS } from "@/entities/schedules";
+import { SCHEDULE_LEVEL_OPTIONS } from "@/entities/schedules";
+import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 
 interface Props {
   activeLevel: string;
@@ -36,7 +37,7 @@ export const ScheduleMobileFilters = ({
         onChange={(e) => onSectionChange(e.target.value)}
         className="flex-1 rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
       >
-        {SCHEDULE_SECTION_OPTIONS.map((section) => (
+        {FACULTY_SECTION_OPTIONS.map((section) => (
           <option key={section} value={section}>
             {t(`sections.${section}`)}
           </option>

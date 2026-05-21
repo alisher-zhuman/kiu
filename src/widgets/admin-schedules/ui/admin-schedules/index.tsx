@@ -7,10 +7,9 @@ import { useQuery } from "@tanstack/react-query";
 import {
   getSchedulesByLevel,
   SCHEDULE_LEVEL_OPTIONS,
-  SCHEDULE_SECTION_OPTIONS,
 } from "@/entities/schedules";
 
-import { QUERY_KEYS } from "@/shared/constants";
+import { FACULTY_SECTION_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
 import { useTabScroll } from "@/shared/hooks";
 import { useSearchParamState } from "@/shared/hooks";
@@ -28,8 +27,8 @@ export const AdminSchedules = () => {
   );
   const [activeSection, setActiveSection] = useSearchParamState(
     "section",
-    SCHEDULE_SECTION_OPTIONS[0],
-    SCHEDULE_SECTION_OPTIONS,
+    FACULTY_SECTION_OPTIONS[0],
+    FACULTY_SECTION_OPTIONS,
   );
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -49,7 +48,7 @@ export const AdminSchedules = () => {
     queryFn: () => getSchedulesByLevel(activeLevel, activeSection),
   });
 
-  const sectionTabs = SCHEDULE_SECTION_OPTIONS.map((key) => ({
+  const sectionTabs = FACULTY_SECTION_OPTIONS.map((key) => ({
     key,
     label: t(`sections.${key}`),
   }));
@@ -74,7 +73,7 @@ export const AdminSchedules = () => {
           onChange={(e) => setActiveSection(e.target.value)}
           className="flex-1 rounded-[0.95rem] border border-black/10 bg-white px-4 py-2.5 text-sm text-black outline-none transition-colors focus:border-[#004C97]"
         >
-          {SCHEDULE_SECTION_OPTIONS.map((section) => (
+          {FACULTY_SECTION_OPTIONS.map((section) => (
             <option key={section} value={section}>
               {t(`sections.${section}`)}
             </option>

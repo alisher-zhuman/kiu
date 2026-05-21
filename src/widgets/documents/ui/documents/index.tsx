@@ -7,6 +7,7 @@ import { DOCUMENT_TYPE_OPTIONS, type DocumentItem } from "@/entities/documents";
 
 import { useSearchParamState, useTabScroll } from "@/shared/hooks";
 import { MobileTabList } from "@/shared/ui/mobile-tab-list";
+import { PageTitle } from "@/shared/ui/page-title";
 import { Reveal } from "@/shared/ui/reveal";
 import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
@@ -60,11 +61,7 @@ export const Documents = ({
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
       <section className="space-y-8 md:space-y-10">
         <Reveal>
-          <div className="border-l-2 border-black pl-3 md:pl-4">
-            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
-              {title ?? t("title")}
-            </h1>
-          </div>
+          <PageTitle>{title ?? t("title")}</PageTitle>
         </Reveal>
 
         {hasError ? (

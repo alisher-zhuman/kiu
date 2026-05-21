@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 
+import { PageTitle } from "@/shared/ui/page-title";
 import { Reveal } from "@/shared/ui/reveal";
 
 import { Gallery } from "../gallery";
@@ -12,11 +13,7 @@ export const History = () => {
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
       <article className="relative overflow-hidden">
         <Reveal>
-          <div className="border-l-2 border-black pl-3 md:pl-4">
-            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
-              {t("title")}
-            </h1>
-          </div>
+          <PageTitle>{t("title")}</PageTitle>
         </Reveal>
 
         <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-[minmax(0,1fr)_16rem] md:items-start md:gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">

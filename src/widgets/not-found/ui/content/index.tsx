@@ -1,5 +1,7 @@
 import { Link } from "@/i18n/navigation";
 
+import { PageTitle } from "@/shared/ui/page-title";
+
 interface Props {
   action: string;
   description: string;
@@ -13,14 +15,7 @@ export const Content = ({ action, description, title }: Props) => (
         404
       </p>
 
-      <div className="border-l-2 border-black pl-3 md:pl-4">
-        <h1
-          id="not-found-title"
-          className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
-        >
-          {title}
-        </h1>
-      </div>
+      <PageTitle id="not-found-title" className="text-3xl sm:text-4xl md:text-5xl">{title}</PageTitle>
     </div>
 
     <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end md:gap-12">

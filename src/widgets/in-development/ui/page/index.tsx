@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { cn } from "@/shared/helpers";
+import { PageTitle } from "@/shared/ui/page-title";
 
 interface Props {
   compactTopPadding?: boolean;
@@ -35,14 +36,7 @@ export const InDevelopment = ({
               {t("eyebrow")}
             </p>
 
-            <div className="border-l-2 border-black pl-3 md:pl-4">
-              <h1
-                id="in-development-title"
-                className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
-              >
-                {title}
-              </h1>
-            </div>
+            <PageTitle id="in-development-title" className="text-3xl sm:text-4xl md:text-5xl">{title}</PageTitle>
           </div>
         ) : null}
 

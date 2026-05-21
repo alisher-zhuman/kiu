@@ -11,11 +11,10 @@ import { useRouter } from "@/i18n/navigation";
 import {
   getScheduleById,
   SCHEDULE_LEVEL_OPTIONS,
-  SCHEDULE_SECTION_OPTIONS,
   updateSchedule,
 } from "@/entities/schedules";
 
-import { QUERY_KEYS } from "@/shared/constants";
+import { FACULTY_SECTION_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
@@ -104,7 +103,7 @@ export const useEditScheduleForm = ({ id }: Params) => {
     isSubmitDisabled:
       isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
     levelOptions: SCHEDULE_LEVEL_OPTIONS,
-    sectionOptions: SCHEDULE_SECTION_OPTIONS,
+    sectionOptions: FACULTY_SECTION_OPTIONS,
     scheduleError: error,
     isScheduleLoading: isLoading,
     schedule,

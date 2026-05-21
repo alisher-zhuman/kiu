@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 
 import { type NewsItem } from "@/entities/news";
 
+import { PageTitle } from "@/shared/ui/page-title";
 import { Reveal } from "@/shared/ui/reveal";
 
 import { NewsCard } from "../news-card";
@@ -25,11 +26,7 @@ export const News = ({ hasError = false, locale, news }: Props) => {
               {t("eyebrow")}
             </p>
 
-            <div className="border-l-2 border-black pl-3 md:pl-4">
-              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
-                {t("title")}
-              </h1>
-            </div>
+            <PageTitle>{t("title")}</PageTitle>
 
             {description ? (
               <p className="max-w-3xl text-base leading-8 text-black/70 md:text-lg">

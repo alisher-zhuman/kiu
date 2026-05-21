@@ -1,13 +1,13 @@
 import { z } from "zod";
 
-import { SCHEDULE_SECTION_OPTIONS } from "./constants";
+import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 
 export const ScheduleItemSchema = z.object({
   id: z.number(),
   title: z.string(),
   content: z.string(),
   level: z.string(),
-  section: z.enum(SCHEDULE_SECTION_OPTIONS),
+  section: z.enum(FACULTY_SECTION_OPTIONS),
   dateOfPublication: z.string(),
 });
 
