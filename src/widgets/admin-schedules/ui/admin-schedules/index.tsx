@@ -15,6 +15,7 @@ import { useTabScroll } from "@/shared/hooks";
 import { useSearchParamState } from "@/shared/hooks";
 import { AdminCollectionState } from "@/shared/ui/admin-collection-state";
 import { AdminPageShell } from "@/shared/ui/admin-page-shell";
+import { AdminSidebarLayout } from "@/shared/ui/admin-sidebar-layout";
 import { FilterSelect } from "@/shared/ui/filter-select";
 import { TabSidebar } from "@/shared/ui/tab-sidebar";
 
@@ -111,33 +112,31 @@ export const AdminSchedules = () => {
         ))}
       </div>
 
-      <div className="md:flex md:items-start md:gap-10">
-        <div className="min-w-0 flex-1">
-          <AdminCollectionState
-            emptyLabel={t("empty")}
-            error={error}
-            errorLabel={t("error")}
-            isEmpty={!data?.length}
-            isLoading={isLoading}
-            loadingLabel={t("loading")}
-          >
-            <div className="grid items-stretch gap-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-              {data?.map((item) => (
-                <ScheduleCard key={item.id} item={item} />
-              ))}
-            </div>
-          </AdminCollectionState>
-        </div>
-
-        <div className="hidden md:block">
+      <AdminSidebarLayout
+        sidebar={
           <TabSidebar
             activeKey={activeSection}
             label={t("sectionLabel")}
             onSelect={setActiveSection}
             tabs={sectionTabs}
           />
-        </div>
-      </div>
+        }
+      >
+        <AdminCollectionState
+          emptyLabel={t("empty")}
+          error={error}
+          errorLabel={t("error")}
+          isEmpty={!data?.length}
+          isLoading={isLoading}
+          loadingLabel={t("loading")}
+        >
+          <div className="grid items-stretch gap-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+            {data?.map((item) => (
+              <ScheduleCard key={item.id} item={item} />
+            ))}
+          </div>
+        </AdminCollectionState>
+      </AdminSidebarLayout>
     </AdminPageShell>
   );
 };
