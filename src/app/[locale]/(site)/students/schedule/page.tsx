@@ -11,7 +11,7 @@ import {
 import { getPublicSchedulesByLevel } from "@/entities/schedules/api/server";
 
 import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
-import { fetchSafely } from "@/shared/helpers";
+import { withFallback } from "@/shared/helpers";
 
 interface Props {
   params: Promise<{ locale: AppLocale }>;
@@ -36,7 +36,7 @@ const StudentsSchedulePage = async ({ params, searchParams }: Props) => {
 
   const t = await getTranslations({ locale, namespace: "Navbar" });
 
-  const { data: schedules, hasError } = await fetchSafely<ScheduleItem[]>(
+  const { data: schedules, hasError } = await withFallback<ScheduleItem[]>(
     () => getPublicSchedulesByLevel(locale, activeLevel, activeSection),
     [],
   );

@@ -5,7 +5,7 @@ import { FacultyPage } from "@/widgets/faculty";
 import { type ProfessorItem } from "@/entities/professors";
 import { getPublicProfessorsBySection } from "@/entities/professors/api/server";
 
-import { fetchSafely } from "@/shared/helpers";
+import { withFallback } from "@/shared/helpers";
 
 interface Props {
   params: Promise<{
@@ -17,7 +17,7 @@ export const ShariaFacultyPage = async ({ params }: Props) => {
   const { locale } = await params;
 
   const { data: professors, hasError: hasProfessorsError } =
-    await fetchSafely<ProfessorItem[]>(
+    await withFallback<ProfessorItem[]>(
       () => getPublicProfessorsBySection(locale, "SHARIAT"),
       [],
     );
