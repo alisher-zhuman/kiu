@@ -5,7 +5,7 @@ import { Documents } from "@/widgets/documents";
 import { type DocumentItem } from "@/entities/documents";
 import { getPublicDocuments } from "@/entities/documents/api/server";
 
-import { withFallback } from "@/shared/helpers";
+import { fetchSafely } from "@/shared/helpers";
 
 interface Props {
   params: Promise<{ locale: AppLocale }>;
@@ -14,7 +14,7 @@ interface Props {
 const StructureDocumentsPage = async ({ params }: Props) => {
   const { locale } = await params;
 
-  const { data: documents, hasError } = await withFallback<DocumentItem[]>(
+  const { data: documents, hasError } = await fetchSafely<DocumentItem[]>(
     () => getPublicDocuments(locale),
     [],
   );

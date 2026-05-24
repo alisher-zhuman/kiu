@@ -15,4 +15,4 @@ export {
   handleLinkAction,
 } from "./base";
 export { formatCount, getCounterMeta } from "./count-up";
-export { withFallback } from "./fetch";
+export { fetchSafely } from "./fetch";

@@ -5,7 +5,7 @@ import { Rectorate } from "@/widgets/rectorate";
 import { type ProfessorItem } from "@/entities/professors";
 import { getPublicProfessorsBySection } from "@/entities/professors/api/server";
 
-import { withFallback } from "@/shared/helpers";
+import { fetchSafely } from "@/shared/helpers";
 
 interface Props {
   params: Promise<{
@@ -16,7 +16,7 @@ interface Props {
 const RectoratePage = async ({ params }: Props) => {
   const { locale } = await params;
 
-  const { data: professors, hasError } = await withFallback<ProfessorItem[]>(
+  const { data: professors, hasError } = await fetchSafely<ProfessorItem[]>(
     () => getPublicProfessorsBySection(locale, "ADMINISTRATION"),
     [],
   );

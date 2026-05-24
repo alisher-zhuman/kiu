@@ -1,4 +1,4 @@
-export const withFallback = async <T>(
+export const fetchSafely = async <T>(
   fetcher: () => Promise<T>,
   fallback: T,
 ): Promise<{ data: T; hasError: boolean }> => {
