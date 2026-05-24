@@ -1,10 +1,9 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { PencilLine } from "lucide-react";
-
-import { Link } from "@/i18n/navigation";
 
 import { DeleteProfessorButton } from "@/features/delete-professor";
+
+import { AdminEditLink } from "@/shared/ui/admin-edit-link";
 
 import { type ProfessorItem } from "@/entities/professors";
 
@@ -58,14 +57,11 @@ export const ProfessorCard = ({ item }: Props) => {
         </div>
 
         <div className="mt-auto flex flex-wrap gap-2 pt-1">
-          <Link
+          <AdminEditLink
             href={`/admin/professors/${item.id}/edit`}
-            aria-label={t("edit.action")}
-            className="inline-flex size-9 items-center justify-center rounded-full border border-[#004C97]/15 bg-[#004C97]/6 text-[#004C97] transition-colors hover:bg-[#004C97]/10 md:size-auto md:px-4 md:py-2 md:text-sm md:font-semibold"
-          >
-            <PencilLine className="size-4 md:hidden" />
-            <span className="hidden md:inline">{t("edit.action")}</span>
-          </Link>
+            ariaLabel={t("edit.action")}
+            label={t("edit.action")}
+          />
 
           <DeleteProfessorButton id={item.id} iconOnlyOnMobile />
         </div>

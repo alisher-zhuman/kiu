@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { PencilLine } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
@@ -10,6 +9,7 @@ import { DeleteNewsButton } from "@/features/delete-news";
 import { type NewsItem } from "@/entities/news";
 
 import { cn, formatDate, getPreviewText } from "@/shared/helpers";
+import { AdminEditLink } from "@/shared/ui/admin-edit-link";
 
 import {
   ADMIN_NEWS_DESCRIPTION_PREVIEW_LIMIT,
@@ -91,14 +91,11 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
       </Link>
 
       <div className="mt-auto flex flex-wrap items-center gap-2 px-4 pb-4 md:px-5 md:pb-5">
-        <Link
+        <AdminEditLink
           href={`/admin/news/${item.id}/edit`}
-          aria-label={tEdit("action")}
-          className="inline-flex size-9 items-center justify-center rounded-full border border-[#004C97]/15 bg-[#004C97]/6 text-[#004C97] transition-colors hover:bg-[#004C97]/10 md:size-auto md:px-4 md:py-2 md:text-sm md:font-semibold"
-        >
-          <PencilLine className="size-4 md:hidden" />
-          <span className="hidden md:inline">{tEdit("action")}</span>
-        </Link>
+          ariaLabel={tEdit("action")}
+          label={tEdit("action")}
+        />
 
         <ArchiveNewsButton
           archived={item.archived}

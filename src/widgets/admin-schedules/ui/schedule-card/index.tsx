@@ -1,9 +1,12 @@
 import { useTranslations } from "next-intl";
-import { ExternalLink, FileText, PencilLine } from "lucide-react";
+import { FileText, PencilLine } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 
 import { DeleteScheduleButton } from "@/features/delete-schedule";
+
+import { AdminOpenFileLink } from "@/shared/ui/admin-open-file-link";
+
 
 import { type ScheduleItem } from "@/entities/schedules";
 
@@ -31,16 +34,11 @@ export const ScheduleCard = ({ item }: Props) => {
       </div>
 
       <div className="mt-auto flex flex-wrap justify-end gap-2 pt-4">
-        <a
+        <AdminOpenFileLink
           href={item.content}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={t("open")}
-          className="inline-flex size-9 items-center justify-center rounded-full bg-[#004C97] text-white transition-colors hover:bg-[#002E5C] md:size-auto md:gap-2 md:px-4 md:py-2 md:text-sm md:font-semibold"
-        >
-          <ExternalLink className="size-4" />
-          <span className="hidden md:inline">{t("open")}</span>
-        </a>
+          ariaLabel={t("open")}
+          label={t("open")}
+        />
 
         <Link
           href={`/admin/schedules/${item.id}/edit`}
