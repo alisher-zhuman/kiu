@@ -5,6 +5,8 @@ import { Rectorate } from "@/widgets/rectorate";
 import { type ProfessorItem } from "@/entities/professors";
 import { getPublicProfessorsBySection } from "@/entities/professors/api/server";
 
+import { fetchSafely } from "@/shared/helpers";
+
 interface Props {
   params: Promise<{
     locale: AppLocale;
@@ -14,14 +16,10 @@ interface Props {
 const RectoratePage = async ({ params }: Props) => {
   const { locale } = await params;
 
-  let hasError = false;
-  let professors: ProfessorItem[] = [];
-
-  try {
-    professors = await getPublicProfessorsBySection(locale, "ADMINISTRATION");
-  } catch {
-    hasError = true;
-  }
+  const { data: professors, hasError } = await fetchSafely<ProfessorItem[]>(
+    () => getPublicProfessorsBySection(locale, "ADMINISTRATION"),
+    [],
+  );
 
   return <Rectorate hasError={hasError} professors={professors} />;
 };
