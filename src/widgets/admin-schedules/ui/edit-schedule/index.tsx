@@ -1,13 +1,13 @@
 import { EditScheduleForm } from "@/features/edit-schedule";
 
-import { AdminPageShell } from "@/shared/ui/admin-page-shell";
+import { AdminFormShell } from "@/shared/ui/admin-form-shell";
 
 interface Props {
   id: number;
 }
 
 export const EditSchedule = ({ id }: Props) => (
-  <AdminPageShell backHref="/admin/schedules" sectionClassName="space-y-6 md:space-y-8">
+  <AdminFormShell backHref="/admin/schedules">
     <EditScheduleForm id={id} />
-  </AdminPageShell>
+  </AdminFormShell>
 );

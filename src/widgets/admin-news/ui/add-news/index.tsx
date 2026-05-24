@@ -2,13 +2,10 @@
 
 import { AddNewsForm } from "@/features/add-news";
 
-import { AdminPageShell } from "@/shared/ui/admin-page-shell";
+import { AdminFormShell } from "@/shared/ui/admin-form-shell";
 
 export const AddNews = () => (
-  <AdminPageShell
-    backHref="/admin/news"
-    sectionClassName="space-y-6 md:space-y-8"
-  >
+  <AdminFormShell backHref="/admin/news">
     <AddNewsForm />
-  </AdminPageShell>
+  </AdminFormShell>
 );

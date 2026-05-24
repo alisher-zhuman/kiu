@@ -2,13 +2,10 @@
 
 import { AddProfessorForm } from "@/features/add-professor";
 
-import { AdminPageShell } from "@/shared/ui/admin-page-shell";
+import { AdminFormShell } from "@/shared/ui/admin-form-shell";
 
 export const AddProfessor = () => (
-  <AdminPageShell
-    backHref="/admin/professors"
-    sectionClassName="space-y-6 md:space-y-8"
-  >
+  <AdminFormShell backHref="/admin/professors">
     <AddProfessorForm />
-  </AdminPageShell>
+  </AdminFormShell>
 );

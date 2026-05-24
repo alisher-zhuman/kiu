@@ -2,17 +2,14 @@
 
 import { EditProfessorForm } from "@/features/edit-professor";
 
-import { AdminPageShell } from "@/shared/ui/admin-page-shell";
+import { AdminFormShell } from "@/shared/ui/admin-form-shell";
 
 interface Props {
   id: number;
 }
 
 export const EditProfessor = ({ id }: Props) => (
-  <AdminPageShell
-    backHref="/admin/professors"
-    sectionClassName="space-y-6 md:space-y-8"
-  >
+  <AdminFormShell backHref="/admin/professors">
     <EditProfessorForm id={id} />
-  </AdminPageShell>
+  </AdminFormShell>
 );

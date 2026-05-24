@@ -2,13 +2,10 @@
 
 import { AddDocumentForm } from "@/features/add-document";
 
-import { AdminPageShell } from "@/shared/ui/admin-page-shell";
+import { AdminFormShell } from "@/shared/ui/admin-form-shell";
 
 export const AddDocument = () => (
-  <AdminPageShell
-    backHref="/admin/documents"
-    sectionClassName="space-y-6 md:space-y-8"
-  >
+  <AdminFormShell backHref="/admin/documents">
     <AddDocumentForm />
-  </AdminPageShell>
+  </AdminFormShell>
 );
