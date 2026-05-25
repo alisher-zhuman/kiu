@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -77,4 +79,14 @@ export const getPreviewText = (value: string, limit: number) => {
   }
 
   return `${normalizedValue.slice(0, limit).trimEnd()}...`;
+};
+
+export const parseEntityId = (id: string): number => {
+  const parsed = Number(id);
+
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    notFound();
+  }
+
+  return parsed;
 };

@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
-
 import { EditNews } from "@/widgets/admin-news";
+
+import { parseEntityId } from "@/shared/helpers";
 
 interface Props {
   params: Promise<{
@@ -12,13 +12,7 @@ interface Props {
 const EditNewsPage = async ({ params }: Props) => {
   const { id } = await params;
 
-  const newsId = Number(id);
-
-  if (!Number.isInteger(newsId) || newsId <= 0) {
-    notFound();
-  }
-
-  return <EditNews id={newsId} />;
+  return <EditNews id={parseEntityId(id)} />;
 };
 
 export default EditNewsPage;

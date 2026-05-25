@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
-
 import { EditSchedule } from "@/widgets/admin-schedules";
+
+import { parseEntityId } from "@/shared/helpers";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -8,13 +8,8 @@ interface Props {
 
 const EditSchedulePage = async ({ params }: Props) => {
   const { id } = await params;
-  const scheduleId = Number(id);
 
-  if (!Number.isInteger(scheduleId) || scheduleId <= 0) {
-    notFound();
-  }
-
-  return <EditSchedule id={scheduleId} />;
+  return <EditSchedule id={parseEntityId(id)} />;
 };
 
 export default EditSchedulePage;

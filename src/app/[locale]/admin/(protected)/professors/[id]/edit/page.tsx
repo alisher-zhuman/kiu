@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
-
 import { EditProfessor } from "@/widgets/admin-professors";
+
+import { parseEntityId } from "@/shared/helpers";
 
 interface Props {
   params: Promise<{
@@ -12,13 +12,7 @@ interface Props {
 const EditProfessorPage = async ({ params }: Props) => {
   const { id } = await params;
 
-  const professorId = Number(id);
-
-  if (!Number.isInteger(professorId) || professorId <= 0) {
-    notFound();
-  }
-
-  return <EditProfessor id={professorId} />;
+  return <EditProfessor id={parseEntityId(id)} />;
 };
 
 export default EditProfessorPage;

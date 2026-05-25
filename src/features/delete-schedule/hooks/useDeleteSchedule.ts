@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { deleteSchedule } from "@/entities/schedules";
 
+import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
@@ -16,7 +17,7 @@ export const useDeleteSchedule = ({ id }: Params) => {
 
   const mutation = useToastMutation({
     mutationFn: () => deleteSchedule(id),
-    invalidateKeys: [["admin-schedules"]],
+    invalidateKeys: [QUERY_KEYS.adminSchedulesAll()],
     pendingMessage: t("pending"),
     successMessage: t("success"),
     errorMessage: (error: unknown) => getApiErrorMessage(error, t("error")),
