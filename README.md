@@ -25,7 +25,7 @@ npm run typecheck
 
 ## Environment
 
-The project uses `.env`.
+The project uses [.env](.env).
 
 Expected public variables:
 
@@ -115,9 +115,9 @@ Supported locales:
 
 Translations are stored in:
 
-- `messages/kg.json`
-- `messages/ru.json`
-- `messages/en.json`
+- [messages/kg.json](messages/kg.json)
+- [messages/ru.json](messages/ru.json)
+- [messages/en.json](messages/en.json)
 
 ## Development Rules
 
@@ -132,4 +132,4 @@ Translations are stored in:
 
 Additional project notes:
 
-- `docs/project-overview.md`
+- [docs/project-overview.md](docs/project-overview.md)
