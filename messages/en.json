@@ -676,28 +676,33 @@
     "columns": {
       "program": "Program",
       "local": "Tuition",
-      "foreign": "For international students"
+      "foreign": "For international students",
+      "admission": "Admission Requirements"
     },
     "rows": [
       {
-        "program": "Shariat",
-        "local": "20,000 KGS",
-        "foreign": "30,000 KGS"
+        "program": "Theology",
+        "local": "55,000 KGS",
+        "foreign": "60,000 KGS",
+        "admission": "Applicants who pass the threshold score are admitted; no additional internal exams"
+      },
+      {
+        "program": "Arabic Philology",
+        "local": "55,000 KGS",
+        "foreign": "60,000 KGS",
+        "admission": "Applicants who pass the threshold score are admitted; no additional internal exams"
+      },
+      {
+        "program": "Shariat (religious higher education)",
+        "local": "25,000 KGS",
+        "foreign": "30,000 KGS",
+        "admission": "Applicants with the highest score on the internal exam are admitted"
       },
       {
         "program": "Shariat / distance learning",
-        "local": "40,000 KGS",
-        "foreign": "45,000 KGS"
-      },
-      {
-        "program": "Philology",
-        "local": "40,000 KGS",
-        "foreign": "45,000 KGS"
-      },
-      {
-        "program": "Theology",
         "local": "45,000 KGS",
-        "foreign": "50,000 KGS"
+        "foreign": "50,000 KGS",
+        "admission": "Applicants who pass the internal exam are admitted"
       }
     ]
   },

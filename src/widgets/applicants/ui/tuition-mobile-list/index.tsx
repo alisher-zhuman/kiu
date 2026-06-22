@@ -7,7 +7,7 @@ interface Props {
 
 export const TuitionMobileList = ({ rows, t }: Props) => (
   <div className="space-y-4">
-    {rows.map(({ program, local, foreign }) => (
+    {rows.map(({ program, local, foreign, admission }) => (
       <article
         key={program}
         className="rounded-3xl border border-black/10 bg-white p-5 shadow-[0_14px_32px_rgba(0,0,0,0.04)]"
@@ -27,6 +27,13 @@ export const TuitionMobileList = ({ rows, t }: Props) => (
               <span className="max-w-32 text-black/55">{t("columns.foreign")}</span>
               <span className="text-right font-medium text-black">{foreign}</span>
             </div>
+
+            {admission && (
+              <div className="flex flex-col gap-1 border-t border-black/6 pt-3">
+                <span className="text-black/55">{t("columns.admission")}</span>
+                <span className="font-medium text-black">{admission}</span>
+              </div>
+            )}
           </div>
         </div>
       </article>
