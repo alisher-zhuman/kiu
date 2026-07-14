@@ -2,7 +2,7 @@ import "server-only";
 
 import { type AppLocale } from "@/i18n/routing";
 
-import { API_ROUTES } from "@/shared/constants";
+import { API_ROUTES, SERVER_FETCH_TIMEOUT_MS } from "@/shared/constants";
 import { getLocalizedServerApiUrl } from "@/shared/helpers";
 
 import { NewsItemSchema, NewsResponseSchema } from "../model/schemas";
@@ -10,6 +10,7 @@ import { NewsItemSchema, NewsResponseSchema } from "../model/schemas";
 export const getPublicNews = async (locale: AppLocale) => {
   const response = await fetch(getLocalizedServerApiUrl(API_ROUTES.NEWS, locale), {
     next: { revalidate: 60 },
+    signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
   });
 
   if (!response.ok) {
@@ -26,6 +27,7 @@ export const getPublicNewsById = async (locale: AppLocale, id: number) => {
     getLocalizedServerApiUrl(`${API_ROUTES.NEWS}/${id}`, locale),
     {
       next: { revalidate: 60 },
+      signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
     },
   );
 

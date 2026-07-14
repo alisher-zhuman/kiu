@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { type AppLocale } from "@/i18n/routing";
 
@@ -21,6 +21,8 @@ interface Props {
 const StudentsSchedulePage = async ({ params, searchParams }: Props) => {
   const { locale } = await params;
   const { level, section } = await searchParams;
+
+  setRequestLocale(locale);
 
   const activeLevel = SCHEDULE_LEVEL_OPTIONS.includes(
     level as (typeof SCHEDULE_LEVEL_OPTIONS)[number],

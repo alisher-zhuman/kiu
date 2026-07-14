@@ -2,7 +2,7 @@ import "server-only";
 
 import { type AppLocale } from "@/i18n/routing";
 
-import { API_ROUTES } from "@/shared/constants";
+import { API_ROUTES, SERVER_FETCH_TIMEOUT_MS } from "@/shared/constants";
 import { getLocalizedServerApiUrl } from "@/shared/helpers";
 
 import { ProfessorsResponseSchema } from "../model/schemas";
@@ -20,6 +20,7 @@ export const getPublicProfessorsBySection = async (
 
   const response = await fetch(url, {
     next: { revalidate: 60 },
+    signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
   });
 
   if (!response.ok) {

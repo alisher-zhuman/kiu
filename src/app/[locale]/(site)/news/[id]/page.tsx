@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 
 import { type AppLocale } from "@/i18n/routing";
 
@@ -6,6 +7,8 @@ import { NewsDetail } from "@/widgets/news";
 
 import { type NewsItem } from "@/entities/news";
 import { getPublicNewsById } from "@/entities/news/api/server";
+
+export const revalidate = 60;
 
 interface Props {
   params: Promise<{
@@ -16,6 +19,8 @@ interface Props {
 
 const NewsDetailPage = async ({ params }: Props) => {
   const { id, locale } = await params;
+
+  setRequestLocale(locale);
 
   const newsId = Number(id);
   let hasError = false;

@@ -1,3 +1,5 @@
+import { setRequestLocale } from "next-intl/server";
+
 import { type AppLocale } from "@/i18n/routing";
 
 import { FacultyPage } from "@/widgets/faculty";
@@ -7,6 +9,8 @@ import { getPublicProfessorsBySection } from "@/entities/professors/api/server";
 
 import { fetchSafely } from "@/shared/helpers";
 
+export const revalidate = 60;
+
 interface Props {
   params: Promise<{
     locale: AppLocale;
@@ -15,6 +19,8 @@ interface Props {
 
 export const PhilologyFacultyPage = async ({ params }: Props) => {
   const { locale } = await params;
+
+  setRequestLocale(locale);
 
   const { data: professors, hasError: hasProfessorsError } =
     await fetchSafely<ProfessorItem[]>(
