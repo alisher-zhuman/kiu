@@ -3,9 +3,9 @@ import { FileText } from "lucide-react";
 
 import { DeleteDocumentButton } from "@/features/delete-document";
 
-import { AdminOpenFileLink } from "@/shared/ui/admin-open-file-link";
-
 import { type DocumentItem } from "@/entities/documents";
+
+import { AdminOpenFileLink } from "@/shared/ui/admin-open-file-link";
 
 interface Props {
   item: DocumentItem;

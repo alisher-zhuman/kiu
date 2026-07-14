@@ -3,9 +3,9 @@ import { useTranslations } from "next-intl";
 
 import { DeleteProfessorButton } from "@/features/delete-professor";
 
-import { AdminEditLink } from "@/shared/ui/admin-edit-link";
-
 import { type ProfessorItem } from "@/entities/professors";
+
+import { AdminEditLink } from "@/shared/ui/admin-edit-link";
 
 interface Props {
   item: ProfessorItem;

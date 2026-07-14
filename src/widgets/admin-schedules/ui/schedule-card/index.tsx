@@ -5,10 +5,9 @@ import { Link } from "@/i18n/navigation";
 
 import { DeleteScheduleButton } from "@/features/delete-schedule";
 
-import { AdminOpenFileLink } from "@/shared/ui/admin-open-file-link";
-
-
 import { type ScheduleItem } from "@/entities/schedules";
+
+import { AdminOpenFileLink } from "@/shared/ui/admin-open-file-link";
 
 interface Props {
   item: ScheduleItem;
