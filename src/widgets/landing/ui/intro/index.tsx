@@ -1,18 +1,42 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Volume2, VolumeX } from "lucide-react";
+import { Play, Volume2, VolumeX } from "lucide-react";
 
 import { cn } from "@/shared/helpers";
+
+const DESKTOP_MEDIA_QUERY = "(min-width: 768px)";
 
 export const Intro = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const t = useTranslations("Intro");
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
+
+    const autoplayOnDesktop = () => {
+      if (mediaQuery.matches) {
+        videoRef.current?.play().catch(() => null);
+      } else {
+        videoRef.current?.pause();
+      }
+    };
+
+    autoplayOnDesktop();
+    mediaQuery.addEventListener("change", autoplayOnDesktop);
+
+    return () => mediaQuery.removeEventListener("change", autoplayOnDesktop);
+  }, []);
+
+  const handlePlayClick = () => {
+    videoRef.current?.play().catch(() => null);
+  };
 
   const handleSoundToggle = async () => {
     const nextMuted = !isMuted;
@@ -34,7 +58,7 @@ export const Intro = () => {
     <section className="w-full">
       <div className="relative max-w-400 m-auto">
         <div className="relative overflow-hidden">
-          {!isVideoReady ? (
+          {isPlaying && !isVideoReady ? (
             <div className="pointer-events-none absolute inset-x-5 top-5 z-20 md:inset-x-8 md:top-8">
               <p className="inline-flex max-w-full rounded-full bg-white/88 px-4 py-2 text-sm font-medium text-[#003B75] shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-sm md:text-base">
                 {t("loading")}
@@ -50,15 +74,35 @@ export const Intro = () => {
             )}
           />
 
+          {!isPlaying && (
+            <button
+              type="button"
+              aria-label={t("play")}
+              onClick={handlePlayClick}
+              className="group absolute inset-0 z-20 flex items-center justify-center"
+            >
+              <span className="inline-flex items-center justify-center rounded-full bg-white/88 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.15)] backdrop-blur-sm transition-transform duration-200 group-hover:scale-105">
+                <Play
+                  size={28}
+                  strokeWidth={1.75}
+                  fill="currentColor"
+                  className="translate-x-0.5 text-[#004C97]"
+                />
+              </span>
+            </button>
+          )}
+
           <video
             ref={videoRef}
-            autoPlay
             muted={isMuted}
             loop
             playsInline
             poster="/images/intro-poster.webp"
             preload="metadata"
             onLoadedData={() => setIsVideoReady(true)}
+            onPlaying={() => setIsVideoReady(true)}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
             className={cn(
               "block aspect-video w-full bg-black/8 object-cover transition-opacity duration-300",
               isVideoReady ? "opacity-100" : "opacity-100",
