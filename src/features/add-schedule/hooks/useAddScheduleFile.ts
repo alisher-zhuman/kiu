@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   type Control,
   type UseFormClearErrors,
@@ -33,13 +33,15 @@ export const useAddScheduleFile = ({
   setValue,
   t,
 }: Params) => {
-  const [fileName, setFileName] = useState("");
-
   const content = useWatch({ control, defaultValue: "", name: "content" });
 
-  useEffect(() => {
+  const [fileName, setFileName] = useState(() => getFileNameFromUrl(content));
+  const [prevContent, setPrevContent] = useState(content);
+
+  if (content !== prevContent) {
+    setPrevContent(content);
     setFileName(getFileNameFromUrl(content));
-  }, [content]);
+  }
 
   const {
     fileInputRef,
