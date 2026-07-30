@@ -17,3 +17,4 @@ export {
 } from "./base";
 export { formatCount, getCounterMeta } from "./count-up";
 export { fetchSafely } from "./fetch";
+export { toJsonLd } from "./json-ld";

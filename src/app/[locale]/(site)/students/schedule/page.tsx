@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { type AppLocale } from "@/i18n/routing";
@@ -10,10 +11,18 @@ import { getPublicSchedulesByLevel } from "@/entities/schedules/api/server";
 import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 import { fetchSafely } from "@/shared/helpers";
 
+import { getPageMetadata } from "../../../helpers";
+
 interface Props {
   params: Promise<{ locale: AppLocale }>;
   searchParams: Promise<{ level?: string; section?: string }>;
 }
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { locale } = await params;
+
+  return getPageMetadata({ locale, pageKey: "studentsSchedule", path: "/students/schedule" });
+};
 
 const StudentsSchedulePage = async ({ params, searchParams }: Props) => {
   const { locale } = await params;

@@ -7,15 +7,61 @@ import { SITE_URL } from "@/shared/constants";
 
 import { OPEN_GRAPH_LOCALES } from "../constants";
 
+export const buildCanonicalUrl = (locale: AppLocale, path = "") => `${SITE_URL}/${locale}${path}`;
+
+interface PageMetadataOptions {
+  description?: string;
+  imageUrl?: string;
+  locale: AppLocale;
+  pageKey: string;
+  path?: string;
+  title?: string;
+}
+
+export const getPageMetadata = async ({
+  description,
+  imageUrl,
+  locale,
+  pageKey,
+  path = "",
+  title,
+}: PageMetadataOptions): Promise<Metadata> => {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  const pageTitle = title ?? t(`pages.${pageKey}.title`);
+  const pageDescription = description ?? t(`pages.${pageKey}.description`);
+  const canonical = buildCanonicalUrl(locale, path);
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: canonical,
+      siteName: t("publisher"),
+      images: imageUrl ? [{ url: imageUrl, alt: pageTitle }] : undefined,
+      locale: OPEN_GRAPH_LOCALES[locale],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      images: imageUrl ? [imageUrl] : undefined,
+    },
+  };
+};
+
 export const getMetadata = async (locale: AppLocale): Promise<Metadata> => {
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
     title: t("title"),
     description: t("description"),
-    icons: {
-      icon: "/icons/logo.svg",
-    },
     keywords: t.raw("keywords") as string[],
     authors: [
       {
@@ -29,16 +75,8 @@ export const getMetadata = async (locale: AppLocale): Promise<Metadata> => {
     openGraph: {
       title: t("openGraph.title"),
       description: t("openGraph.description"),
-      url: SITE_URL,
+      url: buildCanonicalUrl(locale),
       siteName: t("openGraph.siteName"),
-      images: [
-        {
-          url: "/icons/logo.png",
-          width: 1200,
-          height: 630,
-          alt: t("openGraph.imageAlt"),
-        },
-      ],
       locale: OPEN_GRAPH_LOCALES[locale],
       type: "website",
     },
@@ -46,10 +84,9 @@ export const getMetadata = async (locale: AppLocale): Promise<Metadata> => {
       card: "summary_large_image",
       title: t("twitter.title"),
       description: t("twitter.description"),
-      images: ["/icons/logo.png"],
     },
     alternates: {
-      canonical: SITE_URL,
+      canonical: buildCanonicalUrl(locale),
     },
   };
 };

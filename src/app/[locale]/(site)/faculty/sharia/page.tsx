@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
 import { type AppLocale } from "@/i18n/routing";
@@ -9,6 +10,8 @@ import { getPublicProfessorsBySection } from "@/entities/professors/api/server";
 
 import { fetchSafely } from "@/shared/helpers";
 
+import { getPageMetadata } from "../../../helpers";
+
 export const revalidate = 60;
 
 interface Props {
@@ -16,6 +19,12 @@ interface Props {
     locale: AppLocale;
   }>;
 }
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { locale } = await params;
+
+  return getPageMetadata({ locale, pageKey: "facultySharia", path: "/faculty/sharia" });
+};
 
 export const ShariaFacultyPage = async ({ params }: Props) => {
   const { locale } = await params;

@@ -10,7 +10,10 @@ import { Analytics } from "@vercel/analytics/next";
 
 import { routing } from "@/i18n/routing";
 
+import { toJsonLd } from "@/shared/helpers";
+
 import { getMetadata } from "./helpers/metadata";
+import { getOrganizationJsonLd } from "./helpers/organization-json-ld";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -44,10 +47,16 @@ const LocaleLayout = async ({ children, params }: Props) => {
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: "Layout" });
+  const organizationJsonLd = await getOrganizationJsonLd(locale);
 
   return (
     <html lang={locale}>
       <body className={montserrat.variable}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: toJsonLd(organizationJsonLd) }}
+        />
+
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-2xl focus:bg-[#004C97] focus:px-5 focus:py-3 focus:text-sm focus:font-medium focus:text-white"

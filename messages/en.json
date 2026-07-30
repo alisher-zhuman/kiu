@@ -287,6 +287,76 @@
     "twitter": {
       "title": "Kyrgyzstan Islamic University",
       "description": "Official website of Kyrgyzstan Islamic University - news, admissions, and faculties."
+    },
+    "pages": {
+      "home": {
+        "title": "Kyrgyzstan Islamic University — Official Website",
+        "description": "Official website of Kyrgyzstan Islamic University: news, the departments of theology, Arabic philology and sharia, admissions, and student life."
+      },
+      "science": {
+        "title": "Science — Kyrgyzstan Islamic University",
+        "description": "Scientific activity at KIU: research areas, publications, conferences, and the research work of students and faculty."
+      },
+      "history": {
+        "title": "University History — Kyrgyzstan Islamic University",
+        "description": "The history of Kyrgyzstan Islamic University: from the Hazreti Umar madrasa to a modern university with departments of theology, philology, and sharia."
+      },
+      "courses": {
+        "title": "Arabic Language and Quran Courses — KIU",
+        "description": "Short-term Arabic language and Quran courses at Kyrgyzstan Islamic University: program, instructors, and contacts for enrollment."
+      },
+      "applicants": {
+        "title": "For Applicants — Kyrgyzstan Islamic University",
+        "description": "Information for KIU applicants: academic programs, admission rules, entrance exams, deadlines, and tuition costs."
+      },
+      "applicantsRequiredDocuments": {
+        "title": "Required Documents for Admission — KIU",
+        "description": "The list of documents required for admission to Kyrgyzstan Islamic University, including requirements for foreign citizens."
+      },
+      "applicantsTuition": {
+        "title": "Tuition for Applicants — Kyrgyzstan Islamic University",
+        "description": "Tuition costs for academic programs at Kyrgyzstan Islamic University for local and international students."
+      },
+      "studentsSchedule": {
+        "title": "Class Schedule — Kyrgyzstan Islamic University",
+        "description": "Class schedules by course and department at Kyrgyzstan Islamic University: theology, Arabic philology, and sharia."
+      },
+      "studentsTuition": {
+        "title": "Tuition Payment — Kyrgyzstan Islamic University",
+        "description": "Bank account details for students to pay tuition at Kyrgyzstan Islamic University."
+      },
+      "rectorate": {
+        "title": "Rectorate — Kyrgyzstan Islamic University",
+        "description": "The leadership and members of the Rectorate of Kyrgyzstan Islamic University."
+      },
+      "departments": {
+        "title": "Departments — Kyrgyzstan Islamic University",
+        "description": "Administrative departments of Kyrgyzstan Islamic University: regulations, functions, and responsibilities of each unit."
+      },
+      "documents": {
+        "title": "Documents — Kyrgyzstan Islamic University",
+        "description": "Local KIU documents and documents from the Ministry of Education and Science of the Kyrgyz Republic governing the university."
+      },
+      "certificatesAndLicenses": {
+        "title": "Licenses and Certificates — Kyrgyzstan Islamic University",
+        "description": "Licenses and certificates of Kyrgyzstan Islamic University authorizing its educational activity."
+      },
+      "facultyTheology": {
+        "title": "Theology Department — Kyrgyzstan Islamic University",
+        "description": "The Theology Department at KIU: academic program, mission, goals, and career paths for theology graduates."
+      },
+      "facultyPhilology": {
+        "title": "Arabic Philology Department — Kyrgyzstan Islamic University",
+        "description": "The Arabic Philology Department at KIU: training specialists in the Arabic language, literature, and translation."
+      },
+      "facultySharia": {
+        "title": "Sharia Department — Kyrgyzstan Islamic University",
+        "description": "The Sharia Department at KIU: higher religious education within the Maturidi creed and Hanafi madhhab."
+      },
+      "news": {
+        "title": "News — Kyrgyzstan Islamic University",
+        "description": "News and events from Kyrgyzstan Islamic University: university life, science, admissions, and student achievements."
+      }
     }
   },
   "NotFoundPage": {
