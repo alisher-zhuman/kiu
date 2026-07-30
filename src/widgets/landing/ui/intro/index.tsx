@@ -70,7 +70,7 @@ export const Intro = () => {
             aria-hidden="true"
             className={cn(
               "pointer-events-none absolute inset-0 z-10 bg-black/8 transition-opacity duration-300",
-              isVideoReady && "opacity-0",
+              isVideoReady && "opacity-0"
             )}
           />
 
@@ -105,7 +105,7 @@ export const Intro = () => {
             onPause={() => setIsPlaying(false)}
             className={cn(
               "block aspect-video w-full bg-black/8 object-cover transition-opacity duration-300",
-              isVideoReady ? "opacity-100" : "opacity-100",
+              isVideoReady ? "opacity-100" : "opacity-100"
             )}
           >
             <source src="/videos/intro.mp4" type="video/mp4" />
@@ -150,9 +150,7 @@ export const Intro = () => {
 
       <div className="pr-16 md:hidden">
         <div className="relative inline-flex bg-[#004C97] pl-5 py-5">
-          <p className="text-3xl relative z-20 leading-tight font-bold text-white">
-            {t("quote")}
-          </p>
+          <p className="text-3xl relative z-20 leading-tight font-bold text-white">{t("quote")}</p>
 
           <div className="absolute z-10 top-0 -right-6 h-full w-16 origin-left -skew-x-12 bg-[#004C97]" />
         </div>

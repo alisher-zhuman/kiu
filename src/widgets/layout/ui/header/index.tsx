@@ -27,10 +27,7 @@ export const Header = ({ mode = "site" }: Props) => {
           menuLabel={t("menuLabel")}
         />
 
-        <Link
-          href={isAdmin ? "/admin/news" : "/"}
-          className="flex items-center gap-2 md:gap-4"
-        >
+        <Link href={isAdmin ? "/admin/news" : "/"} className="flex items-center gap-2 md:gap-4">
           <Image
             src="/icons/logo.svg"
             alt={t("logoAlt")}
@@ -43,9 +40,7 @@ export const Header = ({ mode = "site" }: Props) => {
 
           <div className="h-10 md:h-18 w-px bg-black" />
 
-          <p className="w-20 md:w-30 text-xs md:text-lg leading-tight font-light">
-            {t("title")}
-          </p>
+          <p className="w-20 md:w-30 text-xs md:text-lg leading-tight font-light">{t("title")}</p>
         </Link>
 
         <LangSwitcher />

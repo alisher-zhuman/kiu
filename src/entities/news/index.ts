@@ -9,10 +9,7 @@ export {
 } from "./api";
 export { useNewsForm } from "./hooks/useNewsForm";
 export { useNewsImages } from "./hooks/useNewsImages";
-export {
-  MAX_NEWS_IMAGE_SIZE_BYTES,
-  MAX_NEWS_IMAGES_COUNT,
-} from "./model/constants";
+export { MAX_NEWS_IMAGE_SIZE_BYTES, MAX_NEWS_IMAGES_COUNT } from "./model/constants";
 export {
   createDefaultNewsFormValues,
   mapEditableNewsToFormValues,

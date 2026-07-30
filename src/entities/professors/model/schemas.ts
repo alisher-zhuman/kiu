@@ -22,14 +22,14 @@ export const createProfessorFormSchema = (t: (key: string) => string) => {
           en: z.string().trim().min(1, t("errors.position.required")),
           kg: z.string().trim().min(1, t("errors.position.required")),
           ru: z.string().trim().min(1, t("errors.position.required")),
-        }),
+        })
       )
       .min(1, t("errors.position.min")),
     sections: z
       .array(
         z.enum(PROFESSOR_SECTION_OPTIONS, {
           error: () => t("errors.section.required"),
-        }),
+        })
       )
       .min(1, t("errors.section.required")),
   });

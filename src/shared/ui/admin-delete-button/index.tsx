@@ -50,7 +50,10 @@ export const AdminDeleteButton = ({
         isPending={isPending}
         message={t("confirmMessage")}
         onCancel={() => setIsConfirmOpen(false)}
-        onConfirm={() => { onDelete(); setIsConfirmOpen(false); }}
+        onConfirm={() => {
+          onDelete();
+          setIsConfirmOpen(false);
+        }}
         title={t("confirmTitle")}
       />
     </>

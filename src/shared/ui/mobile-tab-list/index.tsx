@@ -33,7 +33,9 @@ export const MobileTabList = ({
     {tabs.map((tab, index) => (
       <button
         key={tab.key}
-        ref={(el) => { tabRefs.current[index] = el; }}
+        ref={(el) => {
+          tabRefs.current[index] = el;
+        }}
         type="button"
         role="tab"
         aria-selected={activeKey === tab.key}
@@ -42,7 +44,7 @@ export const MobileTabList = ({
           "shrink-0 border-b-2 px-4 py-3 text-center text-sm transition-all duration-200",
           activeKey === tab.key
             ? "border-[#004C97] font-semibold text-[#004C97]"
-            : "border-black/10 font-normal text-black/40",
+            : "border-black/10 font-normal text-black/40"
         )}
       >
         {tab.label}

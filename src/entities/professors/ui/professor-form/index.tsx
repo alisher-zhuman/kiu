@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  type ChangeEvent,
-  type FormEventHandler,
-  type RefObject,
-} from "react";
+import { type ChangeEvent, type FormEventHandler, type RefObject } from "react";
 import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 import { useTranslations } from "next-intl";
 
@@ -12,10 +8,7 @@ import { type AppLocale } from "@/i18n/routing";
 
 import { cn } from "@/shared/helpers";
 
-import {
-  type CreateProfessorPayload,
-  type ProfessorFormValues,
-} from "../../index";
+import { type CreateProfessorPayload, type ProfessorFormValues } from "../../index";
 import { FullNameFields } from "../full-name-fields";
 import { PhotoFieldset } from "../photo-fieldset";
 import { PositionFields } from "../position-fields";
@@ -71,11 +64,7 @@ export const ProfessorForm = ({
   const sectionsT = useTranslations("AdminProfessorsPage");
 
   return (
-    <form
-      className="mx-auto w-full space-y-6 md:max-w-5xl"
-      noValidate
-      onSubmit={onSubmit}
-    >
+    <form className="mx-auto w-full space-y-6 md:max-w-5xl" noValidate onSubmit={onSubmit}>
       <div className="space-y-6 lg:grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-8 lg:space-y-0 xl:gap-10">
         <div className="space-y-6">
           <PhotoFieldset
@@ -132,8 +121,7 @@ export const ProfessorForm = ({
           disabled={isSubmitDisabled}
           className={cn(
             "inline-flex w-full cursor-pointer items-center justify-center rounded-[0.95rem] bg-[#004C97] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C] md:ml-auto md:w-auto md:min-w-40 md:text-base",
-            isSubmitDisabled &&
-              "cursor-not-allowed opacity-55 hover:bg-[#004C97]",
+            isSubmitDisabled && "cursor-not-allowed opacity-55 hover:bg-[#004C97]"
           )}
         >
           {submitLabel}

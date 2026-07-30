@@ -29,9 +29,7 @@ export const AdminCollectionState = ({
 
   if (error) {
     return (
-      <p className="text-base text-red-600 md:text-lg">
-        {getApiErrorMessage(error, errorLabel)}
-      </p>
+      <p className="text-base text-red-600 md:text-lg">{getApiErrorMessage(error, errorLabel)}</p>
     );
   }
 

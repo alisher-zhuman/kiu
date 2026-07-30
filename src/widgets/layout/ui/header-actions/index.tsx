@@ -97,10 +97,7 @@ export const HeaderActions = ({
         onToggle={() => setIsMenuOpen((current) => !current)}
       />
 
-      <MobileNavbar
-        isOpen={isMenuOpen}
-        onNavigate={() => setIsMenuOpen(false)}
-      />
+      <MobileNavbar isOpen={isMenuOpen} onNavigate={() => setIsMenuOpen(false)} />
     </>
   );
 };

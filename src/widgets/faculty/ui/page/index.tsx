@@ -7,10 +7,7 @@ import { PageTitle } from "@/shared/ui/page-title";
 import { PublicProfessorCard } from "@/shared/ui/public-professor-card";
 import { SectionsAccordion } from "@/shared/ui/sections-accordion";
 
-type FacultyPageNamespace =
-  | "PhilologyFacultyPage"
-  | "ShariaFacultyPage"
-  | "TheologyFacultyPage";
+type FacultyPageNamespace = "PhilologyFacultyPage" | "ShariaFacultyPage" | "TheologyFacultyPage";
 
 interface Props {
   hasProfessorsError?: boolean;
@@ -18,11 +15,7 @@ interface Props {
   professors?: ProfessorItem[];
 }
 
-export const FacultyPage = ({
-  hasProfessorsError = false,
-  namespace,
-  professors = [],
-}: Props) => {
+export const FacultyPage = ({ hasProfessorsError = false, namespace, professors = [] }: Props) => {
   const t = useTranslations(namespace);
   const sections = t.raw("sections") as ReadonlyArray<Section>;
 
@@ -51,11 +44,7 @@ export const FacultyPage = ({
 
             <div className="grid items-stretch gap-5 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
               {professors.map((item, index) => (
-                <PublicProfessorCard
-                  key={item.id}
-                  item={item}
-                  priority={index === 0}
-                />
+                <PublicProfessorCard key={item.id} item={item} priority={index === 0} />
               ))}
             </div>
           </section>

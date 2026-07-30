@@ -19,15 +19,7 @@ interface Props {
   t: (key: string) => string;
 }
 
-export const MobileNavItem = ({
-  href,
-  isOpen,
-  label,
-  links,
-  onNavigate,
-  onToggle,
-  t,
-}: Props) => (
+export const MobileNavItem = ({ href, isOpen, label, links, onNavigate, onToggle, t }: Props) => (
   <div className="border-b border-white/15 pb-6">
     <button
       type="button"
@@ -41,10 +33,7 @@ export const MobileNavItem = ({
       <ChevronDown
         size={20}
         strokeWidth={1.75}
-        className={cn(
-          "shrink-0 transition-transform duration-200",
-          isOpen && "rotate-180",
-        )}
+        className={cn("shrink-0 transition-transform duration-200", isOpen && "rotate-180")}
       />
     </button>
 
@@ -52,9 +41,7 @@ export const MobileNavItem = ({
       id={`${href}-links`}
       className={cn(
         "grid transition-all duration-200 ease-out",
-        isOpen
-          ? "grid-rows-[1fr] pt-3 opacity-100"
-          : "grid-rows-[0fr] pt-0 opacity-0",
+        isOpen ? "grid-rows-[1fr] pt-3 opacity-100" : "grid-rows-[0fr] pt-0 opacity-0"
       )}
     >
       <div className="flex min-h-0 flex-col gap-2 overflow-hidden pl-4">

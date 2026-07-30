@@ -10,7 +10,7 @@ import { SchedulesResponseSchema } from "../model/schemas";
 export const getPublicSchedulesByLevel = async (
   locale: AppLocale,
   level: string,
-  section: string,
+  section: string
 ) => {
   const baseUrl = getLocalizedServerApiUrl(API_ROUTES.SCHEDULES, locale);
   const url = new URL(`${baseUrl}/all/${level}`);

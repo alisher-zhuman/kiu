@@ -31,9 +31,7 @@ export const StudentsTuition = () => {
               className="flex flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:p-8"
             >
               <div>
-                <h2 className="text-xl font-bold tracking-tight md:text-2xl">
-                  {bank.forWhom}
-                </h2>
+                <h2 className="text-xl font-bold tracking-tight md:text-2xl">{bank.forWhom}</h2>
                 <p className="mt-1 text-sm text-black/45">{bank.name}</p>
               </div>
 
@@ -47,9 +45,7 @@ export const StudentsTuition = () => {
                   </p>
                   <CopyButton value={bank.accountNumber} label={t("accountLabel")} />
                 </div>
-                {bank.note ? (
-                  <p className="mt-1 text-sm text-black/50">{bank.note}</p>
-                ) : null}
+                {bank.note ? <p className="mt-1 text-sm text-black/50">{bank.note}</p> : null}
               </div>
 
               <div className="mt-auto pt-5 space-y-2">

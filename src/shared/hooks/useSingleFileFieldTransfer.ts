@@ -14,10 +14,7 @@ import { DIRTY_FORM_VALUE_OPTIONS } from "@/shared/constants/form";
 
 import { useFileTransfer } from "./useFileTransfer";
 
-interface Params<
-  TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>,
-> {
+interface Params<TFieldValues extends FieldValues, TFieldName extends FieldPath<TFieldValues>> {
   clearErrors: UseFormClearErrors<TFieldValues>;
   deleteErrorMessage: string;
   deletePendingMessage: string;
@@ -110,8 +107,7 @@ export const useSingleFileFieldTransfer = <
     fileInputRef,
     handleFileSelect,
     isDeletePending: fileTransfer.isDeletePending,
-    isTransferDisabled:
-      Boolean(getValues(fieldName)) || fileTransfer.isUploadPending,
+    isTransferDisabled: Boolean(getValues(fieldName)) || fileTransfer.isUploadPending,
     isTransferring: fileTransfer.isTransferring,
     openFileDialog,
     removeFile,

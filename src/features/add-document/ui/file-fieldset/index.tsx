@@ -29,9 +29,7 @@ export const FileFieldset = ({
   t,
 }: Props) => (
   <div className="space-y-4">
-    <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
-      {t("fileTitle")}
-    </h2>
+    <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">{t("fileTitle")}</h2>
 
     <div className="max-w-80">
       {fileName ? (
@@ -41,9 +39,7 @@ export const FileFieldset = ({
           </div>
 
           <div className="min-w-0">
-            <p className="truncate text-sm font-medium text-black">
-              {fileName || t("emptyFile")}
-            </p>
+            <p className="truncate text-sm font-medium text-black">{fileName || t("emptyFile")}</p>
 
             <p className="text-xs text-black/45">PDF</p>
           </div>
@@ -66,8 +62,7 @@ export const FileFieldset = ({
           disabled={isUploadDisabled}
           className={cn(
             "flex min-h-24 w-full cursor-pointer items-center gap-3 overflow-hidden rounded-[0.95rem] bg-black/6 px-4 py-4 text-left transition-colors hover:bg-black/8",
-            isUploadDisabled &&
-              "cursor-not-allowed opacity-55 hover:bg-black/6",
+            isUploadDisabled && "cursor-not-allowed opacity-55 hover:bg-black/6"
           )}
         >
           <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-black/8 text-black/40">
@@ -82,9 +77,7 @@ export const FileFieldset = ({
       ) : null}
     </div>
 
-    {errorMessage ? (
-      <p className="text-sm text-red-500 md:text-base">{errorMessage}</p>
-    ) : null}
+    {errorMessage ? <p className="text-sm text-red-500 md:text-base">{errorMessage}</p> : null}
 
     <input
       ref={fileInputRef}

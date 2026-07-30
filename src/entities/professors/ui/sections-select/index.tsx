@@ -58,22 +58,17 @@ export const SectionsSelect = ({
         className={cn(
           "flex w-full cursor-pointer items-center justify-between gap-3 rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-left text-base text-black outline-none transition-colors hover:border-[#004C97]/35",
           isOpen && "border-[#004C97]",
-          errorMessage && "border-red-500",
+          errorMessage && "border-red-500"
         )}
       >
-        <span
-          className={cn(
-            "truncate",
-            !selectedSections.length && "text-black/35",
-          )}
-        >
+        <span className={cn("truncate", !selectedSections.length && "text-black/35")}>
           {selectedLabel}
         </span>
 
         <ChevronDown
           className={cn(
             "size-4 shrink-0 text-black/50 transition-transform",
-            isOpen && "rotate-180",
+            isOpen && "rotate-180"
           )}
         />
       </button>
@@ -91,7 +86,7 @@ export const SectionsSelect = ({
                   onClick={() => toggleSection(section)}
                   className={cn(
                     "flex w-full cursor-pointer items-center justify-between gap-3 rounded-[0.85rem] px-3 py-2 text-left text-sm text-black transition-colors hover:bg-black/5",
-                    isSelected && "bg-[#004C97]/6",
+                    isSelected && "bg-[#004C97]/6"
                   )}
                 >
                   <span className="font-medium">{sectionLabel(section)}</span>
@@ -99,8 +94,7 @@ export const SectionsSelect = ({
                   <span
                     className={cn(
                       "inline-flex size-4 items-center justify-center rounded border border-black/20",
-                      isSelected &&
-                        "border-[#004C97] bg-[#004C97] text-white",
+                      isSelected && "border-[#004C97] bg-[#004C97] text-white"
                     )}
                   >
                     {isSelected ? <Check className="size-3" /> : null}
@@ -112,9 +106,7 @@ export const SectionsSelect = ({
         </div>
       ) : null}
 
-      {errorMessage ? (
-        <p className="text-sm text-red-500 md:text-base">{errorMessage}</p>
-      ) : null}
+      {errorMessage ? <p className="text-sm text-red-500 md:text-base">{errorMessage}</p> : null}
     </div>
   );
 };

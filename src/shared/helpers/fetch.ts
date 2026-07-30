@@ -1,6 +1,6 @@
 export const fetchSafely = async <T>(
   fetcher: () => Promise<T>,
-  fallback: T,
+  fallback: T
 ): Promise<{ data: T; hasError: boolean }> => {
   try {
     return { data: await fetcher(), hasError: false };

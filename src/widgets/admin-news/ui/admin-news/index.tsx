@@ -16,7 +16,11 @@ export const AdminNews = () => {
 
   const t = useTranslations("AdminNewsPage");
 
-  const { data: news, error, isLoading } = useQuery({
+  const {
+    data: news,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: QUERY_KEYS.adminNews(locale),
     queryFn: getNews,
   });
@@ -35,12 +39,7 @@ export const AdminNews = () => {
       >
         <div className="grid items-stretch gap-5 md:gap-6 xl:grid-cols-2">
           {newsItems.map((item, index) => (
-            <NewsCard
-              key={item.id}
-              cardIndex={index}
-              item={item}
-              locale={locale}
-            />
+            <NewsCard key={item.id} cardIndex={index} item={item} locale={locale} />
           ))}
         </div>
       </AdminCollectionState>

@@ -9,9 +9,7 @@ import {
 
 import { useSingleFileFieldTransfer } from "@/shared/hooks";
 
-import {
-  MAX_PROFESSOR_PHOTO_SIZE_BYTES,
-} from "../model/constants";
+import { MAX_PROFESSOR_PHOTO_SIZE_BYTES } from "../model/constants";
 import { type ProfessorFormValues } from "../model/types";
 
 interface Params {
@@ -22,13 +20,7 @@ interface Params {
   t: (key: string) => string;
 }
 
-export const useProfessorPhoto = ({
-  clearErrors,
-  getValues,
-  setError,
-  setValue,
-  t,
-}: Params) => {
+export const useProfessorPhoto = ({ clearErrors, getValues, setError, setValue, t }: Params) => {
   const {
     fileInputRef,
     handleFileSelect,

@@ -36,7 +36,7 @@ export const AccordionSection = ({
           strokeWidth={1.75}
           className={cn(
             "shrink-0 transition-transform duration-300 ease-out",
-            isOpen && "rotate-180",
+            isOpen && "rotate-180"
           )}
         />
       </button>
@@ -45,9 +45,7 @@ export const AccordionSection = ({
         id={panelId}
         className={cn(
           "grid transition-all duration-300 ease-out",
-          isOpen
-            ? "grid-rows-[1fr] opacity-100"
-            : "grid-rows-[0fr] opacity-0",
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         )}
       >
         <div className="min-h-0 overflow-hidden">

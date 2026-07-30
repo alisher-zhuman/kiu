@@ -11,10 +11,7 @@ import {
 import { DIRTY_FORM_VALUE_OPTIONS } from "@/shared/constants/form";
 import { useFileTransfer } from "@/shared/hooks/useFileTransfer";
 
-import {
-  MAX_NEWS_IMAGE_SIZE_BYTES,
-  MAX_NEWS_IMAGES_COUNT,
-} from "../model/constants";
+import { MAX_NEWS_IMAGE_SIZE_BYTES, MAX_NEWS_IMAGES_COUNT } from "../model/constants";
 import { type NewsFormValues } from "../model/types";
 
 interface Params {
@@ -113,8 +110,7 @@ export const useNewsImages = ({
     fileInputRef,
     handleFilesSelect,
     isDeletePending: fileTransfer.isDeletePending,
-    isUploadDisabled:
-      fileTransfer.isUploadPending || images.length >= MAX_NEWS_IMAGES_COUNT,
+    isUploadDisabled: fileTransfer.isUploadPending || images.length >= MAX_NEWS_IMAGES_COUNT,
     isUploadingImages: fileTransfer.isTransferring,
     openFileDialog,
     removeImage,

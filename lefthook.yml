@@ -1,0 +1,11 @@
+pre-push:
+  parallel: true
+  commands:
+    typecheck:
+      run: npm run typecheck
+    lint:
+      run: npm run lint
+    # --check, not --write: a hook that rewrites files would leave unstaged changes behind
+    # after the push it just approved. Fails loudly instead; `npm run format` is the fix.
+    format:
+      run: npm run format:check

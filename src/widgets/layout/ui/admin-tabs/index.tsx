@@ -18,9 +18,8 @@ export const AdminTabs = () => {
   const tActions = useTranslations("AdminLayout.actions");
 
   const activeTab =
-    ADMIN_TABS.find(
-      ({ href }) => pathname === href || pathname.startsWith(`${href}/`),
-    ) ?? ADMIN_TABS[0];
+    ADMIN_TABS.find(({ href }) => pathname === href || pathname.startsWith(`${href}/`)) ??
+    ADMIN_TABS[0];
   const shouldShowAddButton = pathname !== activeTab.addHref;
 
   const activeIndex = ADMIN_TABS.indexOf(activeTab);
@@ -39,23 +38,20 @@ export const AdminTabs = () => {
       className="mx-auto w-full max-w-400 px-5 py-3 md:px-10 md:py-4"
     >
       <div className="flex items-center justify-between gap-4">
-        <div
-          ref={scrollContainerRef}
-          className="flex flex-1 gap-2 overflow-x-auto md:hidden"
-        >
+        <div ref={scrollContainerRef} className="flex flex-1 gap-2 overflow-x-auto md:hidden">
           {ADMIN_TABS.map(({ href, key }, index) => {
             const isActive = pathname === href || pathname.startsWith(`${href}/`);
 
             return (
               <Link
                 key={href}
-                ref={(el) => { tabRefs.current[index] = el; }}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
                 href={href}
                 className={cn(
                   "shrink-0 rounded-xl px-4 py-2 text-center text-sm font-medium transition-colors duration-200",
-                  isActive
-                    ? "bg-[#004C97] text-white"
-                    : "bg-black/6 text-black hover:bg-black/8",
+                  isActive ? "bg-[#004C97] text-white" : "bg-black/6 text-black hover:bg-black/8"
                 )}
               >
                 {tNavigation(key)}
@@ -74,9 +70,7 @@ export const AdminTabs = () => {
                 href={href}
                 className={cn(
                   "flex min-w-40 items-center justify-center rounded-2xl px-5 py-3 text-center text-base font-medium tracking-normal transition-colors duration-200",
-                  isActive
-                    ? "bg-[#004C97] text-white"
-                    : "bg-black/6 text-black hover:bg-black/8",
+                  isActive ? "bg-[#004C97] text-white" : "bg-black/6 text-black hover:bg-black/8"
                 )}
               >
                 {tNavigation(key)}

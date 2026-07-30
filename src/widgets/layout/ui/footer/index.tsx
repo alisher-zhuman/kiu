@@ -35,9 +35,7 @@ export const Footer = () => {
         <Navigation
           getLabel={navbarT}
           menuTitle={footerT("menuTitle")}
-          onToggleSection={(href) =>
-            setOpenSection((current) => (current === href ? null : href))
-          }
+          onToggleSection={(href) => setOpenSection((current) => (current === href ? null : href))}
           openSection={openSection}
         />
       </div>

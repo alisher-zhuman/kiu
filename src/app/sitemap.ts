@@ -26,8 +26,7 @@ const STATIC_PATHS = [
   "/faculty/sharia",
 ] as const;
 
-const buildUrl = (locale: AppLocale, path: string) =>
-  `${SITE_URL}/${locale}${path}`;
+const buildUrl = (locale: AppLocale, path: string) => `${SITE_URL}/${locale}${path}`;
 
 const buildAlternates = (path: string) => {
   return Object.fromEntries([

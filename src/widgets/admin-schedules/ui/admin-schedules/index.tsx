@@ -4,10 +4,7 @@ import { useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
-import {
-  getSchedulesByLevel,
-  SCHEDULE_LEVEL_OPTIONS,
-} from "@/entities/schedules";
+import { getSchedulesByLevel, SCHEDULE_LEVEL_OPTIONS } from "@/entities/schedules";
 
 import { FACULTY_SECTION_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
@@ -25,25 +22,25 @@ export const AdminSchedules = () => {
   const [activeLevel, setActiveLevel] = useSearchParamState(
     "level",
     SCHEDULE_LEVEL_OPTIONS[0],
-    SCHEDULE_LEVEL_OPTIONS,
+    SCHEDULE_LEVEL_OPTIONS
   );
   const [activeSection, setActiveSection] = useSearchParamState(
     "section",
     FACULTY_SECTION_OPTIONS[0],
-    FACULTY_SECTION_OPTIONS,
+    FACULTY_SECTION_OPTIONS
   );
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const locale = useLocale();
-  
+
   const t = useTranslations("AdminSchedulesPage");
 
   useTabScroll(
     SCHEDULE_LEVEL_OPTIONS.indexOf(activeLevel as (typeof SCHEDULE_LEVEL_OPTIONS)[number]),
     scrollContainerRef,
-    tabRefs,
+    tabRefs
   );
 
   const { data, error, isLoading } = useQuery({
@@ -104,7 +101,7 @@ export const AdminSchedules = () => {
               "shrink-0 border-b-2 px-4 py-3 text-center text-sm transition-all duration-200",
               activeLevel === level
                 ? "border-[#004C97] font-semibold text-[#004C97]"
-                : "border-black/10 font-normal text-black/40",
+                : "border-black/10 font-normal text-black/40"
             )}
           >
             {t(`levels.${level}`)}

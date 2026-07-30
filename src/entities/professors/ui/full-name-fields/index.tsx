@@ -15,12 +15,7 @@ interface Props {
   t: (key: string) => string;
 }
 
-export const FullNameFields = ({
-  errors,
-  localeOptions,
-  register,
-  t,
-}: Props) => (
+export const FullNameFields = ({ errors, localeOptions, register, t }: Props) => (
   <div className="space-y-4">
     <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
       {t("fullNameTitle")}
@@ -47,9 +42,7 @@ export const FullNameFields = ({
               hasError={!!fieldError}
             />
 
-            {fieldError ? (
-              <p className="text-sm text-red-500 md:text-base">{fieldError}</p>
-            ) : null}
+            {fieldError ? <p className="text-sm text-red-500 md:text-base">{fieldError}</p> : null}
           </div>
         );
       })}

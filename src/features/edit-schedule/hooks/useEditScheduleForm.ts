@@ -8,11 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useRouter } from "@/i18n/navigation";
 
-import {
-  getScheduleById,
-  SCHEDULE_LEVEL_OPTIONS,
-  updateSchedule,
-} from "@/entities/schedules";
+import { getScheduleById, SCHEDULE_LEVEL_OPTIONS, updateSchedule } from "@/entities/schedules";
 
 import { FACULTY_SECTION_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
@@ -32,7 +28,7 @@ interface Params {
 
 export const useEditScheduleForm = ({ id }: Params) => {
   const router = useRouter();
-  
+
   const t = useTranslations("AdminSchedulesPage.addForm");
   const tEdit = useTranslations("AdminSchedulesPage.editForm");
 
@@ -53,7 +49,11 @@ export const useEditScheduleForm = ({ id }: Params) => {
     mode: "onChange",
   });
 
-  const { data: schedule, error, isLoading } = useQuery({
+  const {
+    data: schedule,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: QUERY_KEYS.adminScheduleFormById(id),
     queryFn: () => getScheduleById(id),
   });
@@ -77,10 +77,7 @@ export const useEditScheduleForm = ({ id }: Params) => {
   const mutation = useToastMutation({
     mutationFn: (values: AddScheduleFormValues) =>
       updateSchedule(id, mapScheduleFormValuesToPayload(values)),
-    invalidateKeys: [
-      ["admin-schedules"],
-      QUERY_KEYS.adminScheduleFormById(id),
-    ],
+    invalidateKeys: [["admin-schedules"], QUERY_KEYS.adminScheduleFormById(id)],
     pendingMessage: tEdit("pending"),
     successMessage: tEdit("success"),
     errorMessage: (err: unknown) => getApiErrorMessage(err, tEdit("error")),
@@ -100,8 +97,7 @@ export const useEditScheduleForm = ({ id }: Params) => {
     handleFileSelect,
     isFileDeletePending,
     isFileUploadDisabled,
-    isSubmitDisabled:
-      isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
+    isSubmitDisabled: isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
     levelOptions: SCHEDULE_LEVEL_OPTIONS,
     sectionOptions: FACULTY_SECTION_OPTIONS,
     scheduleError: error,

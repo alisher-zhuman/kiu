@@ -78,9 +78,7 @@ export const useAddDocumentFile = ({
     },
   });
 
-  const handleFileSelect = async (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = await handleSingleFileSelect(event);
 
     if (!file) {

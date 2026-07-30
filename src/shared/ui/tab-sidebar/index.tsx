@@ -23,7 +23,7 @@ export const TabSidebar = ({ activeKey, label, onSelect, tabs }: Props) => (
           "block w-full border-l-2 py-3 pl-4 text-left text-sm transition-all duration-200",
           activeKey === tab.key
             ? "border-[#004C97] font-semibold text-[#004C97]"
-            : "border-black/10 font-normal text-black/40 hover:border-black/25 hover:text-black/60",
+            : "border-black/10 font-normal text-black/40 hover:border-black/25 hover:text-black/60"
         )}
       >
         {tab.label}

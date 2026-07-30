@@ -10,7 +10,7 @@ const getPositionLength = (professor: ProfessorDetail) =>
     professor.positionsEn.length,
     professor.positionsKg.length,
     professor.positionsRu.length,
-    1,
+    1
   );
 
 export const createDefaultProfessorFormValues = (): ProfessorFormValues => ({
@@ -25,7 +25,7 @@ export const createDefaultProfessorFormValues = (): ProfessorFormValues => ({
 });
 
 export const mapProfessorFormValuesToPayload = (
-  values: ProfessorFormValues,
+  values: ProfessorFormValues
 ): CreateProfessorPayload => ({
   fullName: values.fullName,
   photo: values.photo,
@@ -35,17 +35,12 @@ export const mapProfessorFormValuesToPayload = (
   sections: values.sections,
 });
 
-export const mapProfessorDetailToFormValues = (
-  professor: ProfessorDetail,
-): ProfessorFormValues => {
-  const positions = Array.from(
-    { length: getPositionLength(professor) },
-    (_, index) => ({
-      en: professor.positionsEn[index] ?? "",
-      kg: professor.positionsKg[index] ?? "",
-      ru: professor.positionsRu[index] ?? "",
-    }),
-  );
+export const mapProfessorDetailToFormValues = (professor: ProfessorDetail): ProfessorFormValues => {
+  const positions = Array.from({ length: getPositionLength(professor) }, (_, index) => ({
+    en: professor.positionsEn[index] ?? "",
+    kg: professor.positionsKg[index] ?? "",
+    ru: professor.positionsRu[index] ?? "",
+  }));
 
   return {
     fullName: professor.fullName,
@@ -57,7 +52,7 @@ export const mapProfessorDetailToFormValues = (
 
 export const toggleProfessorSectionValue = (
   selectedSections: ProfessorSection[],
-  section: ProfessorSection,
+  section: ProfessorSection
 ) => {
   return selectedSections.includes(section)
     ? selectedSections.filter((currentSection) => currentSection !== section)

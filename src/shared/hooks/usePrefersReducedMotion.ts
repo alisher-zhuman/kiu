@@ -13,8 +13,7 @@ const getInitialPreference = () => {
 };
 
 export const usePrefersReducedMotion = () => {
-  const [prefersReducedMotion, setPrefersReducedMotion] =
-    useState(getInitialPreference);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(getInitialPreference);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(REDUCED_MOTION_QUERY);

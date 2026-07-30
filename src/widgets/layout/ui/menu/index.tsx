@@ -11,12 +11,7 @@ interface Props {
   onToggle: () => void;
 }
 
-export const Menu = ({
-  isOpen,
-  menuLabel,
-  closeMenuLabel,
-  onToggle,
-}: Props) => (
+export const Menu = ({ isOpen, menuLabel, closeMenuLabel, onToggle }: Props) => (
   <div className="size-10 shrink-0 md:size-12">
     <button
       type="button"
@@ -30,9 +25,7 @@ export const Menu = ({
         aria-hidden="true"
         className={cn(
           "absolute transition-all duration-200",
-          isOpen
-            ? "rotate-90 scale-75 opacity-0"
-            : "rotate-0 scale-100 opacity-100",
+          isOpen ? "rotate-90 scale-75 opacity-0" : "rotate-0 scale-100 opacity-100"
         )}
       >
         <MenuIcon size={28} strokeWidth={1.75} />
@@ -42,9 +35,7 @@ export const Menu = ({
         aria-hidden="true"
         className={cn(
           "absolute transition-all duration-200",
-          isOpen
-            ? "rotate-0 scale-100 opacity-100"
-            : "-rotate-90 scale-75 opacity-0",
+          isOpen ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-75 opacity-0"
         )}
       >
         <X size={28} strokeWidth={1.75} />

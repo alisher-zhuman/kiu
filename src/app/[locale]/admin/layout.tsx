@@ -6,8 +6,6 @@ interface Props {
   children: ReactNode;
 }
 
-const Layout = ({ children }: Props) => (
-  <AdminProvider>{children}</AdminProvider>
-);
+const Layout = ({ children }: Props) => <AdminProvider>{children}</AdminProvider>;
 
 export default Layout;

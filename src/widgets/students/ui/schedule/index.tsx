@@ -4,10 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
-import {
-  SCHEDULE_LEVEL_OPTIONS,
-  type ScheduleItem,
-} from "@/entities/schedules";
+import { SCHEDULE_LEVEL_OPTIONS, type ScheduleItem } from "@/entities/schedules";
 
 import { FACULTY_SECTION_OPTIONS } from "@/shared/constants";
 import { cn } from "@/shared/helpers";
@@ -50,7 +47,9 @@ export const StudentsSchedule = ({
     </div>
   ) : (
     <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
-      {schedules.map((item) => <ScheduleCard key={item.id} item={item} />)}
+      {schedules.map((item) => (
+        <ScheduleCard key={item.id} item={item} />
+      ))}
     </div>
   );
 
@@ -78,7 +77,7 @@ export const StudentsSchedule = ({
                   "shrink-0 border-b-2 px-4 py-3 text-center text-sm transition-all duration-200",
                   activeLevel === level
                     ? "border-[#004C97] font-semibold text-[#004C97]"
-                    : "border-black/10 font-normal text-black/40 hover:text-black/60",
+                    : "border-black/10 font-normal text-black/40 hover:text-black/60"
                 )}
               >
                 {t(`levels.${level}`)}
@@ -98,7 +97,7 @@ export const StudentsSchedule = ({
                     "block w-full border-l-2 py-3 pl-4 text-left text-sm transition-all duration-200",
                     activeSection === section
                       ? "border-[#004C97] font-semibold text-[#004C97]"
-                      : "border-black/10 text-black/40 hover:border-black/25 hover:text-black/60",
+                      : "border-black/10 text-black/40 hover:border-black/25 hover:text-black/60"
                   )}
                 >
                   {t(`sections.${section}`)}

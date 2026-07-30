@@ -28,9 +28,7 @@ export const DateField = ({ errors, register, t }: Props) => (
       />
 
       {errors.dateOfPublication?.message ? (
-        <p className="text-sm text-red-500 md:text-base">
-          {errors.dateOfPublication.message}
-        </p>
+        <p className="text-sm text-red-500 md:text-base">{errors.dateOfPublication.message}</p>
       ) : null}
     </div>
   </div>

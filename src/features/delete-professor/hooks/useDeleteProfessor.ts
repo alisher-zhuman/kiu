@@ -22,8 +22,7 @@ export const useDeleteProfessor = ({ id }: Params) => {
     invalidateKeys: [QUERY_KEYS.adminProfessors(locale)],
     pendingMessage: t("pending"),
     successMessage: t("success"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("error")),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, t("error")),
   });
 
   return {

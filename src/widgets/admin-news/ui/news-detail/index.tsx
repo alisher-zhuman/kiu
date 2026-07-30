@@ -25,7 +25,11 @@ export const AdminNewsDetail = ({ id }: Props) => {
 
   const t = useTranslations("AdminNewsPage");
 
-  const { data: newsItem, error, isLoading } = useQuery({
+  const {
+    data: newsItem,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: QUERY_KEYS.adminNewsById(locale, id),
     queryFn: () => getNewsById(id),
   });
@@ -46,9 +50,7 @@ export const AdminNewsDetail = ({ id }: Props) => {
             <>
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="text-sm font-medium text-[#004C97] md:text-base">
-                    {formattedDate}
-                  </p>
+                  <p className="text-sm font-medium text-[#004C97] md:text-base">{formattedDate}</p>
 
                   {item.archived ? (
                     <span className="inline-flex items-center rounded-full bg-[#004C97]/8 px-2.5 py-1 text-xs font-medium text-[#004C97]">

@@ -38,7 +38,7 @@ export const Documents = ({
   const [activeKey, setActiveKey] = useSearchParamState(
     "category",
     typesToDisplay[0],
-    typesToDisplay,
+    typesToDisplay
   );
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ export const Documents = ({
   useTabScroll(
     typesToDisplay.indexOf(activeKey as (typeof typesToDisplay)[number]),
     scrollContainerRef,
-    tabRefs,
+    tabRefs
   );
 
   const activeItems = documents.filter((item) => item.docType === activeKey);
@@ -95,7 +95,9 @@ export const Documents = ({
               ) : null}
 
               {activeItems.length ? (
-                <div className={`grid items-stretch gap-3 md:gap-4 ${showTabs ? "lg:grid-cols-2" : "lg:grid-cols-2 xl:grid-cols-3"}`}>
+                <div
+                  className={`grid items-stretch gap-3 md:gap-4 ${showTabs ? "lg:grid-cols-2" : "lg:grid-cols-2 xl:grid-cols-3"}`}
+                >
                   {activeItems.map((item) => (
                     <DocumentCard key={item.id} item={item} />
                   ))}

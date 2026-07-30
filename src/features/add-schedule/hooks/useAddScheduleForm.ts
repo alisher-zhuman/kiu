@@ -7,19 +7,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useRouter } from "@/i18n/navigation";
 
-import {
-  createSchedule,
-  SCHEDULE_LEVEL_OPTIONS,
-} from "@/entities/schedules";
+import { createSchedule, SCHEDULE_LEVEL_OPTIONS } from "@/entities/schedules";
 
 import { FACULTY_SECTION_OPTIONS, QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
-import {
-  createDefaultScheduleFormValues,
-  mapScheduleFormValuesToPayload,
-} from "../helpers/base";
+import { createDefaultScheduleFormValues, mapScheduleFormValuesToPayload } from "../helpers/base";
 import { createAddScheduleFormSchema } from "../schemas";
 import { type AddScheduleFormValues } from "../types";
 
@@ -65,8 +59,7 @@ export const useAddScheduleForm = () => {
     invalidateKeys: [QUERY_KEYS.adminSchedules(locale, getValues("level"), getValues("section"))],
     pendingMessage: t("pending.submit"),
     successMessage: t("success"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.submit")),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, t("errors.submit")),
     onSuccess: () => {
       router.replace("/admin/schedules");
     },
@@ -83,8 +76,7 @@ export const useAddScheduleForm = () => {
     handleFileSelect,
     isFileDeletePending,
     isFileUploadDisabled,
-    isSubmitDisabled:
-      isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
+    isSubmitDisabled: isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
     levelOptions: SCHEDULE_LEVEL_OPTIONS,
     sectionOptions: FACULTY_SECTION_OPTIONS,
     onSubmit,

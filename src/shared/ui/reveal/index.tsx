@@ -23,7 +23,7 @@ export const Reveal = ({ children, className, delay = 0 }: Props) => {
         isInView
           ? "translate-y-0 opacity-100"
           : "translate-y-6 opacity-0 motion-reduce:opacity-100",
-        className,
+        className
       )}
     >
       {children}

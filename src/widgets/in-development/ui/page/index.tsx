@@ -9,20 +9,14 @@ interface Props {
   title?: string;
 }
 
-export const InDevelopment = ({
-  compactTopPadding = false,
-  hideHeader = false,
-  title,
-}: Props) => {
+export const InDevelopment = ({ compactTopPadding = false, hideHeader = false, title }: Props) => {
   const t = useTranslations("InDevelopment");
 
   return (
     <main
       className={cn(
         "mx-auto max-w-400 px-5 text-black md:px-10",
-        compactTopPadding
-          ? "pt-3 pb-10 md:pt-4 md:pb-16"
-          : "py-10 md:py-16",
+        compactTopPadding ? "pt-3 pb-10 md:pt-4 md:pb-16" : "py-10 md:py-16"
       )}
     >
       <section
@@ -36,7 +30,9 @@ export const InDevelopment = ({
               {t("eyebrow")}
             </p>
 
-            <PageTitle id="in-development-title" className="text-3xl sm:text-4xl md:text-5xl">{title}</PageTitle>
+            <PageTitle id="in-development-title" className="text-3xl sm:text-4xl md:text-5xl">
+              {title}
+            </PageTitle>
           </div>
         ) : null}
 

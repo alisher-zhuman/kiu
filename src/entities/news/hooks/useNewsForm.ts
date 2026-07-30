@@ -126,8 +126,7 @@ export const useNewsForm = (params: Params) => {
         : [QUERY_KEYS.adminNews(locale)],
     pendingMessage: submitT("pending.submit"),
     successMessage: submitT("success"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, submitT("errors.submit")),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, submitT("errors.submit")),
     onSuccess: () => {
       if (isEditMode) {
         router.back();
@@ -150,10 +149,7 @@ export const useNewsForm = (params: Params) => {
     isDeletePending,
     isNewsLoading,
     isSubmitDisabled:
-      isUploadingImages ||
-      mutation.isPending ||
-      isSubmitting ||
-      (isEditMode && !isDirty),
+      isUploadingImages || mutation.isPending || isSubmitting || (isEditMode && !isDirty),
     isUploadDisabled,
     localeOptions: LOCALE_OPTIONS,
     news: (news ?? null) as EditableNews | null,

@@ -21,7 +21,7 @@ export const getCounterMeta = (target: string): CounterMeta => {
 export const formatCount = (
   value: number,
   locale: string,
-  { hasGrouping, suffix, usesSpaceGrouping }: CounterMeta,
+  { hasGrouping, suffix, usesSpaceGrouping }: CounterMeta
 ) => {
   const formatter = new Intl.NumberFormat(locale, {
     maximumFractionDigits: 0,
@@ -31,9 +31,7 @@ export const formatCount = (
   let formattedValue = formatter.format(Math.round(value));
 
   if (usesSpaceGrouping) {
-    formattedValue = formattedValue
-      .replace(/,/g, " ")
-      .replace(/[\u00A0\u202F]/g, " ");
+    formattedValue = formattedValue.replace(/,/g, " ").replace(/[\u00A0\u202F]/g, " ");
   }
 
   return `${formattedValue}${suffix}`;

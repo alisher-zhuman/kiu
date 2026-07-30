@@ -15,20 +15,12 @@ interface Props {
   sectionClassName?: string;
 }
 
-export const AdminPageShell = ({
-  ariaLabel,
-  backHref,
-  children,
-  sectionClassName,
-}: Props) => {
+export const AdminPageShell = ({ ariaLabel, backHref, children, sectionClassName }: Props) => {
   const tLayout = useTranslations("Layout");
 
   return (
     <main className="mx-auto max-w-400 px-5 pt-3 pb-8 text-black md:px-10 md:pt-4 md:pb-10">
-      <section
-        aria-label={ariaLabel}
-        className={cn("space-y-8", sectionClassName)}
-      >
+      <section aria-label={ariaLabel} className={cn("space-y-8", sectionClassName)}>
         {backHref ? (
           <Link
             href={backHref}

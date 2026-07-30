@@ -17,21 +17,17 @@ interface Params {
 
 export const useDeleteNews = ({ id, redirectOnSuccess }: Params) => {
   const locale = useLocale();
-  
+
   const router = useRouter();
 
   const t = useTranslations("AdminNewsPage.delete");
 
   const mutation = useToastMutation({
     mutationFn: () => deleteNews(id),
-    invalidateKeys: [
-      QUERY_KEYS.adminNews(locale),
-      QUERY_KEYS.adminNewsById(locale, id),
-    ],
+    invalidateKeys: [QUERY_KEYS.adminNews(locale), QUERY_KEYS.adminNewsById(locale, id)],
     pendingMessage: t("pending"),
     successMessage: t("success"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("error")),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, t("error")),
     onSuccess: () => {
       if (!redirectOnSuccess) {
         return;

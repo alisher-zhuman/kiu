@@ -27,9 +27,7 @@ export const getNewsById = async (id: number) => {
   return NewsItemSchema.parse(data);
 };
 
-export const getNewsByIdForEdit = async (
-  id: number,
-): Promise<EditableNews> => {
+export const getNewsByIdForEdit = async (id: number): Promise<EditableNews> => {
   const { data } = await api.get(`${API_ROUTES.NEWS}/${id}/edit`);
 
   return EditableNewsSchema.parse(data);

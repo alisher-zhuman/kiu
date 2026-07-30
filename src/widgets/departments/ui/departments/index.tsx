@@ -21,11 +21,7 @@ export const Departments = () => {
 
   const deptNames = departments.map((d) => d.name);
 
-  const [activeKey, setActiveKey] = useSearchParamState(
-    "dept",
-    deptNames[0] ?? "",
-    deptNames,
-  );
+  const [activeKey, setActiveKey] = useSearchParamState("dept", deptNames[0] ?? "", deptNames);
 
   const activeDept = (departments.find((d) => d.name === activeKey) ?? departments[0])!;
   const activeIndex = departments.findIndex((d) => d.name === activeKey);

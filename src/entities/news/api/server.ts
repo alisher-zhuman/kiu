@@ -23,13 +23,10 @@ export const getPublicNews = async (locale: AppLocale) => {
 };
 
 export const getPublicNewsById = async (locale: AppLocale, id: number) => {
-  const response = await fetch(
-    getLocalizedServerApiUrl(`${API_ROUTES.NEWS}/${id}`, locale),
-    {
-      next: { revalidate: 60 },
-      signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
-    },
-  );
+  const response = await fetch(getLocalizedServerApiUrl(`${API_ROUTES.NEWS}/${id}`, locale), {
+    next: { revalidate: 60 },
+    signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
+  });
 
   if (!response.ok) {
     const error = new Error(`Failed to fetch news item: ${response.status}`) as Error & {

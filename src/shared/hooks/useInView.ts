@@ -70,7 +70,7 @@ export const useInView = <T extends HTMLElement>({
       {
         rootMargin,
         threshold,
-      },
+      }
     );
 
     observer.observe(element);
@@ -78,13 +78,7 @@ export const useInView = <T extends HTMLElement>({
     return () => {
       observer.disconnect();
     };
-  }, [
-    once,
-    prefersReducedMotion,
-    rootMargin,
-    supportsIntersectionObserver,
-    threshold,
-  ]);
+  }, [once, prefersReducedMotion, rootMargin, supportsIntersectionObserver, threshold]);
 
   return {
     ref,

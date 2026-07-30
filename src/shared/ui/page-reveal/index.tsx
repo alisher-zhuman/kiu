@@ -16,7 +16,5 @@ export const PageReveal = ({ children }: Props) => {
 
   const pathname = usePathname();
 
-  return (
-    <PageRevealFrame key={`${locale}:${pathname}`}>{children}</PageRevealFrame>
-  );
+  return <PageRevealFrame key={`${locale}:${pathname}`}>{children}</PageRevealFrame>;
 };

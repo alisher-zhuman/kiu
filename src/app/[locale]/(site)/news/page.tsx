@@ -22,10 +22,7 @@ const NewsPage = async ({ params }: Props) => {
 
   setRequestLocale(locale);
 
-  const { data: news, hasError } = await fetchSafely<NewsItem[]>(
-    () => getPublicNews(locale),
-    [],
-  );
+  const { data: news, hasError } = await fetchSafely<NewsItem[]>(() => getPublicNews(locale), []);
 
   return <News hasError={hasError} locale={locale} news={news} />;
 };

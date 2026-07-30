@@ -22,11 +22,10 @@ export const ShariaFacultyPage = async ({ params }: Props) => {
 
   setRequestLocale(locale);
 
-  const { data: professors, hasError: hasProfessorsError } =
-    await fetchSafely<ProfessorItem[]>(
-      () => getPublicProfessorsBySection(locale, "SHARIAT"),
-      [],
-    );
+  const { data: professors, hasError: hasProfessorsError } = await fetchSafely<ProfessorItem[]>(
+    () => getPublicProfessorsBySection(locale, "SHARIAT"),
+    []
+  );
 
   return (
     <FacultyPage

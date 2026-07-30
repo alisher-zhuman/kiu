@@ -12,30 +12,13 @@ interface Props {
   prefetch?: boolean;
 }
 
-export const NavigationLink = ({
-  children,
-  className,
-  href,
-  onClick,
-  prefetch = false,
-}: Props) =>
+export const NavigationLink = ({ children, className, href, onClick, prefetch = false }: Props) =>
   checkExternalHref(href) ? (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      onClick={onClick}
-      className={className}
-    >
+    <a href={href} target="_blank" rel="noreferrer" onClick={onClick} className={className}>
       {children}
     </a>
   ) : (
-    <Link
-      href={href}
-      onClick={onClick}
-      className={className}
-      prefetch={prefetch}
-    >
+    <Link href={href} onClick={onClick} className={className} prefetch={prefetch}>
       {children}
     </Link>
   );

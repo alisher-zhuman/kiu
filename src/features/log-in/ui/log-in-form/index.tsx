@@ -13,11 +13,7 @@ export const LogInForm = () => {
   const { errors, isPending, onSubmit, register, t } = useLogInForm();
 
   return (
-    <form
-      noValidate
-      onSubmit={onSubmit}
-      className="mt-8 space-y-5 md:mt-10 md:space-y-6"
-    >
+    <form noValidate onSubmit={onSubmit} className="mt-8 space-y-5 md:mt-10 md:space-y-6">
       <div className="space-y-2">
         <label htmlFor="email" className="sr-only">
           {t("emailPlaceholder")}
@@ -33,14 +29,12 @@ export const LogInForm = () => {
           {...register("email")}
           className={cn(
             "w-full rounded-2xl border border-black/20 px-5 py-4 text-base text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#004C97] md:text-lg",
-            errors.email && "border-red-500 focus:border-red-500",
+            errors.email && "border-red-500 focus:border-red-500"
           )}
         />
 
         {errors.email?.message ? (
-          <p className="text-sm text-red-500 md:text-base">
-            {errors.email.message}
-          </p>
+          <p className="text-sm text-red-500 md:text-base">{errors.email.message}</p>
         ) : null}
       </div>
 
@@ -60,7 +54,7 @@ export const LogInForm = () => {
             {...register("password")}
             className={cn(
               "w-full rounded-2xl border border-black/20 px-5 py-4 pr-14 text-base text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#004C97] md:text-lg",
-              errors.password && "border-red-500 focus:border-red-500",
+              errors.password && "border-red-500 focus:border-red-500"
             )}
           />
 
@@ -68,9 +62,7 @@ export const LogInForm = () => {
             type="button"
             disabled={isPending}
             onClick={() => setIsPasswordVisible((current) => !current)}
-            aria-label={
-              isPasswordVisible ? t("hidePassword") : t("showPassword")
-            }
+            aria-label={isPasswordVisible ? t("hidePassword") : t("showPassword")}
             className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-black/35 transition-colors hover:text-black/60"
           >
             {isPasswordVisible ? (
@@ -82,9 +74,7 @@ export const LogInForm = () => {
         </div>
 
         {errors.password?.message ? (
-          <p className="text-sm text-red-500 md:text-base">
-            {errors.password.message}
-          </p>
+          <p className="text-sm text-red-500 md:text-base">{errors.password.message}</p>
         ) : null}
       </div>
 

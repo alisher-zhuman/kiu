@@ -13,12 +13,7 @@ interface Options {
   target: string;
 }
 
-export const useCountUp = ({
-  duration = 1400,
-  locale,
-  start,
-  target,
-}: Options) => {
+export const useCountUp = ({ duration = 1400, locale, start, target }: Options) => {
   const [animatedValue, setAnimatedValue] = useState(0);
 
   const counterMeta = useMemo(() => getCounterMeta(target), [target]);

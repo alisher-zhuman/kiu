@@ -1,10 +1,7 @@
 import { api } from "@/shared/configs";
 import { API_ROUTES } from "@/shared/constants";
 
-import {
-  DocumentActionResponseSchema,
-  DocumentsResponseSchema,
-} from "../model/schemas";
+import { DocumentActionResponseSchema, DocumentsResponseSchema } from "../model/schemas";
 import { type CreateDocumentPayload } from "../model/types";
 
 export const createDocument = async (payload: CreateDocumentPayload) => {

@@ -21,15 +21,13 @@ export const useFileTransfer = ({
   const uploadMutation = useToastMutation({
     mutationFn: (file: File) => uploadFile(file),
     pendingMessage: uploadPendingMessage,
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, uploadErrorMessage),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, uploadErrorMessage),
   });
 
   const deleteMutation = useToastMutation({
     mutationFn: (fileUrl: string) => deleteFile(fileUrl),
     pendingMessage: deletePendingMessage,
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, deleteErrorMessage),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, deleteErrorMessage),
   });
 
   return {

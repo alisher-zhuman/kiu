@@ -11,7 +11,7 @@ interface Props {
 
 const NewsDetailPage = async ({ params }: Props) => {
   const { id } = await params;
-  
+
   const newsId = Number(id);
 
   if (!Number.isInteger(newsId) || newsId <= 0) {

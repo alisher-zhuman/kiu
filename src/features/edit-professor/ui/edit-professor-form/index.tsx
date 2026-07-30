@@ -19,13 +19,7 @@ export const EditProfessorForm = ({ id }: Props) => {
       isLoading={form.isProfessorLoading}
       item={form.professor}
       loadingLabel={form.editT("loading")}
-      render={() => (
-        <ProfessorForm
-          {...form}
-          submitLabel={form.editT("submit")}
-          t={form.fieldsT}
-        />
-      )}
+      render={() => <ProfessorForm {...form} submitLabel={form.editT("submit")} t={form.fieldsT} />}
     />
   );
 };

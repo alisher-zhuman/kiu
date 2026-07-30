@@ -10,11 +10,7 @@ interface Props {
   iconOnlyOnMobile?: boolean;
 }
 
-export const DeleteProfessorButton = ({
-  className,
-  iconOnlyOnMobile = false,
-  id,
-}: Props) => {
+export const DeleteProfessorButton = ({ className, iconOnlyOnMobile = false, id }: Props) => {
   const { isPending, onDeleteProfessor } = useDeleteProfessor({ id });
 
   return (

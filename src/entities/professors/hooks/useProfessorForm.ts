@@ -128,15 +128,11 @@ export const useProfessorForm = (params: Params) => {
     },
     invalidateKeys:
       isEditMode && "id" in params
-        ? [
-            QUERY_KEYS.adminProfessorById(locale, params.id),
-            QUERY_KEYS.adminProfessors(locale),
-          ]
+        ? [QUERY_KEYS.adminProfessorById(locale, params.id), QUERY_KEYS.adminProfessors(locale)]
         : [QUERY_KEYS.adminProfessors(locale)],
     pendingMessage: submitT("pending.submit"),
     successMessage: submitT("success"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, submitT("errors.submit")),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, submitT("errors.submit")),
     onSuccess: () => {
       if (isEditMode) {
         router.back();
@@ -150,18 +146,12 @@ export const useProfessorForm = (params: Params) => {
     mutation.mutate(values);
   });
 
-  const toggleSection = (
-    section: (typeof PROFESSOR_SECTION_OPTIONS)[number],
-  ) => {
-    setValue(
-      "sections",
-      toggleProfessorSectionValue(selectedSections, section),
-      {
-        shouldDirty: true,
-        shouldTouch: true,
-        shouldValidate: true,
-      },
-    );
+  const toggleSection = (section: (typeof PROFESSOR_SECTION_OPTIONS)[number]) => {
+    setValue("sections", toggleProfessorSectionValue(selectedSections, section), {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
   };
 
   return {
@@ -175,10 +165,7 @@ export const useProfessorForm = (params: Params) => {
     isPhotoUploadDisabled,
     isProfessorLoading,
     isSubmitDisabled:
-      isSubmittingPhoto ||
-      mutation.isPending ||
-      isSubmitting ||
-      (isEditMode && !isDirty),
+      isSubmittingPhoto || mutation.isPending || isSubmitting || (isEditMode && !isDirty),
     localeOptions: LOCALE_OPTIONS,
     onSubmit,
     openFileDialog,

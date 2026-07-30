@@ -20,10 +20,7 @@ export const useArchiveNews = ({ archived, id }: Params) => {
 
   const mutation = useToastMutation({
     mutationFn: () => toggleNewsArchive(id),
-    invalidateKeys: [
-      QUERY_KEYS.adminNews(locale),
-      QUERY_KEYS.adminNewsById(locale, id),
-    ],
+    invalidateKeys: [QUERY_KEYS.adminNews(locale), QUERY_KEYS.adminNewsById(locale, id)],
     pendingMessage: archived ? t("unarchivePending") : t("archivePending"),
     successMessage: archived ? t("unarchiveSuccess") : t("archiveSuccess"),
     errorMessage: (error: unknown) =>

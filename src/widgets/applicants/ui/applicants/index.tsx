@@ -11,7 +11,9 @@ export const Applicants = () => {
   return (
     <main className="mx-auto max-w-400 px-5 py-10 text-black md:px-10 md:py-16">
       <section aria-labelledby="applicants-page-title">
-        <PageTitle id="applicants-page-title" className="uppercase">{t("title")}</PageTitle>
+        <PageTitle id="applicants-page-title" className="uppercase">
+          {t("title")}
+        </PageTitle>
 
         <SectionsAccordion sections={sections} />
       </section>

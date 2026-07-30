@@ -7,16 +7,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useRouter } from "@/i18n/navigation";
 
-import { createDocument,DOCUMENT_TYPE_OPTIONS } from "@/entities/documents";
+import { createDocument, DOCUMENT_TYPE_OPTIONS } from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/helpers";
 import { useToastMutation } from "@/shared/hooks";
 
-import {
-  createDefaultDocumentFormValues,
-  mapDocumentFormValuesToPayload,
-} from "../helpers/base";
+import { createDefaultDocumentFormValues, mapDocumentFormValuesToPayload } from "../helpers/base";
 import { createAddDocumentFormSchema } from "../schemas";
 import { type AddDocumentFormValues } from "../types";
 
@@ -24,7 +21,7 @@ import { useAddDocumentFile } from "./useAddDocumentFile";
 
 export const useAddDocumentForm = () => {
   const locale = useLocale();
-  
+
   const router = useRouter();
 
   const t = useTranslations("AdminDocumentsPage.addForm");
@@ -70,8 +67,7 @@ export const useAddDocumentForm = () => {
     invalidateKeys: [QUERY_KEYS.adminDocuments(locale, getValues("docType"))],
     pendingMessage: t("pending.submit"),
     successMessage: t("success"),
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.submit")),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, t("errors.submit")),
     onSuccess: () => {
       router.replace("/admin/documents");
     },
@@ -88,8 +84,7 @@ export const useAddDocumentForm = () => {
     handleFileSelect,
     isFileDeletePending,
     isFileUploadDisabled,
-    isSubmitDisabled:
-      isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
+    isSubmitDisabled: isSubmittingFile || mutation.isPending || isSubmitting || !isDirty,
     documentTypeOptions: DOCUMENT_TYPE_OPTIONS,
     onSubmit,
     openFileDialog,

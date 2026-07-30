@@ -19,9 +19,7 @@ export const MissionBlock = ({ mission, missionTitle }: Props) => (
     </div>
 
     <div className="relative z-10 space-y-6 md:space-y-8">
-      <h2 className="text-2xl font-bold tracking-tight text-black md:text-4xl">
-        {missionTitle}
-      </h2>
+      <h2 className="text-2xl font-bold tracking-tight text-black md:text-4xl">{missionTitle}</h2>
 
       <p>{mission}</p>
     </div>

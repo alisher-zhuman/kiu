@@ -39,16 +39,14 @@ export const useLogInForm = () => {
   });
 
   const mutation = useToastMutation({
-    mutationFn: ({ email, password }: LogInFormValues) =>
-      logIn(email, password),
+    mutationFn: ({ email, password }: LogInFormValues) => logIn(email, password),
     pendingMessage: t("submitPending"),
     onSuccess: (data) => {
       setAuthSession(data);
       toast.success(t("success"));
       router.replace("/admin/news");
     },
-    errorMessage: (error: unknown) =>
-      getApiErrorMessage(error, t("errors.submit")),
+    errorMessage: (error: unknown) => getApiErrorMessage(error, t("errors.submit")),
   });
 
   const onSubmit = handleSubmit((values) => {

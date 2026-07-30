@@ -14,12 +14,7 @@ interface Props {
   iconOnlyOnMobile?: boolean;
 }
 
-export const ArchiveNewsButton = ({
-  archived,
-  className,
-  iconOnlyOnMobile = false,
-  id,
-}: Props) => {
+export const ArchiveNewsButton = ({ archived, className, iconOnlyOnMobile = false, id }: Props) => {
   const t = useTranslations("AdminNewsPage.archive");
 
   const { isPending, onToggleArchive } = useArchiveNews({

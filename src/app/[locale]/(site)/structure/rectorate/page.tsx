@@ -24,7 +24,7 @@ const RectoratePage = async ({ params }: Props) => {
 
   const { data: professors, hasError } = await fetchSafely<ProfessorItem[]>(
     () => getPublicProfessorsBySection(locale, "ADMINISTRATION"),
-    [],
+    []
   );
 
   return <Rectorate hasError={hasError} professors={professors} />;

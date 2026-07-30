@@ -11,7 +11,7 @@ export const FormSelect = ({ children, className, hasError, ...rest }: Props) =>
     className={cn(
       "w-full rounded-[0.95rem] border border-black/10 bg-white px-4 py-3 text-base text-black outline-none transition-colors focus:border-[#004C97]",
       hasError && "border-red-500 focus:border-red-500",
-      className,
+      className
     )}
     {...rest}
   >

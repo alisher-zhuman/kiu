@@ -3,7 +3,7 @@ import { type RefObject, useEffect } from "react";
 export const useTabScroll = (
   activeIndex: number,
   scrollContainerRef: RefObject<HTMLDivElement | null>,
-  tabRefs: RefObject<(HTMLElement | null)[]>,
+  tabRefs: RefObject<(HTMLElement | null)[]>
 ) => {
   useEffect(() => {
     const container = scrollContainerRef.current;

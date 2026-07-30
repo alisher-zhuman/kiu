@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  startTransition,
-  useEffect,
-  useEffectEvent,
-  useRef,
-  useState,
-} from "react";
+import { startTransition, useEffect, useEffectEvent, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Globe } from "lucide-react";
 
@@ -79,16 +73,12 @@ export const LangSwitcher = ({ className }: Props) => {
         onClick={() => setIsOpen((current) => !current)}
         className={cn(
           "flex cursor-pointer items-center gap-1 text-xs font-light text-black md:gap-2 md:text-xl",
-          className,
+          className
         )}
       >
         <span>{currentOption.shortLabel}</span>
 
-        <Globe
-          className="h-4.5 w-4.5 md:h-7 md:w-7"
-          size={28}
-          strokeWidth={1.75}
-        />
+        <Globe className="h-4.5 w-4.5 md:h-7 md:w-7" size={28} strokeWidth={1.75} />
       </button>
 
       <LangSwitcherPanel

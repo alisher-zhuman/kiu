@@ -29,13 +29,13 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
         "fixed inset-x-0 top-16 bottom-0 z-30 overflow-y-auto bg-[#004C97] px-5 py-6 text-white transition-all duration-300 ease-out md:hidden",
         isOpen
           ? "visible translate-y-0 opacity-100"
-          : "pointer-events-none invisible translate-y-3 opacity-0",
+          : "pointer-events-none invisible translate-y-3 opacity-0"
       )}
     >
       <nav
         className={cn(
           "mx-auto flex max-w-md flex-col gap-6 transition-all duration-300 ease-out",
-          isOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
+          isOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
         )}
       >
         {MOBILE_NAVBAR_LINKS.map(({ href, labelKey, links }) =>
@@ -47,9 +47,7 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
               label={t(labelKey)}
               links={links}
               onNavigate={onNavigate}
-              onToggle={() =>
-                setOpenSection((current) => (current === href ? null : href))
-              }
+              onToggle={() => setOpenSection((current) => (current === href ? null : href))}
               t={t}
             />
           ) : (
@@ -61,7 +59,7 @@ export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
             >
               {t(labelKey)}
             </NavigationLink>
-          ),
+          )
         )}
       </nav>
     </nav>

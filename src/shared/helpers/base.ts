@@ -12,11 +12,7 @@ export const checkExternalHref = (href: string) => {
   return href.startsWith("http://") || href.startsWith("https://");
 };
 
-export const handleLinkAction = ({
-  downloadFileName,
-  href,
-  openInNewTab,
-}: LinkAction) => {
+export const handleLinkAction = ({ downloadFileName, href, openInNewTab }: LinkAction) => {
   if (openInNewTab) {
     window.open(href, "_blank", "noopener,noreferrer");
   }
@@ -44,7 +40,7 @@ export const formatDate = (
     day: "2-digit",
     month: "long",
     year: "numeric",
-  },
+  }
 ) => {
   return new Intl.DateTimeFormat(locale, options).format(new Date(date));
 };

@@ -29,10 +29,7 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewImages = item.images.slice(0, 2);
   const previewTitle = getPreviewText(item.title, ADMIN_NEWS_TITLE_PREVIEW_LIMIT);
-  const previewDescription = getPreviewText(
-    item.description,
-    ADMIN_NEWS_DESCRIPTION_PREVIEW_LIMIT,
-  );
+  const previewDescription = getPreviewText(item.description, ADMIN_NEWS_DESCRIPTION_PREVIEW_LIMIT);
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white text-left shadow-[0_14px_32px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_18px_36px_rgba(0,0,0,0.08)]">
@@ -41,7 +38,7 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
           <div
             className={cn(
               "grid gap-1.5 p-1.5",
-              previewImages.length > 1 ? "grid-cols-2" : "grid-cols-1",
+              previewImages.length > 1 ? "grid-cols-2" : "grid-cols-1"
             )}
           >
             {previewImages.map((image, index) => (
@@ -65,9 +62,7 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
 
         <div className="flex flex-1 flex-col space-y-3 p-4 md:p-5">
           <div className="flex flex-wrap items-center gap-2">
-            <p className="text-xs font-medium text-[#004C97] md:text-sm">
-              {formattedDate}
-            </p>
+            <p className="text-xs font-medium text-[#004C97] md:text-sm">{formattedDate}</p>
 
             {item.archived ? (
               <span className="inline-flex items-center rounded-full bg-[#004C97]/8 px-2 py-0.5 text-[10px] font-medium text-[#004C97] md:text-xs">
@@ -97,11 +92,7 @@ export const NewsCard = ({ cardIndex, item, locale }: Props) => {
           label={tEdit("action")}
         />
 
-        <ArchiveNewsButton
-          archived={item.archived}
-          id={item.id}
-          iconOnlyOnMobile
-        />
+        <ArchiveNewsButton archived={item.archived} id={item.id} iconOnlyOnMobile />
 
         <DeleteNewsButton id={item.id} iconOnlyOnMobile />
       </div>

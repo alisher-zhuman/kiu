@@ -27,13 +27,9 @@ type Props = Readonly<{
   params: Promise<{ locale: string }>;
 }>;
 
-export const generateMetadata = async ({
-  params,
-}: Omit<Props, "children">): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: Omit<Props, "children">): Promise<Metadata> => {
   const { locale } = await params;
-  const metadataLocale = hasLocale(routing.locales, locale)
-    ? locale
-    : routing.defaultLocale;
+  const metadataLocale = hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
 
   return getMetadata(metadataLocale);
 };

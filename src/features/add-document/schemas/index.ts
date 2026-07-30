@@ -2,9 +2,7 @@ import { z } from "zod";
 
 import { DOCUMENT_TYPE_OPTIONS } from "@/entities/documents";
 
-export const createAddDocumentFormSchema = (
-  t: (key: string) => string,
-) =>
+export const createAddDocumentFormSchema = (t: (key: string) => string) =>
   z.object({
     content: z.string().trim().min(1, t("errors.file.required")),
     docType: z.enum(DOCUMENT_TYPE_OPTIONS, {

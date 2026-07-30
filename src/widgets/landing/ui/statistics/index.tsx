@@ -13,7 +13,7 @@ export const Statistics = () => {
   const locale = useLocale();
 
   const t = useTranslations("Statistics");
-  
+
   const { ref, isInView } = useInView<HTMLElement>({
     threshold: 0.25,
   });
@@ -24,9 +24,7 @@ export const Statistics = () => {
       aria-labelledby="statistics-title"
       className={cn(
         "mt-30 transition-all duration-500 ease-out motion-reduce:transform-none motion-reduce:transition-none",
-        isInView
-          ? "translate-y-0 opacity-100"
-          : "translate-y-6 opacity-0 motion-reduce:opacity-100",
+        isInView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0 motion-reduce:opacity-100"
       )}
     >
       <h2
@@ -43,11 +41,7 @@ export const Statistics = () => {
               key={key}
               className="min-w-64 shrink-0 snap-center rounded-3xl bg-white/5 px-5 py-6 text-center text-white md:min-w-0 md:rounded-none md:bg-transparent md:px-0 md:py-0"
             >
-              <StatisticsCounter
-                locale={locale}
-                start={isInView}
-                value={t(`items.${key}.value`)}
-              />
+              <StatisticsCounter locale={locale} start={isInView} value={t(`items.${key}.value`)} />
 
               <p className="mt-3 text-lg leading-7">{t(`items.${key}.label`)}</p>
             </li>

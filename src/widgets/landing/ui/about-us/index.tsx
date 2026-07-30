@@ -10,14 +10,8 @@ export const AboutUs = () => {
 
   return (
     <Reveal>
-      <section
-        aria-labelledby="about-us-title"
-        className="max-w-400 m-auto mt-30 px-5 md:px-10"
-      >
-        <h2
-          id="about-us-title"
-          className="text-4xl font-bold text-center md:text-6xl"
-        >
+      <section aria-labelledby="about-us-title" className="max-w-400 m-auto mt-30 px-5 md:px-10">
+        <h2 id="about-us-title" className="text-4xl font-bold text-center md:text-6xl">
           {t("title")}
         </h2>
 

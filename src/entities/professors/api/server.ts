@@ -10,11 +10,9 @@ import { type ProfessorSection } from "../model/types";
 
 export const getPublicProfessorsBySection = async (
   locale: AppLocale,
-  section: ProfessorSection,
+  section: ProfessorSection
 ) => {
-  const url = new URL(
-    getLocalizedServerApiUrl(API_ROUTES.PROFESSORS_BY_SECTION, locale),
-  );
+  const url = new URL(getLocalizedServerApiUrl(API_ROUTES.PROFESSORS_BY_SECTION, locale));
 
   url.searchParams.set("section", section);
 

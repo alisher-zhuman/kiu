@@ -9,16 +9,14 @@ export const createDefaultDocumentFormValues = (): AddDocumentFormValues => ({
 });
 
 export const mapDocumentFormValuesToPayload = (
-  values: AddDocumentFormValues,
+  values: AddDocumentFormValues
 ): CreateDocumentPayload => ({
   content: values.content,
   docType: values.docType,
   title: values.title,
 });
 
-export const mapDocumentItemToFormValues = (
-  documentItem: DocumentItem,
-): AddDocumentFormValues => ({
+export const mapDocumentItemToFormValues = (documentItem: DocumentItem): AddDocumentFormValues => ({
   content: documentItem.content,
   docType: documentItem.docType,
   title: documentItem.title,

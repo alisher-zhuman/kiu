@@ -6,10 +6,7 @@ import { type NewsItem } from "@/entities/news";
 
 import { formatDate, getPreviewText } from "@/shared/helpers";
 
-import {
-  NEWS_DESCRIPTION_PREVIEW_LIMIT,
-  NEWS_TITLE_PREVIEW_LIMIT,
-} from "../../constants";
+import { NEWS_DESCRIPTION_PREVIEW_LIMIT, NEWS_TITLE_PREVIEW_LIMIT } from "../../constants";
 
 interface Props {
   item: NewsItem;
@@ -19,10 +16,7 @@ interface Props {
 export const NewsCard = ({ item, locale }: Props) => {
   const formattedDate = formatDate(item.dateOfPublication, locale);
   const previewTitle = getPreviewText(item.title, NEWS_TITLE_PREVIEW_LIMIT);
-  const previewDescription = getPreviewText(
-    item.description,
-    NEWS_DESCRIPTION_PREVIEW_LIMIT,
-  );
+  const previewDescription = getPreviewText(item.description, NEWS_DESCRIPTION_PREVIEW_LIMIT);
   const previewImage = item.images[0];
 
   return (
@@ -46,9 +40,7 @@ export const NewsCard = ({ item, locale }: Props) => {
         )}
 
         <div className="flex flex-1 flex-col space-y-4 p-5 md:space-y-5 md:p-7">
-          <p className="text-sm font-medium text-[#004C97] md:text-base">
-            {formattedDate}
-          </p>
+          <p className="text-sm font-medium text-[#004C97] md:text-base">{formattedDate}</p>
 
           <div className="space-y-3">
             <h2 className="text-xl font-semibold tracking-tight text-black md:text-2xl">

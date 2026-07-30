@@ -2,15 +2,9 @@ import { type AppLocale } from "@/i18n/routing";
 
 import { type LocaleLabelsMap } from "@/shared/types";
 
-export const LOCALE_OPTIONS: ReadonlyArray<AppLocale> = [
-  "kg",
-  "ru",
-  "en",
-] as const;
+export const LOCALE_OPTIONS: ReadonlyArray<AppLocale> = ["kg", "ru", "en"] as const;
 
-export const getLocaleLabels = (
-  t: (key: string) => string,
-): LocaleLabelsMap => {
+export const getLocaleLabels = (t: (key: string) => string): LocaleLabelsMap => {
   return {
     kg: {
       label: t("locales.kg.label"),

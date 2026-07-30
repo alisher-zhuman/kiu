@@ -8,13 +8,10 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 
-type PendingMessage<TVariables> =
-  | string
-  | ((variables: TVariables) => string | null | undefined);
+type PendingMessage<TVariables> = string | ((variables: TVariables) => string | null | undefined);
 
 type ToastMessage<TValue, TVariables> =
-  | string
-  | ((value: TValue, variables: TVariables) => string | null | undefined);
+  string | ((value: TValue, variables: TVariables) => string | null | undefined);
 
 type ToastMutationOptions<TData, TError, TVariables, TOnMutateResult> = Omit<
   UseMutationOptions<TData, TError, TVariables, TOnMutateResult>,
@@ -25,23 +22,13 @@ type ToastMutationOptions<TData, TError, TVariables, TOnMutateResult> = Omit<
   pendingMessage?: PendingMessage<TVariables>;
   successMessage?: ToastMessage<TData, TVariables>;
   errorMessage?: ToastMessage<TError, TVariables>;
-  onSuccess?: UseMutationOptions<
-    TData,
-    TError,
-    TVariables,
-    TOnMutateResult
-  >["onSuccess"];
-  onError?: UseMutationOptions<
-    TData,
-    TError,
-    TVariables,
-    TOnMutateResult
-  >["onError"];
+  onSuccess?: UseMutationOptions<TData, TError, TVariables, TOnMutateResult>["onSuccess"];
+  onError?: UseMutationOptions<TData, TError, TVariables, TOnMutateResult>["onError"];
 };
 
 const resolvePendingMessage = <TVariables>(
   message: PendingMessage<TVariables> | undefined,
-  variables: TVariables,
+  variables: TVariables
 ) => {
   if (!message) {
     return null;
@@ -53,7 +40,7 @@ const resolvePendingMessage = <TVariables>(
 const resolveToastMessage = <TValue, TVariables>(
   message: ToastMessage<TValue, TVariables> | undefined,
   value: TValue,
-  variables: TVariables,
+  variables: TVariables
 ) => {
   if (!message) {
     return null;
@@ -68,7 +55,7 @@ export const useToastMutation = <
   TVariables = void,
   TOnMutateResult = unknown,
 >(
-  options: ToastMutationOptions<TData, TError, TVariables, TOnMutateResult>,
+  options: ToastMutationOptions<TData, TError, TVariables, TOnMutateResult>
 ): UseMutationResult<TData, TError, TVariables, TOnMutateResult> => {
   const queryClient = useQueryClient();
 
@@ -87,8 +74,7 @@ export const useToastMutation = <
     ...rest,
     mutationFn: (variables, context) => {
       const request = mutationFn(variables, context);
-      const hasToastConfig =
-        pendingMessage || successMessage || errorMessage;
+      const hasToastConfig = pendingMessage || successMessage || errorMessage;
 
       if (!hasToastConfig) {
         return request;
@@ -105,8 +91,7 @@ export const useToastMutation = <
         ...(errorMessage
           ? {
               error: (error: unknown) =>
-                resolveToastMessage(errorMessage, error as TError, variables) ??
-                null,
+                resolveToastMessage(errorMessage, error as TError, variables) ?? null,
             }
           : {}),
       };

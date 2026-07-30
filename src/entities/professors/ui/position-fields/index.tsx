@@ -7,10 +7,7 @@ import { type AppLocale } from "@/i18n/routing";
 
 import { FormInput } from "@/shared/ui/form-input";
 
-import {
-  type ProfessorFormValues,
-  type ProfessorPositionFormValue,
-} from "../../model/types";
+import { type ProfessorFormValues, type ProfessorPositionFormValue } from "../../model/types";
 
 interface Props {
   addPosition: () => void;
@@ -49,10 +46,7 @@ export const PositionFields = ({
 
     <div className="space-y-4">
       {positionFields.map((field, index) => (
-        <div
-          key={field.id}
-          className="space-y-4 rounded-2xl border border-black/10 p-4"
-        >
+        <div key={field.id} className="space-y-4 rounded-2xl border border-black/10 p-4">
           <div className="flex items-center justify-between gap-3">
             <p className="text-sm font-medium text-black/55">
               {t("positionItem")} {index + 1}
@@ -72,10 +66,9 @@ export const PositionFields = ({
 
           <div className="space-y-4">
             {localeOptions.map((locale) => {
-              const fieldError =
-                (errors?.[index] as FieldErrors<ProfessorPositionFormValue> | undefined)?.[
-                  locale
-                ]?.message;
+              const fieldError = (
+                errors?.[index] as FieldErrors<ProfessorPositionFormValue> | undefined
+              )?.[locale]?.message;
 
               return (
                 <div key={`${field.id}-${locale}`} className="space-y-2">
@@ -94,9 +87,7 @@ export const PositionFields = ({
                   />
 
                   {fieldError ? (
-                    <p className="text-sm text-red-500 md:text-base">
-                      {fieldError}
-                    </p>
+                    <p className="text-sm text-red-500 md:text-base">{fieldError}</p>
                   ) : null}
                 </div>
               );

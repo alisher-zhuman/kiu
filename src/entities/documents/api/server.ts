@@ -8,13 +8,10 @@ import { getLocalizedServerApiUrl } from "@/shared/helpers";
 import { DocumentsResponseSchema } from "../model/schemas";
 
 export const getPublicDocuments = async (locale: AppLocale) => {
-  const response = await fetch(
-    getLocalizedServerApiUrl(API_ROUTES.DOCUMENTS, locale),
-    {
-      next: { revalidate: 60 },
-      signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
-    },
-  );
+  const response = await fetch(getLocalizedServerApiUrl(API_ROUTES.DOCUMENTS, locale), {
+    next: { revalidate: 60 },
+    signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
+  });
 
   if (!response.ok) {
     throw new Error(`Failed to fetch documents: ${response.status}`);
@@ -25,10 +22,7 @@ export const getPublicDocuments = async (locale: AppLocale) => {
   return DocumentsResponseSchema.parse(data);
 };
 
-export const getPublicDocumentsByType = async (
-  locale: AppLocale,
-  docType: string,
-) => {
+export const getPublicDocumentsByType = async (locale: AppLocale, docType: string) => {
   const url = new URL(getLocalizedServerApiUrl(API_ROUTES.DOCUMENTS_BY_TYPE, locale));
   url.searchParams.set("type", docType);
 

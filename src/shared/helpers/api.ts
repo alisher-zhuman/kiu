@@ -29,17 +29,12 @@ export const getLocalizedApiBaseUrl = (apiUrl: string, locale: AppLocale) => {
     : `${normalizedApiUrl}/${locale}`;
 };
 
-export const getLocalizedServerApiUrl = (
-  path: string,
-  locale: AppLocale,
-) => {
+export const getLocalizedServerApiUrl = (path: string, locale: AppLocale) => {
   if (!API_URL) {
     throw new Error("API base URL is not configured");
   }
 
-  const normalizedApiUrl = API_URL.endsWith("/")
-    ? API_URL.slice(0, -1)
-    : API_URL;
+  const normalizedApiUrl = API_URL.endsWith("/") ? API_URL.slice(0, -1) : API_URL;
   const normalizedPath = normalizeApiPath(path);
 
   return `${normalizedApiUrl}/${locale}${normalizedPath}`;
@@ -52,8 +47,7 @@ export const normalizeApiPath = (url: string) => {
 
   const normalizedUrl = url.startsWith("/") ? url : `/${url}`;
   const localePrefix = routing.locales.find(
-    (locale) =>
-      normalizedUrl === `/${locale}` || normalizedUrl.startsWith(`/${locale}/`),
+    (locale) => normalizedUrl === `/${locale}` || normalizedUrl.startsWith(`/${locale}/`)
   );
 
   if (!localePrefix) {
@@ -63,10 +57,7 @@ export const normalizeApiPath = (url: string) => {
   return normalizedUrl.replace(`/${localePrefix}`, "") || "/";
 };
 
-export const getApiErrorMessage = (
-  error: unknown,
-  fallback = "Ошибка запроса",
-) => {
+export const getApiErrorMessage = (error: unknown, fallback = "Ошибка запроса") => {
   if (typeof error === "string") {
     return error;
   }

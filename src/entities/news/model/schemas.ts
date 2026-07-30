@@ -23,9 +23,8 @@ export const createNewsFormSchema = (t: (key: string) => string) => {
       .min(1, t("errors.images.required"))
       .max(MAX_NEWS_IMAGES_COUNT, t("errors.images.max"))
       .refine(
-        (images) =>
-          images.every((url) => typeof url === "string" && url.length),
-        t("errors.images.required"),
+        (images) => images.every((url) => typeof url === "string" && url.length),
+        t("errors.images.required")
       ),
     title: localizedTextSchema("errors.title.required"),
     description: localizedTextSchema("errors.description.required"),

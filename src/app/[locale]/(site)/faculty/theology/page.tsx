@@ -22,11 +22,10 @@ export const TheologyFacultyPage = async ({ params }: Props) => {
 
   setRequestLocale(locale);
 
-  const { data: professors, hasError: hasProfessorsError } =
-    await fetchSafely<ProfessorItem[]>(
-      () => getPublicProfessorsBySection(locale, "THEOLOGY"),
-      [],
-    );
+  const { data: professors, hasError: hasProfessorsError } = await fetchSafely<ProfessorItem[]>(
+    () => getPublicProfessorsBySection(locale, "THEOLOGY"),
+    []
+  );
 
   return (
     <FacultyPage

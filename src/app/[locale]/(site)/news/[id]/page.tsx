@@ -41,7 +41,7 @@ const NewsDetailPage = async ({ params }: Props) => {
     if (status === 404) {
       notFound();
     }
-    
+
     hasError = true;
   }
 

@@ -28,7 +28,11 @@ export const ConfirmModal = ({
   title,
   variant = "danger",
 }: Props) => {
-  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   useEffect(() => {
     if (!isOpen) return;
@@ -56,13 +60,9 @@ export const ConfirmModal = ({
       />
 
       <div className="relative w-full max-w-sm rounded-3xl bg-white px-6 pt-6 pb-5 shadow-[0_24px_64px_rgba(0,0,0,0.18)] md:px-7 md:pt-7 md:pb-6">
-        <h2 className="text-xl font-bold tracking-tight text-black md:text-2xl">
-          {title}
-        </h2>
+        <h2 className="text-xl font-bold tracking-tight text-black md:text-2xl">{title}</h2>
 
-        {message ? (
-          <p className="mt-2 text-sm text-black/55 md:text-base">{message}</p>
-        ) : null}
+        {message ? <p className="mt-2 text-sm text-black/55 md:text-base">{message}</p> : null}
 
         <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
           <button
@@ -82,7 +82,7 @@ export const ConfirmModal = ({
               "inline-flex items-center justify-center rounded-2xl px-5 py-2.5 text-sm font-semibold text-white transition-colors disabled:opacity-50",
               variant === "danger"
                 ? "bg-red-500 hover:bg-red-600"
-                : "bg-[#004C97] hover:bg-[#002E5C]",
+                : "bg-[#004C97] hover:bg-[#002E5C]"
             )}
           >
             {isPending ? "..." : confirmLabel}
@@ -90,6 +90,6 @@ export const ConfirmModal = ({
         </div>
       </div>
     </div>,
-    document.body,
+    document.body
   );
 };

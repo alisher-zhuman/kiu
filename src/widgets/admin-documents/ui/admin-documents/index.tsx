@@ -4,10 +4,7 @@ import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
-import {
-  DOCUMENT_TYPE_OPTIONS,
-  getDocumentsByType,
-} from "@/entities/documents";
+import { DOCUMENT_TYPE_OPTIONS, getDocumentsByType } from "@/entities/documents";
 
 import { QUERY_KEYS } from "@/shared/constants";
 import { useSearchParamState } from "@/shared/hooks";
@@ -23,7 +20,7 @@ export const AdminDocuments = () => {
   const [activeKey, setActiveKey] = useSearchParamState(
     "category",
     DOCUMENT_TYPE_OPTIONS[0],
-    DOCUMENT_TYPE_OPTIONS,
+    DOCUMENT_TYPE_OPTIONS
   );
 
   const locale = useLocale();
@@ -42,7 +39,7 @@ export const AdminDocuments = () => {
         key,
         label: tDocTypes(`docTypes.${key}`),
       })),
-    [tDocTypes],
+    [tDocTypes]
   );
 
   return (

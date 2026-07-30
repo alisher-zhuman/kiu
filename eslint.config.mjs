@@ -1,6 +1,7 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import prettierConfig from "eslint-config-prettier";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import {
   createBarrelImportConfig,
@@ -26,7 +27,7 @@ const eslintConfig = defineConfig([
       "no-console": ["warn", { allow: ["warn", "error"] }],
       "no-var": "error",
       "prefer-const": "error",
-      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {
@@ -35,6 +36,7 @@ const eslintConfig = defineConfig([
           caughtErrorsIgnorePattern: "^_",
         },
       ],
+      "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
       "@typescript-eslint/consistent-type-imports": [
         "error",
         { prefer: "type-imports", fixStyle: "inline-type-imports" },
@@ -60,11 +62,10 @@ const eslintConfig = defineConfig([
               "^node:",
               "^react",
               "^next",
-              "^(?!@(?:app|pages|widgets|features|entities|shared)(?:/|$))@?\\w",
+              "^(?!@(?:app|widgets|features|entities|shared)(?:/|$))@?\\w",
             ],
             ["^@/i18n(?:/.*)?$", "^@i18n(?:/.*)?$"],
             ["^@app(?:/.*)?$", "^@/app(?:/.*)?$"],
-            ["^@pages(?:/.*)?$", "^@/pages(?:/.*)?$"],
             ["^@widgets(?:/.*)?$", "^@/widgets(?:/.*)?$"],
             ["^@features(?:/.*)?$", "^@/features(?:/.*)?$"],
             ["^@entities(?:/.*)?$", "^@/entities(?:/.*)?$"],
@@ -124,6 +125,8 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  // Must stay last: turns off formatting rules that would conflict with Prettier.
+  prettierConfig,
 ]);
 
 export default eslintConfig;

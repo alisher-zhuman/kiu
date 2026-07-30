@@ -33,11 +33,7 @@ export const ScheduleCard = ({ item }: Props) => {
       </div>
 
       <div className="mt-auto flex flex-wrap justify-end gap-2 pt-4">
-        <AdminOpenFileLink
-          href={item.content}
-          ariaLabel={t("open")}
-          label={t("open")}
-        />
+        <AdminOpenFileLink href={item.content} ariaLabel={t("open")} label={t("open")} />
 
         <Link
           href={`/admin/schedules/${item.id}/edit`}

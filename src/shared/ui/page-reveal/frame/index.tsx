@@ -31,7 +31,7 @@ export const PageRevealFrame = ({ children }: Props) => {
         "transition-all duration-500 ease-out motion-reduce:transform-none motion-reduce:transition-none",
         isVisible
           ? "translate-y-0 opacity-100"
-          : "translate-y-4 opacity-0 motion-reduce:opacity-100",
+          : "translate-y-4 opacity-0 motion-reduce:opacity-100"
       )}
     >
       {children}

@@ -10,20 +10,14 @@ const NewsDetailLoading = () => (
 
       <div className="grid gap-3 md:grid-cols-2 md:gap-4">
         {Array.from({ length: 2 }).map((_, index) => (
-          <div
-            key={index}
-            className="aspect-4/3 animate-pulse rounded-3xl bg-black/6"
-          />
+          <div key={index} className="aspect-4/3 animate-pulse rounded-3xl bg-black/6" />
         ))}
       </div>
 
       <div className="rounded-3xl border border-black/10 bg-white p-5 shadow-[0_14px_32px_rgba(0,0,0,0.04)] md:p-7">
         <div className="space-y-3">
           {Array.from({ length: 6 }).map((_, index) => (
-            <div
-              key={index}
-              className="h-4 animate-pulse rounded bg-black/6"
-            />
+            <div key={index} className="h-4 animate-pulse rounded bg-black/6" />
           ))}
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import { type LinkAction } from "./link-action";
 
 export interface Section {

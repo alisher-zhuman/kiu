@@ -8,10 +8,7 @@ export {
 } from "./api";
 export { useProfessorForm } from "./hooks/useProfessorForm";
 export { useProfessorPhoto } from "./hooks/useProfessorPhoto";
-export {
-  MAX_PROFESSOR_PHOTO_SIZE_BYTES,
-  PROFESSOR_SECTION_OPTIONS,
-} from "./model/constants";
+export { MAX_PROFESSOR_PHOTO_SIZE_BYTES, PROFESSOR_SECTION_OPTIONS } from "./model/constants";
 export {
   createDefaultProfessorFormValues,
   mapProfessorDetailToFormValues,

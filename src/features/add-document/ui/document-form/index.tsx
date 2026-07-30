@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent,type FormEventHandler, type RefObject } from "react";
+import { type ChangeEvent, type FormEventHandler, type RefObject } from "react";
 import { type FieldErrors, type UseFormRegister } from "react-hook-form";
 
 import { type DocumentItem } from "@/entities/documents";
@@ -45,11 +45,7 @@ export const DocumentForm = ({
   submitLabel,
   t,
 }: Props) => (
-  <form
-    className="mx-auto w-full space-y-6 md:max-w-3xl"
-    noValidate
-    onSubmit={onSubmit}
-  >
+  <form className="mx-auto w-full space-y-6 md:max-w-3xl" noValidate onSubmit={onSubmit}>
     <FileFieldset
       errorMessage={errors.content?.message}
       fileInputRef={fileInputRef}
@@ -77,7 +73,7 @@ export const DocumentForm = ({
         disabled={isSubmitDisabled}
         className={cn(
           "inline-flex w-full cursor-pointer items-center justify-center rounded-[0.95rem] bg-[#004C97] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C] md:ml-auto md:w-auto md:min-w-40 md:text-base",
-          isSubmitDisabled && "cursor-not-allowed opacity-55 hover:bg-[#004C97]",
+          isSubmitDisabled && "cursor-not-allowed opacity-55 hover:bg-[#004C97]"
         )}
       >
         {submitLabel}

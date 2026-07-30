@@ -9,12 +9,7 @@ interface Props {
   openSection: string | null;
 }
 
-export const Navigation = ({
-  getLabel,
-  menuTitle,
-  onToggleSection,
-  openSection,
-}: Props) => (
+export const Navigation = ({ getLabel, menuTitle, onToggleSection, openSection }: Props) => (
   <nav aria-label={menuTitle} className="md:pt-12">
     <ul className="mt-6 flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-10 md:text-center">
       {FOOTER_NAVBAR_LINKS.map(({ href, labelKey, links }) => (

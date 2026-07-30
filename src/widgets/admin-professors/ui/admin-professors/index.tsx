@@ -16,7 +16,11 @@ export const AdminProfessors = () => {
 
   const t = useTranslations("AdminProfessorsPage");
 
-  const { data: professors, error, isLoading } = useQuery({
+  const {
+    data: professors,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: QUERY_KEYS.adminProfessors(locale),
     queryFn: getProfessors,
   });

@@ -21,7 +21,7 @@ const StructureDocumentsPage = async ({ params }: Props) => {
 
   const { data: documents, hasError } = await fetchSafely<DocumentItem[]>(
     () => getPublicDocuments(locale),
-    [],
+    []
   );
 
   return (

@@ -30,10 +30,7 @@ export const History = () => {
             </Reveal>
 
             <Reveal delay={150}>
-              <MissionBlock
-                mission={t("mission")}
-                missionTitle={t("missionTitle")}
-              />
+              <MissionBlock mission={t("mission")} missionTitle={t("missionTitle")} />
             </Reveal>
 
             <Reveal delay={200}>

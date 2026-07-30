@@ -40,11 +40,7 @@ export const Rectorate = ({ hasError = false, professors }: Props) => {
         {professors.length ? (
           <div className="grid items-stretch gap-5 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
             {professors.map((item, index) => (
-              <Reveal
-                key={item.id}
-                delay={Math.min(index * 50, 200)}
-                className="h-full"
-              >
+              <Reveal key={item.id} delay={Math.min(index * 50, 200)} className="h-full">
                 <PublicProfessorCard item={item} priority={index === 0} />
               </Reveal>
             ))}

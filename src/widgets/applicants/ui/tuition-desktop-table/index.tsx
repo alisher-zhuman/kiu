@@ -18,7 +18,9 @@ export const TuitionDesktopTable = ({ rows, t }: Props) => {
           <th className="pb-4 pr-10 text-left text-xs font-semibold uppercase tracking-widest text-black/40">
             {t("columns.local")}
           </th>
-          <th className={`pb-4 text-left text-xs font-semibold uppercase tracking-widest text-black/40${hasAdmission ? " pr-10" : ""}`}>
+          <th
+            className={`pb-4 text-left text-xs font-semibold uppercase tracking-widest text-black/40${hasAdmission ? " pr-10" : ""}`}
+          >
             {t("columns.foreign")}
           </th>
           {hasAdmission && (
@@ -37,10 +39,10 @@ export const TuitionDesktopTable = ({ rows, t }: Props) => {
           >
             <td className="py-5 pr-10 text-base font-medium text-black">{program}</td>
             <td className="py-5 pr-10 text-base text-black/60">{local}</td>
-            <td className={`py-5 text-base text-black/60${hasAdmission ? " pr-10" : ""}`}>{foreign}</td>
-            {hasAdmission && (
-              <td className="py-5 text-base text-black/60">{admission}</td>
-            )}
+            <td className={`py-5 text-base text-black/60${hasAdmission ? " pr-10" : ""}`}>
+              {foreign}
+            </td>
+            {hasAdmission && <td className="py-5 text-base text-black/60">{admission}</td>}
           </tr>
         ))}
       </tbody>

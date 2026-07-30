@@ -1,11 +1,7 @@
 import axios from "axios";
 
 import { API_URL } from "@/shared/constants";
-import {
-  getCurrentApiLocale,
-  getLocalizedApiBaseUrl,
-  normalizeApiPath,
-} from "@/shared/helpers";
+import { getCurrentApiLocale, getLocalizedApiBaseUrl, normalizeApiPath } from "@/shared/helpers";
 import { useAuthStore } from "@/shared/stores";
 
 export const api = axios.create({
@@ -51,8 +47,6 @@ api.interceptors.response.use(
       }
     }
 
-    return Promise.reject(
-      error instanceof Error ? error : new Error("API request failed"),
-    );
-  },
+    return Promise.reject(error instanceof Error ? error : new Error("API request failed"));
+  }
 );

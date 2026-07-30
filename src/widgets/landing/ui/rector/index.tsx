@@ -26,9 +26,7 @@ export const Rector = () => {
             {t("title")}
           </h2>
 
-          <p className="mt-3 text-xl font-semibold md:mt-4 md:text-3xl">
-            {t("name")}
-          </p>
+          <p className="mt-3 text-xl font-semibold md:mt-4 md:text-3xl">{t("name")}</p>
 
           <p className="mt-5 text-base leading-7 md:mt-8 md:text-2xl md:leading-10">
             {t("message")}

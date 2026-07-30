@@ -16,22 +16,22 @@ export const createDefaultScheduleFormValues = (): AddScheduleFormValues => ({
   dateOfPublication: "",
 });
 
-export const mapEditableScheduleToFormValues = (
-  schedule: ScheduleItem,
-): AddScheduleFormValues => ({
+export const mapEditableScheduleToFormValues = (schedule: ScheduleItem): AddScheduleFormValues => ({
   content: schedule.content,
   title: schedule.title,
-  level: (SCHEDULE_LEVEL_OPTIONS.includes(schedule.level as typeof SCHEDULE_LEVEL_OPTIONS[number])
+  level: (SCHEDULE_LEVEL_OPTIONS.includes(schedule.level as (typeof SCHEDULE_LEVEL_OPTIONS)[number])
     ? schedule.level
-    : SCHEDULE_LEVEL_OPTIONS[0]) as typeof SCHEDULE_LEVEL_OPTIONS[number],
-  section: (FACULTY_SECTION_OPTIONS.includes(schedule.section as typeof FACULTY_SECTION_OPTIONS[number])
+    : SCHEDULE_LEVEL_OPTIONS[0]) as (typeof SCHEDULE_LEVEL_OPTIONS)[number],
+  section: (FACULTY_SECTION_OPTIONS.includes(
+    schedule.section as (typeof FACULTY_SECTION_OPTIONS)[number]
+  )
     ? schedule.section
-    : FACULTY_SECTION_OPTIONS[0]) as typeof FACULTY_SECTION_OPTIONS[number],
+    : FACULTY_SECTION_OPTIONS[0]) as (typeof FACULTY_SECTION_OPTIONS)[number],
   dateOfPublication: schedule.dateOfPublication,
 });
 
 export const mapScheduleFormValuesToPayload = (
-  values: AddScheduleFormValues,
+  values: AddScheduleFormValues
 ): CreateSchedulePayload => ({
   content: values.content,
   title: values.title,
