@@ -25,10 +25,14 @@ export const DocumentTitleField = ({ errors, register, t }: Props) => (
         {...register("title")}
         placeholder={t("placeholders.title")}
         hasError={!!errors.title?.message}
+        aria-invalid={!!errors.title?.message}
+        aria-describedby={errors.title?.message ? "document-title-error" : undefined}
       />
 
       {errors.title?.message ? (
-        <p className="text-sm text-red-500 md:text-base">{errors.title.message}</p>
+        <p id="document-title-error" className="text-sm text-red-500 md:text-base">
+          {errors.title.message}
+        </p>
       ) : null}
     </div>
   </div>

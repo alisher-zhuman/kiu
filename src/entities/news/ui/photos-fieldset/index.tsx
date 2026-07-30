@@ -73,7 +73,7 @@ export const PhotosFieldset = ({
             onClick={openFileDialog}
             disabled={isUploadDisabled}
             className={cn(
-              "flex aspect-square flex-col items-center justify-center gap-2 overflow-hidden rounded-[0.95rem] bg-black/6 px-3 text-center text-black/35 transition-colors",
+              "flex aspect-square flex-col items-center justify-center gap-2 overflow-hidden rounded-[0.95rem] bg-black/6 px-3 text-center text-black/60 transition-colors",
               "cursor-pointer hover:bg-black/8",
               isUploadDisabled && "cursor-not-allowed opacity-55 hover:bg-black/6"
             )}

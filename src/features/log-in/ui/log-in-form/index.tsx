@@ -24,17 +24,20 @@ export const LogInForm = () => {
           type="email"
           autoComplete="email"
           aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? "email-error" : undefined}
           placeholder={t("emailPlaceholder")}
           disabled={isPending}
           {...register("email")}
           className={cn(
-            "w-full rounded-2xl border border-black/20 px-5 py-4 text-base text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#004C97] md:text-lg",
+            "w-full rounded-2xl border border-black/20 px-5 py-4 text-base text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#004C97] focus-visible:ring-2 focus-visible:ring-[#004C97] focus-visible:ring-offset-2 md:text-lg",
             errors.email && "border-red-500 focus:border-red-500"
           )}
         />
 
         {errors.email?.message ? (
-          <p className="text-sm text-red-500 md:text-base">{errors.email.message}</p>
+          <p id="email-error" className="text-sm text-red-500 md:text-base">
+            {errors.email.message}
+          </p>
         ) : null}
       </div>
 
@@ -49,11 +52,12 @@ export const LogInForm = () => {
             type={isPasswordVisible ? "text" : "password"}
             autoComplete="current-password"
             aria-invalid={Boolean(errors.password)}
+            aria-describedby={errors.password ? "password-error" : undefined}
             placeholder={t("passwordPlaceholder")}
             disabled={isPending}
             {...register("password")}
             className={cn(
-              "w-full rounded-2xl border border-black/20 px-5 py-4 pr-14 text-base text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#004C97] md:text-lg",
+              "w-full rounded-2xl border border-black/20 px-5 py-4 pr-14 text-base text-black outline-none transition-colors placeholder:text-black/40 focus:border-[#004C97] focus-visible:ring-2 focus-visible:ring-[#004C97] focus-visible:ring-offset-2 md:text-lg",
               errors.password && "border-red-500 focus:border-red-500"
             )}
           />
@@ -63,7 +67,7 @@ export const LogInForm = () => {
             disabled={isPending}
             onClick={() => setIsPasswordVisible((current) => !current)}
             aria-label={isPasswordVisible ? t("hidePassword") : t("showPassword")}
-            className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-black/35 transition-colors hover:text-black/60"
+            className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-black/50 transition-colors hover:text-black/60"
           >
             {isPasswordVisible ? (
               <Eye size={20} strokeWidth={1.75} />
@@ -74,7 +78,9 @@ export const LogInForm = () => {
         </div>
 
         {errors.password?.message ? (
-          <p className="text-sm text-red-500 md:text-base">{errors.password.message}</p>
+          <p id="password-error" className="text-sm text-red-500 md:text-base">
+            {errors.password.message}
+          </p>
         ) : null}
       </div>
 

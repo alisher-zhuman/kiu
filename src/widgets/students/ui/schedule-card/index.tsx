@@ -21,7 +21,7 @@ export const ScheduleCard = ({ item }: Props) => {
           <h2 className="text-base font-semibold tracking-tight text-black md:text-lg">
             {item.title}
           </h2>
-          <p className="text-xs text-black/45">{item.dateOfPublication}</p>
+          <p className="text-xs text-black/60">{item.dateOfPublication}</p>
         </div>
       </div>
 
@@ -32,7 +32,7 @@ export const ScheduleCard = ({ item }: Props) => {
           rel="noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-[#004C97] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#002E5C]"
         >
-          <ExternalLink className="size-4" />
+          <ExternalLink aria-hidden="true" className="size-4" />
           {t("open")}
         </a>
       </div>

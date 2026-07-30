@@ -63,22 +63,32 @@ export const NewsForm = ({
 
       <div className="space-y-6">
         <div className="space-y-3">
-          <h2 className="text-xl font-medium tracking-tight text-black md:text-2xl">
+          <label
+            htmlFor="news-date-of-publication"
+            className="block text-xl font-medium tracking-tight text-black md:text-2xl"
+          >
             {t("dateLabel")}
-          </h2>
+          </label>
 
           <div className="space-y-1.5">
             <input
+              id="news-date-of-publication"
               type="date"
               {...register("dateOfPublication")}
+              aria-invalid={!!errors.dateOfPublication}
+              aria-describedby={
+                errors.dateOfPublication ? "news-date-of-publication-error" : undefined
+              }
               className={cn(
-                "w-full rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors focus:border-[#004C97] md:text-base",
+                "w-full rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors focus:border-[#004C97] focus-visible:ring-2 focus-visible:ring-[#004C97] focus-visible:ring-offset-2 md:text-base",
                 errors.dateOfPublication && "border-red-500 focus:border-red-500"
               )}
             />
 
             {errors.dateOfPublication?.message ? (
-              <p className="text-sm text-red-500">{errors.dateOfPublication.message}</p>
+              <p id="news-date-of-publication-error" className="text-sm text-red-500">
+                {errors.dateOfPublication.message}
+              </p>
             ) : null}
           </div>
         </div>

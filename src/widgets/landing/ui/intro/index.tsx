@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Play, Volume2, VolumeX } from "lucide-react";
 
 import { cn } from "@/shared/helpers";
+import { usePrefersReducedMotion } from "@/shared/hooks";
 
 const DESKTOP_MEDIA_QUERY = "(min-width: 768px)";
 
@@ -17,11 +18,13 @@ export const Intro = () => {
 
   const t = useTranslations("Intro");
 
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   useEffect(() => {
     const mediaQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
 
     const autoplayOnDesktop = () => {
-      if (mediaQuery.matches) {
+      if (mediaQuery.matches && !prefersReducedMotion) {
         videoRef.current?.play().catch(() => null);
       } else {
         videoRef.current?.pause();
@@ -32,7 +35,7 @@ export const Intro = () => {
     mediaQuery.addEventListener("change", autoplayOnDesktop);
 
     return () => mediaQuery.removeEventListener("change", autoplayOnDesktop);
-  }, []);
+  }, [prefersReducedMotion]);
 
   const handlePlayClick = () => {
     videoRef.current?.play().catch(() => null);

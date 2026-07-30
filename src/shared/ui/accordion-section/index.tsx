@@ -32,6 +32,7 @@ export const AccordionSection = ({
         <h2 className="text-xl font-bold sm:text-2xl md:text-4xl">{title}</h2>
 
         <ChevronDown
+          aria-hidden="true"
           size={24}
           strokeWidth={1.75}
           className={cn(

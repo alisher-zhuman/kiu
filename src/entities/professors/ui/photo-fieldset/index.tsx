@@ -66,7 +66,7 @@ export const PhotoFieldset = ({
             </button>
           </>
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-8 px-3 text-center text-black/35">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-8 px-3 text-center text-black/60">
             <Camera className="size-9 stroke-[1.5] md:size-10" />
             <span className="text-[11px] font-medium leading-4 md:text-xs">{t("photoHint")}</span>
           </div>

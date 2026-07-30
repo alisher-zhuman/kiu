@@ -101,7 +101,7 @@ export const AdminSchedules = () => {
               "shrink-0 border-b-2 px-4 py-3 text-center text-sm transition-all duration-200",
               activeLevel === level
                 ? "border-[#004C97] font-semibold text-[#004C97]"
-                : "border-black/10 font-normal text-black/40"
+                : "border-black/10 font-normal text-black/60"
             )}
           >
             {t(`levels.${level}`)}

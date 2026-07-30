@@ -31,6 +31,7 @@ export const MobileNavItem = ({ href, isOpen, label, links, onNavigate, onToggle
       <span>{label}</span>
 
       <ChevronDown
+        aria-hidden="true"
         size={20}
         strokeWidth={1.75}
         className={cn("shrink-0 transition-transform duration-200", isOpen && "rotate-180")}

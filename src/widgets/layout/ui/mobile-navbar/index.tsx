@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { NAVBAR_LINKS } from "@/shared/constants";
@@ -20,11 +20,27 @@ const MOBILE_NAVBAR_LINKS = moveScienceToEnd(NAVBAR_LINKS);
 export const MobileNavbar = ({ isOpen, onNavigate }: Props) => {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
+  const navRef = useRef<HTMLElement>(null);
+
   const t = useTranslations("Navbar");
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    navRef.current?.querySelector<HTMLElement>("a[href], button")?.focus();
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onNavigate();
+    };
+
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [isOpen, onNavigate]);
 
   return (
     <nav
       id="mobile-navbar"
+      ref={navRef}
       className={cn(
         "fixed inset-x-0 top-16 bottom-0 z-30 overflow-y-auto bg-[#004C97] px-5 py-6 text-white transition-all duration-300 ease-out md:hidden",
         isOpen

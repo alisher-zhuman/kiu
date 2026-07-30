@@ -25,10 +25,14 @@ export const DateField = ({ errors, register, t }: Props) => (
         type="date"
         {...register("dateOfPublication")}
         hasError={!!errors.dateOfPublication?.message}
+        aria-invalid={!!errors.dateOfPublication?.message}
+        aria-describedby={errors.dateOfPublication?.message ? "schedule-date-error" : undefined}
       />
 
       {errors.dateOfPublication?.message ? (
-        <p className="text-sm text-red-500 md:text-base">{errors.dateOfPublication.message}</p>
+        <p id="schedule-date-error" className="text-sm text-red-500 md:text-base">
+          {errors.dateOfPublication.message}
+        </p>
       ) : null}
     </div>
   </div>

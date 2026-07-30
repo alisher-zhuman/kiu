@@ -91,7 +91,8 @@
   },
   "Layout": {
     "back": "Артка",
-    "cancel": "Жокко чыгаруу"
+    "cancel": "Жокко чыгаруу",
+    "skipToContent": "Мазмунга өтүү"
   },
   "SciencePage": {
     "title": "«ИЛИМ» БӨЛҮМҮ",

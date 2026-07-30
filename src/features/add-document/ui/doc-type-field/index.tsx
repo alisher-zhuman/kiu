@@ -27,6 +27,8 @@ export const DocTypeField = ({ documentTypeOptions, errors, register, t }: Props
         id="document-doc-type"
         {...register("docType")}
         hasError={!!errors.docType?.message}
+        aria-invalid={!!errors.docType?.message}
+        aria-describedby={errors.docType?.message ? "document-doc-type-error" : undefined}
       >
         {documentTypeOptions.map((option) => (
           <option key={option} value={option}>
@@ -36,7 +38,9 @@ export const DocTypeField = ({ documentTypeOptions, errors, register, t }: Props
       </FormSelect>
 
       {errors.docType?.message ? (
-        <p className="text-sm text-red-500 md:text-base">{errors.docType.message}</p>
+        <p id="document-doc-type-error" className="text-sm text-red-500 md:text-base">
+          {errors.docType.message}
+        </p>
       ) : null}
     </div>
   </div>

@@ -32,6 +32,7 @@ export const BackButton = () => {
         className="group inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-black/55 transition-all duration-200 hover:-translate-y-px hover:text-[#004C97] md:text-base"
       >
         <ArrowLeft
+          aria-hidden="true"
           size={16}
           strokeWidth={1.75}
           className="transition-transform duration-200 group-hover:-translate-x-0.5"

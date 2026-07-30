@@ -21,7 +21,13 @@ export const LevelField = ({ errors, levelOptions, register, t }: Props) => (
     </label>
 
     <div className="space-y-2">
-      <FormSelect id="schedule-level" {...register("level")} hasError={!!errors.level?.message}>
+      <FormSelect
+        id="schedule-level"
+        {...register("level")}
+        hasError={!!errors.level?.message}
+        aria-invalid={!!errors.level?.message}
+        aria-describedby={errors.level?.message ? "schedule-level-error" : undefined}
+      >
         {levelOptions.map((level) => (
           <option key={level} value={level}>
             {t(`levels.${level}`)}
@@ -30,7 +36,9 @@ export const LevelField = ({ errors, levelOptions, register, t }: Props) => (
       </FormSelect>
 
       {errors.level?.message ? (
-        <p className="text-sm text-red-500 md:text-base">{errors.level.message}</p>
+        <p id="schedule-level-error" className="text-sm text-red-500 md:text-base">
+          {errors.level.message}
+        </p>
       ) : null}
     </div>
   </div>

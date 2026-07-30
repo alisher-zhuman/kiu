@@ -25,6 +25,8 @@ export const SectionField = ({ errors, register, sectionOptions, t }: Props) => 
         id="schedule-section"
         {...register("section")}
         hasError={!!errors.section?.message}
+        aria-invalid={!!errors.section?.message}
+        aria-describedby={errors.section?.message ? "schedule-section-error" : undefined}
       >
         {sectionOptions.map((section) => (
           <option key={section} value={section}>
@@ -34,7 +36,9 @@ export const SectionField = ({ errors, register, sectionOptions, t }: Props) => 
       </FormSelect>
 
       {errors.section?.message ? (
-        <p className="text-sm text-red-500 md:text-base">{errors.section.message}</p>
+        <p id="schedule-section-error" className="text-sm text-red-500 md:text-base">
+          {errors.section.message}
+        </p>
       ) : null}
     </div>
   </div>

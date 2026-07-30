@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { LogOut } from "lucide-react";
 
@@ -30,6 +30,8 @@ export const HeaderActions = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoutConfirmOpen, setIsLogoutConfirmOpen] = useState(false);
 
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
   const tHeader = useTranslations("Header");
   const tLayout = useTranslations("Layout");
 
@@ -47,6 +49,16 @@ export const HeaderActions = ({
 
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [isAdmin, isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen || isAdmin) return;
+
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
+
+    return () => {
+      previousFocusRef.current?.focus();
     };
   }, [isAdmin, isMenuOpen]);
 

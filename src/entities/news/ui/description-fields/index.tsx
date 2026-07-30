@@ -22,28 +22,37 @@ export const DescriptionFields = ({ errors, localeOptions, register, t }: Props)
     </h2>
 
     <div className="space-y-3">
-      {localeOptions.map((locale) => (
-        <div key={`description-${locale}`} className="space-y-2">
-          <label htmlFor={`description-${locale}`} className="text-sm font-medium text-black/65">
-            {t(`locales.${locale}`)}
-          </label>
+      {localeOptions.map((locale) => {
+        const fieldError = errors?.[locale]?.message;
+        const errorId = `description-${locale}-error`;
 
-          <textarea
-            id={`description-${locale}`}
-            rows={5}
-            {...register(`description.${locale}`)}
-            placeholder={t(`placeholders.description.${locale}`)}
-            className={cn(
-              "w-full resize-y rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors placeholder:text-black/30 focus:border-[#004C97] md:text-base",
-              errors?.[locale] && "border-red-500 focus:border-red-500"
-            )}
-          />
+        return (
+          <div key={`description-${locale}`} className="space-y-2">
+            <label htmlFor={`description-${locale}`} className="text-sm font-medium text-black/65">
+              {t(`locales.${locale}`)}
+            </label>
 
-          {errors?.[locale]?.message ? (
-            <p className="text-sm text-red-500">{errors[locale]?.message}</p>
-          ) : null}
-        </div>
-      ))}
+            <textarea
+              id={`description-${locale}`}
+              rows={5}
+              {...register(`description.${locale}`)}
+              placeholder={t(`placeholders.description.${locale}`)}
+              aria-invalid={!!fieldError}
+              aria-describedby={fieldError ? errorId : undefined}
+              className={cn(
+                "w-full resize-y rounded-[0.95rem] border border-black/12 px-4 py-3 text-sm text-black outline-none transition-colors placeholder:text-black/30 focus:border-[#004C97] focus-visible:ring-2 focus-visible:ring-[#004C97] focus-visible:ring-offset-2 md:text-base",
+                errors?.[locale] && "border-red-500 focus:border-red-500"
+              )}
+            />
+
+            {fieldError ? (
+              <p id={errorId} className="text-sm text-red-500">
+                {fieldError}
+              </p>
+            ) : null}
+          </div>
+        );
+      })}
     </div>
   </div>
 );

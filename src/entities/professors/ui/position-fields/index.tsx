@@ -69,6 +69,7 @@ export const PositionFields = ({
               const fieldError = (
                 errors?.[index] as FieldErrors<ProfessorPositionFormValue> | undefined
               )?.[locale]?.message;
+              const errorId = `professor-position-${field.id}-${locale}-error`;
 
               return (
                 <div key={`${field.id}-${locale}`} className="space-y-2">
@@ -84,10 +85,14 @@ export const PositionFields = ({
                     {...register(`positions.${index}.${locale}`)}
                     placeholder={t(`placeholders.position.${locale}`)}
                     hasError={!!fieldError}
+                    aria-invalid={!!fieldError}
+                    aria-describedby={fieldError ? errorId : undefined}
                   />
 
                   {fieldError ? (
-                    <p className="text-sm text-red-500 md:text-base">{fieldError}</p>
+                    <p id={errorId} className="text-sm text-red-500 md:text-base">
+                      {fieldError}
+                    </p>
                   ) : null}
                 </div>
               );

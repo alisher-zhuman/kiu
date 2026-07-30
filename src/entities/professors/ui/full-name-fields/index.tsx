@@ -25,6 +25,7 @@ export const FullNameFields = ({ errors, localeOptions, register, t }: Props) =>
       {localeOptions.map((locale) => {
         const fieldName = `fullName.${locale}` as const;
         const fieldError = errors?.[locale]?.message;
+        const errorId = `professor-full-name-${locale}-error`;
 
         return (
           <div key={locale} className="space-y-2">
@@ -40,9 +41,15 @@ export const FullNameFields = ({ errors, localeOptions, register, t }: Props) =>
               {...register(fieldName)}
               placeholder={t(`placeholders.fullName.${locale}`)}
               hasError={!!fieldError}
+              aria-invalid={!!fieldError}
+              aria-describedby={fieldError ? errorId : undefined}
             />
 
-            {fieldError ? <p className="text-sm text-red-500 md:text-base">{fieldError}</p> : null}
+            {fieldError ? (
+              <p id={errorId} className="text-sm text-red-500 md:text-base">
+                {fieldError}
+              </p>
+            ) : null}
           </div>
         );
       })}

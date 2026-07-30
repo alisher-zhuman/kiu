@@ -80,12 +80,16 @@ export const ProfessorForm = ({
           />
 
           <div className="space-y-3">
-            <p className="text-xl font-medium tracking-tight text-black md:text-2xl">
+            <p
+              id="professor-sections-label"
+              className="text-xl font-medium tracking-tight text-black md:text-2xl"
+            >
               {t("sectionLabel")}
             </p>
 
             <SectionsSelect
               errorMessage={errors.sections?.message}
+              labelId="professor-sections-label"
               options={professorSectionOptions}
               placeholder={t("sectionsPlaceholder")}
               sectionLabel={(section) => sectionsT(`sections.${section}`)}

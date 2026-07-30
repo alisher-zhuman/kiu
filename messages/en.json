@@ -91,7 +91,8 @@
   },
   "Layout": {
     "back": "Back",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "skipToContent": "Skip to content"
   },
   "SciencePage": {
     "title": "SCIENCE SECTION",

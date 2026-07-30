@@ -28,7 +28,7 @@ export const ScheduleCard = ({ item }: Props) => {
           <h2 className="text-base font-semibold tracking-tight text-black md:text-lg">
             {item.title}
           </h2>
-          <p className="text-xs text-black/45">{item.dateOfPublication}</p>
+          <p className="text-xs text-black/60">{item.dateOfPublication}</p>
         </div>
       </div>
 
