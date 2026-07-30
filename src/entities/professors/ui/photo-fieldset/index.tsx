@@ -58,21 +58,21 @@ export const PhotoFieldset = ({
 
             <span className="sr-only">{t("photoPreviewAlt")}</span>
 
-            <span
+            <button
+              type="button"
               onClick={(event) => {
                 event.stopPropagation();
                 void removePhoto();
               }}
+              disabled={isDeletePending}
+              aria-label={t("removePhoto")}
               className={cn(
-                "absolute top-2 right-2 inline-flex size-6 items-center justify-center rounded-full bg-black/70 text-white transition-colors hover:bg-black",
+                "absolute top-2 right-2 inline-flex size-6 cursor-pointer items-center justify-center rounded-full bg-black/70 text-white transition-colors hover:bg-black",
                 isDeletePending && "pointer-events-none opacity-60",
               )}
-              role="button"
-              tabIndex={-1}
-              aria-label={t("removePhoto")}
             >
               <X className="size-3" />
-            </span>
+            </button>
           </>
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-8 px-3 text-center text-black/35">

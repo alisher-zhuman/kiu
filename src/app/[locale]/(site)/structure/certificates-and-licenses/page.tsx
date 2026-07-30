@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { type AppLocale } from "@/i18n/routing";
@@ -6,8 +7,6 @@ import { Documents } from "@/widgets/documents";
 
 import { type DocumentItem } from "@/entities/documents";
 import { getPublicDocumentsByType } from "@/entities/documents/api/server";
-
-export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ locale: AppLocale }>;
@@ -31,14 +30,16 @@ const CertificatesAndLicensesPage = async ({ params }: Props) => {
   }
 
   return (
-    <Documents
-      allowedDocTypes={["LICENCES_AND_CERTIFICATIONS"]}
-      documents={documents}
-      emptyLabel={tDocs("emptyCertificates")}
-      errorLabel={tDocs("errorCertificates")}
-      hasError={hasError}
-      title={t("structure.links.certificatesAndLicenses")}
-    />
+    <Suspense fallback={null}>
+      <Documents
+        allowedDocTypes={["LICENCES_AND_CERTIFICATIONS"]}
+        documents={documents}
+        emptyLabel={tDocs("emptyCertificates")}
+        errorLabel={tDocs("errorCertificates")}
+        hasError={hasError}
+        title={t("structure.links.certificatesAndLicenses")}
+      />
+    </Suspense>
   );
 };
 

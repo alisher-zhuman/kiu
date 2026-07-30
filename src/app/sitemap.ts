@@ -30,9 +30,10 @@ const buildUrl = (locale: AppLocale, path: string) =>
   `${SITE_URL}/${locale}${path}`;
 
 const buildAlternates = (path: string) => {
-  return Object.fromEntries(
-    routing.locales.map((locale) => [locale, buildUrl(locale, path)]),
-  );
+  return Object.fromEntries([
+    ...routing.locales.map((locale) => [locale, buildUrl(locale, path)]),
+    ["x-default", buildUrl(routing.defaultLocale, path)],
+  ]);
 };
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {

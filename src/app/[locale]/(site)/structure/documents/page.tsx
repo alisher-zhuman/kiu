@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { setRequestLocale } from "next-intl/server";
 
 import { type AppLocale } from "@/i18n/routing";
@@ -8,8 +9,6 @@ import { type DocumentItem } from "@/entities/documents";
 import { getPublicDocuments } from "@/entities/documents/api/server";
 
 import { fetchSafely } from "@/shared/helpers";
-
-export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ locale: AppLocale }>;
@@ -25,7 +24,11 @@ const StructureDocumentsPage = async ({ params }: Props) => {
     [],
   );
 
-  return <Documents documents={documents} hasError={hasError} />;
+  return (
+    <Suspense fallback={null}>
+      <Documents documents={documents} hasError={hasError} />
+    </Suspense>
+  );
 };
 
 export default StructureDocumentsPage;

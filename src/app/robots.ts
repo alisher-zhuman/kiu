@@ -8,14 +8,17 @@ const robots = (): MetadataRoute.Robots => {
       {
         userAgent: "*",
         allow: "/",
+        disallow: "/*/admin",
       },
       {
         userAgent: "GPTBot",
         allow: "/",
+        disallow: "/*/admin",
       },
       {
         userAgent: "OAI-SearchBot",
         allow: "/",
+        disallow: "/*/admin",
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
